@@ -67,6 +67,11 @@ namespace ToolsGenGkode.pages
             numericUpDownPercent.Value = p3;
 
             _changeIsUser = false;
+
+            if (p4 == 0) p4 = 1;
+
+            if (p5 == 0) p5 = 1;
+
             numXAfter.Value = p4;
             numYAfter.Value = p5;
             _changeIsUser = true;

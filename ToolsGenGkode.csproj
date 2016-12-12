@@ -307,7 +307,7 @@
     <Content Include="TextFile1.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\0062_CSharpLIBRARY\MultiLanguage\MultiLanguage\MultiLanguage.csproj">
+    <ProjectReference Include="..\..\..\0062_CSharpLIBRARY\MultiLanguage\MultiLanguage\MultiLanguage.csproj">
       <Project>{a2e425be-d7a9-4cff-b7bf-d97ad47b9ebe}</Project>
       <Name>MultiLanguage</Name>
     </ProjectReference>
