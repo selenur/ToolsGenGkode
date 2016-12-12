@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{795986AB-8359-474C-A09B-9CFC6D6E663A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ToolsGenGkode</RootNamespace>
+    <AssemblyName>ToolsGenGkode</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>cnc-machine-128.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AForge.Imaging">
+      <HintPath>.\AForge.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="clipper_library">
+      <HintPath>.\clipper_library.dll</HintPath>
+    </Reference>
+    <Reference Include="Cyotek.Windows.Forms.ImageBox">
+      <HintPath>.\Cyotek.Windows.Forms.ImageBox.dll</HintPath>
+    </Reference>
+    <Reference Include="ELW.Library.Math, Version=0.1.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\ELW.Library.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpGL, Version=2.4.0.0, Culture=neutral, PublicKeyToken=27fc851303210b27, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\SharpGL.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpGL.SceneGraph, Version=2.4.0.0, Culture=neutral, PublicKeyToken=27fc851303210b27, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\SharpGL.SceneGraph.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpGL.WinForms, Version=2.4.0.0, Culture=neutral, PublicKeyToken=27fc851303210b27, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\SharpGL.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImageUtilities.cs" />
+    <Compile Include="IniParser.cs" />
+    <Compile Include="pages\page05_SelectFileImageRastr.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="pages\page05_SelectFileImageRastr.Designer.cs">
+      <DependentUpon>page05_SelectFileImageRastr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\page11_DXF.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="pages\page11_DXF.Designer.cs">
+      <DependentUpon>page11_DXF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Preview_Image.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Preview_Image.Designer.cs">
+      <DependentUpon>Preview_Image.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Preview_Vectors.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Preview_Vectors.Designer.cs">
+      <DependentUpon>Preview_Vectors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProfileEditor.Designer.cs">
+      <DependentUpon>ProfileEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TestLaser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestLaser.Designer.cs">
+      <DependentUpon>TestLaser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="toolTips.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\EnterText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pages\EnterText.Designer.cs">
+      <DependentUpon>EnterText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\page01_start.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="pages\page01_start.Designer.cs">
+      <DependentUpon>page01_start.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\page09_ImageRast.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="pages\page09_ImageRast.Designer.cs">
+      <DependentUpon>page09_ImageRast.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\page04_ImageToVector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="pages\page04_ImageToVector.Designer.cs">
+      <DependentUpon>page04_ImageToVector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\page06_VectorEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="pages\page06_VectorEdit.Designer.cs">
+      <DependentUpon>page06_VectorEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\page07_ModifyVectors.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="pages\page07_ModifyVectors.Designer.cs">
+      <DependentUpon>page07_ModifyVectors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\page10_generateGkode.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="pages\page10_generateGkode.Designer.cs">
+      <DependentUpon>page10_generateGkode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\page08_AddPadding.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="pages\page08_AddPadding.Designer.cs">
+      <DependentUpon>page08_AddPadding.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="pages\page02_EnterText.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="pages\page02_EnterText.Designer.cs">
+      <DependentUpon>page02_EnterText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pages\page03_SelectPLT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="pages\page03_SelectPLT.Designer.cs">
+      <DependentUpon>page03_SelectPLT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="setting.cs" />
+    <EmbeddedResource Include="About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\EnterText.resx">
+      <DependentUpon>EnterText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\page01_start.resx">
+      <DependentUpon>page01_start.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\page05_SelectFileImageRastr.resx">
+      <DependentUpon>page05_SelectFileImageRastr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\page09_ImageRast.resx">
+      <DependentUpon>page09_ImageRast.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\page04_ImageToVector.resx">
+      <DependentUpon>page04_ImageToVector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\page06_VectorEdit.resx">
+      <DependentUpon>page06_VectorEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\page07_ModifyVectors.resx">
+      <DependentUpon>page07_ModifyVectors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\page10_generateGkode.resx">
+      <DependentUpon>page10_generateGkode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\page08_AddPadding.resx">
+      <DependentUpon>page08_AddPadding.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\page11_DXF.resx">
+      <DependentUpon>page11_DXF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Preview_Image.resx">
+      <DependentUpon>Preview_Image.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Preview_Vectors.resx">
+      <DependentUpon>Preview_Vectors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProfileEditor.resx">
+      <DependentUpon>ProfileEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\page02_EnterText.resx">
+      <DependentUpon>page02_EnterText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pages\page03_SelectPLT.resx">
+      <DependentUpon>page03_SelectPLT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestLaser.resx">
+      <DependentUpon>TestLaser.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ask_and_answer.png" />
+    <None Include="Resources\axesVar1.jpg" />
+    <None Include="Resources\axesVar2.jpg" />
+    <None Include="Resources\flag_russia.png" />
+    <None Include="Resources\flag_great_britain.png" />
+    <None Include="Resources\snowman_head.png" />
+    <None Include="Resources\hammer.png" />
+    <None Include="Resources\control_play_blue.png" />
+    <None Include="Resources\Graphic1.png" />
+    <None Include="Resources\Graphic11.png" />
+    <None Include="Resources\Graphic2.png" />
+    <None Include="Resources\2016-04-22_165230.jpg" />
+    <None Include="Resources\door_in.png" />
+    <None Include="Resources\accept_button.png" />
+    <None Include="Resources\cancel.png" />
+    <None Include="Resources\door.png" />
+    <None Include="Resources\add.png" />
+    <None Include="Resources\address_bar_green.png" />
+    <None Include="Resources\axes-var1.png" />
+    <None Include="Resources\axes-var2.png" />
+    <None Include="Resources\axes-var3.png" />
+    <None Include="Resources\axes-var4.png" />
+    <None Include="Resources\no_picture.jpg" />
+    <None Include="Resources\arrow_refresh.png" />
+    <None Include="2016-12-05_085623.jpg" />
+    <Content Include="cnc-machine-128.ico" />
+    <None Include="Resources\blueprint.png" />
+    <None Include="Resources\arrow_refresh16.png" />
+    <None Include="Resources\book_add.png" />
+    <None Include="Resources\book_edit.png" />
+    <None Include="Resources\computer_go.png" />
+    <None Include="Resources\diskette.png" />
+    <Content Include="TextFile2.txt" />
+    <None Include="Resources\font.png" />
+    <None Include="Resources\file_extension_jpg.png" />
+    <None Include="Resources\smartart_change_color_gallery.png" />
+    <None Include="Resources\application-resize-actual.png" />
+    <None Include="Resources\arrow-180.png" />
+    <None Include="Resources\arrow.png" />
+    <Content Include="TextFile1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\0062_CSharpLIBRARY\MultiLanguage\MultiLanguage\MultiLanguage.csproj">
+      <Project>{a2e425be-d7a9-4cff-b7bf-d97ad47b9ebe}</Project>
+      <Name>MultiLanguage</Name>
+    </ProjectReference>
+    <ProjectReference Include="DXFLib\DXFLib.csproj">
+      <Project>{476fa4c4-fa1d-4a2a-985b-8cbf50f82251}</Project>
+      <Name>DXFLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,429 @@
+﻿Данные для других страниц
+
+
+
+
+
+
+
+        private void Calculate()
+        {
+            //labelInfoX.Text = @"значения X: от " + _minX.ToString() + @" до " + _maxX.ToString();
+            //labelInfoY.Text = @"значения Y: от " + _minY.ToString() + @" до " + _maxY.ToString();
+            //label9.Text = @"Итоговый размер: " + (_maxX - _minX) + @" x " + (_maxY - _minY);
+
+            //changeIsUser = false;
+            //numericUpDownCalcX.Value = (decimal)(_maxX - _minX);
+            //numericUpDownCalcY.Value = (decimal)(_maxY - _minY);
+            //changeIsUser = true;
+        }
+
+
+
+
+
+
+
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+          //  Clipboard.SetText(textBoxGkod.Text);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "Любой файл|*.*";
+            saveFileDialog1.Title = "Сохранить файл";
+            saveFileDialog1.ShowDialog();
+
+            // If the file name is not an empty string open it for saving.
+            if (saveFileDialog1.FileName != "")
+            {
+             //   File.WriteAllText(saveFileDialog1.FileName, textBoxGkod.Text);
+            }
+        }
+
+
+
+
+
+		
+
+        private void GenerateGkode_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+
+
+
+
+        /*
+        private string getLaserCode()
+        {
+             // применим дельты, для смещения в начало координат
+            //int deltaX = (int)((float)numericUpDownLazerX.Value/ _maxX);
+            //int deltaY = (int)((float)numericUpDownLazerY.Value /_maxY);
+
+            double koefX = (_maxX - _minX) / (double)numericUpDownCalcX.Value;
+            double koefY = (_maxY - _minY) / (double)numericUpDownCalcY.Value;
+
+
+            //string sZ0 = numericUpDownZ0.Value.ToString("#0.###");
+            //string sZ1 = numericUpDownZ1.Value.ToString("#0.###");
+
+
+
+            string gkode = "";
+
+            foreach (List<PointF> line in _lines)
+            {
+                int X1 = (int)line[0].X * (int)numericUpDownzoom.Value;
+                int Y1 = (int)line[0].Y * (int)numericUpDownzoom.Value;
+
+                X1 = (int)numericUpDownLazerX.Value * X1;
+                Y1 = (int)numericUpDownLazerY.Value * Y1;
+
+                X1 += (int)numericUpDownMoveLazerX.Value;
+                Y1 += (int)numericUpDownMoveLazerY.Value;
+
+
+                //gkode += "M5 " + "X" + X1.ToString("00000") + " Y" + Y1.ToString("00000") + " F" + numericUpDownlaserSpeed.Value.ToString("00000") + "\r\n";
+                gkode += "M5 " + "X" + X1.ToString("00000") + " Y" + Y1.ToString("00000") + " F00010" + "\r\n";
+
+                foreach (PointF point in line)
+                {
+                    //int X2 = deltaX * pnt.X;
+                    //int Y2 = deltaY * pnt.Y;
+
+                    int X2 = (int)point.X * (int)numericUpDownzoom.Value;
+                    int Y2 = (int)point.Y * (int)numericUpDownzoom.Value;
+
+                    X2 += (int)numericUpDownMoveLazerX.Value;
+                    Y2 += (int)numericUpDownMoveLazerY.Value;
+
+                    gkode += "M3 " + "X" + X2.ToString("00000") + " Y" + Y2.ToString("00000") + " F" + numericUpDownlaserSpeed.Value.ToString("00000") + "\r\n";
+                }
+
+            }
+            gkode += "M5 " + "\r\n";
+
+            return gkode;
+
+
+        }
+
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+
+            textBoxGkodLaser.Text = getLaserCode();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            label19.Text = @"x: " + _maxX + @" y: " + _maxY;
+        }
+
+       
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+           // serialPort1.PortName = textBox1.Text;
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            string gkode = getLaserCode();
+
+            try
+            {
+                serialPort1.BaudRate = 115200;
+                serialPort1.PortName = textBox1.Text;
+                serialPort1.Open();
+                serialPort1.Write("*"); // очистим от предыдущих данных
+                serialPort1.Write(gkode);
+                serialPort1.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Ошибка посылки данных! " + ex.Message);
+            }
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            serialPort1.Open();
+            serialPort1.WriteLine("@");
+            serialPort1.Close();
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            serialPort1.Open();
+            serialPort1.WriteLine("#");
+            serialPort1.Close();
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            serialPort1.Open();
+            serialPort1.WriteLine("!");
+            serialPort1.Close();
+        }
+
+        private void button11_Click_1(object sender, EventArgs e)
+        {
+            serialPort1.Open();
+            serialPort1.WriteLine("*");
+            serialPort1.Close();
+        }
+ */
+
+
+
+
+
+        //private void button18_Click(object sender, EventArgs e)
+        //{
+        //    //удаление последней точки, если она такая-же как и первая
+        //    int index = 0;
+        //    foreach (List<PointF> line in _lines)
+        //    {
+        //        PointF startPoint = line[0];
+        //        PointF endPoint = line[line.Count - 1];
+
+        //        if (startPoint == endPoint) _lines[index].RemoveAt(line.Count - 1);
+
+        //        index++;
+        //    }
+
+        //    RefreshTree();
+
+        //    pictureBoxPreview.Image = GetTraectory();
+
+  
+
+
+        //}
+
+        //private void buttonDelLine_Click(object sender, EventArgs e)
+        //{
+        //    int level = -1; //расположение 0-выбран узел линии, 1-точка линии
+        //    int pos = -1;   // если это линия то её индекс, если точка то её индекс
+        //    int posParent = -1; //если выбрана точка, то тут индекс линии
+
+        //    if (treeView1.SelectedNode == null) return;
+
+        //    level = treeView1.SelectedNode.Level;
+        //    pos = treeView1.SelectedNode.Index;
+
+        //    if (level > 0) posParent = treeView1.SelectedNode.Parent.Index;
+
+        //    if (level == 0) _lines.RemoveAt(pos);
+        //    if (level == 1) _lines[posParent].RemoveRange(pos, 1);
+
+        //    RefreshTree();
+
+
+        //    pictureBoxPreview.Image = GetTraectory();
+        //}
+
+
+		
+
+    /////// <summary>
+    /////// Класс для хранения параметров программы
+    /////// </summary>
+    ////public static class Property
+    ////{
+
+    ////    /// <summary>
+    ////    /// Массив со списком необходимых действий которые нужно выполнить
+    ////    /// </summary>
+    ////    public static List<string> Actions = new List<string>();
+    ////    /// <summary>
+    ////    /// Рисунок для аккумулирования выполняемых действий
+    ////    /// </summary>
+    ////    public static Bitmap ActionBitmap = null;
+    ////    /// <summary>
+    ////    /// Траектории для аккумулирования выполняемых действий
+    ////    /// </summary>
+    ////    public static List<List<PointF>> ActionLines = null;
+
+
+
+    ////    ///// <summary>
+    ////    ///// Тип источника данных
+    ////    ///// </summary>
+    ////    //private static typeSource _source = typeSource.Text;
+    ////    /// <summary>
+    ////    /// Если стоит флаг "удаление содержимого закрашенного объекта"
+    ////    /// </summary>
+    ////    private static bool _contentRemoval = true;
+
+
+    ////    /// <summary>
+    ////    /// Изображение будет преобразовано в 2-х цветный рисунок, иначе с градациями серого
+    ////    /// </summary>
+    ////    private static bool _use2ColorImage = true;
+
+    ////    /// <summary>
+    ////    /// Использовать векторы из шрифта, а не получамый рисунок
+    ////    /// </summary>
+    ////    private static bool _useVectorFont = true;
+
+
+    ////    /// <summary>
+    ////    /// Текущая позиция отображаемой страницы
+    ////    /// </summary>
+    ////    public static int currentPagePosition = 1;
+    ////    /// <summary>
+    ////    /// Путь с порядком следования страниц для отображения
+    ////    /// </summary>
+    ////    public static List<int> PathPages;
+
+    ////    ///// <summary>
+    ////    ///// Тип источника данных
+    ////    ///// </summary>
+    ////    //public static typeSource Source
+    ////    //{
+    ////    //    get { return _source; }
+    ////    //    set
+    ////    //    {
+    ////    //        _source = value;
+    ////    //        RefreshPath();
+    ////    //    }
+    ////    //}
+
+    ////    /// <summary>
+    ////    /// Использовать векторы из шрифта, а не получамый рисунок
+    ////    /// </summary>
+    ////    public static bool UseVectorFont
+    ////    {
+    ////        get { return _useVectorFont; }
+    ////        set
+    ////        {
+    ////            _useVectorFont = value;
+    ////            //RefreshPath();
+    ////        }
+    ////    }
+
+    ////    /// <summary>
+    ////    /// Изображение будет преобразовано в 2-х цветный рисунок, иначе с градациями серого
+    ////    /// </summary>
+    ////    public static bool Use2ColorImage
+    ////    {
+    ////        get { return _use2ColorImage; }
+    ////        set
+    ////        {
+    ////            _use2ColorImage = value;
+    ////           // RefreshPath();
+    ////        }
+    ////    }
+
+    ////    /// <summary>
+    ////    /// Если стоит флаг "удаление содержимого закрашенного объекта"
+    ////    /// </summary>
+    ////    public static bool ContentRemoval
+    ////    {
+    ////        get { return _contentRemoval; }
+    ////        set
+    ////        {
+    ////            _contentRemoval = value;
+    ////            //RefreshPath();
+    ////        }
+    ////    }
+
+    ////    ///// <summary>
+    ////    ///// Процедура переопределяет путь перечня страниц, в зависимости от параметров
+    ////    ///// </summary>
+    ////    //public static void RefreshPath()
+    ////    //{
+    ////    //   // PathPages = new List<int>();
+
+    ////    //   // PathPages.Add(1);  // выбор источника "Рисунок", "Текст", "PLT файл"
+
+    ////    //    //if (_source == typeSource.Image)
+    ////    //    //{
+    ////    //    //    PathPages.Add(3);
+    ////    //    //    PathPages.Add(5);
+    ////    //    //}
+
+    ////    //    //if (_source == typeSource.Text)
+    ////    //    //{
+    ////    //    //    PathPages.Add(2);
+
+    ////    //    //    if (_useVectorFont) PathPages.Add(6); 
+    ////    //    //    else PathPages.Add(5);
+    ////    //    //}
+
+    ////    //    //if (_source == typeSource.pltFile)
+    ////    //    //{
+    ////    //    //    PathPages.Add(4);
+    ////    //    //    PathPages.Add(6);
+    ////    //    //}
+
+    ////    //    //if (PathPages[PathPages.Count - 1] == 5)
+    ////    //    //{
+    ////    //    //    if (_use2ColorImage)
+    ////    //    //    {
+    ////    //    //        if (_use2ColorImage && !_contentRemoval) PathPages.Add(7);
+
+    ////    //    //        PathPages.Add(6);
+    ////    //    //    }
+    ////    //    //    else
+    ////    //    //    {
+    ////    //    //        PathPages.Add(10);
+    ////    //    //    }
+    ////    //    //}
+
+    ////    //    //if (PathPages[PathPages.Count - 1] == 6)
+    ////    //    //{
+    ////    //    //    PathPages.Add(8);
+    ////    //    //    PathPages.Add(9);
+    ////    //    //}
+
+    ////    //    //PathPages.Add(11);
+
+    ////    //}
+
+
+    ////}
+
+
+
+
+	
+///// <summary>
+///// Rotates the image by angle.
+///// </summary>
+///// <param name="oldBitmap">The old bitmap.</param>
+///// <param name="angle">The angle.</param>
+///// <returns></returns>
+//private static Bitmap RotateImageByAngle(System.Drawing.Image oldBitmap, float angle)
+//{
+
+//    Bitmap newBitmap;
+
+//    if (angle != 0)
+//    {
+//        int maxValue = oldBitmap.Height;
+//        if (oldBitmap.Width > oldBitmap.Height) maxValue = oldBitmap.Width;
+//        newBitmap = new Bitmap(maxValue, maxValue);
+//    }
+//    else
+//    {
+//        newBitmap = new Bitmap(oldBitmap.Width, oldBitmap.Height);
+//    }
+
+//    var graphics = Graphics.FromImage(newBitmap);
+//    graphics.TranslateTransform((float)oldBitmap.Width / 2, (float)oldBitmap.Height / 2);
+//    graphics.RotateTransform(angle);
+//    graphics.TranslateTransform(-(float)oldBitmap.Width / 2, -(float)oldBitmap.Height / 2);
+//    graphics.DrawImage(oldBitmap, new Point(0, 0));
+//    return newBitmap;
+//}

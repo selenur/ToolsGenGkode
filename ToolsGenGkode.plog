@@ -1,0 +1,377 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Solution_Path">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="SolutionPath" type="xs:string" minOccurs="0" />
+                <xs:element name="SolutionVersion" type="xs:string" minOccurs="0" />
+                <xs:element name="PlogVersion" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="ModificationDate" msdata:DateTimeMode="Utc" type="xs:dateTime" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="PVS-Studio_Analysis_Log">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="FavIcon" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Level" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="DefaultOrder" type="xs:int" minOccurs="0" />
+                <xs:element name="ErrorCode" type="xs:string" minOccurs="0" />
+                <xs:element name="Message" type="xs:string" />
+                <xs:element name="Project" type="xs:string" minOccurs="0" />
+                <xs:element name="ShortFile" type="xs:string" minOccurs="0" />
+                <xs:element name="Line" type="xs:int" />
+                <xs:element name="FalseAlarm" type="xs:boolean" minOccurs="0" />
+                <xs:element name="File" type="xs:string" />
+                <xs:element name="CodePrev" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="CodeCurrent" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="CodeNext" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="TrialMessage" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Analyzer" type="xs:int" minOccurs="0" />
+                <xs:element name="LineExtension" type="xs:string" minOccurs="0" />
+                <xs:element name="Retired" type="xs:boolean" default="false" minOccurs="0" />
+                <xs:element name="AnalyzedSourceFiles" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//PVS-Studio_Analysis_Log" />
+        <xs:field xpath="Line" />
+        <xs:field xpath="Message" />
+        <xs:field xpath="File" />
+      </xs:unique>
+    </xs:element>
+  </xs:schema>
+  <Solution_Path>
+    <SolutionPath>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode.sln</SolutionPath>
+    <SolutionVersion>14.0</SolutionVersion>
+    <PlogVersion>4</PlogVersion>
+    <ModificationDate>2016-12-07T19:37:43.0516137Z</ModificationDate>
+  </Solution_Path>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>1</DefaultOrder>
+    <ErrorCode>V3008</ErrorCode>
+    <Message>The 'vectors' variable is assigned values twice successively. Perhaps this is a mistake. Check lines: 72, 55.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>ImageUtilities.cs</ShortFile>
+    <Line>72</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ImageUtilities.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>1500005752</CodeCurrent>
+    <CodeNext>1389384056</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension>72,55</LineExtension>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>2</DefaultOrder>
+    <ErrorCode>V3008</ErrorCode>
+    <Message>The 'vectors' variable is assigned values twice successively. Perhaps this is a mistake. Check lines: 114, 97.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>ImageUtilities.cs</ShortFile>
+    <Line>114</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ImageUtilities.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>1500005752</CodeCurrent>
+    <CodeNext>1389384056</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension>114,97</LineExtension>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>3</DefaultOrder>
+    <ErrorCode>V3008</ErrorCode>
+    <Message>The 'vectors' variable is assigned values twice successively. Perhaps this is a mistake. Check lines: 146, 129.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>ImageUtilities.cs</ShortFile>
+    <Line>146</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ImageUtilities.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>1500005752</CodeCurrent>
+    <CodeNext>1389384056</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension>146,129</LineExtension>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>4</DefaultOrder>
+    <ErrorCode>V3087</ErrorCode>
+    <Message>Type of 'DXFLib.DXFVertex' variable enumerated in 'foreach' is not guaranteed to be castable to the type of 'DXFLib.DXFEntity' collection's elements.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>page11_DXF.cs</ShortFile>
+    <Line>198</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\pages\page11_DXF.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3208354149</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>5</DefaultOrder>
+    <ErrorCode>V3013</ErrorCode>
+    <Message>It is odd that the body of 'openGLControl1_KeyDown' function is fully equivalent to the body of 'openGLControl1_KeyUp' function (441, line 449).</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>Preview_Vectors.cs</ShortFile>
+    <Line>441</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\Preview_Vectors.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>600981780</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension>441,449</LineExtension>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>6</DefaultOrder>
+    <ErrorCode>V3013</ErrorCode>
+    <Message>It is odd that the body of 'actionBefore' function is fully equivalent to the body of 'button1_Click' function (50, line 362).</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>page07_ModifyVectors.cs</ShortFile>
+    <Line>50</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\pages\page07_ModifyVectors.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>765596685</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension>50,362</LineExtension>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>7</DefaultOrder>
+    <ErrorCode>V3008</ErrorCode>
+    <Message>The 'vectors' variable is assigned values twice successively. Perhaps this is a mistake. Check lines: 108, 91.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>page07_ModifyVectors.cs</ShortFile>
+    <Line>108</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\pages\page07_ModifyVectors.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>1500005752</CodeCurrent>
+    <CodeNext>1389384056</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension>108,91</LineExtension>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>8</DefaultOrder>
+    <ErrorCode>V3008</ErrorCode>
+    <Message>The 'vectors' variable is assigned values twice successively. Perhaps this is a mistake. Check lines: 154, 136.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>page07_ModifyVectors.cs</ShortFile>
+    <Line>154</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\pages\page07_ModifyVectors.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>1500005752</CodeCurrent>
+    <CodeNext>1389384056</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension>154,136</LineExtension>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>9</DefaultOrder>
+    <ErrorCode>V3056</ErrorCode>
+    <Message>Consider reviewing the correctness of 'X' item's usage.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>page07_ModifyVectors.cs</ShortFile>
+    <Line>169</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\pages\page07_ModifyVectors.cs</File>
+    <CodePrev>684627707</CodePrev>
+    <CodeCurrent>801543930</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension>169,168</LineExtension>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>10</DefaultOrder>
+    <ErrorCode>V3008</ErrorCode>
+    <Message>The 'vectors' variable is assigned values twice successively. Perhaps this is a mistake. Check lines: 257, 224.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>page07_ModifyVectors.cs</ShortFile>
+    <Line>257</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\pages\page07_ModifyVectors.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>1500005752</CodeCurrent>
+    <CodeNext>1389384056</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension>257,224</LineExtension>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>11</DefaultOrder>
+    <ErrorCode>V3013</ErrorCode>
+    <Message>It is odd that the body of 'actionBefore' function is fully equivalent to the body of 'btLoadVectors_Click' function (48, line 91).</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>page06_VectorEdit.cs</ShortFile>
+    <Line>48</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\pages\page06_VectorEdit.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>765596685</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension>48,91</LineExtension>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>12</DefaultOrder>
+    <ErrorCode>V3008</ErrorCode>
+    <Message>The 'pDestin' variable is assigned values twice successively. Perhaps this is a mistake. Check lines: 244, 240.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>page08_AddPadding.cs</ShortFile>
+    <Line>244</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\pages\page08_AddPadding.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3200222199</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension>244,240</LineExtension>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>13</DefaultOrder>
+    <ErrorCode>V3024</ErrorCode>
+    <Message>An odd precise comparison: offset != 0. Consider using a comparison with defined precision: Math.Abs(A - B) &gt; Epsilon.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>page08_AddPadding.cs</ShortFile>
+    <Line>287</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\pages\page08_AddPadding.cs</File>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>368021</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>14</DefaultOrder>
+    <ErrorCode>V3114</ErrorCode>
+    <Message>IDisposable object 'font' is not disposed before method returns.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>page02_EnterText.cs</ShortFile>
+    <Line>491</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\pages\page02_EnterText.cs</File>
+    <CodePrev>1397994897</CodePrev>
+    <CodeCurrent>2681741347</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>15</DefaultOrder>
+    <ErrorCode>V3073</ErrorCode>
+    <Message>Not all IDisposable members are properly disposed. Call 'Dispose' when disposing 'page10_generateGkode' class. Inspect: myToolTip1.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>page10_generateGkode.cs</ShortFile>
+    <Line>19</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\pages\page10_generateGkode.cs</File>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>3314459846</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension>19,46</LineExtension>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>16</DefaultOrder>
+    <ErrorCode>V3024</ErrorCode>
+    <Message>An odd precise comparison: VARIABLE.Value != _value. Consider using a comparison with defined precision: Math.Abs(A - B) &gt; Epsilon.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>page10_generateGkode.cs</ShortFile>
+    <Line>103</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\pages\page10_generateGkode.cs</File>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>2720763587</CodeCurrent>
+    <CodeNext>539</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+</NewDataSet>

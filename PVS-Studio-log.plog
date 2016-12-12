@@ -1,0 +1,477 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Solution_Path">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="SolutionPath" type="xs:string" minOccurs="0" />
+                <xs:element name="SolutionVersion" type="xs:string" minOccurs="0" />
+                <xs:element name="PlogVersion" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="ModificationDate" msdata:DateTimeMode="Utc" type="xs:dateTime" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="PVS-Studio_Analysis_Log">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="FavIcon" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Level" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="DefaultOrder" type="xs:int" minOccurs="0" />
+                <xs:element name="ErrorCode" type="xs:string" minOccurs="0" />
+                <xs:element name="Message" type="xs:string" />
+                <xs:element name="Project" type="xs:string" minOccurs="0" />
+                <xs:element name="ShortFile" type="xs:string" minOccurs="0" />
+                <xs:element name="Line" type="xs:int" />
+                <xs:element name="FalseAlarm" type="xs:boolean" minOccurs="0" />
+                <xs:element name="File" type="xs:string" />
+                <xs:element name="CodePrev" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="CodeCurrent" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="CodeNext" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="TrialMessage" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Analyzer" type="xs:int" minOccurs="0" />
+                <xs:element name="LineExtension" type="xs:string" minOccurs="0" />
+                <xs:element name="Retired" type="xs:boolean" default="false" minOccurs="0" />
+                <xs:element name="AnalyzedSourceFiles" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//PVS-Studio_Analysis_Log" />
+        <xs:field xpath="Line" />
+        <xs:field xpath="Message" />
+        <xs:field xpath="File" />
+      </xs:unique>
+    </xs:element>
+  </xs:schema>
+  <Solution_Path>
+    <SolutionPath>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode.sln</SolutionPath>
+    <SolutionVersion>14.0</SolutionVersion>
+    <PlogVersion>4</PlogVersion>
+    <ModificationDate>2016-12-06T19:59:54.6223487Z</ModificationDate>
+  </Solution_Path>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>1</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>About.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\About.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>794429177</CodeCurrent>
+    <CodeNext>3177842633</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>2</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>ImageUtilities.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ImageUtilities.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>193925</CodeCurrent>
+    <CodeNext>1513122742</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>3</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>page05_SelectFileImageRastr.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\pages\page05_SelectFileImageRastr.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>193925</CodeCurrent>
+    <CodeNext>1513122742</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>4</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>IniParser.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\IniParser.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>193925</CodeCurrent>
+    <CodeNext>1551617</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>5</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>Preview_Vectors.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\Preview_Vectors.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>193925</CodeCurrent>
+    <CodeNext>1513122742</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>6</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>Preview_Image.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\Preview_Image.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>193925</CodeCurrent>
+    <CodeNext>49653717</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>7</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>TestLaser.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\TestLaser.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>193925</CodeCurrent>
+    <CodeNext>1513122742</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>8</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>toolTips.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\toolTips.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>193925</CodeCurrent>
+    <CodeNext>2060538374</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>9</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>EnterText.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\pages\EnterText.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>193925</CodeCurrent>
+    <CodeNext>1513122742</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>10</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>page09_ImageRast.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\pages\page09_ImageRast.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>193925</CodeCurrent>
+    <CodeNext>1513122742</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>11</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>page04_ImageToVector.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\pages\page04_ImageToVector.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>193925</CodeCurrent>
+    <CodeNext>1513122742</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>12</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>page06_VectorEdit.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\pages\page06_VectorEdit.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>193925</CodeCurrent>
+    <CodeNext>1513122742</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>13</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>page07_ModifyVectors.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\pages\page07_ModifyVectors.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>193925</CodeCurrent>
+    <CodeNext>1513122742</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>14</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>page10_generateGkode.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\pages\page10_generateGkode.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>193925</CodeCurrent>
+    <CodeNext>1513122742</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>15</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>page08_AddPadding.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\pages\page08_AddPadding.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>193925</CodeCurrent>
+    <CodeNext>1513122742</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>16</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>Program.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\Program.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>193925</CodeCurrent>
+    <CodeNext>3177842633</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>17</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>AssemblyInfo.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\Properties\AssemblyInfo.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>397230707</CodeCurrent>
+    <CodeNext>1507144426</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>18</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>page03_SelectPLT.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\pages\page03_SelectPLT.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>193925</CodeCurrent>
+    <CodeNext>1513122742</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>19</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>setting.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\setting.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3177842633</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>20</DefaultOrder>
+    <ErrorCode>V3114</ErrorCode>
+    <Message>IDisposable object 'font' is not disposed before method returns.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>page02_EnterText.cs</ShortFile>
+    <Line>491</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\pages\page02_EnterText.cs</File>
+    <CodePrev>1397994897</CodePrev>
+    <CodeCurrent>2681741347</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>21</DefaultOrder>
+    <ErrorCode>V3087</ErrorCode>
+    <Message>Type of 'DXFLib.DXFVertex' variable enumerated in 'foreach' is not guaranteed to be castable to the type of 'DXFLib.DXFEntity' collection's elements.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>page11_DXF.cs</ShortFile>
+    <Line>198</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\pages\page11_DXF.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3208354149</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+</NewDataSet>

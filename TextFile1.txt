@@ -1,0 +1,192 @@
+﻿Источники данных с примерами использования внешних шрифтов
+https://msdn.microsoft.com/en-us/library/y505zzfw(v=vs.110).aspx
+http://www.codeproject.com/Articles/107377/Load-And-Use-Custom-Font-Without-Installing-It
+
+
+Данный вариант добавляет окантовку в 1 пиксель со всех сторон
+Но единственная проблемма что изображение размазывается/сглаживается.
+
+////TODO: Вот эта часть размазывает четкое изображение
+//Bitmap newbitmap = new Bitmap(bitmap, bitmap.Width + 2, bitmap.Height + 2);
+//Graphics g = Graphics.FromImage(newbitmap);
+//g.InterpolationMode = InterpolationMode.NearestNeighbor;
+//g.TranslateTransform(1, 1);
+//bitmap = newbitmap;
+////*** окнчание----
+
+
+
+***** старый алгоритм получения черно белого изображения *************
+            ////// Задаём формат Пикселя, с которым будем работать
+            ////PixelFormat pxf = PixelFormat.Format24bppRgb;
+
+            //////проверим что входящее изображение имеет нужный формат:
+            ////if (bmp.PixelFormat != pxf)
+            ////{
+            ////    //преобразуем в нужный нам формат
+            ////    Bitmap clone = new Bitmap(bmp.Width, bmp.Height, pxf);
+            ////    using (Graphics gr = Graphics.FromImage(clone))
+            ////    {
+            ////        gr.DrawImage(bmp, new Rectangle(0, 0, clone.Width, clone.Height));
+            ////    }
+            ////    bmp = clone;
+            ////}
+
+            ////// Получаем данные картинки.
+            ////Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
+            //////Блокируем набор данных изображения в памяти
+            ////BitmapData bmpData = bmp.LockBits(rect, ImageLockMode.ReadWrite, pxf);
+
+            ////// Получаем адрес первой линии.
+            ////IntPtr ptr = bmpData.Scan0;
+
+            ////// Задаём массив из Byte и помещаем в него надор данных.
+            //////int numBytes = bmp.Width * bmp.Height * 3; 
+            //////На 3 умножаем - поскольку RGB цвет кодируется 3-мя байтами
+            //////Либо используем вместо Width - Stride
+            ////int numBytes = bmpData.Stride * bmp.Height;
+            //////int widthBytes = bmpData.Stride;
+            ////byte[] rgbValues = new byte[numBytes];
+
+            ////int koef = (int)numericUpDownKoefPalitra.Value;
+
+            ////// Копируем значения в массив.
+            ////Marshal.Copy(ptr, rgbValues, 0, numBytes);
+
+            ////for (int fy = 0; fy < bmpData.Height; fy++)
+            ////{
+            ////    for (int fx = 0; fx < bmpData.Width; fx++)
+            ////    {
+            ////        int positionRam = (fy * bmpData.Stride) + (fx * 3);
+
+            ////        int value = rgbValues[positionRam] + rgbValues[positionRam + 1] + rgbValues[positionRam + 2];
+
+            ////        value = value / 3;
+
+            ////        //byte color_b = 0;
+
+            ////        if (value > koef)
+            ////        {
+            ////            rgbValues[positionRam] = 255;
+            ////            rgbValues[positionRam + 1] = 255;
+            ////            rgbValues[positionRam + 2] = 255;
+            ////        }
+            ////        else
+            ////        {
+            ////            rgbValues[positionRam] = 0;
+            ////            rgbValues[positionRam + 1] = 0;
+            ////            rgbValues[positionRam + 2] = 0;
+            ////        }
+
+            ////    }
+            ////}
+
+            ////Marshal.Copy(rgbValues, 0, ptr, numBytes);
+
+            ////// Разблокируем набор данных изображения в памяти.
+            ////bmp.UnlockBits(bmpData);
+
+            ////return bmp;
+
+			************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //получим границы векторов
+            //float maxX = 0;
+            //float maxY = 0;
+            //float minX = 9999;
+            //float minY = 9999;
+
+            //foreach (List<PointF> line in linesList)
+            //{
+            //    foreach (PointF point in line)
+            //    {
+            //        if (point.X > maxX) maxX = point.X;
+            //        if (point.Y > maxY) maxY = point.Y;
+            //        if (point.X < minX) minX = point.X;
+            //        if (point.Y < minY) minY = point.Y;                    
+            //    }
+            //}
+
+            //labelTextSize.Text = @"Размер текста: " + (maxX - minX) + " x " + (maxY - minY) +" единиц.";
+
+
+
+            ////сформируем чистый рисунок, в котором всё и нарисуем
+            //Bitmap bitmap = new Bitmap((int)maxX + ((int)textSize.Value / 10), (int)maxY + ((int)textSize.Value / 10), PixelFormat.Format24bppRgb);
+            //// Создаем объект Graphics для вычисления высоты и ширины текста.
+            //Graphics graphics = Graphics.FromImage(bitmap);
+            //// Задаем цвет фона.
+            //graphics.Clear(Color.White);
+            //// Задаем параметры анти-алиасинга
+            //graphics.SmoothingMode = SmoothingMode.None;
+            //graphics.TextRenderingHint = TextRenderingHint.SingleBitPerPixel;
+
+            //Pen cPen = Pens.BlueViolet;
+            //int indx = 0;
+
+            //foreach (List<PointF> line in linesList)
+            //{
+            //    int oldX = 0;
+            //    int oldY = 0;
+            //    bool firstRecord = true;
+
+            //    //PointF[] tmp = new PointF[line.Count];
+            //    //int i = 0;
+            //    foreach (PointF point in line)
+            //    {
+            //      //  tmp[i++] = point;
+
+            //        if (firstRecord)
+            //        {
+            //            firstRecord = false;
+            //            oldX = (int)point.X;
+            //            oldY = (int)point.Y;
+            //            continue;
+            //        }
+
+
+            //        graphics.DrawLine(cPen, oldX, oldY, point.X, point.Y);
+
+            //        oldX = (int)point.X;
+            //        oldY = (int)point.Y;
+
+
+            //    }
+            //    indx++;
+
+            //    //graphics.DrawCurve(cPen, tmp);
+            //}
+
+            //graphics.Flush();
+
+            //pictureBoxPreview.Image = bitmap;
+
+            //if (radioButton_Zoom.Checked)
+            //{
+            //    pictureBoxPreview.Width = panel1.ClientSize.Width - 2;
+            //    pictureBoxPreview.Height = panel1.ClientSize.Height - 26;
+            //    panel1.AutoScrollMinSize = new Size(0, 0);
+            //    panel1.AutoScroll = false;
+            //}
+            //else
+            //{
+            //    pictureBoxPreview.Width = pictureBoxPreview.Image.Width;
+            //    pictureBoxPreview.Height = pictureBoxPreview.Image.Height;
+
+            //    panel1.AutoScrollMinSize = new Size(pictureBoxPreview.Width, pictureBoxPreview.Height);
+            //    panel1.AutoScroll = true;
+            //}
