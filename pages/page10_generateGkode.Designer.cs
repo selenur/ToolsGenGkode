@@ -134,6 +134,7 @@ namespace ToolsGenGkode.pages
             // 
             // buttonAddNewProfile
             // 
+            this.buttonAddNewProfile.Enabled = false;
             this.buttonAddNewProfile.Image = global::ToolsGenGkode.Properties.Resources.book_add;
             this.buttonAddNewProfile.Location = new System.Drawing.Point(569, 4);
             this.buttonAddNewProfile.Name = "buttonAddNewProfile";

@@ -17,5 +17,11 @@ namespace ToolsGenGkode
         {
 
         }
+
+        public void LoadDataFromFile()
+        {
+            
+
+        }
     }
 }

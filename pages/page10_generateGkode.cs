@@ -256,7 +256,16 @@ namespace ToolsGenGkode.pages
 
         private void btOpenProfile_Click(object sender, EventArgs e)
         {
+            int curr = cbProfile.SelectedIndex;
 
+            if (curr == -1) return;
+
+            CurrProfile = profiles[curr];
+
+            ProfileEditor pfEditor = new ProfileEditor();
+            pfEditor.textBoxFileProfile.Text = CurrProfile.FileName;
+            pfEditor.Show();
+            pfEditor.LoadDataFromFile();
         }
     }
 
