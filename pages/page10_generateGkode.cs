@@ -95,20 +95,18 @@ namespace ToolsGenGkode.pages
 
         public void ChangeValueVariable(ref List<VariableValue>  _variableDataValues, string _name, double _value)
         {
+            bool finded = false;
 
             foreach (VariableValue VARIABLE in _variableDataValues)
             {
                 if (VARIABLE.VariableName == _name)
                 {
-                    if (VARIABLE.Value != _value) _variableDataValues.Remove(VARIABLE);
-                    else
-                    {
-                        return;
-                    }
+                    finded = true;
+                    VARIABLE.value = _value;
                 }
             }
 
-            _variableDataValues.Add(new VariableValue(_value, _name));
+            if (!finded) _variableDataValues.Add(new VariableValue(_value, _name));
         }
 
 
@@ -155,9 +153,13 @@ namespace ToolsGenGkode.pages
 
                 foreach (Location point in _segment.Points)
                 {
+                    //TODO:
+
+
                     ChangeValueVariable(ref variableDataValues, "P", point.Pvalue);
                     ChangeValueVariable(ref variableDataValues, "S", point.Svalue);
                     ChangeValueVariable(ref variableDataValues, "F", point.Fvalue);
+                    ChangeValueVariable(ref variableDataValues, "bright", point.Bright);
 
                     CurrProfile.GetPoint(ref sb, point, FirstPoint, ref variableDataValues);
                     FirstPoint = false;

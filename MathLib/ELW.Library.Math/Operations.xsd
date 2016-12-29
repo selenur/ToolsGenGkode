@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.elwood.su/projects/math/shemas/operations/v1.0"
+           xmlns:own="http://www.elwood.su/projects/math/shemas/operations/v1.0">
+  <xs:element name="operations">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="priorities">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="priority">
+                <xs:complexType>
+                  <xs:attribute name="value" type="xs:unsignedByte" use="required" />
+                  <xs:attribute name="association" use="required">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="left" />
+                        <xs:enumeration value="right" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="operations">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="operation">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="signatures" minOccurs="1" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="signature">
+                            <xs:complexType>
+                              <xs:attribute name="number" type="xs:unsignedByte" use="required" />
+                              <xs:attribute name="value" type="xs:string" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="calculator" minOccurs="1" maxOccurs="1">
+                      <xs:complexType>
+                        <xs:attribute name="type" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="name" type="xs:string" use="required" />
+                  <xs:attribute name="operands" type="xs:unsignedByte" use="required" />
+                  <xs:attribute name="kind" use="required">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="operator" />
+                        <xs:enumeration value="function" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="priority" type="xs:unsignedByte" use="optional" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+          <xs:keyref name="priority-ref" refer="own:priority-id">
+            <xs:selector xpath="own:operation" />
+            <xs:field xpath="@priority" />
+          </xs:keyref>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+    <xs:key name="priority-id">
+      <xs:selector xpath="own:priorities/own:priority" />
+      <xs:field xpath="@value" />
+    </xs:key>
+    <xs:key name="operation-name">
+      <xs:selector xpath="own:operations/own:operation" />
+      <xs:field xpath="@name" />
+    </xs:key>
+  </xs:element>
+</xs:schema>

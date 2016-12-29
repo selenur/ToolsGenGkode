@@ -373,6 +373,7 @@ namespace ToolsGenGkode.pages
         public int Pvalue { get; set; } // задержка
         public bool SpindelOn { get; set; } //включен шпиндель/лазер
         public bool Selected { get; set; } //для визуального отображения
+        public int Bright { get; set; } // яркость точки
 
 
         public Location Clone()
@@ -386,6 +387,7 @@ namespace ToolsGenGkode.pages
             locReturn.Pvalue = Pvalue;
             locReturn.SpindelOn = SpindelOn;
             locReturn.Selected = Selected;
+            locReturn.Bright = Bright;
 
             return locReturn;
         }
@@ -393,7 +395,7 @@ namespace ToolsGenGkode.pages
         /// <summary>
         /// Конструктор класса
         /// </summary>
-        public Location(decimal _x = 0,decimal _y = 0, int _s = 0, int _f = 0, int _p = 0, bool _spindelOn = false, bool _select = false)
+        public Location(decimal _x = 0,decimal _y = 0, int _s = 0, int _f = 0, int _p = 0, bool _spindelOn = false, bool _select = false, int _Bright = 255)
         {
             X         = _x;
             Y         = _y;
@@ -402,6 +404,7 @@ namespace ToolsGenGkode.pages
             Pvalue    = _p;
             SpindelOn = _spindelOn;
             Selected  = _select;
+            Bright = _Bright;
         }
 
         /// <summary>
@@ -417,6 +420,7 @@ namespace ToolsGenGkode.pages
             Pvalue    = _source.Pvalue;
             SpindelOn = _source.SpindelOn;
             Selected  = _source.Selected;
+            Bright = _source.Bright;
         }
 
         // Для доступа к полям по текстовому имени

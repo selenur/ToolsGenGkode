@@ -144,6 +144,7 @@ namespace ToolsGenGkode.pages
             // 
             // btEditProfile
             // 
+            this.btEditProfile.Enabled = false;
             this.btEditProfile.Image = global::ToolsGenGkode.Properties.Resources.book_edit;
             this.btEditProfile.Location = new System.Drawing.Point(605, 4);
             this.btEditProfile.Name = "btEditProfile";

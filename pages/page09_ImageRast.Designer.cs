@@ -37,7 +37,6 @@ namespace ToolsGenGkode.pages
             this.label1 = new System.Windows.Forms.Label();
             this.numSizePoint = new System.Windows.Forms.NumericUpDown();
             this.useFilter = new System.Windows.Forms.ComboBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
             this.deltaY = new System.Windows.Forms.NumericUpDown();
@@ -59,6 +58,9 @@ namespace ToolsGenGkode.pages
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.buttonHelpInfo = new System.Windows.Forms.Button();
+            this.PreviewButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LaserTimeOut)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSizePoint)).BeginInit();
@@ -161,26 +163,11 @@ namespace ToolsGenGkode.pages
             // 
             this.useFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.useFilter.FormattingEnabled = true;
-            this.useFilter.Items.AddRange(new object[] {
-            "FloydSteinbergDithering",
-            "BayerDithering"});
             this.useFilter.Location = new System.Drawing.Point(6, 21);
             this.useFilter.Name = "useFilter";
-            this.useFilter.Size = new System.Drawing.Size(448, 21);
+            this.useFilter.Size = new System.Drawing.Size(383, 21);
             this.useFilter.TabIndex = 8;
             this.useFilter.SelectedIndexChanged += new System.EventHandler(this.useFilter_SelectedIndexChanged);
-            // 
-            // button3
-            // 
-            this.button3.Image = global::ToolsGenGkode.Properties.Resources.arrow_refresh16;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(5, 46);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(449, 26);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Показать предварительный результат";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // groupBox2
             // 
@@ -418,6 +405,7 @@ namespace ToolsGenGkode.pages
             this.cbKeepAspectRatio.TabIndex = 1;
             this.cbKeepAspectRatio.Text = "Сохранять пропорции при изменении пользователем, итоговых размеров";
             this.cbKeepAspectRatio.UseVisualStyleBackColor = true;
+            this.cbKeepAspectRatio.CheckedChanged += new System.EventHandler(this.cbKeepAspectRatio_CheckedChanged);
             // 
             // label7
             // 
@@ -499,14 +487,49 @@ namespace ToolsGenGkode.pages
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.button2);
+            this.groupBox3.Controls.Add(this.buttonHelpInfo);
             this.groupBox3.Controls.Add(this.useFilter);
-            this.groupBox3.Controls.Add(this.button3);
+            this.groupBox3.Controls.Add(this.PreviewButton);
             this.groupBox3.Location = new System.Drawing.Point(3, 2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(460, 77);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Для генерации данных, будем использовать фильтр:";
+            // 
+            // button2
+            // 
+            this.button2.Enabled = false;
+            this.button2.Image = global::ToolsGenGkode.Properties.Resources.layout_edit;
+            this.button2.Location = new System.Drawing.Point(422, 19);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(29, 24);
+            this.button2.TabIndex = 12;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // buttonHelpInfo
+            // 
+            this.buttonHelpInfo.Image = global::ToolsGenGkode.Properties.Resources.ask_and_answer;
+            this.buttonHelpInfo.Location = new System.Drawing.Point(392, 19);
+            this.buttonHelpInfo.Name = "buttonHelpInfo";
+            this.buttonHelpInfo.Size = new System.Drawing.Size(29, 24);
+            this.buttonHelpInfo.TabIndex = 11;
+            this.buttonHelpInfo.Text = "?";
+            this.buttonHelpInfo.UseVisualStyleBackColor = true;
+            this.buttonHelpInfo.Click += new System.EventHandler(this.buttonHelpInfo_Click);
+            // 
+            // PreviewButton
+            // 
+            this.PreviewButton.Image = global::ToolsGenGkode.Properties.Resources.arrow_refresh16;
+            this.PreviewButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.PreviewButton.Location = new System.Drawing.Point(5, 46);
+            this.PreviewButton.Name = "PreviewButton";
+            this.PreviewButton.Size = new System.Drawing.Size(449, 26);
+            this.PreviewButton.TabIndex = 10;
+            this.PreviewButton.Text = "Показать предварительный результат";
+            this.PreviewButton.UseVisualStyleBackColor = true;
+            this.PreviewButton.Click += new System.EventHandler(this.PreviewButton_Click);
             // 
             // page09_ImageRast
             // 
@@ -546,7 +569,7 @@ namespace ToolsGenGkode.pages
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown numSizePoint;
         private System.Windows.Forms.ComboBox useFilter;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button PreviewButton;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btCalcTraectory;
         private System.Windows.Forms.NumericUpDown numYAfter;
@@ -568,5 +591,7 @@ namespace ToolsGenGkode.pages
         private System.Windows.Forms.NumericUpDown numericUpDownPercent;
         private System.Windows.Forms.RadioButton radioButtonPerent;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonHelpInfo;
     }
 }

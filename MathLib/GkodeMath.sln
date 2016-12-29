@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GkodeMath", "GkodeMath\GkodeMath.csproj", "{9B452496-3640-4292-8655-BE0A9E64CFE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELW.Library.Math", "ELW.Library.Math\ELW.Library.Math.csproj", "{0374C9F1-8508-421C-82A7-8D5DADB2B49A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B452496-3640-4292-8655-BE0A9E64CFE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B452496-3640-4292-8655-BE0A9E64CFE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B452496-3640-4292-8655-BE0A9E64CFE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B452496-3640-4292-8655-BE0A9E64CFE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0374C9F1-8508-421C-82A7-8D5DADB2B49A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0374C9F1-8508-421C-82A7-8D5DADB2B49A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0374C9F1-8508-421C-82A7-8D5DADB2B49A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0374C9F1-8508-421C-82A7-8D5DADB2B49A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0374C9F1-8508-421C-82A7-8D5DADB2B49A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ELW.Library.Math</RootNamespace>
+    <AssemblyName>ELW.Library.Math</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ToolsHelper.cs" />
+    <Compile Include="Tools\Calculator.cs" />
+    <Compile Include="Calculators\Standard\CalculatorAddition.cs" />
+    <Compile Include="Calculators\Standard\CalculatorConditional.cs" />
+    <Compile Include="Calculators\Standard\CalculatorCosinus.cs" />
+    <Compile Include="Calculators\Standard\CalculatorDivision.cs" />
+    <Compile Include="Calculators\Standard\CalculatorMultiplication.cs" />
+    <Compile Include="Calculators\Standard\CalculatorNegation.cs" />
+    <Compile Include="Calculators\Standard\CalculatorPositivation.cs" />
+    <Compile Include="Calculators\Standard\CalculatorPowering.cs" />
+    <Compile Include="Calculators\Standard\CalculatorSinus.cs" />
+    <Compile Include="Calculators\Standard\CalculatorSubtraction.cs" />
+    <Compile Include="Tools\Decompiler.cs" />
+    <Compile Include="Expressions\CompiledExpression.cs" />
+    <Compile Include="Tools\Compiler.cs" />
+    <Compile Include="Exceptions\CompilerSyntaxException.cs" />
+    <Compile Include="Exceptions\MathProcessorException.cs" />
+    <Compile Include="Calculators\IOperationCalculator.cs" />
+    <Compile Include="Operation.cs" />
+    <Compile Include="OperationsRegistry.cs" />
+    <Compile Include="Expressions\PreparedExpression.cs" />
+    <Compile Include="Tools\Optimizer.cs" />
+    <Compile Include="Tools\Parser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Operations.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Operations.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="elw-library-math.build" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

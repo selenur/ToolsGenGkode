@@ -333,6 +333,16 @@ namespace ToolsGenGkode.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap layout_edit {
+            get {
+                object obj = ResourceManager.GetObject("layout_edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap resizeActual {
             get {
                 object obj = ResourceManager.GetObject("resizeActual", resourceCulture);

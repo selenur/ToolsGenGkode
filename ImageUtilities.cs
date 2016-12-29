@@ -59,7 +59,7 @@ namespace ToolsGenGkode
 
                     foreach (Location point in vector.Points)
                     {
-                        points.Add(new Location(point.X, (-point.Y) + delta, point.Svalue, point.Fvalue, point.Pvalue, point.SpindelOn, point.Selected));
+                        points.Add(new Location(point.X, (-point.Y) + delta, point.Svalue, point.Fvalue, point.Pvalue, point.SpindelOn, point.Selected,point.Bright));
                     }
                     tmp.Add(new Segment(points, vector.Selected,vector.TempTraectory,vector.Dirrect,vector.IndividualPoints));
                     points = new List<Location>();

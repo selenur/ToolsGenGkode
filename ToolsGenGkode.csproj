@@ -46,10 +46,8 @@
     <Reference Include="Cyotek.Windows.Forms.ImageBox">
       <HintPath>.\Cyotek.Windows.Forms.ImageBox.dll</HintPath>
     </Reference>
-    <Reference Include="ELW.Library.Math, Version=0.1.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\ELW.Library.Math.dll</HintPath>
-    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="SharpGL, Version=2.4.0.0, Culture=neutral, PublicKeyToken=27fc851303210b27, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\SharpGL.dll</HintPath>
@@ -65,9 +63,14 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.cs">
@@ -75,6 +78,12 @@
     </Compile>
     <Compile Include="About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="helpText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="helpText.Designer.cs">
+      <DependentUpon>helpText.cs</DependentUpon>
     </Compile>
     <Compile Include="ImageUtilities.cs" />
     <Compile Include="IniParser.cs" />
@@ -194,6 +203,9 @@
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="helpText.resx">
+      <DependentUpon>helpText.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -297,6 +309,7 @@
     <None Include="Resources\book_edit.png" />
     <None Include="Resources\computer_go.png" />
     <None Include="Resources\diskette.png" />
+    <None Include="Resources\layout_edit.png" />
     <Content Include="TextFile2.txt" />
     <None Include="Resources\font.png" />
     <None Include="Resources\file_extension_jpg.png" />
@@ -314,6 +327,10 @@
     <ProjectReference Include="DXFLib\DXFLib.csproj">
       <Project>{476fa4c4-fa1d-4a2a-985b-8cbf50f82251}</Project>
       <Name>DXFLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="MathLib\ELW.Library.Math\ELW.Library.Math.csproj">
+      <Project>{0374c9f1-8508-421c-82a7-8d5dadb2b49a}</Project>
+      <Name>ELW.Library.Math</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

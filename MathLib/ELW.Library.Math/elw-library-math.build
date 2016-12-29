@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="build">
+  <include buildfile="../build-common.build.xml" />
+  <target name="build" >
+
+    <property name="assembly-name" value="ELW.Library.Math" overwrite="true"  />
+    <property name="assembly-description" value="Library for manipilations with expression." overwrite="true"  />
+    <call target="generate_asminfo"/>
+
+    <csc target="library" output="${project.output.dir}/${assembly-name}.dll"
+         debug="${project.is-debug}"
+         doc="${project.output.dir}/${assembly-name}.xml">
+      <nowarn>
+        <warning number="1591"/>
+      </nowarn>
+      <sources>
+        <include name="/**.cs"/>
+      </sources>
+      <resources dynamicprefix="true" prefix="ELW.Library.Math" casesensitive="true">
+        <include name="**/Operations.xml" />
+        <include name="**/Operations.xsd" />
+      </resources>
+      <references>
+        <lib>
+          <include name="${project.3rd-parties.dir}" />
+        </lib>
+        <include name="System.dll"/>
+      </references>
+    </csc>
+  </target>
+</project>

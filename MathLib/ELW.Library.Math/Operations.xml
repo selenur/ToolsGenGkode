@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<operations xmlns="http://www.elwood.su/projects/math/shemas/operations/v1.0">
+  <!-- Registered priorities -->
+  <priorities>
+    <priority value="1" association="left" />
+    <priority value="2" association="right" />
+    <priority value="3" association="left" />
+    <priority value="4" association="left" />
+    <priority value="5" association="right" />
+  </priorities>
+  
+  <!-- Registered operations -->
+  <operations>
+    
+    <!-- Operators -->
+    <operation name="powering" operands="2" kind="operator" priority="1">
+      <signatures>
+        <signature number="1" value="^" />
+      </signatures>
+      <calculator type="ELW.Library.Math.Calculators.Standard.CalculatorPowering, ELW.Library.Math" />
+    </operation>  
+
+    <operation name="negation" operands="1" kind="operator" priority="2">
+      <signatures>
+        <signature number="1" value="-" />
+      </signatures>
+      <calculator type="ELW.Library.Math.Calculators.Standard.CalculatorNegation, ELW.Library.Math" />
+    </operation>
+
+    <operation name="positivation" operands="1" kind="operator" priority="2">
+      <signatures>
+        <signature number="1" value="+" />
+      </signatures>
+      <calculator type="ELW.Library.Math.Calculators.Standard.CalculatorPositivation, ELW.Library.Math" />
+    </operation>
+
+    <operation name="multiplication" operands="2" kind="operator" priority="3">
+      <signatures>
+        <signature number="1" value="*" />
+      </signatures>
+      <calculator type="ELW.Library.Math.Calculators.Standard.CalculatorMultiplication, ELW.Library.Math" />
+    </operation>
+
+    <operation name="division" operands="2" kind="operator" priority="3">
+      <signatures>
+        <signature number="1" value="/" />
+      </signatures>
+      <calculator type="ELW.Library.Math.Calculators.Standard.CalculatorDivision, ELW.Library.Math" />
+    </operation>
+
+    <operation name="addition" operands="2" kind="operator" priority="4">
+      <signatures>
+        <signature number="1" value="+" />
+      </signatures>
+      <calculator type="ELW.Library.Math.Calculators.Standard.CalculatorAddition, ELW.Library.Math" />
+    </operation>
+
+    <operation name="subtraction" operands="2" kind="operator" priority="4">
+      <signatures>
+        <signature number="1" value="-" />
+      </signatures>
+      <calculator type="ELW.Library.Math.Calculators.Standard.CalculatorSubtraction, ELW.Library.Math" />
+    </operation>
+
+    <operation name="conditional" operands="3" kind="operator" priority="5">
+      <signatures>
+        <signature number="1" value="?" />
+        <signature number="2" value=":" />
+      </signatures>
+      <calculator type="ELW.Library.Math.Calculators.Standard.CalculatorConditional, ELW.Library.Math" />
+    </operation>
+
+    <!-- Functions -->
+    <operation name="sinus" operands="1" kind="function">
+      <signatures>
+        <signature number="1" value="sin" />
+      </signatures>
+      <calculator type="ELW.Library.Math.Calculators.Standard.CalculatorSinus, ELW.Library.Math" />
+    </operation>
+
+    <operation name="cosinus" operands="1" kind="function">
+      <signatures>
+        <signature number="1" value="cos" />
+      </signatures>
+      <calculator type="ELW.Library.Math.Calculators.Standard.CalculatorCosinus, ELW.Library.Math" />
+    </operation>
+
+  </operations>
+</operations>

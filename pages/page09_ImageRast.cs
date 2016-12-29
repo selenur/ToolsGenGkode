@@ -38,27 +38,43 @@ namespace ToolsGenGkode.pages
 
             pageImageNOW = null;
             pageVectorNOW = new List<Segment>();
+
+            useFilter.Items.Clear();
+            useFilter.Items.Add("01 - метод Флойда-Стеинберга (<распыление >)"); //FloydSteinberg Dithering
+            useFilter.Items.Add("02 - метод Байера (<матрица>)");              //Bayer Dithering
+            useFilter.Items.Add("03 - Получение оттенков серого (bright)");
         }
 
         private void page09_SelectImage_Load(object sender, EventArgs e)
         {
-            decimal p1 = 1;
-            decimal p2 = 1000;
-            decimal p3 = 100;
-            decimal p4 = 1;
-            decimal p5 = 1;
+            decimal p1 = 1; //размер точки прожига
+            decimal p2 = 1000; //длительность лазера
+            decimal p3 = 100;  //процент от исходного размера
+            decimal p4 = 1;     //размер по X 
+            decimal p5 = 1;     //размер по Y
 
             string sp1 = IniParser.GetSetting("page09", "SizePoint");
             string sp2 = IniParser.GetSetting("page09", "LaserTimeOut");
             string sp3 = IniParser.GetSetting("page09", "PercentValue");
             string sp4 = IniParser.GetSetting("page09", "sizeDestX");
             string sp5 = IniParser.GetSetting("page09", "sizeDestY");
+            string sp6 = IniParser.GetSetting("page09", "UserUseRation"); //флажок поддерживать пропорций
+            string sp7 = IniParser.GetSetting("page09", "Variant"); //текущий выбранный вариант
 
             if (sp1 != null) decimal.TryParse(sp1, out p1);
             if (sp2 != null) decimal.TryParse(sp2, out p2);
             if (sp3 != null) decimal.TryParse(sp3, out p3);
             if (sp4 != null) decimal.TryParse(sp4, out p4);
             if (sp5 != null) decimal.TryParse(sp5, out p5);
+
+            if (sp6 != null)
+            {
+                cbKeepAspectRatio.Checked = (sp6 == "1");
+            }
+            else
+            {
+                cbKeepAspectRatio.Checked = true;
+            }
 
             if (p1 == 0) p1 = 1; 
 
@@ -67,23 +83,16 @@ namespace ToolsGenGkode.pages
             numericUpDownPercent.Value = p3;
 
             _changeIsUser = false;
-
-            if (p4 == 0) p4 = 1;
-
-            if (p5 == 0) p5 = 1;
-
-            numXAfter.Value = p4;
-            numYAfter.Value = p5;
+                if (p4 == 0) p4 = 100;
+                if (p5 == 0) p5 = 100;
+                numXAfter.Value = p4;
+                numYAfter.Value = p5;
             _changeIsUser = true;
 
 
-
-
-
-            string sp6 = IniParser.GetSetting("page09", "Variant");
-            if (sp6 != null)
+            if (sp7 != null)
             {
-                switch (sp6)
+                switch (sp7)
                 {
                     case "1":
                         radioButtonDiametrSizePoint.Checked = true;
@@ -158,31 +167,252 @@ namespace ToolsGenGkode.pages
             return me;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+
+        private void preparationImage()
         {
-            if (useFilter.Text.Trim().Length == 0) return;
+            //decimal newSizeX = numXAfter.Value / numSizePoint.Value;
+            //decimal newSizeY = numYAfter.Value / numSizePoint.Value;
+
+            //if (newSizeX < 1 || newSizeY < 1)
+            //{
+            //    MessageBox.Show(@"Не указан желаемый размер, вычисление невозможно!");
+
+            //    return;
+            //}
 
             pageImageNOW = (Bitmap)pageImageIN.Clone();
             pageVectorNOW = new List<Segment>();
             Bitmap newBitmap = ConvertToGrayScale(pageImageNOW);
 
-            if (useFilter.Text == @"FloydSteinbergDithering")
+            int Xsize = (int)(numXAfter.Value / numSizePoint.Value);
+            int Ysize = (int)(numYAfter.Value / numSizePoint.Value);
+
+            ResizeBicubic filterResize = new ResizeBicubic(Xsize, Ysize);
+            newBitmap = filterResize.Apply(newBitmap);
+
+
+
+            if (useFilter.Text.StartsWith("01")) //FloydSteinbergDithering"
             {
                 FloydSteinbergDithering filter = new FloydSteinbergDithering();
                 filter.ApplyInPlace(newBitmap);
             }
 
-            if (useFilter.Text == @"BayerDithering")
+            if (useFilter.Text.StartsWith("02")) //@"BayerDithering"
             {
                 BayerDithering filter = new BayerDithering();
                 filter.ApplyInPlace(newBitmap);
             }
 
+
+            if (useFilter.Text.StartsWith("03")) //@"получение оттенков серого"
+            {
+                //получим новое перемасштабированное изображение
+                //тут с изображением уже ничего не делаем
+            }
+
             pageImageNOW = newBitmap;
+
+        }
+
+
+        private void GenVar1And2()
+        {
+            decimal sizeOnePoint = numSizePoint.Value;
+
+            GlobalFunctions.LaserTimeOut = (int)LaserTimeOut.Value;
+
+            pageVectorNOW = new List<Segment>();
+
+            Bitmap bb = pageImageNOW;
+            BitmapData data = bb.LockBits(new Rectangle(0, 0, bb.Width, bb.Height), ImageLockMode.ReadOnly, bb.PixelFormat);  // make sure you check the pixel format as you will be looking directly at memory
+
+            //направление движения
+            DirrectionSegment dir = DirrectionSegment.RIGHT;
+
+            unsafe
+            {
+                byte* ptrSrc = (byte*)data.Scan0;
+
+                int diff = data.Stride - data.Width;
+
+                // example assumes 24bpp image.  You need to verify your pixel depth
+                for (int y = 0; y < data.Height; ++y)
+                {
+                    List<Location> tmp = new List<Location>();
+
+                    //во временный массив поместим линию с точками
+                    for (int x = 0; x < data.Width; ++x)
+                    {
+                        // windows stores images in BGR pixel order
+                        byte r = ptrSrc[0]; //тут получили нужный цвет
+
+                        if (r == 0) tmp.Add(new Location((x * sizeOnePoint) + deltaX.Value, (y * sizeOnePoint) + deltaY.Value, 0, 0, (int)LaserTimeOut.Value));
+
+                        ptrSrc += 1;
+                    }
+
+                    // а теперь временный массив скопируем в основной, но с определенным направлением
+                    if (dir == DirrectionSegment.RIGHT)
+                    {
+                        dir = DirrectionSegment.LEFT;
+                    }
+                    else
+                    {
+                        tmp.Reverse();
+                        dir = DirrectionSegment.RIGHT;
+                    }
+
+                    if (tmp.Count != 0) pageVectorNOW.Add(new Segment(tmp, false, false, dir, true));
+
+                    // ReSharper disable once RedundantAssignment
+                    tmp = new List<Location>();
+
+                    ptrSrc += diff;
+                }
+            }
+
+            bb.UnlockBits(data);
+
+            // тут нужно сделать преворот согластно текущй ориентации осей
+            pageVectorNOW = VectorUtilities.Rotate(pageVectorNOW);
+
+        }
+
+        private void GenVar3()
+        {
+            decimal sizeOnePoint = numSizePoint.Value;
+
+            Bitmap bb = pageImageNOW;
+            BitmapData data = bb.LockBits(new Rectangle(0, 0, bb.Width, bb.Height), ImageLockMode.ReadOnly, bb.PixelFormat);  // make sure you check the pixel format as you will be looking directly at memory
+
+            //направление движения
+            DirrectionSegment dir = DirrectionSegment.RIGHT;
+
+            unsafe
+            {
+                byte* ptrSrc = (byte*)data.Scan0;
+
+                int diff = data.Stride - data.Width;
+                
+                pageVectorNOW = new List<Segment>();
+
+                for (int y = 0; y < data.Height; ++y) //проход по линии
+                {
+                    List<Location> tmp = new List<Location>();
+
+                    byte lastValueColor = 0;
+                    bool firstPoint = true;
+                    bool lastPoint = false;
+
+
+                    for (int x = 0; x < data.Width; ++x)//проход по точкам
+                    {
+                        lastPoint = (x == data.Width - 1); //будем знать последняя ли это точка линии по которой идем
+                        
+                        // windows stores images in BGR pixel order
+                        byte r = ptrSrc[0]; //тут получили нужный цвет
+
+                        if (firstPoint || lastPoint) //первую и последнюю точку добавим в любом случае
+                        {
+                            firstPoint = false;
+
+                            Location lk = new Location((x * sizeOnePoint) + deltaX.Value, (y * sizeOnePoint) + deltaY.Value,0,0,0,false,false,(int)r);
+
+                            tmp.Add(lk);
+                            
+                            lastValueColor = r;
+                        }
+                        else
+                        {
+                            if (lastValueColor != r)
+                            {
+                                Location lk = new Location((x * sizeOnePoint) + deltaX.Value, (y * sizeOnePoint) + deltaY.Value, 0, 0, 0, false, false, (int)r);
+
+                                tmp.Add(lk);
+
+                                lastValueColor = r;
+                            }
+                        }
+                        ptrSrc += 1;
+                    }
+
+
+                    // а теперь временный массив скопируем в основной, но с определенным направлением
+                    if (dir == DirrectionSegment.RIGHT)
+                    {
+                        dir = DirrectionSegment.LEFT;
+                    }
+                    else
+                    {
+                        tmp.Reverse();
+                        dir = DirrectionSegment.RIGHT;
+                    }
+
+                    pageVectorNOW.Add(new Segment(tmp, false, false, dir, true));
+
+                    // ReSharper disable once RedundantAssignment
+                    tmp = new List<Location>();
+
+                    ptrSrc += diff;
+                }
+            }
+
+            bb.UnlockBits(data);
+
+            // тут нужно сделать преворот согластно текущй ориентации осей
+            pageVectorNOW = VectorUtilities.Rotate(pageVectorNOW);
+        }
+
+
+        private void GenerateData()
+        {
+            if (useFilter.Text.StartsWith("01") || useFilter.Text.StartsWith("02"))
+            {
+                GenVar1And2();
+            }
+
+            if (useFilter.Text.StartsWith("03"))
+            {
+                GenVar3();
+            }
+        }
+
+
+        // preview
+        private void PreviewButton_Click(object sender, EventArgs e)
+        {
+            if (useFilter.Text.Trim().Length == 0) return;
+
+            Cursor.Current = Cursors.WaitCursor;
+
+            preparationImage();
+
+            Cursor.Current = Cursors.Default;
 
             CreateEvent("RefreshVector_09");
             CreateEvent("RefreshImage_09");
         }
+
+        // generate data
+        private void btCalcTraectory_Click(object sender, EventArgs e)
+        {
+            if (useFilter.Text.Trim().Length == 0) return;
+
+            Cursor.Current = Cursors.WaitCursor;
+
+            preparationImage();
+
+            GenerateData();
+
+            Cursor.Current = Cursors.Default;
+
+            CreateEvent("RefreshVector_09");
+            CreateEvent("RefreshImage_09");
+        }
+
+
+
 
         /// <summary>
         /// Для определения того кто меняет значение, пользователь, или код программы
@@ -225,113 +455,6 @@ namespace ToolsGenGkode.pages
             IniParser.SaveSettings();
         }
 
-        private void btCalcTraectory_Click(object sender, EventArgs e)
-        {
-            decimal newSizeX = numXAfter.Value / numSizePoint.Value;
-            decimal newSizeY = numYAfter.Value / numSizePoint.Value;
-
-            if (newSizeX < 1 || newSizeY < 1)
-            {
-                MessageBox.Show(@"Не указан желаемый размер, вычисление невозможно!");
-
-                return;
-            }
-
-            GlobalFunctions.LaserTimeOut = (int)LaserTimeOut.Value;
-            //GlobalFunctions.IsLaserPoint = true;
-
-
-            pageImageNOW = (Bitmap)pageImageIN.Clone();
-            // create filter
-            ResizeBilinear filter1 = new ResizeBilinear((int)newSizeX, (int)newSizeY);
-            // apply the filter
-            Bitmap newImage = filter1.Apply(pageImageNOW);
-
-            Bitmap newBitmap = ConvertToGrayScale(newImage);
-
-            if (useFilter.Text == @"FloydSteinbergDithering")
-            {
-                FloydSteinbergDithering filter2 = new FloydSteinbergDithering();
-                filter2.ApplyInPlace(newBitmap);
-            }
-
-            if (useFilter.Text == @"BayerDithering")
-            {
-                BayerDithering filter3 = new BayerDithering();
-                filter3.ApplyInPlace(newBitmap);
-            }
-
-            pageImageNOW = newBitmap;
-
-            pageVectorNOW = new List<Segment>();
-
-            Bitmap bb = newBitmap;
-            BitmapData data = bb.LockBits(new Rectangle(0, 0, bb.Width, bb.Height), ImageLockMode.ReadOnly, bb.PixelFormat);  // make sure you check the pixel format as you will be looking directly at memory
-
-            //направление движения
-            DirrectionSegment dir = DirrectionSegment.RIGHT;
-
-
-            unsafe
-            {
-                byte* ptrSrc = (byte*)data.Scan0;
-
-                int diff = data.Stride - data.Width;
-
-                // example assumes 24bpp image.  You need to verify your pixel depth
-                // loop by row for better data locality
-                for (int y = 0; y < data.Height; ++y)
-                {
-                    List <Location> tmp = new List<Location>();
-
-                    //во временный массив поместим линию с точками
-                    for (int x = 0; x < data.Width; ++x)
-                    {
-                        // windows stores images in BGR pixel order
-                        byte r = ptrSrc[0];
-                        if (r == 0) tmp.Add(new Location((x * numSizePoint.Value) + deltaX.Value, (y * numSizePoint.Value)+deltaY.Value,0,0,(int)LaserTimeOut.Value));
-                        ptrSrc += 1;
-                    }
-
-
-
-                    // а теперь временный массив скопируем в основной, но с определенным направлением
-                    if (dir == DirrectionSegment.RIGHT)
-                    {
-                        dir = DirrectionSegment.LEFT;
-                    }
-                    else
-                    {
-                        tmp.Reverse();
-                        dir = DirrectionSegment.RIGHT;
-                    }
-
-                    pageVectorNOW.Add(new Segment(tmp,false,false,dir,true));
-
-                    // ReSharper disable once RedundantAssignment
-                    tmp = new List<Location>();
-
-                    //foreach (Location ppPoint in tmp)
-                    //{
-                    //    //PagePoints.Add(new Location(ppPoint));
-                    //}
-
-                    ptrSrc += diff;
-                }
-                //pageVectorNOW.Add(new Segment());
-            }
-
-            bb.UnlockBits(data);
-
-
-            // тут нужно сделать преворот
-            pageVectorNOW = VectorUtilities.Rotate(pageVectorNOW);
-
-            CreateEvent("RefreshVector_09");
-            CreateEvent("RefreshImage_09");
-        }
-
-
 
         private void LaserTimeOut_ValueChanged(object sender, EventArgs e)
         {
@@ -341,7 +464,7 @@ namespace ToolsGenGkode.pages
 
         private void useFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            //тут появится доступность некоторых из элементов формы
         }
 
         private void RecalculateSize()
@@ -367,11 +490,39 @@ namespace ToolsGenGkode.pages
                 numYAfter.Value = numYbefore.Value * (numericUpDownPercent.Value / 100);
             }
 
+            if (radioButtonUserSize.Checked)
+            {
+                if (cbKeepAspectRatio.Checked)
+                {
+                    decimal delta = (numYbefore.Value / numXbefore.Value) * numXAfter.Value;
+
+                    numYAfter.Value = delta;
+
+                }
+                else
+                {
+                    //оставляем значачения как есть
+                }
+            }
+
             _changeIsUser = true;
         
         }
 
+        private void cbKeepAspectRatio_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbKeepAspectRatio.Checked)
+            {
+                IniParser.AddSetting("page09", "UserUseRation", "1"); // сохранять-ли пропорции
+            }
+            else
+            {
+                IniParser.AddSetting("page09", "UserUseRation", "0"); // сохранять-ли пропорции
+            }
 
+
+            IniParser.SaveSettings();
+        }
 
         private void numSizePoint_ValueChanged(object sender, EventArgs e)
         {
@@ -412,9 +563,57 @@ namespace ToolsGenGkode.pages
 
         private void radioButtonUserSize_CheckedChanged(object sender, EventArgs e)
         {
-            IniParser.AddSetting("page09", "Variant", "4");
+            IniParser.AddSetting("page09", "Variant", "4");       // пользовательский вариант
+
+            if (cbKeepAspectRatio.Checked)
+            {
+                IniParser.AddSetting("page09", "UserUseRation", "1"); // сохранять-ли пропорции
+            }
+            else
+            {
+                IniParser.AddSetting("page09", "UserUseRation", "0"); // сохранять-ли пропорции
+            }
+
+
             IniParser.SaveSettings();
             RecalculateSize();
         }
+
+        private void buttonHelpInfo_Click(object sender, EventArgs e)
+        {
+            string textInfo = "<html><body>Информация о выбранном фильтре<hr/>фильтр не выбран</body></html>";
+
+            helpText hlp = new helpText();
+            
+
+
+
+            if (useFilter.Text.StartsWith("01")) //FloydSteinbergDithering"
+            {
+                textInfo = "<html><body>Информация о выбранном фильтре<hr/>Данный фильтр формирует всего один набор точек, которые и представляют собой рисунок, где точки сконцентрированны в большем количестве, в темных участках изображения, и в меньшем количестве, на более светлых участках.</body></html>";
+
+            }
+
+            if (useFilter.Text.StartsWith("02")) //@"BayerDithering"
+            {
+                textInfo = "<html><body>Информация о выбранном фильтре<hr/>Данный фильтр формирует всего один набор точек, которые и представляют собой рисунок, где точки сконцентрированны в большем количестве, в темных участках изображения, и в меньшем количестве, на более светлых участках.</body></html>";
+
+            }
+
+
+            if (useFilter.Text.StartsWith("03")) //@"получение оттенков серого"
+            {
+                textInfo = "<html><body>Информация о выбранном фильтре<hr/>Даный фильтр получает наборы точек, где набор представляет собой последовательность точек с направлением в левую или правую сторону, у каждой точки доступен параметр 'bright' содержащий значение от 0 до 255, значение 0 означает что это черный цвет, 255 - белый. </body></html>";
+
+
+            }
+
+
+            hlp.webBrowser1.DocumentText = textInfo;
+
+            hlp.ShowDialog();
+        }
+
+
     }
 }
