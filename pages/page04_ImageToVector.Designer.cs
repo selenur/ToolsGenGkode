@@ -40,6 +40,7 @@ namespace ToolsGenGkode.pages
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxFileName = new System.Windows.Forms.TextBox();
             this.btShowOriginalImage = new System.Windows.Forms.Button();
+            this.SkeletonizationFilter = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownKoefPalitra)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,9 +94,9 @@ namespace ToolsGenGkode.pages
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(14, 141);
+            this.button2.Location = new System.Drawing.Point(14, 182);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(618, 65);
+            this.button2.Size = new System.Drawing.Size(618, 46);
             this.button2.TabIndex = 12;
             this.button2.Text = "Показать результат полученного контура из изображения";
             this.button2.UseVisualStyleBackColor = true;
@@ -137,10 +138,21 @@ namespace ToolsGenGkode.pages
             this.btShowOriginalImage.UseVisualStyleBackColor = true;
             this.btShowOriginalImage.Click += new System.EventHandler(this.btShowOriginalImage_Click);
             // 
+            // SkeletonizationFilter
+            // 
+            this.SkeletonizationFilter.AutoSize = true;
+            this.SkeletonizationFilter.Location = new System.Drawing.Point(202, 148);
+            this.SkeletonizationFilter.Name = "SkeletonizationFilter";
+            this.SkeletonizationFilter.Size = new System.Drawing.Size(280, 17);
+            this.SkeletonizationFilter.TabIndex = 31;
+            this.SkeletonizationFilter.Text = "Использовать утоньшение контуров изобразения";
+            this.SkeletonizationFilter.UseVisualStyleBackColor = true;
+            // 
             // page04_ImageToVector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.SkeletonizationFilter);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -170,6 +182,7 @@ namespace ToolsGenGkode.pages
         private System.Windows.Forms.Label label6;
         public System.Windows.Forms.TextBox textBoxFileName;
         private System.Windows.Forms.Button btShowOriginalImage;
+        private System.Windows.Forms.CheckBox SkeletonizationFilter;
 
         public string PageName { get; set; }
         public int LastPage { get; set; }

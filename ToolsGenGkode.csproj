@@ -37,9 +37,6 @@
     <ApplicationIcon>cnc-machine-128.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AForge.Imaging">
-      <HintPath>.\AForge.Imaging.dll</HintPath>
-    </Reference>
     <Reference Include="clipper_library">
       <HintPath>.\clipper_library.dll</HintPath>
     </Reference>
@@ -323,6 +320,14 @@
     <ProjectReference Include="..\..\..\0062_CSharpLIBRARY\MultiLanguage\MultiLanguage\MultiLanguage.csproj">
       <Project>{a2e425be-d7a9-4cff-b7bf-d97ad47b9ebe}</Project>
       <Name>MultiLanguage</Name>
+    </ProjectReference>
+    <ProjectReference Include="AForgeNetLib\Core\Core.csproj">
+      <Project>{631ac093-430f-45f4-ba0c-af0f0405918a}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="AForgeNetLib\Imaging\Imaging.csproj">
+      <Project>{c6a8b9ae-0749-41c7-8ff9-02c156696f45}</Project>
+      <Name>Imaging</Name>
     </ProjectReference>
     <ProjectReference Include="DXFLib\DXFLib.csproj">
       <Project>{476fa4c4-fa1d-4a2a-985b-8cbf50f82251}</Project>
