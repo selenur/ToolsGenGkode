@@ -22,15 +22,19 @@ namespace ToolsGenGkode.pages
         /// <param name="message"></param>
         void CreateEvent(string message)
         {
-            MyEventArgs e = new MyEventArgs();
-            e.ActionRun = message;
+            //MyEventArgs e = new MyEventArgs();
+            //e.ActionRun = message;
 
-            EventHandler handler = IsChange;
-            if (handler != null) IsChange?.Invoke(this, e);
+            //EventHandler handler = IsChange;
+            //if (handler != null) IsChange?.Invoke(this, e);
+
+            MAIN.PreviewImage(pageImageNOW);
+            MAIN.PreviewVectors(pageVectorNOW);
         }
 
+        private MainForm MAIN;
 
-        public page05_SelectFileImageRastr()
+        public page05_SelectFileImageRastr(MainForm mf)
         {
             InitializeComponent();
 
@@ -39,8 +43,10 @@ namespace ToolsGenGkode.pages
             CurrPage = 5;
             NextPage = 9;
 
+            MAIN = mf;
+
             pageImageNOW = null;
-            pageVectorNOW = new List<Segment>();
+            pageVectorNOW = new List<GroupPoint>();
         }
 
         private void buttonSelectFile_Click(object sender, EventArgs e)
@@ -57,8 +63,8 @@ namespace ToolsGenGkode.pages
             {
                 textBoxFileName.Text = openFileDialog1.FileName;
 
-                IniParser.AddSetting("page05", "selectedFile", textBoxFileName.Text);
-                IniParser.SaveSettings();
+                Properties.Settings.Default.page05SelectedFile = textBoxFileName.Text;
+                Properties.Settings.Default.Save();
             }
 
 
@@ -76,13 +82,13 @@ namespace ToolsGenGkode.pages
         public int NextPage { get; set; }
         public Bitmap pageImageIN { get; set; }
         public Bitmap pageImageNOW { get; set; }
-        public List<Segment> pageVectorIN { get; set; }
-        public List<Segment> pageVectorNOW { get; set; }
+        public List<GroupPoint> pageVectorIN { get; set; }
+        public List<GroupPoint> pageVectorNOW { get; set; }
 
 
         public void actionBefore()
         {
-            string sp1 = IniParser.GetSetting("page05", "selectedFile");
+            string sp1 = Properties.Settings.Default.page05SelectedFile;
 
             if (sp1 != null)
             {
@@ -106,16 +112,19 @@ namespace ToolsGenGkode.pages
             if (!File.Exists(textBoxFileName.Text)) return;
 
             Bitmap tmp = new Bitmap(textBoxFileName.Text);
+
+            //TODO: обратить внимание на ориентацию осей
+
             // параметры расположения координатной оси
-            if (Property.Orientation == 2) tmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
+            if (Properties.Settings.Default.page01AxisVariant == 2) tmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
 
             pageImageIN = tmp;
             pageImageNOW = (Bitmap)pageImageIN.Clone();
-            pageVectorNOW = new List<Segment>();
+            pageVectorNOW = new List<GroupPoint>();
 
 
-            CreateEvent("RefreshVector_05");
-            CreateEvent("RefreshImage_05");
+            CreateEvent("");
+            //CreateEvent("RefreshImage_05");
 
         }
     }

@@ -89,6 +89,7 @@ namespace ToolsGenGkode.pages
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 1;
+            this.label2.Tag = "_deg_";
             this.label2.Text = "градусов";
             // 
             // label3
@@ -98,6 +99,7 @@ namespace ToolsGenGkode.pages
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 13);
             this.label3.TabIndex = 6;
+            this.label3.Tag = "_rotate_";
             this.label3.Text = "Вращать на:";
             // 
             // label5
@@ -107,6 +109,7 @@ namespace ToolsGenGkode.pages
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(85, 13);
             this.label5.TabIndex = 3;
+            this.label5.Tag = "_newSize_";
             this.label5.Text = "Новый размер:";
             // 
             // label4
@@ -115,6 +118,7 @@ namespace ToolsGenGkode.pages
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(224, 23);
             this.label4.TabIndex = 2;
+            this.label4.Tag = "_currentSize_";
             this.label4.Text = "Текущий размер:";
             // 
             // cbKeepAspectRatio
@@ -126,6 +130,7 @@ namespace ToolsGenGkode.pages
             this.cbKeepAspectRatio.Name = "cbKeepAspectRatio";
             this.cbKeepAspectRatio.Size = new System.Drawing.Size(136, 17);
             this.cbKeepAspectRatio.TabIndex = 1;
+            this.cbKeepAspectRatio.Tag = "_UseRatio_";
             this.cbKeepAspectRatio.Text = "Сохранять пропорции";
             this.cbKeepAspectRatio.UseVisualStyleBackColor = true;
             // 
@@ -148,6 +153,7 @@ namespace ToolsGenGkode.pages
             this.groupBox2.Size = new System.Drawing.Size(249, 170);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Tag = "_changeSize_";
             this.groupBox2.Text = "Конвертирование размеров в милиметры";
             // 
             // btCalcZoom
@@ -156,6 +162,7 @@ namespace ToolsGenGkode.pages
             this.btCalcZoom.Name = "btCalcZoom";
             this.btCalcZoom.Size = new System.Drawing.Size(212, 31);
             this.btCalcZoom.TabIndex = 16;
+            this.btCalcZoom.Tag = "_RunChangeSize_";
             this.btCalcZoom.Text = "Выполнить масштабирование";
             this.btCalcZoom.UseVisualStyleBackColor = true;
             this.btCalcZoom.Click += new System.EventHandler(this.btCalcZoom_Click);
@@ -296,6 +303,7 @@ namespace ToolsGenGkode.pages
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(212, 45);
             this.button1.TabIndex = 9;
+            this.button1.Tag = "_resetAllActions_";
             this.button1.Text = "Сбросить все изменения внесенные на данной странице";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -306,6 +314,7 @@ namespace ToolsGenGkode.pages
             this.btMirrorX.Name = "btMirrorX";
             this.btMirrorX.Size = new System.Drawing.Size(212, 31);
             this.btMirrorX.TabIndex = 10;
+            this.btMirrorX.Tag = "_mirrorX_";
             this.btMirrorX.Text = "Отразить зеркально по оси X";
             this.btMirrorX.UseVisualStyleBackColor = true;
             this.btMirrorX.Click += new System.EventHandler(this.btMirrorX_Click);
@@ -316,6 +325,7 @@ namespace ToolsGenGkode.pages
             this.btMirrorY.Name = "btMirrorY";
             this.btMirrorY.Size = new System.Drawing.Size(212, 31);
             this.btMirrorY.TabIndex = 11;
+            this.btMirrorY.Tag = "_mirrorY_";
             this.btMirrorY.Text = "Отразить зеркально по оси Y";
             this.btMirrorY.UseVisualStyleBackColor = true;
             this.btMirrorY.Click += new System.EventHandler(this.btMirrorY_Click);
@@ -326,6 +336,7 @@ namespace ToolsGenGkode.pages
             this.btRotate.Name = "btRotate";
             this.btRotate.Size = new System.Drawing.Size(212, 31);
             this.btRotate.TabIndex = 12;
+            this.btRotate.Tag = "_RunRotate_";
             this.btRotate.Text = "Выполнить вращение";
             this.btRotate.UseVisualStyleBackColor = true;
             this.btRotate.Click += new System.EventHandler(this.btRotate_Click);
@@ -342,6 +353,7 @@ namespace ToolsGenGkode.pages
             this.groupBox1.Size = new System.Drawing.Size(128, 163);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Tag = "_ofsetZero_";
             this.groupBox1.Text = "Отступы от начала координат";
             // 
             // btMoveToZero
@@ -350,6 +362,7 @@ namespace ToolsGenGkode.pages
             this.btMoveToZero.Name = "btMoveToZero";
             this.btMoveToZero.Size = new System.Drawing.Size(105, 47);
             this.btMoveToZero.TabIndex = 14;
+            this.btMoveToZero.Tag = "_runOffset_";
             this.btMoveToZero.Text = "Сместить к началу";
             this.btMoveToZero.UseVisualStyleBackColor = true;
             this.btMoveToZero.Click += new System.EventHandler(this.btMoveToZero_Click);
@@ -417,6 +430,7 @@ namespace ToolsGenGkode.pages
             // cbAddPadding
             // 
             this.cbAddPadding.AutoSize = true;
+            this.cbAddPadding.Enabled = false;
             this.cbAddPadding.Location = new System.Drawing.Point(290, 195);
             this.cbAddPadding.Name = "cbAddPadding";
             this.cbAddPadding.Size = new System.Drawing.Size(301, 17);

@@ -16,14 +16,19 @@ namespace ToolsGenGkode.pages
 
         void CreateEvent(string action)
         {
-            MyEventArgs e = new MyEventArgs();
-            e.ActionRun = action;
-            //вызовем событие
-            EventHandler handler = IsChange;
-            if (handler != null) IsChange?.Invoke(this, e);
+            //MyEventArgs e = new MyEventArgs();
+            //e.ActionRun = action;
+            ////вызовем событие
+            //EventHandler handler = IsChange;
+            //if (handler != null) IsChange?.Invoke(this, e);
+
+            MAIN.PreviewImage(pageImageNOW);
+            MAIN.PreviewVectors(pageVectorNOW);
         }
 
-        public page07_ModifyVectors()
+        private MainForm MAIN;
+
+        public page07_ModifyVectors(MainForm mf)
         {
             InitializeComponent();
 
@@ -32,8 +37,10 @@ namespace ToolsGenGkode.pages
             CurrPage = 7;
             NextPage = 10;
 
+            MAIN = mf;
+
             pageImageNOW = null;
-            pageVectorNOW = new List<Segment>();
+            pageVectorNOW = new List<GroupPoint>();
         }
 
         private void page08_ModifyVectors_Load(object sender, EventArgs e)
@@ -43,20 +50,20 @@ namespace ToolsGenGkode.pages
 
         public Bitmap pageImageIN { get; set; }
         public Bitmap pageImageNOW { get; set; }
-        public List<Segment> pageVectorIN { get; set; }
-        public List<Segment> pageVectorNOW { get; set; }
-        public List<Location> PagePoints { get; set; }
+        public List<GroupPoint> pageVectorIN { get; set; }
+        public List<GroupPoint> pageVectorNOW { get; set; }
+        //public List<cncPoint> PagePoints { get; set; }
 
         public void actionBefore()
         {
-            pageVectorNOW = GlobalFunctions.pageVectorClone(pageVectorIN);
+            pageVectorNOW = VectorProcessing.ListGroupPointClone(pageVectorIN);
             pageImageNOW = null;
 
             getInfoSize();
 
             //todo: перезаполнить разные поля на форме
 
-            CreateEvent("RefreshVector_07");
+            CreateEvent("");
 
         }
 
@@ -69,15 +76,15 @@ namespace ToolsGenGkode.pages
 
         private void MirrorX()
         {
-            List<Segment> tmp = new List<Segment>();
+            List<GroupPoint> tmp = new List<GroupPoint>();
 
             // получим границы изображения
-            decimal min = 99999;
-            decimal max = -99999;
+            double min = 99999;
+            double max = -99999;
 
-            foreach (Segment vector in pageVectorNOW)
+            foreach (GroupPoint vector in pageVectorNOW)
             {
-                foreach (Location point in vector.Points)
+                foreach (cncPoint point in vector.Points)
                 {
                     if (min > point.Y) min = point.Y;
 
@@ -86,27 +93,27 @@ namespace ToolsGenGkode.pages
             }
 
             //вычислим дельту, для смещения векторов
-            decimal delta = min + max;
+            double delta = min + max;
 
-            List<Segment> vectors = new List<Segment>();
-            List<Location> points = new List<Location>();
+            List<GroupPoint> vectors = new List<GroupPoint>();
+            List<cncPoint> points = new List<cncPoint>();
 
-            foreach (Segment vector in pageVectorNOW)
+            foreach (GroupPoint vector in pageVectorNOW)
             {
-                points = new List<Location>();
+                points = new List<cncPoint>();
 
-                foreach (Location point in vector.Points)
+                foreach (cncPoint point in vector.Points)
                 {
-                    points.Add(new Location(point.X, (-point.Y)+delta, 0, 0, 0, false, point.Selected));
+                    points.Add(new cncPoint(point.X, (-point.Y)+delta, 0, 0, 0, point.Selected));
                 }
-                tmp.Add(new Segment(points, vector.Selected));
-                points = new List<Location>();
+                tmp.Add(new GroupPoint(points, vector.Selected));
+                points = new List<cncPoint>();
             }
 
             pageVectorNOW = tmp;
 
-            vectors = new List<Segment>();
-            points = new List<Location>();
+            vectors = new List<GroupPoint>();
+            points = new List<cncPoint>();
 
 
         }
@@ -114,15 +121,15 @@ namespace ToolsGenGkode.pages
 
         private void MirrorY()
         {
-            List<Segment> tmp = new List<Segment>();
+            List<GroupPoint> tmp = new List<GroupPoint>();
 
             // получим границы изображения
-            decimal min = 99999;
-            decimal max = -99999;
+            double min = 99999;
+            double max = -99999;
 
-            foreach (Segment vector in pageVectorNOW)
+            foreach (GroupPoint vector in pageVectorNOW)
             {
-                foreach (Location point in vector.Points)
+                foreach (cncPoint point in vector.Points)
                 {
                     if (min > point.X) min = point.X;
 
@@ -131,28 +138,28 @@ namespace ToolsGenGkode.pages
             }
 
             //вычислим дельту, для смещения векторов
-            decimal delta = min + max;
+            double delta = min + max;
 
-            List<Segment> vectors = new List<Segment>();
-            List<Location> points = new List<Location>();
+            List<GroupPoint> vectors = new List<GroupPoint>();
+            List<cncPoint> points = new List<cncPoint>();
 
-            foreach (Segment vector in pageVectorNOW)
+            foreach (GroupPoint vector in pageVectorNOW)
             {
-                points = new List<Location>();
+                points = new List<cncPoint>();
 
-                foreach (Location point in vector.Points)
+                foreach (cncPoint point in vector.Points)
                 {
-                    points.Add(new Location((-point.X) + delta, point.Y, 0, 0, 0, false, point.Selected));
+                    points.Add(new cncPoint((-point.X) + delta, point.Y, 0, 0, 0, point.Selected));
                     //point.X = (-point.X) + delta;
                 }
-                tmp.Add(new Segment(points,vector.Selected));
-                points = new List<Location>();
+                tmp.Add(new GroupPoint(points,vector.Selected));
+                points = new List<cncPoint>();
             }
 
             pageVectorNOW = tmp;
 
-            vectors = new List<Segment>();
-            points = new List<Location>();
+            vectors = new List<GroupPoint>();
+            points = new List<cncPoint>();
 
 
         }
@@ -183,8 +190,7 @@ namespace ToolsGenGkode.pages
 
         private void Rotate()
         {
-            CreateEvent("ReloadData_08");
-            CreateEvent("RefreshVector_08");
+            CreateEvent("");
 
 
             // Для определения центра изображения
@@ -194,9 +200,9 @@ namespace ToolsGenGkode.pages
             float minY = 99999;
             float maxY = -99999;
 
-            foreach (Segment vector in pageVectorNOW)
+            foreach (GroupPoint vector in pageVectorNOW)
             {
-                foreach (Location point in vector.Points)
+                foreach (cncPoint point in vector.Points)
                 {
                     if (minX > (float)point.X) minX = (float)point.X;
 
@@ -218,17 +224,17 @@ namespace ToolsGenGkode.pages
 
 
 
-            List<Segment> tmp = new List<Segment>();
+            List<GroupPoint> tmp = new List<GroupPoint>();
 
 
-            List<Segment> vectors = new List<Segment>();
-            List<Location> points = new List<Location>();
+            List<GroupPoint> vectors = new List<GroupPoint>();
+            List<cncPoint> points = new List<cncPoint>();
 
-            foreach (Segment vector in pageVectorNOW)
+            foreach (GroupPoint vector in pageVectorNOW)
             {
-                points = new List<Location>();
+                points = new List<cncPoint>();
 
-                foreach (Location point in vector.Points)
+                foreach (cncPoint point in vector.Points)
                 {
 
                     PointF newPnt = Rotate(new PointF((float)point.X, (float)point.Y), new PointF(X0, Y0), (double)numRotate.Value);
@@ -246,16 +252,16 @@ namespace ToolsGenGkode.pages
                     //TODO: вычислить новые координаты точки
 
                     //////points.Add(new cPoint((decimal)newXpos, (decimal)newYpos, point.Selected));
-                    points.Add(new Location((decimal)newPnt.X, (decimal)newPnt.Y));
+                    points.Add(new cncPoint((double)newPnt.X, (double)newPnt.Y));
                 }
-                tmp.Add(new Segment(points, vector.Selected));
-                points = new List<Location>();
+                tmp.Add(new GroupPoint(points, vector.Selected));
+                points = new List<cncPoint>();
             }
 
             pageVectorNOW = tmp;
 
-            vectors = new List<Segment>();
-            points = new List<Location>();
+            vectors = new List<GroupPoint>();
+            points = new List<cncPoint>();
 
 
 
@@ -316,14 +322,14 @@ namespace ToolsGenGkode.pages
 
             if (pageVectorNOW.Count == 0) return;
 
-            decimal minX = 99999;
-            decimal maxX = -99999;
-            decimal minY = 99999;
-            decimal maxY = -99999;
+            double minX = 99999;
+            double maxX = -99999;
+            double minY = 99999;
+            double maxY = -99999;
 
-            foreach (Segment vector in pageVectorNOW)
+            foreach (GroupPoint vector in pageVectorNOW)
             {
-                foreach (Location point in vector.Points)
+                foreach (cncPoint point in vector.Points)
                 {
                     if (minX > point.X) minX = point.X;
 
@@ -336,14 +342,14 @@ namespace ToolsGenGkode.pages
             }
 
             //вычислим размер
-            decimal X0 = maxX - minX;
-            decimal Y0 = maxY - minY;
+            double X0 = maxX - minX;
+            double Y0 = maxY - minY;
 
-            numXbefore.Value = X0;
-            numYbefore.Value = Y0;
+            numXbefore.Value = (decimal)X0;
+            numYbefore.Value = (decimal)Y0;
 
-            numDeltaX.Value = minX;
-            numDeltaY.Value = minY;
+            numDeltaX.Value = (decimal)minX;
+            numDeltaY.Value = (decimal)minY;
 
 
         }
@@ -361,17 +367,17 @@ namespace ToolsGenGkode.pages
 
         private void button1_Click(object sender, EventArgs e)
         {
-            pageVectorNOW = GlobalFunctions.pageVectorClone(pageVectorIN);
+            pageVectorNOW = VectorProcessing.ListGroupPointClone(pageVectorIN);
             pageImageNOW = null;
 
             getInfoSize();
-            CreateEvent("RefreshVector_07");
+            CreateEvent("");
         }
 
         private void btMirrorX_Click(object sender, EventArgs e)
         {
             MirrorX();
-            CreateEvent("RefreshVector_07");
+            CreateEvent("");
             getInfoSize();
 
         }
@@ -379,27 +385,27 @@ namespace ToolsGenGkode.pages
         private void btMirrorY_Click(object sender, EventArgs e)
         {
             MirrorY();
-            CreateEvent("RefreshVector_07");
+            CreateEvent("");
             getInfoSize();
         }
 
         private void btRotate_Click(object sender, EventArgs e)
         {
             Rotate();
-            CreateEvent("RefreshVector_07");
+            CreateEvent("");
             getInfoSize();
         }
 
         private void btMoveToZero_Click(object sender, EventArgs e)
         {
-            decimal minX = 99999;
-            decimal maxX = -99999;
-            decimal minY = 99999;
-            decimal maxY = -99999;
+            double minX = 99999;
+            double maxX = -99999;
+            double minY = 99999;
+            double maxY = -99999;
 
-            foreach (Segment vector in pageVectorNOW)
+            foreach (GroupPoint vector in pageVectorNOW)
             {
-                foreach (Location point in vector.Points)
+                foreach (cncPoint point in vector.Points)
                 {
                     if (minX > point.X) minX = point.X;
 
@@ -412,9 +418,9 @@ namespace ToolsGenGkode.pages
             }
 
 
-            foreach (Segment vector in pageVectorNOW)
+            foreach (GroupPoint vector in pageVectorNOW)
             {
-                foreach (Location point in vector.Points)
+                foreach (cncPoint point in vector.Points)
                 {
                     point.X -= minX;
                     point.Y -= minY;
@@ -466,16 +472,16 @@ namespace ToolsGenGkode.pages
             decimal deltaX = numXAfter.Value / numXbefore.Value;
             decimal deltaY = numYAfter.Value / numYbefore.Value;
 
-            foreach (Segment vector in pageVectorNOW)
+            foreach (GroupPoint vector in pageVectorNOW)
             {
-                foreach (Location point in vector.Points)
+                foreach (cncPoint point in vector.Points)
                 {
-                    point.X = point.X * deltaX;
-                    point.Y = point.Y * deltaY;
+                    point.X = point.X * (double)deltaX;
+                    point.Y = point.Y * (double)deltaY;
                 }
             }
 
-            CreateEvent("RefreshVector_07");
+            CreateEvent("");
             getInfoSize();
 
         }

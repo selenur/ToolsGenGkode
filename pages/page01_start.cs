@@ -10,25 +10,25 @@ namespace ToolsGenGkode.pages
 {
     public partial class page01_start : UserControl, PageInterface
     {
-        /// <summary>
-        /// Событие при изменении параметров на данной форме
-        /// </summary>
-        public event EventHandler IsChange;
+        ///// <summary>
+        ///// Событие при изменении параметров на данной форме
+        ///// </summary>
+        //public event EventHandler IsChange;
 
-        /// <summary>
-        /// Посылка события главной форме
-        /// </summary>
-        /// <param name="message"></param>
-        void CreateEvent(string message)
-        {
-            MyEventArgs e = new MyEventArgs();
-            e.ActionRun = message;
+        ///// <summary>
+        ///// Посылка события главной форме
+        ///// </summary>
+        ///// <param name="message"></param>
+        //void CreateEvent(string message)
+        //{
+        //    //MyEventArgs e = new MyEventArgs();
+        //    //e.ActionRun = message;
 
-            EventHandler handler = IsChange;
-            if (handler != null) IsChange?.Invoke(this, e);
-        }
+        //    //EventHandler handler = IsChange;
+        //    //if (handler != null) IsChange?.Invoke(this, e);
+        //}
 
-        public page01_start()
+        public page01_start(MainForm mf)
         {
             InitializeComponent();
 
@@ -38,8 +38,8 @@ namespace ToolsGenGkode.pages
 
             pageImageIN = null;
             pageImageNOW = null;
-            pageVectorIN = new List<Segment>();
-            pageVectorNOW = new List<Segment>();
+            pageVectorIN = new List<GroupPoint>();
+            pageVectorNOW = new List<GroupPoint>();
 
 
             toolTips myToolTip1 = new toolTips();
@@ -67,13 +67,7 @@ namespace ToolsGenGkode.pages
             // По умолчанию источником данных сделаем введеный текст
             radioButtonTypeSourceText.Checked = true;
 
-            string sNext = IniParser.GetSetting("page01", "nextpage");
-
-            // И попробуем получить параметр
-            int val = 2;
-            if (sNext != null) int.TryParse(sNext, out val);
-
-            NextPage = val;
+            NextPage = Properties.Settings.Default.page01NextPage;
 
             switch (NextPage)
             {
@@ -97,133 +91,120 @@ namespace ToolsGenGkode.pages
                     break;
 
             }
-
-
-            string sAxesPos = IniParser.GetSetting("page01", "Orientation");
-
+            
+            int sAxesPos = Properties.Settings.Default.page01AxisVariant;
 
             SetOrientation(sAxesPos);
+
             switch (sAxesPos)
             {
-                case "1":
-                    Property.Orientation = 1;
+                case 1:
+                    //Property.Orientation = 1;
                     OrientationVar1.Checked = true;
                     break;
 
-                case "2":
-                    Property.Orientation = 2;
+                case 2:
+                    //Property.Orientation = 2;
                     OrientationVar2.Checked = true;
                     break;
-                case "3":
-                    Property.Orientation = 3;
+                case 3:
+                    //Property.Orientation = 3;
                     OrientationVar3.Checked = true;
                     break;
-                case "4":
-                    Property.Orientation = 4;
+                case 4:
+                    //Property.Orientation = 4;
                     OrientationVar4.Checked = true;
                     break;
                 default:
-                    Property.Orientation = 1;
+                    //Property.Orientation = 1;
                     OrientationVar1.Checked = true;
                     break;
             }
-
-
         }
 
-        private void SetOrientation(string value)
+        private void SetOrientation(int value)
         {
-
-            if (value == "1")
+            switch (value)
             {
-                pictureBoxAxes.Image = Resources.axes_var1;
-                Property.Orientation = 1;
-                IniParser.AddSetting("page01", "Orientation", "1");
-                IniParser.SaveSettings();
+                case 1:
+                    pictureBoxAxes.Image = Resources.axes_var1;
+
+                    break;
+
+                case 2:
+                    pictureBoxAxes.Image = Resources.axes_var2;
+
+                    break;
+                case 3:
+                    pictureBoxAxes.Image = Resources.axes_var3;
+
+                    break;
+                case 4:
+                    pictureBoxAxes.Image = Resources.axes_var4;
+
+                    break;
+                default:
+                    pictureBoxAxes.Image = Resources.axes_var1;
+                    break;
             }
 
-            if (value == "2")
-            {
-                pictureBoxAxes.Image = Resources.axes_var2;
-                Property.Orientation = 2;
-                IniParser.AddSetting("page01", "Orientation", "2");
-                IniParser.SaveSettings();                
-            }
-
-            if (value == "3")
-            {
-                pictureBoxAxes.Image = Resources.axes_var3;
-                Property.Orientation = 3;
-                IniParser.AddSetting("page01", "Orientation", "3");
-                IniParser.SaveSettings();                
-            }
-
-            if (value == "4")
-            {
-                pictureBoxAxes.Image = Resources.axes_var4;
-                Property.Orientation = 4;
-                IniParser.AddSetting("page01", "Orientation", "4");
-                IniParser.SaveSettings();                
-            }
-
-
+            Properties.Settings.Default.page01AxisVariant = value;
+            Properties.Settings.Default.Save();
         }
 
         private void OrientationVar1_CheckedChanged(object sender, EventArgs e)
         {
-            SetOrientation("1");
+            SetOrientation(1);
         }
 
         private void OrientationVar2_CheckedChanged(object sender, EventArgs e)
         {
-            SetOrientation("2");
+            SetOrientation(2);
         }
 
         private void OrientationVar3_CheckedChanged(object sender, EventArgs e)
         {
-            SetOrientation("3");
+            SetOrientation(3);
         }
 
         private void OrientationVar4_CheckedChanged(object sender, EventArgs e)
         {
-            SetOrientation("4");
+            SetOrientation(4);
         }
-
-
 
         private void radioButtonTypeSourceText_CheckedChanged(object sender, EventArgs e)
         {
             NextPage = 2;
-            IniParser.AddSetting("page01","nextpage",NextPage.ToString());
-            IniParser.SaveSettings();
+            Properties.Settings.Default.page01NextPage = NextPage;
+            Properties.Settings.Default.Save();
         }
 
         private void radioButtonTypeSourcePLT_CheckedChanged(object sender, EventArgs e)
         {
             NextPage = 3;
-            IniParser.AddSetting("page01", "nextpage", NextPage.ToString());
-            IniParser.SaveSettings();
+            Properties.Settings.Default.page01NextPage = NextPage;
+            Properties.Settings.Default.Save();
         }
 
         private void radioButtonTypeSourcePicture_CheckedChanged(object sender, EventArgs e)
         {
             NextPage = 4;
-            IniParser.AddSetting("page01", "nextpage", NextPage.ToString());
-            IniParser.SaveSettings();
+            Properties.Settings.Default.page01NextPage = NextPage;
+            Properties.Settings.Default.Save();
         }
 
         private void radioButtonTypeSourcePicture2_CheckedChanged(object sender, EventArgs e)
         {
             NextPage = 5;
-            IniParser.AddSetting("page01", "nextpage", NextPage.ToString());
-            IniParser.SaveSettings();
+            Properties.Settings.Default.page01NextPage = NextPage;
+            Properties.Settings.Default.Save();
         }
 
         private void radioButtonTypeSourceDXF_CheckedChanged(object sender, EventArgs e)
         {
             NextPage = 11;
-            IniParser.AddSetting("page01", "nextpage", NextPage.ToString());
-            IniParser.SaveSettings();
+            Properties.Settings.Default.page01NextPage = NextPage;
+            Properties.Settings.Default.Save();
         }
     }
 
@@ -246,14 +227,13 @@ namespace ToolsGenGkode.pages
         /// </summary>
         int NextPage { get; set; }    // свойство
 
+
+
         Bitmap pageImageIN { get; set; } //входной рисунок
         Bitmap pageImageNOW { get; set; }// текущий рисунок
 
-        List<Segment> pageVectorIN { get; set; } //траектория полученная с предыдущей страницы
-        List<Segment> pageVectorNOW { get; set; } //скорректированная траектория на данной странице
-
-        //List<Location> PagePoints { get; set; } //точки для лазерного выжигания
-
+        List<GroupPoint> pageVectorIN { get; set; } //траектория полученная с предыдущей страницы
+        List<GroupPoint> pageVectorNOW { get; set; } //скорректированная траектория на данной странице
 
         /// <summary>
         /// Вызов полного пересчета данных, на текущей странице, при перекючении на неё
@@ -264,49 +244,49 @@ namespace ToolsGenGkode.pages
         /// Вызов полного пересчета данных, на текущей странице, перед переключением на слеющую
         /// </summary>
         void actionAfter(); // метод
-
-        
     }
 
     /// <summary>
-    /// Класс описания сегмента, состоящего из точек
+    /// Класс описания группы точек
     /// </summary>
-    public class Segment
+    public class GroupPoint
     {
-        /// <summary>
-        /// Являются-ли точки в сегменте, самостоятельными, а не являются точками цельного отрезка
-        /// </summary>
-        public bool IndividualPoints { get; set; }
         /// <summary>
         /// Набор точек
         /// </summary>
-        public List<Location> Points { get; set; }
+        public List<cncPoint> Points { get; set; }
+
+        /// <summary>
+        /// Направление траектории, применяется для лазерной гравировки
+        /// </summary>
+        public DirrectionGroupPoint Dirrect { get; set; }
+
         /// <summary>
         /// Выделен ли данный сегмент в пользовательском диалоге (применяется для 3D вуализации)
         /// </summary>
         public bool Selected { get; set; }
 
-        //TODO: нафига???
-        public bool TempTraectory { get; set; }
-
         /// <summary>
-        /// Направление траектории, применяется для лазерной гравировки
+        /// Являются-ли точки в сегменте, самостоятельными, а не кривой состоящей из точек (применяется для 3D вуализации)
         /// </summary>
-        public DirrectionSegment Dirrect { get; set; }
+        public bool IndividualPoints { get; set; }
+
+        //TODO: траектория для предварительного просмотра смещения контура
+        //public bool TempTraectory { get; set; }
 
         // Создание отдельной копии
-        public Segment Clone()
+        public GroupPoint Clone()
         {
-            Segment segReturn = new Segment();
+            GroupPoint segReturn = new GroupPoint();
 
             segReturn.Selected = Selected;
-            segReturn.TempTraectory = TempTraectory;
+            //segReturn.TempTraectory = TempTraectory;
             segReturn.Dirrect = Dirrect;
             segReturn.IndividualPoints = IndividualPoints;
 
-            segReturn.Points = new List<Location>();
+            segReturn.Points = new List<cncPoint>();
 
-            foreach (Location VARIABLE in Points)
+            foreach (cncPoint VARIABLE in Points)
             {
                 segReturn.Points.Add(VARIABLE.Clone());
             }
@@ -314,78 +294,75 @@ namespace ToolsGenGkode.pages
             return segReturn;
         }
 
-        public Segment()
+        public GroupPoint()
         {
-            Points = new List<Location>();
+            Points = new List<cncPoint>();
             Selected = false;
-            TempTraectory = false;
-            Dirrect = DirrectionSegment.LEFT;
+            //TempTraectory = false;
+            Dirrect = DirrectionGroupPoint.Left;
             IndividualPoints = false;
         }
 
-        public Segment(List<Location> _points, bool _select = false, bool _tempTraectory = false, DirrectionSegment _dir = DirrectionSegment.LEFT, bool _individ = false )
+        public GroupPoint(List<cncPoint> _points, bool _select = false, DirrectionGroupPoint _dir = DirrectionGroupPoint.Left, bool _individ = false )
         {
             Points = _points;
             Selected = _select;
-            TempTraectory = _tempTraectory;
+            //TempTraectory = _tempTraectory;
             Dirrect = _dir;
             IndividualPoints = _individ;
         }
 
-        public PointF[] GetArray()
-        {
-            PointF[] arr = new PointF[Points.Count];
+        //public PointF[] GetArray()
+        //{
+        //    PointF[] arr = new PointF[Points.Count];
 
-            int ind = 0;
+        //    int ind = 0;
 
-            foreach (Location VARIABLE in Points)
-            {
-                arr[ind++] = new PointF((float)VARIABLE.X,(float)VARIABLE.Y);
-            }
+        //    foreach (cncPoint VARIABLE in Points)
+        //    {
+        //        arr[ind++] = new PointF((float)VARIABLE.X,(float)VARIABLE.Y);
+        //    }
 
-            return arr;
-        }
+        //    return arr;
+        //}
 
-        public Segment(Segment _source)
-        {
-            Selected = _source.Selected;
-            TempTraectory = _source.TempTraectory;
-            Points = new List<Location>();
-            Dirrect = _source.Dirrect;
-            IndividualPoints = _source.IndividualPoints;
+        //public GroupPoint(GroupPoint _source)
+        //{
+        //    Selected = _source.Selected;
+        //    //TempTraectory = _source.TempTraectory;
+        //    Points = new List<cncPoint>();
+        //    Dirrect = _source.Dirrect;
+        //    IndividualPoints = _source.IndividualPoints;
 
-            foreach (Location VARIABLE in _source.Points)
-            {
-                Points.Add(new Location(VARIABLE));
-            }
-        }
+        //    foreach (cncPoint VARIABLE in _source.Points)
+        //    {
+        //        Points.Add(new cncPoint(VARIABLE));
+        //    }
+        //}
     }
 
     /// <summary>
     /// Класс описания положения координаты
     /// </summary>
-    public class Location
+    public class cncPoint
     {
-        public decimal X { get; set; }
-        public decimal Y { get; set; }
-        public int Svalue { get; set; } // мощность
-        public int Fvalue { get; set; } // скорость
-        public int Pvalue { get; set; } // задержка
-        public bool SpindelOn { get; set; } //включен шпиндель/лазер
-        public bool Selected { get; set; } //для визуального отображения
-        public int Bright { get; set; } // яркость точки
+        public double X { get; set; }
+        public double Y { get; set; }
+        public int Svalue { get; set; }    // мощность
+        public int Fvalue { get; set; }    // скорость
+        public int Pvalue { get; set; }    // задержка
+        public int Bright { get; set; }    // яркость точки
+        public bool Selected { get; set; } // для визуального отображения
 
-
-        public Location Clone()
+        public cncPoint Clone()
         {
-            Location locReturn = new Location();
+            cncPoint locReturn = new cncPoint();
 
             locReturn.X = X;
             locReturn.Y = Y;
             locReturn.Svalue = Svalue;
             locReturn.Fvalue = Fvalue;
             locReturn.Pvalue = Pvalue;
-            locReturn.SpindelOn = SpindelOn;
             locReturn.Selected = Selected;
             locReturn.Bright = Bright;
 
@@ -395,14 +372,13 @@ namespace ToolsGenGkode.pages
         /// <summary>
         /// Конструктор класса
         /// </summary>
-        public Location(decimal _x = 0,decimal _y = 0, int _s = 0, int _f = 0, int _p = 0, bool _spindelOn = false, bool _select = false, int _Bright = 255)
+        public cncPoint(double _x = 0, double _y = 0, int _s = 0, int _f = 0, int _p = 0, bool _select = false, int _Bright = 255)
         {
             X         = _x;
             Y         = _y;
             Svalue    = _s;
             Fvalue    = _f;
             Pvalue    = _p;
-            SpindelOn = _spindelOn;
             Selected  = _select;
             Bright = _Bright;
         }
@@ -411,14 +387,13 @@ namespace ToolsGenGkode.pages
         /// Конструктор на основании себя
         /// </summary>
         /// <param name="_source"></param>
-        public Location(Location _source)
+        public cncPoint(cncPoint _source)
         {
             X         = _source.X;
             Y         = _source.Y;
             Svalue    = _source.Svalue;
             Fvalue    = _source.Fvalue;
             Pvalue    = _source.Pvalue;
-            SpindelOn = _source.SpindelOn;
             Selected  = _source.Selected;
             Bright = _source.Bright;
         }
@@ -428,26 +403,46 @@ namespace ToolsGenGkode.pages
         {
             get
             {
-                if (key == "X") return X;
+                if (key.ToUpper() == "X") return X;
 
-                if (key == "Y") return Y;
+                if (key.ToUpper() == "Y") return Y;
 
                 return null;
             }
             set
             {
-                if (key == "X") X = (decimal)value;
+                if (key.ToUpper() == "X")
+                {
+                    try
+                    {
+                        X = (double)value;
+                    }
+                    catch (Exception)
+                    {
+                        X = 0;
+                    }
+                }
 
-                if (key == "Y") Y = (decimal)value;
+                if (key.ToUpper() == "Y")
+                {
+                    try
+                    {
+                        Y = (double)value;
+                    }
+                    catch (Exception)
+                    {
+                        Y = 0;
+                    }
+                }
 
             }
         }
     }
 
     // направление сегмента
-    public enum DirrectionSegment
+    public enum DirrectionGroupPoint
     {
-        LEFT = 0,
-        RIGHT = 1
+        Left = 0,
+        Right = 1
     }
 }

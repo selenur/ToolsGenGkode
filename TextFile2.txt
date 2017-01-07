@@ -427,3 +427,180 @@
 //    graphics.DrawImage(oldBitmap, new Point(0, 0));
 //    return newBitmap;
 //}
+
+
+
+
+
+
+
+        //public static Bitmap GetGrayScaleImage(Bitmap sourceImage, bool ReversingColor = false)
+        //{
+        //    Bitmap tempImage = sourceImage;
+
+        //    BitmapData bmd = tempImage.LockBits(new Rectangle(0, 0, sourceImage.Width, sourceImage.Height), ImageLockMode.ReadWrite, sourceImage.PixelFormat);
+
+        //    // Получаем адрес первой линии.
+        //    IntPtr ptr = bmd.Scan0;
+        //    // Вычисляем необходимый размер, для выделения памяти
+        //    int numBytes = bmd.Stride * bmd.Height;
+
+        //    // TODO: bmd.Stride - это общее выделенное количество байт для одной линии
+        //    // TODO: bmd.Width - реальное количество байт занятых одной линией (сколько отводится под изображение)
+        //    // TODO: при работе с байтами учитывать что bmd.Stride может быть больше bmd.Width
+
+        //    // выделяем память
+        //    byte[] DataImage = new byte[numBytes];
+
+        //    // Копируем значения из памяти в массив.
+        //    Marshal.Copy(ptr, DataImage, 0, numBytes);
+
+        //    // Достигли конфа файла
+        //    bool TheEndData = false;
+
+        //    // Координаты основного прохода
+        //    int mainX = 0;
+        //    int mainY = 0;
+
+        //    int sizeOnePicsel = 1;
+
+        //    switch (bmd.PixelFormat)
+        //    {
+        //        case PixelFormat.Format32bppArgb:
+        //            sizeOnePicsel = 4;
+        //            break;
+        //        case PixelFormat.Format24bppRgb:
+        //            sizeOnePicsel = 3;
+        //            break;
+        //        default:
+        //            MessageBox.Show("Формат изображения: " + bmd.PixelFormat.ToString() + " пока не поддерживается!!!");
+        //            return null;
+        //            //break;
+        //    }
+
+
+
+        //    while (!TheEndData)
+        //    {
+        //        int pos = (bmd.Stride * mainY) + (mainX * sizeOnePicsel);
+
+        //        //в зависимости от размерности, тут может отличаться количество байт на пиксель
+        //        byte CurrPixelR = DataImage[pos];
+        //        byte CurrPixelG = DataImage[pos + 1];
+        //        byte CurrPixelB = DataImage[pos + 2];
+
+        //        int cR = (int)CurrPixelR;
+        //        int cG = (int)CurrPixelG;
+        //        int cB = (int)CurrPixelB;
+
+        //        int grayScale = (int)(cR + cG + cB);
+
+        //        grayScale = grayScale / 3;
+
+        //        if (ReversingColor)
+        //        {
+        //            grayScale = 255 - grayScale;
+
+        //        }
+
+        //        DataImage[pos] = (byte)grayScale;
+        //        DataImage[pos + 1] = (byte)grayScale;
+        //        DataImage[pos + 2] = (byte)grayScale;
+
+        //        // дошли до конца линии
+        //        if (mainX == (bmd.Width - 1))
+        //        {
+        //            // проверим есть-ли ещё линия дальше
+        //            if (mainY == (bmd.Height - 1))
+        //            {
+        //                //это уже конец
+        //                TheEndData = true;
+        //            }
+        //            else
+        //            {
+        //                //переходим на следующую строку
+        //                mainX = 0;
+        //                mainY++;
+        //            }
+        //        }
+        //        else
+        //        {
+        //            mainX++;
+        //        }
+        //    }
+
+        //    Marshal.Copy(DataImage, 0, ptr, numBytes);
+
+        //    tempImage.UnlockBits(bmd);
+
+        //    return tempImage;
+
+        //}
+
+
+
+
+
+//private Bitmap GetTraectory(List<cVector> lines)
+//{
+//    if (lines.Count == 0) return new Bitmap(100, 100, PixelFormat.Format24bppRgb); ;
+
+//    decimal minX = 999999;
+//    decimal maxX = -999999;
+//    decimal minY = 999999;
+//    decimal maxY = -999999;
+
+//    foreach (cVector line in lines)
+//    {
+//        foreach (cPoint point in line.Points)
+//        {
+//            if (minX > point.X) minX = point.X;
+//            if (maxX < point.X) maxX = point.X;
+//            if (minY > point.Y) minY = point.Y;
+//            if (maxY < point.Y) maxY = point.Y;
+//        }
+//    }
+
+//    Bitmap bitmap = new Bitmap((int)maxX + 4, (int)maxY + 4, PixelFormat.Format24bppRgb);
+//    // Создаем объект Graphics для вычисления высоты и ширины текста.
+//    Graphics graphics = Graphics.FromImage(bitmap);
+//    // Задаем цвет фона.
+//    graphics.Clear(Color.White);
+//    // Задаем параметры анти-алиасинга
+//    graphics.SmoothingMode = SmoothingMode.None;
+//    graphics.TextRenderingHint = TextRenderingHint.SingleBitPerPixel;
+
+//    //********************************************************
+
+//    Pen blackPen = new Pen(Color.BlueViolet, 1);
+//    Pen redPen = new Pen(Color.Red, 2);
+//    Pen greenPen = new Pen(Color.DarkGreen, 2);
+//    Pen pointPen = new Pen(Color.DarkOrange, 4);
+
+//    foreach (cVector line in lines)
+//    {
+//        if (line.Selected) graphics.DrawLines(redPen, line.GetArray());
+//        else graphics.DrawLines(blackPen,line.GetArray());
+
+//        line.Selected = false;
+
+//        if (line.TempTraectory) graphics.DrawLines(greenPen, line.GetArray());
+
+//        line.TempTraectory = false;
+
+//        foreach (cPoint point in line.Points)
+//        {
+
+//            if (point.Selected) graphics.DrawEllipse(pointPen, (int)point.X  - 2, (int)point.Y  - 2, 4, 4);
+
+//            point.Selected = false;
+//        }
+//    }
+
+//    //*******************************************
+
+//    graphics.Flush();
+
+//    return bitmap;
+
+//}

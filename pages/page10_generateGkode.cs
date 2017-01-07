@@ -44,7 +44,7 @@ namespace ToolsGenGkode.pages
         }
 
 
-        public page10_generateGkode()
+        public page10_generateGkode(MainForm mf)
         {
             InitializeComponent();
 
@@ -54,7 +54,7 @@ namespace ToolsGenGkode.pages
             NextPage = 0;
 
             pageImageNOW = null;
-            pageVectorNOW = new List<Segment>();
+            pageVectorNOW = new List<GroupPoint>();
 
 
 
@@ -78,13 +78,13 @@ namespace ToolsGenGkode.pages
 
         public Bitmap pageImageIN { get; set; }
         public Bitmap pageImageNOW { get; set; }
-        public List<Segment> pageVectorIN { get; set; }
-        public List<Segment> pageVectorNOW { get; set; }
-        public List<Location> PagePoints { get; set; }
+        public List<GroupPoint> pageVectorIN { get; set; }
+        public List<GroupPoint> pageVectorNOW { get; set; }
+        public List<cncPoint> PagePoints { get; set; }
 
         public void actionBefore()
         {
-            pageVectorNOW = GlobalFunctions.pageVectorClone(pageVectorIN);
+            pageVectorNOW = VectorProcessing.ListGroupPointClone(pageVectorIN);
             pageImageNOW = null;
         }
 
@@ -112,19 +112,29 @@ namespace ToolsGenGkode.pages
 
         private void btGenerateCode_Click(object sender, EventArgs e)
         {
+            if (CurrProfile._commands.Count > 0)
+            {
+                //нужно показать диалог с параметрами
+                ProfileUserSetting pf = new ProfileUserSetting();
+                pf.uc = CurrProfile._commands;
+                pf.ShowDialog();
+            }
+
+
+
             Cursor.Current = Cursors.WaitCursor;
 
             // сюда будем писать текст
             StringBuilder sb = new StringBuilder();
 
-            decimal maxX = -999999;
-            decimal minX =  999999;
-            decimal maxY = -999999;
-            decimal minY =  999999;
+            double maxX = -999999;
+            double minX =  999999;
+            double maxY = -999999;
+            double minY =  999999;
 
-            foreach (Segment _segment in pageVectorNOW)
+            foreach (GroupPoint _segment in pageVectorNOW)
             {
-                foreach (Location point in _segment.Points)
+                foreach (cncPoint point in _segment.Points)
                 {
                     if (maxX < point.X) maxX = point.X;
 
@@ -143,15 +153,20 @@ namespace ToolsGenGkode.pages
             variableDataValues.Add(new VariableValue((double)minX, "minX"));
             variableDataValues.Add(new VariableValue((double)minY, "minY"));
 
+            foreach (UserCommand VARIABLE in CurrProfile._commands)
+            {
+                variableDataValues.Add(new VariableValue((double)VARIABLE.Value, VARIABLE.Name));
+            }
+
             CurrProfile.GetHead(ref sb, ref variableDataValues);
 
-            foreach (Segment _segment in pageVectorNOW)
+            foreach (GroupPoint _segment in pageVectorNOW)
             {
                 CurrProfile.GetBeforeSegment(ref sb, _segment, ref variableDataValues);
 
                 bool FirstPoint = true; //для возможности проскочить первую точку, если это будет необходимо
 
-                foreach (Location point in _segment.Points)
+                foreach (cncPoint point in _segment.Points)
                 {
                     //TODO:
 
@@ -434,6 +449,8 @@ namespace ToolsGenGkode.pages
         private List<string> _afterSegmentR;
         private List<string> _spoint;
 
+        public List<UserCommand> _commands; 
+
         /// <summary>
         /// Constryctor
         /// </summary>
@@ -449,6 +466,8 @@ namespace ToolsGenGkode.pages
             _afterSegmentL  = new List<string>();
             _afterSegmentR  = new List<string>();
             _spoint = new List<string>();
+
+            _commands = new List<UserCommand>();
 
             FileName = _fileName;
 
@@ -483,6 +502,16 @@ namespace ToolsGenGkode.pages
 
                 if (strRead == "")
                 {
+                    strRead = fs.ReadLine();
+                    continue;
+                }
+
+                if (strRead.StartsWith("@"))
+                {
+                    UserCommand uc = new UserCommand(strRead);
+
+                    if (uc.Description != "") _commands.Add(new UserCommand(uc));
+
                     strRead = fs.ReadLine();
                     continue;
                 }
@@ -840,7 +869,7 @@ namespace ToolsGenGkode.pages
         }
 
         // сюда передается с трока с тектом и параметрами
-        private void FillStringLine(string INString, ref StringBuilder _sb, ref List<VariableValue> _variableDataValues, Segment _segment = null, Location _point = null)
+        private void FillStringLine(string INString, ref StringBuilder _sb, ref List<VariableValue> _variableDataValues, GroupPoint groupPoint = null, cncPoint _point = null)
         {
 
             //распарсим строку на части
@@ -894,9 +923,9 @@ namespace ToolsGenGkode.pages
                     //обновим данные в переменных
 
 
-                    if (_segment != null) //Если это сегмент из точек
+                    if (groupPoint != null) //Если это сегмент из точек
                     {
-                            if (_segment.Points.Count > 0)
+                            if (groupPoint.Points.Count > 0)
                             {
 
 
@@ -910,7 +939,7 @@ namespace ToolsGenGkode.pages
                                     }
                                 }
 
-                                _variableDataValues.Add(new VariableValue((double)_segment.Points[0].X, "X"));
+                                _variableDataValues.Add(new VariableValue((double)groupPoint.Points[0].X, "X"));
 
 
                                 foreach (VariableValue VARIABLE in _variableDataValues)
@@ -923,7 +952,7 @@ namespace ToolsGenGkode.pages
                                     }
                                 }
 
-                                _variableDataValues.Add(new VariableValue((double)_segment.Points[0].Y, "Y"));
+                                _variableDataValues.Add(new VariableValue((double)groupPoint.Points[0].Y, "Y"));
                         }
                     }
 
@@ -1116,7 +1145,7 @@ namespace ToolsGenGkode.pages
             }
         }
 
-        public void GetBeforeSegment(ref StringBuilder _sb,Segment _segment, ref List<VariableValue> _variableDataValues)
+        public void GetBeforeSegment(ref StringBuilder _sb,GroupPoint groupPoint, ref List<VariableValue> _variableDataValues)
         {
             foreach (string str in _beforeSegment)
             {
@@ -1124,7 +1153,7 @@ namespace ToolsGenGkode.pages
 
                 if (ss == "") continue;
 
-                FillStringLine(ss, ref _sb, ref _variableDataValues, _segment);
+                FillStringLine(ss, ref _sb, ref _variableDataValues, groupPoint);
             }
 
             foreach (string str in _beforeSegmentL)
@@ -1133,7 +1162,7 @@ namespace ToolsGenGkode.pages
 
                 if (ss == "") continue;
 
-                FillStringLine(ss, ref _sb, ref _variableDataValues, _segment);
+                FillStringLine(ss, ref _sb, ref _variableDataValues, groupPoint);
             }
             foreach (string str in _beforeSegmentR)
             {
@@ -1141,13 +1170,13 @@ namespace ToolsGenGkode.pages
 
                 if (ss == "") continue;
 
-                FillStringLine(ss, ref _sb, ref _variableDataValues, _segment);
+                FillStringLine(ss, ref _sb, ref _variableDataValues, groupPoint);
             }
 
 
         }
 
-        public void GetAfterSegment(ref StringBuilder _sb, Segment _segment, ref List<VariableValue> _variableDataValues)
+        public void GetAfterSegment(ref StringBuilder _sb, GroupPoint groupPoint, ref List<VariableValue> _variableDataValues)
         {
             foreach (string str in _afterSegment)
             {
@@ -1155,7 +1184,7 @@ namespace ToolsGenGkode.pages
 
                 if (ss == "") continue;
 
-                FillStringLine(ss, ref _sb, ref _variableDataValues, _segment);
+                FillStringLine(ss, ref _sb, ref _variableDataValues, groupPoint);
             }
 
             foreach (string str in _afterSegmentL)
@@ -1164,7 +1193,7 @@ namespace ToolsGenGkode.pages
 
                 if (ss == "") continue;
 
-                FillStringLine(ss, ref _sb, ref _variableDataValues, _segment);
+                FillStringLine(ss, ref _sb, ref _variableDataValues, groupPoint);
             }
 
             foreach (string str in _afterSegmentR)
@@ -1173,13 +1202,13 @@ namespace ToolsGenGkode.pages
 
                 if (ss == "") continue;
 
-                FillStringLine(ss, ref _sb, ref _variableDataValues, _segment);
+                FillStringLine(ss, ref _sb, ref _variableDataValues, groupPoint);
             }
         }
 
 
 
-        public void GetPoint(ref StringBuilder _sb, Location _point, bool _firstPoint, ref List<VariableValue> _variableDataValues)
+        public void GetPoint(ref StringBuilder _sb, cncPoint _point, bool _firstPoint, ref List<VariableValue> _variableDataValues)
         {
             foreach (string str in _spoint)
             {
@@ -1199,6 +1228,61 @@ namespace ToolsGenGkode.pages
         }
     }
 
+    /// <summary>
+    /// Пользовательская команда, из профиля
+    /// </summary>
+    public class UserCommand
+    {
+        private string _name;
+        private string _description;
+        private double _value;
+
+
+        public UserCommand(string strForParse)
+        {
+            string tmpStr = strForParse.Trim();
+
+            if (tmpStr.Length == 0) return;
+
+            tmpStr = tmpStr.Replace("@", "");
+
+            string[] arrstr = tmpStr.Split('|');
+
+            if (arrstr.Length != 3) return;
+
+            _name = arrstr[0].Trim();
+            _description = arrstr[1].Trim();
+            _value = 0;
+
+            double.TryParse(arrstr[2].Trim(), out _value);
+
+        }
+
+
+        public UserCommand(UserCommand uc)
+        {
+            _name = uc.Name;
+            _description = uc.Description;
+            _value = uc.Value;
+        }
+
+
+        public string Name
+        {
+            get { return _name; }
+        }
+
+        public string Description
+        {
+            get { return _description; }
+        }
+
+        public double Value
+        {
+            get { return _value; }
+            set { _value = value; }
+        }
+    }
 
     //public class LastValueCommand
     //{

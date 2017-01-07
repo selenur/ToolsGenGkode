@@ -65,6 +65,7 @@
             this.btZoom100.Name = "btZoom100";
             this.btZoom100.Size = new System.Drawing.Size(138, 23);
             this.btZoom100.TabIndex = 25;
+            this.btZoom100.Tag = "_SetScale100_";
             this.btZoom100.Text = "Уст. масштаб 100%";
             this.btZoom100.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btZoom100.UseVisualStyleBackColor = true;
@@ -77,6 +78,7 @@
             this.radioButton_Strech.Name = "radioButton_Strech";
             this.radioButton_Strech.Size = new System.Drawing.Size(140, 17);
             this.radioButton_Strech.TabIndex = 21;
+            this.radioButton_Strech.Tag = "_strech_";
             this.radioButton_Strech.Text = "Растянуть на всё окно";
             this.radioButton_Strech.UseVisualStyleBackColor = true;
             this.radioButton_Strech.CheckedChanged += new System.EventHandler(this.radioButton_Strech_CheckedChanged);
@@ -90,6 +92,7 @@
             this.radioButton_FullSize.Size = new System.Drawing.Size(117, 17);
             this.radioButton_FullSize.TabIndex = 22;
             this.radioButton_FullSize.TabStop = true;
+            this.radioButton_FullSize.Tag = "_realSize_";
             this.radioButton_FullSize.Text = "Реальный размер";
             this.radioButton_FullSize.UseVisualStyleBackColor = true;
             this.radioButton_FullSize.CheckedChanged += new System.EventHandler(this.radioButton_FullSize_CheckedChanged);

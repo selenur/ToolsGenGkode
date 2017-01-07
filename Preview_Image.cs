@@ -80,7 +80,7 @@ namespace ToolsGenGkode
                 //переопределим позже
                 Rectangle destRegion = new Rectangle();
 
-                switch (Property.Orientation)
+                switch (Properties.Settings.Default.page01AxisVariant)
                 {
                     case 1:
                         destRegion = new Rectangle(6, 0, bmp.Width, bmp.Height);
@@ -108,7 +108,7 @@ namespace ToolsGenGkode
                 //grD.DrawString("X", this.Font, Brushes.Black, bmp.Width+ 10, 6);
                 //grD.DrawString("Y", this.Font, Brushes.Black, 6, bmp.Height + 10);
 
-                switch (Property.Orientation)
+                switch (Properties.Settings.Default.page01AxisVariant)
                 {
                     case 1:
                         grD.FillRectangle(Brushes.Beige, new Rectangle(0, sizeY - 5, sizeX, sizeY)); //полоска оси
@@ -153,13 +153,13 @@ namespace ToolsGenGkode
                 }
 
                 // FOR XXX
-                if (Property.Orientation == 1 || Property.Orientation == 2)
+                if (Properties.Settings.Default.page01AxisVariant == 1 || Properties.Settings.Default.page01AxisVariant == 2)
                 {
                     int st0 = 0;
                     int st1 = 5;
                     int st2 = 3;
 
-                    if (Property.Orientation == 1)
+                    if (Properties.Settings.Default.page01AxisVariant == 1)
                     {
                         st0 = sizeY;
                         st1 = sizeY - 5;
@@ -177,14 +177,14 @@ namespace ToolsGenGkode
                     }
                 }
 
-                if (Property.Orientation == 3 || Property.Orientation == 4)
+                if (Properties.Settings.Default.page01AxisVariant == 3 || Properties.Settings.Default.page01AxisVariant == 4)
                 {
                     int st0 = 0;
 
                     int st1 = 5;
                     int st2 = 3;
 
-                    if (Property.Orientation == 4)
+                    if (Properties.Settings.Default.page01AxisVariant == 4)
                     {
                         st0 = sizeY;
                         st1 = sizeY - 5;
@@ -203,13 +203,13 @@ namespace ToolsGenGkode
                 }
 
                 //FOR YYYY
-                if (Property.Orientation == 1 || Property.Orientation == 4)
+                if (Properties.Settings.Default.page01AxisVariant == 1 || Properties.Settings.Default.page01AxisVariant == 4)
                 {
                     int st0 = 0;
                     int st1 = 5;
                     int st2 = 3;
 
-                    if (Property.Orientation == 4)
+                    if (Properties.Settings.Default.page01AxisVariant == 4)
                     {
                         st0 = sizeX;
                         st1 = sizeX - 5;
@@ -227,14 +227,14 @@ namespace ToolsGenGkode
                     }
                 }
 
-                if (Property.Orientation == 2 || Property.Orientation == 3)
+                if (Properties.Settings.Default.page01AxisVariant == 2 || Properties.Settings.Default.page01AxisVariant == 3)
                 {
                     int st0 = 0;
 
                     int st1 = 5;
                     int st2 = 3;
 
-                    if (Property.Orientation == 3)
+                    if (Properties.Settings.Default.page01AxisVariant == 3)
                     {
                         st0 = sizeX;
                         st1 = sizeX - 5;

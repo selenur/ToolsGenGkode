@@ -56,6 +56,7 @@ namespace ToolsGenGkode.pages
             this.groupBox4.Size = new System.Drawing.Size(633, 203);
             this.groupBox4.TabIndex = 8;
             this.groupBox4.TabStop = false;
+            this.groupBox4.Tag = "_Gkode_";
             this.groupBox4.Text = "G-код";
             // 
             // labelCountRow
@@ -75,6 +76,7 @@ namespace ToolsGenGkode.pages
             this.buttonSaveToFile.Name = "buttonSaveToFile";
             this.buttonSaveToFile.Size = new System.Drawing.Size(138, 41);
             this.buttonSaveToFile.TabIndex = 2;
+            this.buttonSaveToFile.Tag = "_saveToFile_";
             this.buttonSaveToFile.Text = "           Сохранить в файл";
             this.buttonSaveToFile.UseVisualStyleBackColor = true;
             this.buttonSaveToFile.Click += new System.EventHandler(this.buttonSaveToFile_Click);
@@ -87,6 +89,7 @@ namespace ToolsGenGkode.pages
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(138, 45);
             this.button1.TabIndex = 1;
+            this.button1.Tag = "_copyYoBuffer_";
             this.button1.Text = "        Скопировать в буффер";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -108,6 +111,7 @@ namespace ToolsGenGkode.pages
             this.btGenerateCode.Name = "btGenerateCode";
             this.btGenerateCode.Size = new System.Drawing.Size(138, 46);
             this.btGenerateCode.TabIndex = 7;
+            this.btGenerateCode.Tag = "_GenGkode_";
             this.btGenerateCode.Text = "            Генерация       G-кода";
             this.btGenerateCode.UseVisualStyleBackColor = true;
             this.btGenerateCode.Click += new System.EventHandler(this.btGenerateCode_Click);
@@ -130,6 +134,7 @@ namespace ToolsGenGkode.pages
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(150, 13);
             this.label8.TabIndex = 18;
+            this.label8.Tag = "_selectProfile_";
             this.label8.Text = "Профиль генерации G-кода:";
             // 
             // buttonAddNewProfile

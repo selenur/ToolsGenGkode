@@ -41,15 +41,15 @@ namespace ToolsGenGkode.pages
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.btCloseTraectory = new System.Windows.Forms.Button();
             this.ForGena = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericGena = new System.Windows.Forms.NumericUpDown();
             this.checkBoxGena = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.ForGena.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericGena)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericGena)).BeginInit();
             this.SuspendLayout();
             // 
             // treeViewVectors
@@ -66,6 +66,7 @@ namespace ToolsGenGkode.pages
             this.btDelVector.Name = "btDelVector";
             this.btDelVector.Size = new System.Drawing.Size(164, 41);
             this.btDelVector.TabIndex = 4;
+            this.btDelVector.Tag = "_delSelected_";
             this.btDelVector.Text = "Удалить выбранный отрезок/точку";
             this.btDelVector.UseVisualStyleBackColor = true;
             this.btDelVector.Click += new System.EventHandler(this.btDelVector_Click);
@@ -78,6 +79,7 @@ namespace ToolsGenGkode.pages
             this.btLoadVectors.Name = "btLoadVectors";
             this.btLoadVectors.Size = new System.Drawing.Size(217, 43);
             this.btLoadVectors.TabIndex = 7;
+            this.btLoadVectors.Tag = "_resetAllActions_";
             this.btLoadVectors.Text = "Сбросить все изменения       внесенные на данной странице";
             this.btLoadVectors.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btLoadVectors.UseVisualStyleBackColor = true;
@@ -89,6 +91,7 @@ namespace ToolsGenGkode.pages
             this.btOptimize1.Name = "btOptimize1";
             this.btOptimize1.Size = new System.Drawing.Size(101, 43);
             this.btOptimize1.TabIndex = 10;
+            this.btOptimize1.Tag = "_skipIdleMotion_";
             this.btOptimize1.Text = "Сокращение холостого хода";
             this.btOptimize1.UseVisualStyleBackColor = true;
             this.btOptimize1.Click += new System.EventHandler(this.btOptimize1_Click);
@@ -99,6 +102,7 @@ namespace ToolsGenGkode.pages
             this.btOptimize2.Name = "btOptimize2";
             this.btOptimize2.Size = new System.Drawing.Size(174, 43);
             this.btOptimize2.TabIndex = 11;
+            this.btOptimize2.Tag = "_CombineNearbyPoint_";
             this.btOptimize2.Text = "Объеденить линии с одинаковыми координатами";
             this.btOptimize2.UseVisualStyleBackColor = true;
             this.btOptimize2.Click += new System.EventHandler(this.btOptimize2_Click);
@@ -119,6 +123,7 @@ namespace ToolsGenGkode.pages
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(126, 43);
             this.button1.TabIndex = 13;
+            this.button1.Tag = "_simplification_";
             this.button1.Text = "Вариант упрощения траектории";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -153,6 +158,7 @@ namespace ToolsGenGkode.pages
             this.btCloseTraectory.Name = "btCloseTraectory";
             this.btCloseTraectory.Size = new System.Drawing.Size(100, 43);
             this.btCloseTraectory.TabIndex = 15;
+            this.btCloseTraectory.Tag = "_CloseLoop_";
             this.btCloseTraectory.Text = "Замкнуть траектории";
             this.btCloseTraectory.UseVisualStyleBackColor = true;
             this.btCloseTraectory.Click += new System.EventHandler(this.btCloseTraectory_Click);
@@ -171,6 +177,32 @@ namespace ToolsGenGkode.pages
             this.ForGena.TabStop = false;
             this.ForGena.Text = "Для Гены";
             this.ForGena.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(284, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(96, 13);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "количество точек";
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(309, 30);
+            this.numericUpDown2.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(61, 20);
+            this.numericUpDown2.TabIndex = 16;
+            this.numericUpDown2.Value = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
             // 
             // numericGena
             // 
@@ -220,32 +252,6 @@ namespace ToolsGenGkode.pages
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Location = new System.Drawing.Point(309, 30);
-            this.numericUpDown2.Minimum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(61, 20);
-            this.numericUpDown2.TabIndex = 16;
-            this.numericUpDown2.Value = new decimal(new int[] {
-            6,
-            0,
-            0,
-            0});
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(284, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 13);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "количество точек";
-            // 
             // page06_VectorEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -267,8 +273,8 @@ namespace ToolsGenGkode.pages
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ForGena.ResumeLayout(false);
             this.ForGena.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericGena)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericGena)).EndInit();
             this.ResumeLayout(false);
 
         }

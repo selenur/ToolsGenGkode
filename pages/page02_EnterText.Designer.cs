@@ -43,6 +43,7 @@ namespace ToolsGenGkode.pages
             this.rbFontFromFile = new System.Windows.Forms.RadioButton();
             this.nameFontFile = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbFontToImage2 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.textSize)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -61,12 +62,12 @@ namespace ToolsGenGkode.pages
             // rbFontToImage
             // 
             this.rbFontToImage.AutoSize = true;
-            this.rbFontToImage.Location = new System.Drawing.Point(277, 19);
+            this.rbFontToImage.Location = new System.Drawing.Point(230, 19);
             this.rbFontToImage.Name = "rbFontToImage";
-            this.rbFontToImage.Size = new System.Drawing.Size(178, 17);
+            this.rbFontToImage.Size = new System.Drawing.Size(216, 17);
             this.rbFontToImage.TabIndex = 69;
-            this.rbFontToImage.Tag = "_textToImage_";
-            this.rbFontToImage.Text = "Текст преобразуем в рисунок";
+            this.rbFontToImage.Tag = "_textToImageRastr_";
+            this.rbFontToImage.Text = "Текст преобразуем в рисунок (растр)";
             this.rbFontToImage.UseVisualStyleBackColor = true;
             this.rbFontToImage.CheckedChanged += new System.EventHandler(this.rbFontToImage_CheckedChanged);
             // 
@@ -74,7 +75,7 @@ namespace ToolsGenGkode.pages
             // 
             this.rbFontToVector.AutoSize = true;
             this.rbFontToVector.Checked = true;
-            this.rbFontToVector.Location = new System.Drawing.Point(29, 19);
+            this.rbFontToVector.Location = new System.Drawing.Point(7, 19);
             this.rbFontToVector.Name = "rbFontToVector";
             this.rbFontToVector.Size = new System.Drawing.Size(217, 17);
             this.rbFontToVector.TabIndex = 68;
@@ -100,7 +101,7 @@ namespace ToolsGenGkode.pages
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(359, 45);
+            this.label2.Location = new System.Drawing.Point(427, 29);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 64;
@@ -109,7 +110,7 @@ namespace ToolsGenGkode.pages
             // 
             // textSize
             // 
-            this.textSize.Location = new System.Drawing.Point(414, 43);
+            this.textSize.Location = new System.Drawing.Point(430, 45);
             this.textSize.Maximum = new decimal(new int[] {
             4000,
             0,
@@ -187,6 +188,7 @@ namespace ToolsGenGkode.pages
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.rbFontToImage2);
             this.groupBox1.Controls.Add(this.rbFontToVector);
             this.groupBox1.Controls.Add(this.rbFontToImage);
             this.groupBox1.Location = new System.Drawing.Point(6, 71);
@@ -194,6 +196,19 @@ namespace ToolsGenGkode.pages
             this.groupBox1.Size = new System.Drawing.Size(636, 47);
             this.groupBox1.TabIndex = 75;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Tag = "_convertTextTo_";
+            // 
+            // rbFontToImage2
+            // 
+            this.rbFontToImage2.AutoSize = true;
+            this.rbFontToImage2.Location = new System.Drawing.Point(452, 19);
+            this.rbFontToImage2.Name = "rbFontToImage2";
+            this.rbFontToImage2.Size = new System.Drawing.Size(119, 17);
+            this.rbFontToImage2.TabIndex = 70;
+            this.rbFontToImage2.TabStop = true;
+            this.rbFontToImage2.Tag = "_textToImageContur_";
+            this.rbFontToImage2.Text = "В рисунок (контур)";
+            this.rbFontToImage2.UseVisualStyleBackColor = true;
             // 
             // page02_EnterText
             // 
@@ -235,6 +250,7 @@ namespace ToolsGenGkode.pages
         public System.Windows.Forms.TextBox textString;
         public System.Windows.Forms.NumericUpDown textSize;
         public System.Windows.Forms.ComboBox comboBoxFont;
+        private System.Windows.Forms.RadioButton rbFontToImage2;
 
         public string PageName { get; set; }
         public int LastPage { get; set; }

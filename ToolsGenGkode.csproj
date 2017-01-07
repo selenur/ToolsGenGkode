@@ -76,14 +76,19 @@
     <Compile Include="About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTaskProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTaskProgress.Designer.cs">
+      <DependentUpon>FormTaskProgress.cs</DependentUpon>
+    </Compile>
     <Compile Include="helpText.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="helpText.Designer.cs">
       <DependentUpon>helpText.cs</DependentUpon>
     </Compile>
-    <Compile Include="ImageUtilities.cs" />
-    <Compile Include="IniParser.cs" />
+    <Compile Include="DataProcessing.cs" />
     <Compile Include="pages\page05_SelectFileImageRastr.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -113,6 +118,12 @@
     </Compile>
     <Compile Include="ProfileEditor.Designer.cs">
       <DependentUpon>ProfileEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileUserSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProfileUserSetting.Designer.cs">
+      <DependentUpon>ProfileUserSetting.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -200,6 +211,9 @@
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormTaskProgress.resx">
+      <DependentUpon>FormTaskProgress.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="helpText.resx">
       <DependentUpon>helpText.cs</DependentUpon>
     </EmbeddedResource>
@@ -244,6 +258,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProfileEditor.resx">
       <DependentUpon>ProfileEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProfileUserSetting.resx">
+      <DependentUpon>ProfileUserSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -320,6 +337,10 @@
     <ProjectReference Include="..\..\..\0062_CSharpLIBRARY\MultiLanguage\MultiLanguage\MultiLanguage.csproj">
       <Project>{a2e425be-d7a9-4cff-b7bf-d97ad47b9ebe}</Project>
       <Name>MultiLanguage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CalibrateLaserTools\CalibrateLaserTools.csproj">
+      <Project>{b42115e1-85db-4149-bb25-ea0b1ef92aa2}</Project>
+      <Name>CalibrateLaserTools</Name>
     </ProjectReference>
     <ProjectReference Include="AForgeNetLib\Core\Core.csproj">
       <Project>{631ac093-430f-45f4-ba0c-af0f0405918a}</Project>

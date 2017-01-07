@@ -48,9 +48,9 @@ namespace ToolsGenGkode.pages
                 IsChange?.Invoke(this, e);
         }
 
+        private MainForm MAIN;
 
-
-        public page08_AddPadding()
+        public page08_AddPadding(MainForm mf)
         {
             InitializeComponent();
 
@@ -59,8 +59,10 @@ namespace ToolsGenGkode.pages
             CurrPage = 8;
             NextPage = 10;
 
+            MAIN = mf;
+
             pageImageNOW = null;
-            pageVectorNOW = new List<Segment>();
+            pageVectorNOW = new List<GroupPoint>();
         }
 
         private void page12_AddPadding_Load(object sender, EventArgs e)
@@ -74,9 +76,9 @@ namespace ToolsGenGkode.pages
         public int NextPage { get; set; }
         public Bitmap pageImageIN { get; set; }
         public Bitmap pageImageNOW { get; set; }
-        public List<Segment> pageVectorIN { get; set; }
-        public List<Segment> pageVectorNOW { get; set; }
-        public List<Location> PagePoints { get; set; }
+        public List<GroupPoint> pageVectorIN { get; set; }
+        public List<GroupPoint> pageVectorNOW { get; set; }
+        public List<cncPoint> PagePoints { get; set; }
 
 
         public void actionBefore()
@@ -85,7 +87,7 @@ namespace ToolsGenGkode.pages
             dataGridView1.Rows.Clear();
             
 
-            foreach (Segment varVector in pageVectorNOW)
+            foreach (GroupPoint varVector in pageVectorNOW)
             {
                 DataGridViewRow dgvr = new DataGridViewRow();
                 
@@ -161,7 +163,7 @@ namespace ToolsGenGkode.pages
 
                 List<IntPoint> lpoint = new Polygon();
 
-                foreach (Location varPoint in pageVectorNOW[row.Index].Points)
+                foreach (cncPoint varPoint in pageVectorNOW[row.Index].Points)
                 {
                     lpoint.Add(new IntPoint((long)(varPoint.X * (int)scale), (long)(varPoint.Y * (int)scale)));
                 }
@@ -172,14 +174,14 @@ namespace ToolsGenGkode.pages
 
                 if (pDestin.Count == 0) continue;
 
-                List<Location> ttmCPoints = new List<Location>();
+                List<cncPoint> ttmCPoints = new List<cncPoint>();
 
                 foreach (IntPoint VARpoint in pDestin[0])
                 {
-                    ttmCPoints.Add(new Location(VARpoint.X/1000,VARpoint.Y/1000));
+                    ttmCPoints.Add(new cncPoint(VARpoint.X/1000,VARpoint.Y/1000));
                 }
 
-                pageVectorNOW.Add(new Segment(ttmCPoints,false,true));
+                pageVectorNOW.Add(new GroupPoint(ttmCPoints,false,DirrectionGroupPoint.Left ,true));
             }
 
             CreateEvent(); //"RefreshVector_12"

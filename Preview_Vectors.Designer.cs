@@ -45,6 +45,7 @@
             this.button3DDefault.Name = "button3DDefault";
             this.button3DDefault.Size = new System.Drawing.Size(107, 24);
             this.button3DDefault.TabIndex = 35;
+            this.button3DDefault.Tag = "_resetPos_";
             this.button3DDefault.Text = "Сброс положения";
             this.button3DDefault.UseVisualStyleBackColor = true;
             this.button3DDefault.Click += new System.EventHandler(this.button3DDefault_Click);
@@ -102,6 +103,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(90, 13);
             this.label4.TabIndex = 34;
+            this.label4.Tag = "_StepGrid_";
             this.label4.Text = "Шаг сетки (мм.):";
             // 
             // label3
@@ -111,6 +113,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(111, 13);
             this.label3.TabIndex = 32;
+            this.label3.Tag = "_thickness_";
             this.label3.Text = "Толщина трактории:";
             // 
             // numericUpDown1

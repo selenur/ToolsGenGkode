@@ -6,7 +6,7 @@ using System.Collections;
 
 namespace ToolsGenGkode
 {
-    public static class IniParser
+    public static class IniParser1
     {
         private static Hashtable keyPairs = new Hashtable();
         private static String iniFilePath;

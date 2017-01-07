@@ -20,12 +20,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELW.Library.Math", "MathLib
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imaging", "AForgeNetLib\Imaging\Imaging.csproj", "{C6A8B9AE-0749-41C7-8FF9-02C156696F45}"
 	ProjectSection(ProjectDependencies) = postProject
+		{C0FAF524-72E4-46F7-8C1B-A6B74DEC5EBE} = {C0FAF524-72E4-46F7-8C1B-A6B74DEC5EBE}
 		{631AC093-430F-45F4-BA0C-AF0F0405918A} = {631AC093-430F-45F4-BA0C-AF0F0405918A}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "AForgeNetLib\Core\Core.csproj", "{631AC093-430F-45F4-BA0C-AF0F0405918A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Math", "AForgeNetLib\Math\Math.csproj", "{C0FAF524-72E4-46F7-8C1B-A6B74DEC5EBE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{631AC093-430F-45F4-BA0C-AF0F0405918A} = {631AC093-430F-45F4-BA0C-AF0F0405918A}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalibrateLaserTools", "..\CalibrateLaserTools\CalibrateLaserTools.csproj", "{B42115E1-85DB-4149-BB25-EA0B1EF92AA2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +67,10 @@ Global
 		{C0FAF524-72E4-46F7-8C1B-A6B74DEC5EBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0FAF524-72E4-46F7-8C1B-A6B74DEC5EBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0FAF524-72E4-46F7-8C1B-A6B74DEC5EBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B42115E1-85DB-4149-BB25-EA0B1EF92AA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B42115E1-85DB-4149-BB25-EA0B1EF92AA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B42115E1-85DB-4149-BB25-EA0B1EF92AA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B42115E1-85DB-4149-BB25-EA0B1EF92AA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

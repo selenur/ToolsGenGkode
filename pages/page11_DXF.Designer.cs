@@ -54,6 +54,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 13);
             this.label6.TabIndex = 15;
+            this.label6.Tag = "_SelectFile_";
             this.label6.Text = "Выбор файла:";
             // 
             // btShowOriginalImage
@@ -81,6 +82,7 @@
             this.groupBox1.Size = new System.Drawing.Size(625, 201);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Tag = "_infoAboutFile_";
             this.groupBox1.Text = "Информация о файле";
             // 
             // textBoxInfo
@@ -104,6 +106,7 @@
             this.Controls.Add(this.textBoxFileName);
             this.Name = "page11_DXF";
             this.Size = new System.Drawing.Size(645, 240);
+            this.Tag = "_page11_";
             this.Load += new System.EventHandler(this.page11_DXF_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -54,6 +54,7 @@ namespace ToolsGenGkode.pages
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 13);
             this.label6.TabIndex = 11;
+            this.label6.Tag = "_SelectFile_";
             this.label6.Text = "Выбор файла:";
             // 
             // btShowOriginalImage
@@ -62,6 +63,7 @@ namespace ToolsGenGkode.pages
             this.btShowOriginalImage.Name = "btShowOriginalImage";
             this.btShowOriginalImage.Size = new System.Drawing.Size(252, 37);
             this.btShowOriginalImage.TabIndex = 9;
+            this.btShowOriginalImage.Tag = "_showDataFromFile_";
             this.btShowOriginalImage.Text = "Показать траекторию";
             this.btShowOriginalImage.UseVisualStyleBackColor = true;
             this.btShowOriginalImage.Click += new System.EventHandler(this.btShowOriginalImage_Click);

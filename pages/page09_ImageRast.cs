@@ -20,14 +20,19 @@ namespace ToolsGenGkode.pages
 
         void CreateEvent(string message)
         {
-            MyEventArgs e = new MyEventArgs();
-            e.ActionRun = message;
+            //MyEventArgs e = new MyEventArgs();
+            //e.ActionRun = message;
 
-            EventHandler handler = IsChange;
-            if (handler != null) IsChange?.Invoke(this, e);
+            //EventHandler handler = IsChange;
+            //if (handler != null) IsChange?.Invoke(this, e);
+
+            MAIN.PreviewImage(pageImageNOW);
+            MAIN.PreviewVectors(pageVectorNOW);
         }
 
-        public page09_ImageRast()
+        private MainForm MAIN;
+
+        public page09_ImageRast(MainForm mf)
         {
             InitializeComponent();
 
@@ -36,8 +41,10 @@ namespace ToolsGenGkode.pages
             CurrPage = 9;
             NextPage = 10;
 
+            MAIN = mf;
+
             pageImageNOW = null;
-            pageVectorNOW = new List<Segment>();
+            pageVectorNOW = new List<GroupPoint>();
 
             useFilter.Items.Clear();
             useFilter.Items.Add("01 - метод Флойда-Стеинберга (<распыление >)"); //FloydSteinberg Dithering
@@ -47,70 +54,71 @@ namespace ToolsGenGkode.pages
 
         private void page09_SelectImage_Load(object sender, EventArgs e)
         {
-            decimal p1 = 1; //размер точки прожига
-            decimal p2 = 1000; //длительность лазера
-            decimal p3 = 100;  //процент от исходного размера
-            decimal p4 = 1;     //размер по X 
-            decimal p5 = 1;     //размер по Y
+            //decimal p1 = 1; //размер точки прожига
+            //decimal p2 = 1000; //длительность лазера
+            //decimal p3 = 100;  //процент от исходного размера
+            //decimal p4 = 1;     //размер по X 
+            //decimal p5 = 1;     //размер по Y
 
-            string sp1 = IniParser.GetSetting("page09", "SizePoint");
-            string sp2 = IniParser.GetSetting("page09", "LaserTimeOut");
-            string sp3 = IniParser.GetSetting("page09", "PercentValue");
-            string sp4 = IniParser.GetSetting("page09", "sizeDestX");
-            string sp5 = IniParser.GetSetting("page09", "sizeDestY");
-            string sp6 = IniParser.GetSetting("page09", "UserUseRation"); //флажок поддерживать пропорций
-            string sp7 = IniParser.GetSetting("page09", "Variant"); //текущий выбранный вариант
+            //string sp1 = IniParser.GetSetting("page09", "SizePoint");
+            //string sp2 = IniParser.GetSetting("page09", "LaserTimeOut");
+            //string sp3 = IniParser.GetSetting("page09", "PercentValue");
+            //string sp4 = IniParser.GetSetting("page09", "sizeDestX");
+            //string sp5 = IniParser.GetSetting("page09", "sizeDestY");
+            //string sp6 = IniParser.GetSetting("page09", "UserUseRation"); //флажок поддерживать пропорций
+            //string sp7 = IniParser.GetSetting("page09", "Variant"); //текущий выбранный вариант
 
-            if (sp1 != null) decimal.TryParse(sp1, out p1);
-            if (sp2 != null) decimal.TryParse(sp2, out p2);
-            if (sp3 != null) decimal.TryParse(sp3, out p3);
-            if (sp4 != null) decimal.TryParse(sp4, out p4);
-            if (sp5 != null) decimal.TryParse(sp5, out p5);
+            //if (sp1 != null) decimal.TryParse(sp1, out p1);
+            //if (sp2 != null) decimal.TryParse(sp2, out p2);
+            //if (sp3 != null) decimal.TryParse(sp3, out p3);
+            //if (sp4 != null) decimal.TryParse(sp4, out p4);
+            //if (sp5 != null) decimal.TryParse(sp5, out p5);
 
-            if (sp6 != null)
-            {
-                cbKeepAspectRatio.Checked = (sp6 == "1");
-            }
-            else
-            {
-                cbKeepAspectRatio.Checked = true;
-            }
+            //if (sp6 != null)
+            //{
+            //    cbKeepAspectRatio.Checked = (sp6 == "1");
+            //}
+            //else
+            //{
+            //    cbKeepAspectRatio.Checked = true;
+            //}
 
-            if (p1 == 0) p1 = 1; 
+            cbKeepAspectRatio.Checked = Properties.Settings.Default.page09UserUseRation;
 
-            numSizePoint.Value = p1;
-            LaserTimeOut.Value = p2;
-            numericUpDownPercent.Value = p3;
+            //if (p1 == 0) p1 = 1; 
+
+            numSizePoint.Value = Properties.Settings.Default.page09SizePoint;
+            LaserTimeOut.Value = Properties.Settings.Default.page09LaserTimeOut;
+            numericUpDownPercent.Value = Properties.Settings.Default.page09PercentValue;
 
             _changeIsUser = false;
-                if (p4 == 0) p4 = 100;
-                if (p5 == 0) p5 = 100;
-                numXAfter.Value = p4;
-                numYAfter.Value = p5;
+                //if (p4 == 0) p4 = 100;
+                //if (p5 == 0) p5 = 100;
+                numXAfter.Value = Properties.Settings.Default.page09sizeDestX;
+                numYAfter.Value = Properties.Settings.Default.page09sizeDestY;
             _changeIsUser = true;
 
 
-            if (sp7 != null)
-            {
-                switch (sp7)
+ 
+                switch (Properties.Settings.Default.page09VariantSize)
                 {
-                    case "1":
+                    case 1:
                         radioButtonDiametrSizePoint.Checked = true;
                         break;
 
-                    case "2":
+                    case 2:
                         radioButtonSizePoint.Checked = true;
                         break;
 
-                    case "3":
+                    case 3:
                         radioButtonPerent.Checked = true;
                         break;
 
-                    case "4":
+                    case 4:
                         radioButtonUserSize.Checked = true;
                         break;
                 }
-            }
+            
 
             RecalculateSize();
         }
@@ -122,13 +130,13 @@ namespace ToolsGenGkode.pages
         public int NextPage { get; set; }
         public Bitmap pageImageIN { get; set; }
         public Bitmap pageImageNOW { get; set; }
-        public List<Segment> pageVectorIN { get; set; }
-        public List<Segment> pageVectorNOW { get; set; }
+        public List<GroupPoint> pageVectorIN { get; set; }
+        public List<GroupPoint> pageVectorNOW { get; set; }
         //public List<Location> PagePoints { get; set; }
 
         public void actionBefore()
         {
-            pageVectorNOW = new List<Segment>();
+            pageVectorNOW = new List<GroupPoint>();
 
             if (pageImageIN == null) return;
 
@@ -136,7 +144,7 @@ namespace ToolsGenGkode.pages
 
             GetInfoSize();
 
-            CreateEvent("RefreshImage_09");
+            CreateEvent("");
 
             RecalculateSize();
         }
@@ -181,7 +189,7 @@ namespace ToolsGenGkode.pages
             //}
 
             pageImageNOW = (Bitmap)pageImageIN.Clone();
-            pageVectorNOW = new List<Segment>();
+            pageVectorNOW = new List<GroupPoint>();
             Bitmap newBitmap = ConvertToGrayScale(pageImageNOW);
 
             int Xsize = (int)(numXAfter.Value / numSizePoint.Value);
@@ -218,17 +226,17 @@ namespace ToolsGenGkode.pages
 
         private void GenVar1And2()
         {
-            decimal sizeOnePoint = numSizePoint.Value;
+            double sizeOnePoint = (double)numSizePoint.Value;
 
-            GlobalFunctions.LaserTimeOut = (int)LaserTimeOut.Value;
+            //GlobalFunctions.LaserTimeOut = (int)LaserTimeOut.Value;
 
-            pageVectorNOW = new List<Segment>();
+            pageVectorNOW = new List<GroupPoint>();
 
             Bitmap bb = pageImageNOW;
             BitmapData data = bb.LockBits(new Rectangle(0, 0, bb.Width, bb.Height), ImageLockMode.ReadOnly, bb.PixelFormat);  // make sure you check the pixel format as you will be looking directly at memory
 
             //направление движения
-            DirrectionSegment dir = DirrectionSegment.RIGHT;
+            DirrectionGroupPoint dir = DirrectionGroupPoint.Right;
 
             unsafe
             {
@@ -239,7 +247,7 @@ namespace ToolsGenGkode.pages
                 // example assumes 24bpp image.  You need to verify your pixel depth
                 for (int y = 0; y < data.Height; ++y)
                 {
-                    List<Location> tmp = new List<Location>();
+                    List<cncPoint> tmp = new List<cncPoint>();
 
                     //во временный массив поместим линию с точками
                     for (int x = 0; x < data.Width; ++x)
@@ -247,26 +255,26 @@ namespace ToolsGenGkode.pages
                         // windows stores images in BGR pixel order
                         byte r = ptrSrc[0]; //тут получили нужный цвет
 
-                        if (r == 0) tmp.Add(new Location((x * sizeOnePoint) + deltaX.Value, (y * sizeOnePoint) + deltaY.Value, 0, 0, (int)LaserTimeOut.Value));
+                        if (r == 0) tmp.Add(new cncPoint((x * sizeOnePoint) + (double)deltaX.Value, (y * sizeOnePoint) + (double)deltaY.Value, 0, 0, (int)LaserTimeOut.Value));
 
                         ptrSrc += 1;
                     }
 
                     // а теперь временный массив скопируем в основной, но с определенным направлением
-                    if (dir == DirrectionSegment.RIGHT)
+                    if (dir == DirrectionGroupPoint.Right)
                     {
-                        dir = DirrectionSegment.LEFT;
+                        dir = DirrectionGroupPoint.Left;
                     }
                     else
                     {
                         tmp.Reverse();
-                        dir = DirrectionSegment.RIGHT;
+                        dir = DirrectionGroupPoint.Right;
                     }
 
-                    if (tmp.Count != 0) pageVectorNOW.Add(new Segment(tmp, false, false, dir, true));
+                    if (tmp.Count != 0) pageVectorNOW.Add(new GroupPoint(tmp, false, dir, true));
 
                     // ReSharper disable once RedundantAssignment
-                    tmp = new List<Location>();
+                    tmp = new List<cncPoint>();
 
                     ptrSrc += diff;
                 }
@@ -275,19 +283,19 @@ namespace ToolsGenGkode.pages
             bb.UnlockBits(data);
 
             // тут нужно сделать преворот согластно текущй ориентации осей
-            pageVectorNOW = VectorUtilities.Rotate(pageVectorNOW);
+            pageVectorNOW = VectorProcessing.Rotate(pageVectorNOW);
 
         }
 
         private void GenVar3()
         {
-            decimal sizeOnePoint = numSizePoint.Value;
+            double sizeOnePoint = (double)numSizePoint.Value;
 
             Bitmap bb = pageImageNOW;
             BitmapData data = bb.LockBits(new Rectangle(0, 0, bb.Width, bb.Height), ImageLockMode.ReadOnly, bb.PixelFormat);  // make sure you check the pixel format as you will be looking directly at memory
 
             //направление движения
-            DirrectionSegment dir = DirrectionSegment.RIGHT;
+            DirrectionGroupPoint dir = DirrectionGroupPoint.Right;
 
             unsafe
             {
@@ -295,11 +303,11 @@ namespace ToolsGenGkode.pages
 
                 int diff = data.Stride - data.Width;
                 
-                pageVectorNOW = new List<Segment>();
+                pageVectorNOW = new List<GroupPoint>();
 
                 for (int y = 0; y < data.Height; ++y) //проход по линии
                 {
-                    List<Location> tmp = new List<Location>();
+                    List<cncPoint> tmp = new List<cncPoint>();
 
                     byte lastValueColor = 0;
                     bool firstPoint = true;
@@ -317,7 +325,7 @@ namespace ToolsGenGkode.pages
                         {
                             firstPoint = false;
 
-                            Location lk = new Location((x * sizeOnePoint) + deltaX.Value, (y * sizeOnePoint) + deltaY.Value,0,0,0,false,false,(int)r);
+                            cncPoint lk = new cncPoint((x * sizeOnePoint) + (double)deltaX.Value, (y * sizeOnePoint) + (double)deltaY.Value,0,0,0,false,(int)r);
 
                             tmp.Add(lk);
                             
@@ -327,7 +335,7 @@ namespace ToolsGenGkode.pages
                         {
                             if (lastValueColor != r)
                             {
-                                Location lk = new Location((x * sizeOnePoint) + deltaX.Value, (y * sizeOnePoint) + deltaY.Value, 0, 0, 0, false, false, (int)r);
+                                cncPoint lk = new cncPoint((x * sizeOnePoint) + (double)deltaX.Value, (y * sizeOnePoint) + (double)deltaY.Value, 0, 0, 0, false, (int)r);
 
                                 tmp.Add(lk);
 
@@ -339,20 +347,20 @@ namespace ToolsGenGkode.pages
 
 
                     // а теперь временный массив скопируем в основной, но с определенным направлением
-                    if (dir == DirrectionSegment.RIGHT)
+                    if (dir == DirrectionGroupPoint.Right)
                     {
-                        dir = DirrectionSegment.LEFT;
+                        dir = DirrectionGroupPoint.Left;
                     }
                     else
                     {
                         tmp.Reverse();
-                        dir = DirrectionSegment.RIGHT;
+                        dir = DirrectionGroupPoint.Right;
                     }
 
-                    pageVectorNOW.Add(new Segment(tmp, false, false, dir, true));
+                    pageVectorNOW.Add(new GroupPoint(tmp, false, dir, true));
 
                     // ReSharper disable once RedundantAssignment
-                    tmp = new List<Location>();
+                    tmp = new List<cncPoint>();
 
                     ptrSrc += diff;
                 }
@@ -361,7 +369,7 @@ namespace ToolsGenGkode.pages
             bb.UnlockBits(data);
 
             // тут нужно сделать преворот согластно текущй ориентации осей
-            pageVectorNOW = VectorUtilities.Rotate(pageVectorNOW);
+            pageVectorNOW = VectorProcessing.Rotate(pageVectorNOW);
         }
 
 
@@ -390,8 +398,8 @@ namespace ToolsGenGkode.pages
 
             Cursor.Current = Cursors.Default;
 
-            CreateEvent("RefreshVector_09");
-            CreateEvent("RefreshImage_09");
+            CreateEvent("");
+            //CreateEvent("RefreshImage_09");
         }
 
         // generate data
@@ -407,8 +415,8 @@ namespace ToolsGenGkode.pages
 
             Cursor.Current = Cursors.Default;
 
-            CreateEvent("RefreshVector_09");
-            CreateEvent("RefreshImage_09");
+            CreateEvent("");
+            //CreateEvent("RefreshImage_09");
         }
 
 
@@ -432,10 +440,9 @@ namespace ToolsGenGkode.pages
                 _changeIsUser = true;
             }
 
-            IniParser.AddSetting("page09", "sizeDestX", numXAfter.Value.ToString(CultureInfo.InvariantCulture));
-            IniParser.AddSetting("page09", "sizeDestY", numYAfter.Value.ToString(CultureInfo.InvariantCulture));
-
-            IniParser.SaveSettings();
+            Properties.Settings.Default.page09sizeDestX = numXAfter.Value;
+            Properties.Settings.Default.page09sizeDestY = numYAfter.Value;
+            Properties.Settings.Default.Save();
         }
 
         private void numYAfter_ValueChanged(object sender, EventArgs e)
@@ -450,16 +457,16 @@ namespace ToolsGenGkode.pages
                 _changeIsUser = true;
             }
 
-            IniParser.AddSetting("page09", "sizeDestX", numXAfter.Value.ToString(CultureInfo.InvariantCulture));
-            IniParser.AddSetting("page09", "sizeDestY", numYAfter.Value.ToString(CultureInfo.InvariantCulture));
-            IniParser.SaveSettings();
+            Properties.Settings.Default.page09sizeDestX = numXAfter.Value;
+            Properties.Settings.Default.page09sizeDestY = numYAfter.Value;
+            Properties.Settings.Default.Save();
         }
 
 
         private void LaserTimeOut_ValueChanged(object sender, EventArgs e)
         {
-            IniParser.AddSetting("page09", "LaserTimeOut", LaserTimeOut.Value.ToString(CultureInfo.InvariantCulture));
-            IniParser.SaveSettings();
+            Properties.Settings.Default.page09LaserTimeOut = LaserTimeOut.Value;
+            Properties.Settings.Default.Save();
         }
 
         private void useFilter_SelectedIndexChanged(object sender, EventArgs e)
@@ -511,71 +518,50 @@ namespace ToolsGenGkode.pages
 
         private void cbKeepAspectRatio_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbKeepAspectRatio.Checked)
-            {
-                IniParser.AddSetting("page09", "UserUseRation", "1"); // сохранять-ли пропорции
-            }
-            else
-            {
-                IniParser.AddSetting("page09", "UserUseRation", "0"); // сохранять-ли пропорции
-            }
-
-
-            IniParser.SaveSettings();
+            Properties.Settings.Default.page09UserUseRation = cbKeepAspectRatio.Checked;
+            Properties.Settings.Default.Save();
         }
 
         private void numSizePoint_ValueChanged(object sender, EventArgs e)
         {
-            IniParser.AddSetting("page09", "SizePoint", numSizePoint.Value.ToString(CultureInfo.InvariantCulture));
-            IniParser.SaveSettings();
-
+            Properties.Settings.Default.page09SizePoint = numSizePoint.Value;
+            Properties.Settings.Default.Save();
             RecalculateSize();
         }
 
         private void radioButtonDiametrSizePoint_CheckedChanged(object sender, EventArgs e)
         {
-            IniParser.AddSetting("page09", "Variant", "1");
-            IniParser.SaveSettings();
-
+            Properties.Settings.Default.page09VariantSize = 1;
+            Properties.Settings.Default.Save();
             RecalculateSize();
         }
 
         private void radioButtonSizePoint_CheckedChanged(object sender, EventArgs e)
         {
-            IniParser.AddSetting("page09", "Variant", "2");
-            IniParser.SaveSettings();
+            Properties.Settings.Default.page09VariantSize = 2;
+            Properties.Settings.Default.Save();
             RecalculateSize();
         }
 
         private void radioButtonPerent_CheckedChanged(object sender, EventArgs e)
         {
-            IniParser.AddSetting("page09", "Variant", "3");
-            IniParser.SaveSettings();
+            Properties.Settings.Default.page09VariantSize = 3;
+            Properties.Settings.Default.Save();
             RecalculateSize();
         }
 
         private void numericUpDownPercent_ValueChanged(object sender, EventArgs e)
         {
-            IniParser.AddSetting("page09", "PercentValue", numericUpDownPercent.Value.ToString(CultureInfo.InvariantCulture));
-            IniParser.SaveSettings();
+            Properties.Settings.Default.page09PercentValue = numericUpDownPercent.Value;
+            Properties.Settings.Default.Save();
             RecalculateSize();
         }
 
         private void radioButtonUserSize_CheckedChanged(object sender, EventArgs e)
         {
-            IniParser.AddSetting("page09", "Variant", "4");       // пользовательский вариант
-
-            if (cbKeepAspectRatio.Checked)
-            {
-                IniParser.AddSetting("page09", "UserUseRation", "1"); // сохранять-ли пропорции
-            }
-            else
-            {
-                IniParser.AddSetting("page09", "UserUseRation", "0"); // сохранять-ли пропорции
-            }
-
-
-            IniParser.SaveSettings();
+            Properties.Settings.Default.page09VariantSize = 4;
+            Properties.Settings.Default.page09UserUseRation = cbKeepAspectRatio.Checked;
+            Properties.Settings.Default.Save();
             RecalculateSize();
         }
 

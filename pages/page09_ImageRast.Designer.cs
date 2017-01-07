@@ -87,6 +87,7 @@ namespace ToolsGenGkode.pages
             this.groupBox1.Size = new System.Drawing.Size(173, 77);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Tag = "_sizeLaserPoint_";
             this.groupBox1.Text = "Размер прожигаемой точки";
             // 
             // label2
@@ -96,6 +97,7 @@ namespace ToolsGenGkode.pages
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 13);
             this.label2.TabIndex = 3;
+            this.label2.Tag = "_timeLaserOn_";
             this.label2.Text = "Время прожига:";
             // 
             // LaserTimeOut
@@ -133,6 +135,7 @@ namespace ToolsGenGkode.pages
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 13);
             this.label1.TabIndex = 1;
+            this.label1.Tag = "_diametr_";
             this.label1.Text = "Диаметр (мм):";
             // 
             // numSizePoint
@@ -190,6 +193,7 @@ namespace ToolsGenGkode.pages
             this.groupBox2.Size = new System.Drawing.Size(639, 153);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Tag = "_genDataProperty_";
             this.groupBox2.Text = "Генерация данных:";
             // 
             // label6
@@ -198,6 +202,7 @@ namespace ToolsGenGkode.pages
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(162, 18);
             this.label6.TabIndex = 25;
+            this.label6.Tag = "_addOffset_";
             this.label6.Text = "Применить смещение (мм):";
             // 
             // deltaY
@@ -280,6 +285,7 @@ namespace ToolsGenGkode.pages
             this.radioButtonSizePoint.Size = new System.Drawing.Size(94, 17);
             this.radioButtonSizePoint.TabIndex = 25;
             this.radioButtonSizePoint.TabStop = true;
+            this.radioButtonSizePoint.Tag = "_p9var2_";
             this.radioButtonSizePoint.Text = "кол.пикселей";
             this.radioButtonSizePoint.UseVisualStyleBackColor = true;
             this.radioButtonSizePoint.CheckedChanged += new System.EventHandler(this.radioButtonSizePoint_CheckedChanged);
@@ -293,6 +299,7 @@ namespace ToolsGenGkode.pages
             this.radioButtonUserSize.Size = new System.Drawing.Size(199, 17);
             this.radioButtonUserSize.TabIndex = 24;
             this.radioButtonUserSize.TabStop = true;
+            this.radioButtonUserSize.Tag = "_p9var4_";
             this.radioButtonUserSize.Text = "пользователь сам укажет размер";
             this.radioButtonUserSize.UseVisualStyleBackColor = true;
             this.radioButtonUserSize.CheckedChanged += new System.EventHandler(this.radioButtonUserSize_CheckedChanged);
@@ -307,6 +314,7 @@ namespace ToolsGenGkode.pages
             this.radioButtonDiametrSizePoint.Size = new System.Drawing.Size(184, 17);
             this.radioButtonDiametrSizePoint.TabIndex = 23;
             this.radioButtonDiametrSizePoint.TabStop = true;
+            this.radioButtonDiametrSizePoint.Tag = "_p9var1_";
             this.radioButtonDiametrSizePoint.Text = "диаметр точки * кол.  пикселей";
             this.radioButtonDiametrSizePoint.UseVisualStyleBackColor = true;
             this.radioButtonDiametrSizePoint.CheckedChanged += new System.EventHandler(this.radioButtonDiametrSizePoint_CheckedChanged);
@@ -338,6 +346,7 @@ namespace ToolsGenGkode.pages
             this.btCalcTraectory.Name = "btCalcTraectory";
             this.btCalcTraectory.Size = new System.Drawing.Size(279, 42);
             this.btCalcTraectory.TabIndex = 16;
+            this.btCalcTraectory.Tag = "_calcTraectory_";
             this.btCalcTraectory.Text = "         Вычислить траекторию";
             this.btCalcTraectory.UseVisualStyleBackColor = true;
             this.btCalcTraectory.Click += new System.EventHandler(this.btCalcTraectory_Click);
@@ -403,6 +412,7 @@ namespace ToolsGenGkode.pages
             this.cbKeepAspectRatio.Name = "cbKeepAspectRatio";
             this.cbKeepAspectRatio.Size = new System.Drawing.Size(242, 34);
             this.cbKeepAspectRatio.TabIndex = 1;
+            this.cbKeepAspectRatio.Tag = "_useRatioSize_";
             this.cbKeepAspectRatio.Text = "Сохранять пропорции при изменении пользователем, итоговых размеров";
             this.cbKeepAspectRatio.UseVisualStyleBackColor = true;
             this.cbKeepAspectRatio.CheckedChanged += new System.EventHandler(this.cbKeepAspectRatio_CheckedChanged);
@@ -445,6 +455,7 @@ namespace ToolsGenGkode.pages
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(155, 13);
             this.label5.TabIndex = 3;
+            this.label5.Tag = "_newSizeMM_";
             this.label5.Text = "Получится размер (мм.):";
             // 
             // numXbefore
@@ -483,6 +494,7 @@ namespace ToolsGenGkode.pages
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(162, 18);
             this.label4.TabIndex = 2;
+            this.label4.Tag = "_sourceSizePixel_";
             this.label4.Text = "Исходный размер в пикселях:";
             // 
             // groupBox3
@@ -496,6 +508,7 @@ namespace ToolsGenGkode.pages
             this.groupBox3.Size = new System.Drawing.Size(460, 77);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
+            this.groupBox3.Tag = "_useFilter_";
             this.groupBox3.Text = "Для генерации данных, будем использовать фильтр:";
             // 
             // button2
@@ -527,6 +540,7 @@ namespace ToolsGenGkode.pages
             this.PreviewButton.Name = "PreviewButton";
             this.PreviewButton.Size = new System.Drawing.Size(449, 26);
             this.PreviewButton.TabIndex = 10;
+            this.PreviewButton.Tag = "_showPreviewResult_";
             this.PreviewButton.Text = "Показать предварительный результат";
             this.PreviewButton.UseVisualStyleBackColor = true;
             this.PreviewButton.Click += new System.EventHandler(this.PreviewButton_Click);

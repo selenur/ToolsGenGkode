@@ -46,10 +46,12 @@ namespace ToolsGenGkode.pages
             // 
             // label3
             // 
+            this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label3.Location = new System.Drawing.Point(269, 7);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(363, 27);
             this.label3.TabIndex = 9;
+            this.label3.Tag = "_koefficientToBlackWhile_";
             this.label3.Text = "Коэффициент устанавливает границу, по которой определяется, что будет  черным а ч" +
     "то белым";
             // 
@@ -77,6 +79,7 @@ namespace ToolsGenGkode.pages
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(322, 38);
             this.button1.TabIndex = 19;
+            this.button1.Tag = "_showImageStep1_";
             this.button1.Text = "Показать изображение с примененным преобразованием по коеффициенту";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -88,6 +91,7 @@ namespace ToolsGenGkode.pages
             this.cbNegative.Name = "cbNegative";
             this.cbNegative.Size = new System.Drawing.Size(172, 17);
             this.cbNegative.TabIndex = 0;
+            this.cbNegative.Tag = "_reversColor_";
             this.cbNegative.Text = "Применить инверсия цветов";
             this.cbNegative.UseVisualStyleBackColor = true;
             this.cbNegative.CheckedChanged += new System.EventHandler(this.checkBoxUseFilter1_CheckedChanged);
@@ -98,6 +102,7 @@ namespace ToolsGenGkode.pages
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(618, 46);
             this.button2.TabIndex = 12;
+            this.button2.Tag = "_showResultGetContur_";
             this.button2.Text = "Показать результат полученного контура из изображения";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -119,6 +124,7 @@ namespace ToolsGenGkode.pages
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 13);
             this.label6.TabIndex = 29;
+            this.label6.Tag = "_SelectFile_";
             this.label6.Text = "Выбор файла:";
             // 
             // textBoxFileName
@@ -134,6 +140,7 @@ namespace ToolsGenGkode.pages
             this.btShowOriginalImage.Name = "btShowOriginalImage";
             this.btShowOriginalImage.Size = new System.Drawing.Size(280, 38);
             this.btShowOriginalImage.TabIndex = 30;
+            this.btShowOriginalImage.Tag = "_showOriginalImage_";
             this.btShowOriginalImage.Text = "Показать оригинальное изображение";
             this.btShowOriginalImage.UseVisualStyleBackColor = true;
             this.btShowOriginalImage.Click += new System.EventHandler(this.btShowOriginalImage_Click);
@@ -145,8 +152,10 @@ namespace ToolsGenGkode.pages
             this.SkeletonizationFilter.Name = "SkeletonizationFilter";
             this.SkeletonizationFilter.Size = new System.Drawing.Size(280, 17);
             this.SkeletonizationFilter.TabIndex = 31;
+            this.SkeletonizationFilter.Tag = "_UseSkeleton_";
             this.SkeletonizationFilter.Text = "Использовать утоньшение контуров изобразения";
             this.SkeletonizationFilter.UseVisualStyleBackColor = true;
+            this.SkeletonizationFilter.CheckedChanged += new System.EventHandler(this.SkeletonizationFilter_CheckedChanged);
             // 
             // page04_ImageToVector
             // 

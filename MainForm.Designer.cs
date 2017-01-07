@@ -104,13 +104,12 @@
             this.dopFunctionsToolStripMenuItem.Name = "dopFunctionsToolStripMenuItem";
             this.dopFunctionsToolStripMenuItem.Size = new System.Drawing.Size(107, 20);
             this.dopFunctionsToolStripMenuItem.Text = "Дополнительно";
-            this.dopFunctionsToolStripMenuItem.Visible = false;
             // 
             // testLaserToolStripMenuItem
             // 
             this.testLaserToolStripMenuItem.Name = "testLaserToolStripMenuItem";
-            this.testLaserToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.testLaserToolStripMenuItem.Text = "Тестирование лазера";
+            this.testLaserToolStripMenuItem.Size = new System.Drawing.Size(336, 22);
+            this.testLaserToolStripMenuItem.Text = "Калибровка параметров, для лазер. выжигания";
             this.testLaserToolStripMenuItem.Click += new System.EventHandler(this.testLaserToolStripMenuItem_Click);
             // 
             // languageCurrent

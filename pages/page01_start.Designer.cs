@@ -32,17 +32,17 @@ namespace ToolsGenGkode.pages
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButtonTypeSourceDXF = new System.Windows.Forms.RadioButton();
+            this.radioButtonTypeSourcePicture2 = new System.Windows.Forms.RadioButton();
+            this.radioButtonTypeSourceText = new System.Windows.Forms.RadioButton();
+            this.radioButtonTypeSourcePicture1 = new System.Windows.Forms.RadioButton();
+            this.radioButtonTypeSourcePLT = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.OrientationVar2 = new System.Windows.Forms.RadioButton();
             this.OrientationVar1 = new System.Windows.Forms.RadioButton();
             this.OrientationVar3 = new System.Windows.Forms.RadioButton();
             this.OrientationVar4 = new System.Windows.Forms.RadioButton();
-            this.radioButtonTypeSourceDXF = new System.Windows.Forms.RadioButton();
             this.pictureBoxAxes = new System.Windows.Forms.PictureBox();
-            this.radioButtonTypeSourcePicture2 = new System.Windows.Forms.RadioButton();
-            this.radioButtonTypeSourceText = new System.Windows.Forms.RadioButton();
-            this.radioButtonTypeSourcePicture1 = new System.Windows.Forms.RadioButton();
-            this.radioButtonTypeSourcePLT = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAxes)).BeginInit();
             this.SuspendLayout();
@@ -61,6 +61,74 @@ namespace ToolsGenGkode.pages
             this.groupBox1.TabStop = false;
             this.groupBox1.Tag = "_SorceData_";
             this.groupBox1.Text = "Источник данных";
+            // 
+            // radioButtonTypeSourceDXF
+            // 
+            this.radioButtonTypeSourceDXF.Image = global::ToolsGenGkode.Properties.Resources.blueprint;
+            this.radioButtonTypeSourceDXF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.radioButtonTypeSourceDXF.Location = new System.Drawing.Point(63, 173);
+            this.radioButtonTypeSourceDXF.Name = "radioButtonTypeSourceDXF";
+            this.radioButtonTypeSourceDXF.Size = new System.Drawing.Size(134, 25);
+            this.radioButtonTypeSourceDXF.TabIndex = 20;
+            this.radioButtonTypeSourceDXF.TabStop = true;
+            this.radioButtonTypeSourceDXF.Tag = "_sourceDXF_";
+            this.radioButtonTypeSourceDXF.Text = "       DXF файл";
+            this.radioButtonTypeSourceDXF.UseVisualStyleBackColor = true;
+            this.radioButtonTypeSourceDXF.CheckedChanged += new System.EventHandler(this.radioButtonTypeSourceDXF_CheckedChanged);
+            // 
+            // radioButtonTypeSourcePicture2
+            // 
+            this.radioButtonTypeSourcePicture2.Image = global::ToolsGenGkode.Properties.Resources.file_extension_jpg;
+            this.radioButtonTypeSourcePicture2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.radioButtonTypeSourcePicture2.Location = new System.Drawing.Point(63, 142);
+            this.radioButtonTypeSourcePicture2.Name = "radioButtonTypeSourcePicture2";
+            this.radioButtonTypeSourcePicture2.Size = new System.Drawing.Size(134, 25);
+            this.radioButtonTypeSourcePicture2.TabIndex = 19;
+            this.radioButtonTypeSourcePicture2.Tag = "_sourceRastr_";
+            this.radioButtonTypeSourcePicture2.Text = "       Рисунок (Растр)";
+            this.radioButtonTypeSourcePicture2.UseVisualStyleBackColor = true;
+            this.radioButtonTypeSourcePicture2.CheckedChanged += new System.EventHandler(this.radioButtonTypeSourcePicture2_CheckedChanged);
+            // 
+            // radioButtonTypeSourceText
+            // 
+            this.radioButtonTypeSourceText.Checked = true;
+            this.radioButtonTypeSourceText.Image = global::ToolsGenGkode.Properties.Resources.font;
+            this.radioButtonTypeSourceText.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.radioButtonTypeSourceText.Location = new System.Drawing.Point(63, 49);
+            this.radioButtonTypeSourceText.Name = "radioButtonTypeSourceText";
+            this.radioButtonTypeSourceText.Size = new System.Drawing.Size(87, 25);
+            this.radioButtonTypeSourceText.TabIndex = 16;
+            this.radioButtonTypeSourceText.TabStop = true;
+            this.radioButtonTypeSourceText.Tag = "_sourceText_";
+            this.radioButtonTypeSourceText.Text = "       Текст";
+            this.radioButtonTypeSourceText.UseVisualStyleBackColor = true;
+            this.radioButtonTypeSourceText.CheckedChanged += new System.EventHandler(this.radioButtonTypeSourceText_CheckedChanged);
+            // 
+            // radioButtonTypeSourcePicture1
+            // 
+            this.radioButtonTypeSourcePicture1.Image = global::ToolsGenGkode.Properties.Resources.file_extension_jpg;
+            this.radioButtonTypeSourcePicture1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.radioButtonTypeSourcePicture1.Location = new System.Drawing.Point(63, 111);
+            this.radioButtonTypeSourcePicture1.Name = "radioButtonTypeSourcePicture1";
+            this.radioButtonTypeSourcePicture1.Size = new System.Drawing.Size(134, 25);
+            this.radioButtonTypeSourcePicture1.TabIndex = 17;
+            this.radioButtonTypeSourcePicture1.Tag = "_sourceContur_";
+            this.radioButtonTypeSourcePicture1.Text = "       Рисунок (Контур)";
+            this.radioButtonTypeSourcePicture1.UseVisualStyleBackColor = true;
+            this.radioButtonTypeSourcePicture1.CheckedChanged += new System.EventHandler(this.radioButtonTypeSourcePicture_CheckedChanged);
+            // 
+            // radioButtonTypeSourcePLT
+            // 
+            this.radioButtonTypeSourcePLT.Image = global::ToolsGenGkode.Properties.Resources.smartart_change_color_gallery;
+            this.radioButtonTypeSourcePLT.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.radioButtonTypeSourcePLT.Location = new System.Drawing.Point(63, 80);
+            this.radioButtonTypeSourcePLT.Name = "radioButtonTypeSourcePLT";
+            this.radioButtonTypeSourcePLT.Size = new System.Drawing.Size(122, 25);
+            this.radioButtonTypeSourcePLT.TabIndex = 18;
+            this.radioButtonTypeSourcePLT.Tag = "_sourcePLT_";
+            this.radioButtonTypeSourcePLT.Text = "       PLT Corel Draw";
+            this.radioButtonTypeSourcePLT.UseVisualStyleBackColor = true;
+            this.radioButtonTypeSourcePLT.CheckedChanged += new System.EventHandler(this.radioButtonTypeSourcePLT_CheckedChanged);
             // 
             // label1
             // 
@@ -127,19 +195,6 @@ namespace ToolsGenGkode.pages
             this.OrientationVar4.UseVisualStyleBackColor = true;
             this.OrientationVar4.CheckedChanged += new System.EventHandler(this.OrientationVar4_CheckedChanged);
             // 
-            // radioButtonTypeSourceDXF
-            // 
-            this.radioButtonTypeSourceDXF.Image = global::ToolsGenGkode.Properties.Resources.blueprint;
-            this.radioButtonTypeSourceDXF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.radioButtonTypeSourceDXF.Location = new System.Drawing.Point(63, 173);
-            this.radioButtonTypeSourceDXF.Name = "radioButtonTypeSourceDXF";
-            this.radioButtonTypeSourceDXF.Size = new System.Drawing.Size(134, 25);
-            this.radioButtonTypeSourceDXF.TabIndex = 20;
-            this.radioButtonTypeSourceDXF.TabStop = true;
-            this.radioButtonTypeSourceDXF.Text = "       DXF файл";
-            this.radioButtonTypeSourceDXF.UseVisualStyleBackColor = true;
-            this.radioButtonTypeSourceDXF.CheckedChanged += new System.EventHandler(this.radioButtonTypeSourceDXF_CheckedChanged);
-            // 
             // pictureBoxAxes
             // 
             this.pictureBoxAxes.BackColor = System.Drawing.Color.White;
@@ -150,60 +205,6 @@ namespace ToolsGenGkode.pages
             this.pictureBoxAxes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxAxes.TabIndex = 26;
             this.pictureBoxAxes.TabStop = false;
-            // 
-            // radioButtonTypeSourcePicture2
-            // 
-            this.radioButtonTypeSourcePicture2.Image = global::ToolsGenGkode.Properties.Resources.file_extension_jpg;
-            this.radioButtonTypeSourcePicture2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.radioButtonTypeSourcePicture2.Location = new System.Drawing.Point(63, 142);
-            this.radioButtonTypeSourcePicture2.Name = "radioButtonTypeSourcePicture2";
-            this.radioButtonTypeSourcePicture2.Size = new System.Drawing.Size(134, 25);
-            this.radioButtonTypeSourcePicture2.TabIndex = 19;
-            this.radioButtonTypeSourcePicture2.Tag = "_sourceRastr_";
-            this.radioButtonTypeSourcePicture2.Text = "       Рисунок (Растр)";
-            this.radioButtonTypeSourcePicture2.UseVisualStyleBackColor = true;
-            this.radioButtonTypeSourcePicture2.CheckedChanged += new System.EventHandler(this.radioButtonTypeSourcePicture2_CheckedChanged);
-            // 
-            // radioButtonTypeSourceText
-            // 
-            this.radioButtonTypeSourceText.Checked = true;
-            this.radioButtonTypeSourceText.Image = global::ToolsGenGkode.Properties.Resources.font;
-            this.radioButtonTypeSourceText.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.radioButtonTypeSourceText.Location = new System.Drawing.Point(63, 49);
-            this.radioButtonTypeSourceText.Name = "radioButtonTypeSourceText";
-            this.radioButtonTypeSourceText.Size = new System.Drawing.Size(87, 25);
-            this.radioButtonTypeSourceText.TabIndex = 16;
-            this.radioButtonTypeSourceText.TabStop = true;
-            this.radioButtonTypeSourceText.Tag = "_sourceText_";
-            this.radioButtonTypeSourceText.Text = "       Текст";
-            this.radioButtonTypeSourceText.UseVisualStyleBackColor = true;
-            this.radioButtonTypeSourceText.CheckedChanged += new System.EventHandler(this.radioButtonTypeSourceText_CheckedChanged);
-            // 
-            // radioButtonTypeSourcePicture1
-            // 
-            this.radioButtonTypeSourcePicture1.Image = global::ToolsGenGkode.Properties.Resources.file_extension_jpg;
-            this.radioButtonTypeSourcePicture1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.radioButtonTypeSourcePicture1.Location = new System.Drawing.Point(63, 111);
-            this.radioButtonTypeSourcePicture1.Name = "radioButtonTypeSourcePicture1";
-            this.radioButtonTypeSourcePicture1.Size = new System.Drawing.Size(134, 25);
-            this.radioButtonTypeSourcePicture1.TabIndex = 17;
-            this.radioButtonTypeSourcePicture1.Tag = "_sourceContur_";
-            this.radioButtonTypeSourcePicture1.Text = "       Рисунок (Контур)";
-            this.radioButtonTypeSourcePicture1.UseVisualStyleBackColor = true;
-            this.radioButtonTypeSourcePicture1.CheckedChanged += new System.EventHandler(this.radioButtonTypeSourcePicture_CheckedChanged);
-            // 
-            // radioButtonTypeSourcePLT
-            // 
-            this.radioButtonTypeSourcePLT.Image = global::ToolsGenGkode.Properties.Resources.smartart_change_color_gallery;
-            this.radioButtonTypeSourcePLT.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.radioButtonTypeSourcePLT.Location = new System.Drawing.Point(63, 80);
-            this.radioButtonTypeSourcePLT.Name = "radioButtonTypeSourcePLT";
-            this.radioButtonTypeSourcePLT.Size = new System.Drawing.Size(122, 25);
-            this.radioButtonTypeSourcePLT.TabIndex = 18;
-            this.radioButtonTypeSourcePLT.Tag = "_sourcePLT_";
-            this.radioButtonTypeSourcePLT.Text = "       PLT Corel Draw";
-            this.radioButtonTypeSourcePLT.UseVisualStyleBackColor = true;
-            this.radioButtonTypeSourcePLT.CheckedChanged += new System.EventHandler(this.radioButtonTypeSourcePLT_CheckedChanged);
             // 
             // page01_start
             // 
@@ -234,19 +235,21 @@ namespace ToolsGenGkode.pages
         public int NextPage { get; set; }
         public Bitmap pageImageIN { get; set; }
         public Bitmap pageImageNOW { get; set; }
-        public List<Segment> pageVectorIN { get; set; }
-        public List<Segment> pageVectorNOW { get; set; }
-        public List<Location> PagePoints { get; set; }
-
+        public List<GroupPoint> pageVectorIN { get; set; }
+        public List<GroupPoint> pageVectorNOW { get; set; }
         public void actionBefore()
         {
-           // throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
         }
 
         public void actionAfter()
         {
-           // throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
         }
+
+        public List<cncPoint> PagePoints { get; set; }
+
+
         private System.Windows.Forms.PictureBox pictureBoxAxes;
         private System.Windows.Forms.RadioButton radioButtonTypeSourcePLT;
         private System.Windows.Forms.RadioButton radioButtonTypeSourcePicture1;

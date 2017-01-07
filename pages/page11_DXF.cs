@@ -11,7 +11,10 @@ namespace ToolsGenGkode.pages
 {
     public partial class page11_DXF : UserControl, PageInterface
     {
-        public page11_DXF()
+
+        private MainForm MAIN;
+
+        public page11_DXF(MainForm mf)
         {
             InitializeComponent();
 
@@ -20,8 +23,10 @@ namespace ToolsGenGkode.pages
             CurrPage = 11;
             NextPage = 6;
 
+            MAIN = mf;
+
             pageImageNOW = null;
-            pageVectorNOW = new List<Segment>();
+            pageVectorNOW = new List<GroupPoint>();
         }
 
         /// <summary>
@@ -31,29 +36,35 @@ namespace ToolsGenGkode.pages
 
         void CreateEvent(string message)
         {
-            MyEventArgs e = new MyEventArgs();
-            e.ActionRun = message;
+            //MyEventArgs e = new MyEventArgs();
+            //e.ActionRun = message;
 
-            EventHandler handler = IsChange;
-            if (handler != null) IsChange?.Invoke(this, e);
+            //EventHandler handler = IsChange;
+            //if (handler != null) IsChange?.Invoke(this, e);
+
+            MAIN.PreviewImage(pageImageNOW);
+            MAIN.PreviewVectors(pageVectorNOW);
         }
 
-        private double arcMaxLengLine;
+        //private decimal arcMaxLengLine;
 
         private void page11_DXF_Load(object sender, EventArgs e)
         {
-            string s1 = IniParser.GetSetting("page11", "arcMaxLengLine");
+            //string s1 = IniParser.GetSetting("page11", "arcMaxLengLine");
 
-            if (s1 == null)// если нет такого параметра, то добавим
-            {
-                arcMaxLengLine = 0.1;
-                IniParser.AddSetting("page11", "arcMaxLengLine", arcMaxLengLine.ToString());
-                IniParser.SaveSettings();
-            }
-            else
-            {
-                double.TryParse(s1, out arcMaxLengLine);
-            }
+            //if (s1 == null)// если нет такого параметра, то добавим
+            //{
+            //    //arcMaxLengLine = 0.1;
+            //    //IniParser.AddSetting("page11", "arcMaxLengLine", arcMaxLengLine.ToString());
+            //    //IniParser.SaveSettings();
+
+            //    Properties.Settings.Default.page11arcMaxLengLine = arcMaxLengLine;
+            //    Properties.Settings.Default.Save();
+            //}
+            //else
+            //{
+            //    double.TryParse(s1, out arcMaxLengLine);
+            //}
 
 
             toolTips myToolTip1 = new toolTips();
@@ -70,8 +81,9 @@ namespace ToolsGenGkode.pages
         private void btShowOriginalImage_Click(object sender, EventArgs e)
         {
             pageVectorNOW = GetVectorDXF(textBoxFileName.Text);
+            pageImageNOW = null;
 
-            CreateEvent("RefreshVector_11");
+            CreateEvent("");
         }
 
         private void buttonSelectFile_Click(object sender, EventArgs e)
@@ -92,6 +104,7 @@ namespace ToolsGenGkode.pages
             if (!File.Exists(textBoxFileName.Text)) return;
 
             pageVectorNOW = GetVectorDXF(textBoxFileName.Text);
+            pageImageNOW = null;
 
             CreateEvent("RefreshVector_11");
         }
@@ -102,8 +115,8 @@ namespace ToolsGenGkode.pages
         public int NextPage { get; set; }
         public Bitmap pageImageIN { get; set; }
         public Bitmap pageImageNOW { get; set; }
-        public List<Segment> pageVectorIN { get; set; }
-        public List<Segment> pageVectorNOW { get; set; }
+        public List<GroupPoint> pageVectorIN { get; set; }
+        public List<GroupPoint> pageVectorNOW { get; set; }
 
         public void actionBefore()
         {
@@ -137,17 +150,17 @@ namespace ToolsGenGkode.pages
         }
 
 
-        private List<Segment> GetVectorDXF(string FileNAME)
+        private List<GroupPoint> GetVectorDXF(string FileNAME)
         {
             textBoxInfo.Text = "";
 
             DXFDocument doc = new DXFDocument();
             doc.Load(FileNAME);
 
-            List<Segment> ListLines;
-            List<Location> ListPoint;
+            List<GroupPoint> ListLines;
+            List<cncPoint> ListPoint;
 
-            ListLines = new List<Segment>();
+            ListLines = new List<GroupPoint>();
 
             int count_DXFLWPolyLine = 0;
             int count_DXFPolyLine = 0;
@@ -156,15 +169,15 @@ namespace ToolsGenGkode.pages
             int count_DXFSpline = 0;
             int count_DXFArc = 0;
 
-            
 
-            decimal minX = 99999;
-            decimal maxX = -99999;
-            decimal deltaX = 0;
 
-            decimal minY = 99999;
-            decimal maxY = -99999;
-            decimal deltaY = 0;
+            double minX = 99999;
+            double maxX = -99999;
+            double deltaX = 0;
+
+            double minY = 99999;
+            double maxY = -99999;
+            double deltaY = 0;
 
             foreach (DXFEntity VARIABLE in doc.Entities)
             {
@@ -176,15 +189,15 @@ namespace ToolsGenGkode.pages
                     count_DXFLWPolyLine++;
                     DXFLWPolyLine lp = (DXFLWPolyLine)VARIABLE;
 
-                    ListPoint = new List<Location>();
+                    ListPoint = new List<cncPoint>();
 
                     foreach (DXFLWPolyLine.Element pl_e in lp.Elements)
                     {
-                        ListPoint.Add(new Location((decimal)pl_e.Vertex.X, (decimal)pl_e.Vertex.Y));
+                        ListPoint.Add(new cncPoint((double)pl_e.Vertex.X, (double)pl_e.Vertex.Y));
 
                     }
-                    ListLines.Add(new Segment(ListPoint));
-                    ListPoint = new List<Location>();
+                    ListLines.Add(new GroupPoint(ListPoint));
+                    ListPoint = new List<cncPoint>();
                 }
 
                 if (VARIABLE.GetType() == typeof(DXFPolyLine))
@@ -193,15 +206,15 @@ namespace ToolsGenGkode.pages
                     count_DXFPolyLine++;
                     DXFPolyLine lp = (DXFPolyLine)VARIABLE;
 
-                    ListPoint = new List<Location>();
+                    ListPoint = new List<cncPoint>();
 
                     foreach (DXFVertex pl_e in lp.Children)
                     {
-                        ListPoint.Add(new Location((decimal)pl_e.Location.X, (decimal)pl_e.Location.Y));
+                        ListPoint.Add(new cncPoint((double)pl_e.Location.X, (double)pl_e.Location.Y));
 
                     }
-                    ListLines.Add(new Segment(ListPoint));
-                    ListPoint = new List<Location>();
+                    ListLines.Add(new GroupPoint(ListPoint));
+                    ListPoint = new List<cncPoint>();
                 }
 
 
@@ -212,11 +225,11 @@ namespace ToolsGenGkode.pages
                     count_DXFLine++;
                     DXFLine line = (DXFLine)VARIABLE;
 
-                    ListPoint = new List<Location>();
-                    ListPoint.Add(new Location((decimal)line.Start.X, (decimal)line.Start.Y));
-                    ListPoint.Add(new Location((decimal)line.End.X, (decimal)line.End.Y));
-                    ListLines.Add(new Segment(ListPoint));
-                    ListPoint = new List<Location>();
+                    ListPoint = new List<cncPoint>();
+                    ListPoint.Add(new cncPoint((double)line.Start.X, (double)line.Start.Y));
+                    ListPoint.Add(new cncPoint((double)line.End.X, (double)line.End.Y));
+                    ListLines.Add(new GroupPoint(ListPoint));
+                    ListPoint = new List<cncPoint>();
                 }
 
 
@@ -226,16 +239,16 @@ namespace ToolsGenGkode.pages
                     count_DXFSpline++;
                     DXFSpline spline = (DXFSpline)VARIABLE;
 
-                    ListPoint = new List<Location>();
+                    ListPoint = new List<cncPoint>();
 
                     foreach (DXFPoint ppoint in spline.ControlPoints)
                     {
-                        ListPoint.Add(new Location((decimal)ppoint.X, (decimal)ppoint.Y));
+                        ListPoint.Add(new cncPoint((double)ppoint.X, (double)ppoint.Y));
 
                     }
 
-                    ListLines.Add(new Segment(ListPoint));
-                    ListPoint = new List<Location>();
+                    ListLines.Add(new GroupPoint(ListPoint));
+                    ListPoint = new List<cncPoint>();
                 }
 
 
@@ -245,8 +258,8 @@ namespace ToolsGenGkode.pages
                     count_DXFCircle++;
                     DXFCircle circle = (DXFCircle)VARIABLE;
 
-                    decimal X = (decimal)circle.Center.X;
-                    decimal Y = (decimal)circle.Center.Y;
+                    double X = (double)circle.Center.X;
+                    double Y = (double)circle.Center.Y;
                     float R = (float) circle.Radius;
 
 
@@ -254,28 +267,28 @@ namespace ToolsGenGkode.pages
                     //тут определим необходимый угол
                     //и вычислим количество сегментов
 
-                    double angle = GetAngleArcSegment((decimal)R, (decimal) arcMaxLengLine);
+                    double angle = GetAngleArcSegment((decimal)R, Properties.Settings.Default.page11arcMaxLengLine);
 
                     if (angle < 1) angle = 1;
 
 
                     int segmentsCount = 360/(int)angle;
 
-                    ListPoint = new List<Location>();
+                    ListPoint = new List<cncPoint>();
 
                     for (int i = 0; i < segmentsCount; i++)
                     {
                         float rx = R * (float)Math.Cos(2 * (float)Math.PI / segmentsCount * i);
                         float ry = R * (float)Math.Sin(2 * (float)Math.PI / segmentsCount * i);
 
-                        ListPoint.Add(new Location(X + (decimal)rx, Y + (decimal)ry));
+                        ListPoint.Add(new cncPoint(X + (double)rx, Y + (double)ry));
 
                     }
 
-                    ListPoint.Add(new Location(ListPoint[0].X, ListPoint[0].Y));
+                    ListPoint.Add(new cncPoint(ListPoint[0].X, ListPoint[0].Y));
 
-                    ListLines.Add(new Segment(ListPoint));
-                    ListPoint = new List<Location>();
+                    ListLines.Add(new GroupPoint(ListPoint));
+                    ListPoint = new List<cncPoint>();
 
 
                     //
@@ -302,9 +315,9 @@ namespace ToolsGenGkode.pages
                     //тут определим необходимый угол
                     //и вычислим количество сегментов
 
-                    float StepAngle = (float)GetAngleArcSegment((decimal)R, (decimal)arcMaxLengLine);
+                    float StepAngle = (float)GetAngleArcSegment((decimal)R, Properties.Settings.Default.page11arcMaxLengLine);
 
-                    ListPoint = new List<Location>();
+                    ListPoint = new List<cncPoint>();
 
                     double currAngle = startAngle;
 
@@ -313,10 +326,10 @@ namespace ToolsGenGkode.pages
 
                         double angle = currAngle * System.Math.PI / 180;
 
-                        decimal rx =(decimal) (X + R * Math.Cos(angle));
-                        decimal ry = (decimal)(Y + R * Math.Sin(angle));
+                        double rx =(double) (X + R * Math.Cos(angle));
+                        double ry = (double)(Y + R * Math.Sin(angle));
 
-                        ListPoint.Add(new Location(rx, ry));
+                        ListPoint.Add(new cncPoint(rx, ry));
 
                         currAngle += StepAngle;
 
@@ -326,10 +339,10 @@ namespace ToolsGenGkode.pages
 
                             double angle2 = endAngle * System.Math.PI / 180;
 
-                            decimal rx2 = (decimal)(X + R * Math.Cos(angle2));
-                            decimal ry2 = (decimal)(Y + R * Math.Sin(angle2));
+                            double rx2 = (double)(X + R * Math.Cos(angle2));
+                            double ry2 = (double)(Y + R * Math.Sin(angle2));
 
-                            ListPoint.Add(new Location(rx2, ry2));
+                            ListPoint.Add(new cncPoint(rx2, ry2));
 
                         }
 
@@ -348,8 +361,8 @@ namespace ToolsGenGkode.pages
                     //}
 
 
-                    ListLines.Add(new Segment(ListPoint));
-                    ListPoint = new List<Location>();
+                    ListLines.Add(new GroupPoint(ListPoint));
+                    ListPoint = new List<cncPoint>();
 
 
 
@@ -378,9 +391,9 @@ namespace ToolsGenGkode.pages
             textBoxInfo.Text += @"Обработано DXFArc: " + count_DXFArc.ToString() + Environment.NewLine;
 
 
-            foreach (Segment vSegment in ListLines)
+            foreach (GroupPoint vSegment in ListLines)
             {
-                foreach (Location vLocation in vSegment.Points)
+                foreach (cncPoint vLocation in vSegment.Points)
                 {
                     if (vLocation.X < minX) minX = vLocation.X;
 

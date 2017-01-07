@@ -18,9 +18,9 @@ namespace ToolsGenGkode
     {
         public bool containsData;
 
-        List<Segment> DrawVectors = new List<Segment>();
+        List<GroupPoint> DrawVectors = new List<GroupPoint>();
 
-        public void SetNewData(List<Segment> _DrawVectors)
+        public void SetNewData(List<GroupPoint> _DrawVectors)
         {
             DrawVectors = _DrawVectors;
 
@@ -31,7 +31,7 @@ namespace ToolsGenGkode
             openGLControl1.Refresh();
 
         }
-        public void SetNewData(List<Location> _DrawPoints)
+        public void SetNewData(List<cncPoint> _DrawPoints)
         {
             containsData = (DrawVectors.Count > 0);
 
@@ -47,28 +47,28 @@ namespace ToolsGenGkode
 
         private void openGLControl1_OpenGLDraw(object sender, SharpGL.RenderEventArgs args)
         {
-            if (Property.Orientation == 1)
+            if (Properties.Settings.Default.page01AxisVariant == 1)
             {
                 Setting.PosAngleX = 0;
                 Setting.PosAngleY = 0;
                 Setting.PosAngleZ = 0;
             }
 
-            if (Property.Orientation == 2)
+            if (Properties.Settings.Default.page01AxisVariant == 2)
             {
                 Setting.PosAngleX = 180;
                 Setting.PosAngleY = 0;
                 Setting.PosAngleZ = 0;
             }
 
-            if (Property.Orientation == 3)
+            if (Properties.Settings.Default.page01AxisVariant == 3)
             {
                 Setting.PosAngleX = -180;
                 Setting.PosAngleY = -180;
                 Setting.PosAngleZ = 0;
             }
 
-            if (Property.Orientation == 4)
+            if (Properties.Settings.Default.page01AxisVariant == 4)
             {
                 Setting.PosAngleX = 0;
                 Setting.PosAngleY = -180;
@@ -172,9 +172,9 @@ namespace ToolsGenGkode
             int minY = 0;
             int maxY = 0;
 
-            foreach (Segment seg in DrawVectors)
+            foreach (GroupPoint seg in DrawVectors)
             {
-                foreach (Location point in seg.Points)
+                foreach (cncPoint point in seg.Points)
                 {
                     //координаты следующей точки
                     int pointX = (int)point.X;
@@ -223,13 +223,13 @@ namespace ToolsGenGkode
 
             #region Отображение данных
 
-            foreach (Segment Vector in DrawVectors)
+            foreach (GroupPoint Vector in DrawVectors)
             {
                 float sizeVec = (float)numericUpDown1.Value;
 
                 if (Vector.IndividualPoints)
                 {
-                    foreach (Location point in Vector.Points)
+                    foreach (cncPoint point in Vector.Points)
                     {
                         gl.PointSize(sizeVec);
 
@@ -252,7 +252,7 @@ namespace ToolsGenGkode
                     gl.Begin(OpenGL.GL_LINE_STRIP);
                     gl.Color(0f, 1.0f, 0);
 
-                    foreach (Location point in Vector.Points)
+                    foreach (cncPoint point in Vector.Points)
                     {
                         //координаты следующей точки
                         float pointX = (float)point.X;
@@ -279,7 +279,7 @@ namespace ToolsGenGkode
             #region Отображение выделенных данных
 
             //выделение отдельной траектории
-            foreach (Segment Vector in DrawVectors)
+            foreach (GroupPoint Vector in DrawVectors)
             {
 
                 if (!Vector.Selected) continue;
@@ -293,7 +293,7 @@ namespace ToolsGenGkode
                 gl.Begin(OpenGL.GL_LINE_STRIP);
                 gl.Color(1.0f, 0.4f, 0);
 
-                foreach (Location point in Vector.Points)
+                foreach (cncPoint point in Vector.Points)
                 {
                     //координаты следующей точки
                     float pointX = (float)point.X;
@@ -306,9 +306,9 @@ namespace ToolsGenGkode
             }
 
             //выделение отдельной точки
-            foreach (Segment Vector in DrawVectors)
+            foreach (GroupPoint Vector in DrawVectors)
             {
-                foreach (Location point in Vector.Points)
+                foreach (cncPoint point in Vector.Points)
                 {
                     if (!point.Selected) continue;
 
@@ -527,28 +527,28 @@ namespace ToolsGenGkode
             Setting.PosAngleY = 0;
             Setting.PosAngleZ = 0;
 
-            if (Property.Orientation == 1)
+            if (Properties.Settings.Default.page01AxisVariant == 1)
             {
                 Setting.PosAngleX = 0;
                 Setting.PosAngleY = 0;
                 Setting.PosAngleZ = 0;
             }
 
-            if (Property.Orientation == 2)
+            if (Properties.Settings.Default.page01AxisVariant == 2)
             {
                 Setting.PosAngleX = 180;
                 Setting.PosAngleY = 0;
                 Setting.PosAngleZ = 0;
             }
 
-            if (Property.Orientation == 3)
+            if (Properties.Settings.Default.page01AxisVariant == 3)
             {
                 Setting.PosAngleX = -180;
                 Setting.PosAngleY = -180;
                 Setting.PosAngleZ = 0;
             }
 
-            if (Property.Orientation == 4)
+            if (Properties.Settings.Default.page01AxisVariant == 4)
             {
                 Setting.PosAngleX = 0;
                 Setting.PosAngleY = -180;
