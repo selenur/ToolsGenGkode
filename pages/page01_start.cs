@@ -10,63 +10,21 @@ namespace ToolsGenGkode.pages
 {
     public partial class page01_start : UserControl, PageInterface
     {
-        ///// <summary>
-        ///// Событие при изменении параметров на данной форме
-        ///// </summary>
-        //public event EventHandler IsChange;
-
-        ///// <summary>
-        ///// Посылка события главной форме
-        ///// </summary>
-        ///// <param name="message"></param>
-        //void CreateEvent(string message)
-        //{
-        //    //MyEventArgs e = new MyEventArgs();
-        //    //e.ActionRun = message;
-
-        //    //EventHandler handler = IsChange;
-        //    //if (handler != null) IsChange?.Invoke(this, e);
-        //}
+        // ссылка на основную форму
+        private MainForm MAIN;
 
         public page01_start(MainForm mf)
         {
             InitializeComponent();
 
-            PageName = @"Выбор ориентации осей, и источника данных (1)";
-            LastPage = 0;
-            CurrPage = 1;
+            MAIN = mf;
 
             pageImageIN = null;
             pageImageNOW = null;
             pageVectorIN = new List<GroupPoint>();
             pageVectorNOW = new List<GroupPoint>();
 
-
-            toolTips myToolTip1 = new toolTips();
-
-            //myToolTip1.Size = new Size(300,200);
-            //myToolTip1.BackColor = Color.FromArgb(255, 255, 192);
-            //myToolTip1.ForeColor = Color.Navy;
-            //myToolTip1.BorderColor = Color.FromArgb(128, 128, 255);
-
-            myToolTip1.SetToolTip(radioButtonTypeSourceText, "Выбор данного пункта, предназначен для формирования траектории,\n на основании текста, введенного пользователем.");
-            myToolTip1.SetToolTip(radioButtonTypeSourcePLT, "Выбор данного пункта, предназначен для формирования траектории,\n из файла PLT сформированного из програмы COREL DRAW.");
-            myToolTip1.SetToolTip(radioButtonTypeSourcePicture1, "Выбор данного пункта, предназначен для формирования траектории,\n из рисунка, причем будет получен лишь контур рисунка.");
-            myToolTip1.SetToolTip(radioButtonTypeSourcePicture2, "Выбор данного пункта, предназначен для формирования траектории,\n для лазерной гравировки изображения.");
-
-            //myToolTip1.SetToolTip(OrientationVar1, "Выбор данного пункта,\n определяет расположение начала координат, относительно стола станка.\n \n \n \n \n \n");
-            //myToolTip1.SetToolTip(OrientationVar2, "Выбор данного пункта,\n определяет расположение начала координат, относительно стола станка.\n \n \n \n \n \n");
-
-            // rbvar1.Tag = Resources.axesVar1;
-            // rbvar2.Tag = Resources.axesVar2;
-
-        }
-
-        private void page01_Load(object sender, EventArgs e)
-        {
-            // По умолчанию источником данных сделаем введеный текст
-            radioButtonTypeSourceText.Checked = true;
-
+            //Страница по умолчанию для перехода
             NextPage = Properties.Settings.Default.page01NextPage;
 
             switch (NextPage)
@@ -89,9 +47,11 @@ namespace ToolsGenGkode.pages
                 case 11:
                     radioButtonTypeSourceDXF.Checked = true;
                     break;
-
+                default:
+                    radioButtonTypeSourceText.Checked = true;
+                    break;
             }
-            
+
             int sAxesPos = Properties.Settings.Default.page01AxisVariant;
 
             SetOrientation(sAxesPos);
@@ -99,27 +59,41 @@ namespace ToolsGenGkode.pages
             switch (sAxesPos)
             {
                 case 1:
-                    //Property.Orientation = 1;
                     OrientationVar1.Checked = true;
                     break;
 
                 case 2:
-                    //Property.Orientation = 2;
                     OrientationVar2.Checked = true;
                     break;
                 case 3:
-                    //Property.Orientation = 3;
                     OrientationVar3.Checked = true;
                     break;
                 case 4:
-                    //Property.Orientation = 4;
                     OrientationVar4.Checked = true;
                     break;
                 default:
-                    //Property.Orientation = 1;
                     OrientationVar1.Checked = true;
                     break;
             }
+        }
+
+        public void actionBefore()
+        {
+            // В заголовке первой страницы установим наименование по умолчанию
+            MAIN.PageName.Text = @"Выбор ориентации осей, и источника данных (1)";
+            MAIN.PageName.Tag = Tag;
+            // передадим пустые данные
+            MAIN.PreviewDada(null,new List<GroupPoint>());
+        }
+
+        public void actionAfter()
+        {
+
+        }
+
+        private void page01_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void SetOrientation(int value)
@@ -152,6 +126,13 @@ namespace ToolsGenGkode.pages
             Properties.Settings.Default.Save();
         }
 
+        private void SetNextPage(int number)
+        {
+            NextPage = number;
+            Properties.Settings.Default.page01NextPage = number;
+            Properties.Settings.Default.Save();
+        }
+
         private void OrientationVar1_CheckedChanged(object sender, EventArgs e)
         {
             SetOrientation(1);
@@ -174,60 +155,36 @@ namespace ToolsGenGkode.pages
 
         private void radioButtonTypeSourceText_CheckedChanged(object sender, EventArgs e)
         {
-            NextPage = 2;
-            Properties.Settings.Default.page01NextPage = NextPage;
-            Properties.Settings.Default.Save();
+            SetNextPage(2);
         }
 
         private void radioButtonTypeSourcePLT_CheckedChanged(object sender, EventArgs e)
         {
-            NextPage = 3;
-            Properties.Settings.Default.page01NextPage = NextPage;
-            Properties.Settings.Default.Save();
+            SetNextPage(3);
         }
 
         private void radioButtonTypeSourcePicture_CheckedChanged(object sender, EventArgs e)
         {
-            NextPage = 4;
-            Properties.Settings.Default.page01NextPage = NextPage;
-            Properties.Settings.Default.Save();
+            SetNextPage(4);
         }
 
         private void radioButtonTypeSourcePicture2_CheckedChanged(object sender, EventArgs e)
         {
-            NextPage = 5;
-            Properties.Settings.Default.page01NextPage = NextPage;
-            Properties.Settings.Default.Save();
+            SetNextPage(5);
         }
 
         private void radioButtonTypeSourceDXF_CheckedChanged(object sender, EventArgs e)
         {
-            NextPage = 11;
-            Properties.Settings.Default.page01NextPage = NextPage;
-            Properties.Settings.Default.Save();
+            SetNextPage(11);
         }
     }
 
     public interface PageInterface
     {
         /// <summary>
-        /// Имя страницы
-        /// </summary>
-        string PageName { get; set; } // свойство
-        /// <summary>
-        /// Номер предыдущей страницы
-        /// </summary>
-        int LastPage { get; set; }    // свойство
-        /// <summary>
-        /// Номер текущей страницы
-        /// </summary>
-        int CurrPage { get; set; }    // свойство
-        /// <summary>
         /// Номер следующей страницы
         /// </summary>
         int NextPage { get; set; }    // свойство
-
-
 
         Bitmap pageImageIN { get; set; } //входной рисунок
         Bitmap pageImageNOW { get; set; }// текущий рисунок
@@ -446,3 +403,20 @@ namespace ToolsGenGkode.pages
         Right = 1
     }
 }
+////toolTips myToolTip1 = new toolTips();
+
+//////myToolTip1.Size = new Size(300,200);
+//////myToolTip1.BackColor = Color.FromArgb(255, 255, 192);
+//////myToolTip1.ForeColor = Color.Navy;
+//////myToolTip1.BorderColor = Color.FromArgb(128, 128, 255);
+
+////myToolTip1.SetToolTip(radioButtonTypeSourceText, "Выбор данного пункта, предназначен для формирования траектории,\n на основании текста, введенного пользователем.");
+////myToolTip1.SetToolTip(radioButtonTypeSourcePLT, "Выбор данного пункта, предназначен для формирования траектории,\n из файла PLT сформированного из програмы COREL DRAW.");
+////myToolTip1.SetToolTip(radioButtonTypeSourcePicture1, "Выбор данного пункта, предназначен для формирования траектории,\n из рисунка, причем будет получен лишь контур рисунка.");
+////myToolTip1.SetToolTip(radioButtonTypeSourcePicture2, "Выбор данного пункта, предназначен для формирования траектории,\n для лазерной гравировки изображения.");
+
+//////myToolTip1.SetToolTip(OrientationVar1, "Выбор данного пункта,\n определяет расположение начала координат, относительно стола станка.\n \n \n \n \n \n");
+//////myToolTip1.SetToolTip(OrientationVar2, "Выбор данного пункта,\n определяет расположение начала координат, относительно стола станка.\n \n \n \n \n \n");
+
+////// rbvar1.Tag = Resources.axesVar1;
+////// rbvar2.Tag = Resources.axesVar2;

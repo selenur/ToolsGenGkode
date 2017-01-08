@@ -59,9 +59,11 @@ namespace ToolsGenGkode.pages
             // 
             // btShowOriginalImage
             // 
+            this.btShowOriginalImage.Image = global::ToolsGenGkode.Properties.Resources.arrow_refresh;
+            this.btShowOriginalImage.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btShowOriginalImage.Location = new System.Drawing.Point(158, 118);
             this.btShowOriginalImage.Name = "btShowOriginalImage";
-            this.btShowOriginalImage.Size = new System.Drawing.Size(252, 37);
+            this.btShowOriginalImage.Size = new System.Drawing.Size(252, 46);
             this.btShowOriginalImage.TabIndex = 9;
             this.btShowOriginalImage.Tag = "_showDataFromFile_";
             this.btShowOriginalImage.Text = "Показать траекторию";
@@ -98,19 +100,11 @@ namespace ToolsGenGkode.pages
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btShowOriginalImage;
         public System.Windows.Forms.TextBox textBoxFileName;
-        public string PageName { get; set; }
-        public int LastPage { get; set; }
-        public int CurrPage { get; set; }
+
         public int NextPage { get; set; }
-
-        public void actionBefore()
-        {
-            //throw new System.NotImplementedException();
-        }
-
-        public void actionAfter()
-        {
-           // throw new NotImplementedException();
-        }
+        public Bitmap pageImageIN { get; set; }
+        public Bitmap pageImageNOW { get; set; }
+        public List<GroupPoint> pageVectorIN { get; set; }
+        public List<GroupPoint> pageVectorNOW { get; set; }
     }
 }

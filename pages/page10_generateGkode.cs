@@ -3,7 +3,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
@@ -18,72 +17,41 @@ namespace ToolsGenGkode.pages
 {
     public partial class page10_generateGkode : UserControl, PageInterface
     {
-        /// <summary>
-        /// Событие при изменении параметров на данной форме
-        /// </summary>
-        public event EventHandler IsChange;
-
-
-        public string TextStart = "M3 " + Environment.NewLine + " Z10" + Environment.NewLine;
-
-        public string TextEnds = "M5" + Environment.NewLine + "Z10" + Environment.NewLine;
-
-        public string TextVectorStart = @"Z0" + Environment.NewLine;
-
-        public string TextVectorEnds = @"Z10" + Environment.NewLine;
-
-
-        void CreateEvent(string Action)
-        {
-            MyEventArgs e = new MyEventArgs();
-            e.ActionRun = Action;
-            //вызовем событие
-            EventHandler handler = IsChange;
-            if (handler != null)
-                IsChange?.Invoke(this, e);
-        }
-
+        private MainForm MAIN;
 
         public page10_generateGkode(MainForm mf)
         {
             InitializeComponent();
 
-            PageName = @"Генерация G-кода (10)";
-            LastPage = 0;
-            CurrPage = 10;
-            NextPage = 0;
+            MAIN = mf;
 
+            pageImageIN = null;
             pageImageNOW = null;
+            pageVectorIN = new List<GroupPoint>();
             pageVectorNOW = new List<GroupPoint>();
 
+            NextPage = 0;
+            //toolTips myToolTip1 = new toolTips();
 
+            //myToolTip1.Size = new Size(300, 200);
+            //myToolTip1.BackColor = Color.FromArgb(255, 255, 192);
+            //myToolTip1.ForeColor = Color.Navy;
+            //myToolTip1.BorderColor = Color.FromArgb(128, 128, 255);
 
-
-            toolTips myToolTip1 = new toolTips();
-
-            myToolTip1.Size = new Size(300, 200);
-            myToolTip1.BackColor = Color.FromArgb(255, 255, 192);
-            myToolTip1.ForeColor = Color.Navy;
-            myToolTip1.BorderColor = Color.FromArgb(128, 128, 255);
-
-            myToolTip1.SetToolTip(buttonAddNewProfile, "Создать новый профиль");
-            myToolTip1.SetToolTip(btEditProfile, "Редактировать существующий профиль");
-
+            //myToolTip1.SetToolTip(buttonAddNewProfile, "Создать новый профиль");
+            //myToolTip1.SetToolTip(btEditProfile, "Редактировать существующий профиль");
         }
 
         private void page09_generateGkode_Load(object sender, EventArgs e)
         {
-            //cbProfile.Text = cbProfile.Items[0].ToString();
-        }
 
-        public Bitmap pageImageIN { get; set; }
-        public Bitmap pageImageNOW { get; set; }
-        public List<GroupPoint> pageVectorIN { get; set; }
-        public List<GroupPoint> pageVectorNOW { get; set; }
-        public List<cncPoint> PagePoints { get; set; }
+        }
 
         public void actionBefore()
         {
+            MAIN.PageName.Text = @"Генерация G-кода (10)";
+            MAIN.PageName.Tag = Tag;
+
             pageVectorNOW = VectorProcessing.ListGroupPointClone(pageVectorIN);
             pageImageNOW = null;
         }
@@ -92,23 +60,6 @@ namespace ToolsGenGkode.pages
         {
 
         }
-
-        public void ChangeValueVariable(ref List<VariableValue>  _variableDataValues, string _name, double _value)
-        {
-            bool finded = false;
-
-            foreach (VariableValue VARIABLE in _variableDataValues)
-            {
-                if (VARIABLE.VariableName == _name)
-                {
-                    finded = true;
-                    VARIABLE.value = _value;
-                }
-            }
-
-            if (!finded) _variableDataValues.Add(new VariableValue(_value, _name));
-        }
-
 
         private void btGenerateCode_Click(object sender, EventArgs e)
         {
@@ -193,6 +144,22 @@ namespace ToolsGenGkode.pages
             labelCountRow.Text = @"Размер: " + sb.Length + @" байт";
 
             Cursor.Current = Cursors.Default;
+        }
+
+        public void ChangeValueVariable(ref List<VariableValue>  _variableDataValues, string _name, double _value)
+        {
+            bool finded = false;
+
+            foreach (VariableValue VARIABLE in _variableDataValues)
+            {
+                if (VARIABLE.VariableName == _name)
+                {
+                    finded = true;
+                    VARIABLE.value = _value;
+                }
+            }
+
+            if (!finded) _variableDataValues.Add(new VariableValue(_value, _name));
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -619,7 +586,7 @@ namespace ToolsGenGkode.pages
             string buffStr = "";
 
             bool OpenCollect = false;
-            string symOpen = "";
+            //string symOpen = "";
 
 
             foreach (char symb in tmpString)
@@ -629,7 +596,7 @@ namespace ToolsGenGkode.pages
                 if (symb == '[' && OpenCollect == false)
                 {
                     OpenCollect = true;
-                    symOpen = "[";
+                    //symOpen = "[";
                     continue;
                 }
 
@@ -637,7 +604,7 @@ namespace ToolsGenGkode.pages
                 if (symb == '\"' && OpenCollect == false)
                 {
                     OpenCollect = true;
-                    symOpen = "\"";
+                    //symOpen = "\"";
                     continue;
                 }
 
@@ -645,7 +612,7 @@ namespace ToolsGenGkode.pages
                 if (symb == ']' && OpenCollect == true)
                 {
                     OpenCollect = false;
-                    symOpen = "";
+                    //symOpen = "";
 
                     if (buffStr.Trim() != "") returnValue.Add(buffStr);
                     buffStr = "";
@@ -656,7 +623,7 @@ namespace ToolsGenGkode.pages
                 if (symb == '\"' && OpenCollect == true)
                 {
                     OpenCollect = false;
-                    symOpen = "";
+                    //symOpen = "";
                     if (buffStr.Trim() != "") returnValue.Add(buffStr);
                     buffStr = "";
                     continue;
@@ -745,7 +712,7 @@ namespace ToolsGenGkode.pages
             }
 
             // Необходимость прервать цикл парсинга
-            bool breakLoop = false;
+            //bool breakLoop = false;
 
             // по циклу начинаем перебирать команды
             foreach (string sLine in LCommand)
@@ -898,10 +865,10 @@ namespace ToolsGenGkode.pages
 
                     //узнаем есть ли параметр означающий не выводить данные
                     //тоторые не изменились с помледнего раза
-                    bool NotChanged = false;
+                    //bool NotChanged = false;
                     if (ttmString.IndexOf("!") != -1)
                     {
-                        NotChanged = true;
+                       // NotChanged = true;
                         //удалим лишний символ
                         ttmString = ttmString.Replace("!", "");
                     }

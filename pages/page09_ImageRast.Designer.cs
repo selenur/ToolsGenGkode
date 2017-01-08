@@ -195,6 +195,7 @@ namespace ToolsGenGkode.pages
             this.groupBox2.TabStop = false;
             this.groupBox2.Tag = "_genDataProperty_";
             this.groupBox2.Text = "Генерация данных:";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // label6
             // 
@@ -607,5 +608,12 @@ namespace ToolsGenGkode.pages
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button buttonHelpInfo;
+
+
+        public int NextPage { get; set; }
+        public Bitmap pageImageIN { get; set; }
+        public Bitmap pageImageNOW { get; set; }
+        public List<GroupPoint> pageVectorIN { get; set; }
+        public List<GroupPoint> pageVectorNOW { get; set; }
     }
 }

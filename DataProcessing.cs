@@ -592,6 +592,8 @@ namespace ToolsGenGkode
 
         }
 
+
+
         /// <summary>
         /// Создание дубликата, списка групп точек
         /// </summary>
@@ -610,6 +612,19 @@ namespace ToolsGenGkode
             return tmp;
         }
 
+
+        public static List<cncPoint> ListCncPointClone(List<cncPoint> source)
+        {
+            List<cncPoint> tmp = new List<cncPoint>();
+
+            if (source == null) return tmp;
+
+            foreach (cncPoint VARIABLE in source)
+            {
+                tmp.Add(VARIABLE.Clone());
+            }
+            return tmp;
+        } 
 
         public static List<GroupPoint> Rotate(List<GroupPoint> dataCVectors)
         {

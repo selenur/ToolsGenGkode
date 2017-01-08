@@ -1,150 +1,95 @@
 ﻿// This is an independent project of an individual developer. Dear PVS-Studio, please check it.
 // PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Globalization;
 using System.Windows.Forms;
 using AForge.Imaging.Filters;
+using ToolsGenGkode.Properties;
 
 namespace ToolsGenGkode.pages
 {
     // ReSharper disable once InconsistentNaming
     public partial class page09_ImageRast : UserControl, PageInterface
     {
-        /// <summary>
-        /// Событие при изменении параметров на данной форме
-        /// </summary>
-        public event EventHandler IsChange;
-
-        void CreateEvent(string message)
-        {
-            //MyEventArgs e = new MyEventArgs();
-            //e.ActionRun = message;
-
-            //EventHandler handler = IsChange;
-            //if (handler != null) IsChange?.Invoke(this, e);
-
-            MAIN.PreviewImage(pageImageNOW);
-            MAIN.PreviewVectors(pageVectorNOW);
-        }
-
         private MainForm MAIN;
 
         public page09_ImageRast(MainForm mf)
         {
             InitializeComponent();
 
-            PageName = @"Подготовка изображения растра (9)";
-            LastPage = 0;
-            CurrPage = 9;
-            NextPage = 10;
-
             MAIN = mf;
 
+            pageImageIN = null;
             pageImageNOW = null;
+            pageVectorIN = new List<GroupPoint>();
             pageVectorNOW = new List<GroupPoint>();
+
+            NextPage = 10;
 
             useFilter.Items.Clear();
             useFilter.Items.Add("01 - метод Флойда-Стеинберга (<распыление >)"); //FloydSteinberg Dithering
             useFilter.Items.Add("02 - метод Байера (<матрица>)");              //Bayer Dithering
             useFilter.Items.Add("03 - Получение оттенков серого (bright)");
+
+
+            cbKeepAspectRatio.Checked = Settings.Default.page09UserUseRation;
+            numSizePoint.Value = Settings.Default.page09SizePoint;
+            LaserTimeOut.Value = Settings.Default.page09LaserTimeOut;
+            numericUpDownPercent.Value = Settings.Default.page09PercentValue;
+
+            _changeIsUser = false;
+            numXAfter.Value = Settings.Default.page09sizeDestX;
+            numYAfter.Value = Settings.Default.page09sizeDestY;
+            _changeIsUser = true;
+
+            switch (Settings.Default.page09VariantSize)
+            {
+                case 1:
+                    radioButtonDiametrSizePoint.Checked = true;
+                    break;
+
+                case 2:
+                    radioButtonSizePoint.Checked = true;
+                    break;
+
+                case 3:
+                    radioButtonPerent.Checked = true;
+                    break;
+
+                case 4:
+                    radioButtonUserSize.Checked = true;
+                    break;
+            }
+
+            //RecalculateSize();
         }
 
         private void page09_SelectImage_Load(object sender, EventArgs e)
         {
-            //decimal p1 = 1; //размер точки прожига
-            //decimal p2 = 1000; //длительность лазера
-            //decimal p3 = 100;  //процент от исходного размера
-            //decimal p4 = 1;     //размер по X 
-            //decimal p5 = 1;     //размер по Y
 
-            //string sp1 = IniParser.GetSetting("page09", "SizePoint");
-            //string sp2 = IniParser.GetSetting("page09", "LaserTimeOut");
-            //string sp3 = IniParser.GetSetting("page09", "PercentValue");
-            //string sp4 = IniParser.GetSetting("page09", "sizeDestX");
-            //string sp5 = IniParser.GetSetting("page09", "sizeDestY");
-            //string sp6 = IniParser.GetSetting("page09", "UserUseRation"); //флажок поддерживать пропорций
-            //string sp7 = IniParser.GetSetting("page09", "Variant"); //текущий выбранный вариант
-
-            //if (sp1 != null) decimal.TryParse(sp1, out p1);
-            //if (sp2 != null) decimal.TryParse(sp2, out p2);
-            //if (sp3 != null) decimal.TryParse(sp3, out p3);
-            //if (sp4 != null) decimal.TryParse(sp4, out p4);
-            //if (sp5 != null) decimal.TryParse(sp5, out p5);
-
-            //if (sp6 != null)
-            //{
-            //    cbKeepAspectRatio.Checked = (sp6 == "1");
-            //}
-            //else
-            //{
-            //    cbKeepAspectRatio.Checked = true;
-            //}
-
-            cbKeepAspectRatio.Checked = Properties.Settings.Default.page09UserUseRation;
-
-            //if (p1 == 0) p1 = 1; 
-
-            numSizePoint.Value = Properties.Settings.Default.page09SizePoint;
-            LaserTimeOut.Value = Properties.Settings.Default.page09LaserTimeOut;
-            numericUpDownPercent.Value = Properties.Settings.Default.page09PercentValue;
-
-            _changeIsUser = false;
-                //if (p4 == 0) p4 = 100;
-                //if (p5 == 0) p5 = 100;
-                numXAfter.Value = Properties.Settings.Default.page09sizeDestX;
-                numYAfter.Value = Properties.Settings.Default.page09sizeDestY;
-            _changeIsUser = true;
-
-
- 
-                switch (Properties.Settings.Default.page09VariantSize)
-                {
-                    case 1:
-                        radioButtonDiametrSizePoint.Checked = true;
-                        break;
-
-                    case 2:
-                        radioButtonSizePoint.Checked = true;
-                        break;
-
-                    case 3:
-                        radioButtonPerent.Checked = true;
-                        break;
-
-                    case 4:
-                        radioButtonUserSize.Checked = true;
-                        break;
-                }
-            
-
-            RecalculateSize();
         }
 
-
-        public string PageName { get; set; }
-        public int LastPage { get; set; }
-        public int CurrPage { get; set; }
-        public int NextPage { get; set; }
-        public Bitmap pageImageIN { get; set; }
-        public Bitmap pageImageNOW { get; set; }
-        public List<GroupPoint> pageVectorIN { get; set; }
-        public List<GroupPoint> pageVectorNOW { get; set; }
-        //public List<Location> PagePoints { get; set; }
+        void UserActions()
+        {
+            MAIN.PreviewDada(pageImageNOW, pageVectorNOW);
+        }
 
         public void actionBefore()
         {
-            pageVectorNOW = new List<GroupPoint>();
+            MAIN.PageName.Text = @"Подготовка изображения растра (9)";
+            MAIN.PageName.Tag = Tag;
 
+            pageVectorNOW = new List<GroupPoint>();
             if (pageImageIN == null) return;
 
             pageImageNOW = (Bitmap)pageImageIN.Clone(); 
 
             GetInfoSize();
 
-            CreateEvent("");
+            UserActions();
 
             RecalculateSize();
         }
@@ -398,7 +343,7 @@ namespace ToolsGenGkode.pages
 
             Cursor.Current = Cursors.Default;
 
-            CreateEvent("");
+            UserActions();
             //CreateEvent("RefreshImage_09");
         }
 
@@ -415,7 +360,7 @@ namespace ToolsGenGkode.pages
 
             Cursor.Current = Cursors.Default;
 
-            CreateEvent("");
+            UserActions();
             //CreateEvent("RefreshImage_09");
         }
 
@@ -440,9 +385,9 @@ namespace ToolsGenGkode.pages
                 _changeIsUser = true;
             }
 
-            Properties.Settings.Default.page09sizeDestX = numXAfter.Value;
-            Properties.Settings.Default.page09sizeDestY = numYAfter.Value;
-            Properties.Settings.Default.Save();
+            Settings.Default.page09sizeDestX = numXAfter.Value;
+            Settings.Default.page09sizeDestY = numYAfter.Value;
+            Settings.Default.Save();
         }
 
         private void numYAfter_ValueChanged(object sender, EventArgs e)
@@ -457,16 +402,16 @@ namespace ToolsGenGkode.pages
                 _changeIsUser = true;
             }
 
-            Properties.Settings.Default.page09sizeDestX = numXAfter.Value;
-            Properties.Settings.Default.page09sizeDestY = numYAfter.Value;
-            Properties.Settings.Default.Save();
+            Settings.Default.page09sizeDestX = numXAfter.Value;
+            Settings.Default.page09sizeDestY = numYAfter.Value;
+            Settings.Default.Save();
         }
 
 
         private void LaserTimeOut_ValueChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.page09LaserTimeOut = LaserTimeOut.Value;
-            Properties.Settings.Default.Save();
+            Settings.Default.page09LaserTimeOut = LaserTimeOut.Value;
+            Settings.Default.Save();
         }
 
         private void useFilter_SelectedIndexChanged(object sender, EventArgs e)
@@ -518,50 +463,50 @@ namespace ToolsGenGkode.pages
 
         private void cbKeepAspectRatio_CheckedChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.page09UserUseRation = cbKeepAspectRatio.Checked;
-            Properties.Settings.Default.Save();
+            Settings.Default.page09UserUseRation = cbKeepAspectRatio.Checked;
+            Settings.Default.Save();
         }
 
         private void numSizePoint_ValueChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.page09SizePoint = numSizePoint.Value;
-            Properties.Settings.Default.Save();
+            Settings.Default.page09SizePoint = numSizePoint.Value;
+            Settings.Default.Save();
             RecalculateSize();
         }
 
         private void radioButtonDiametrSizePoint_CheckedChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.page09VariantSize = 1;
-            Properties.Settings.Default.Save();
+            Settings.Default.page09VariantSize = 1;
+            Settings.Default.Save();
             RecalculateSize();
         }
 
         private void radioButtonSizePoint_CheckedChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.page09VariantSize = 2;
-            Properties.Settings.Default.Save();
+            Settings.Default.page09VariantSize = 2;
+            Settings.Default.Save();
             RecalculateSize();
         }
 
         private void radioButtonPerent_CheckedChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.page09VariantSize = 3;
-            Properties.Settings.Default.Save();
+            Settings.Default.page09VariantSize = 3;
+            Settings.Default.Save();
             RecalculateSize();
         }
 
         private void numericUpDownPercent_ValueChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.page09PercentValue = numericUpDownPercent.Value;
-            Properties.Settings.Default.Save();
+            Settings.Default.page09PercentValue = numericUpDownPercent.Value;
+            Settings.Default.Save();
             RecalculateSize();
         }
 
         private void radioButtonUserSize_CheckedChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.page09VariantSize = 4;
-            Properties.Settings.Default.page09UserUseRation = cbKeepAspectRatio.Checked;
-            Properties.Settings.Default.Save();
+            Settings.Default.page09VariantSize = 4;
+            Settings.Default.page09UserUseRation = cbKeepAspectRatio.Checked;
+            Settings.Default.Save();
             RecalculateSize();
         }
 
@@ -600,6 +545,9 @@ namespace ToolsGenGkode.pages
             hlp.ShowDialog();
         }
 
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
 
+        }
     }
 }

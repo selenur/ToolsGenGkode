@@ -9,63 +9,54 @@ namespace ToolsGenGkode.pages
 {
     public partial class page06_VectorEdit : UserControl, PageInterface
     {
-
-
-        /// <summary>
-        /// Событие при изменении параметров на данной форме
-        /// </summary>
-        public event EventHandler IsChange;
-
-        void CreateEvent(string message)
-        {
-            //MyEventArgs e = new MyEventArgs();
-            //e.ActionRun = message;
-
-            //EventHandler handler = IsChange;
-            //if (handler != null) IsChange?.Invoke(this, e);
-
-            MAIN.PreviewImage(pageImageNOW);
-            MAIN.PreviewVectors(pageVectorNOW);
-        }
-
-
         private MainForm MAIN;
 
         public page06_VectorEdit(MainForm mf)
         {
             InitializeComponent();
 
-            PageName = @"Ручная корректировка векторов (6)";
-            LastPage = 0;
-            CurrPage = 6;
+            MAIN = mf;
+
+            pageImageIN = null;
+            pageImageNOW = null;
+            pageVectorIN = new List<GroupPoint>();
+            pageVectorNOW = new List<GroupPoint>();
+
             NextPage = 7;
 
-            MAIN = mf;
-        }
-
-        private void page06_VectorEdit_Load(object sender, EventArgs e)
-        {
             if (Setting.GenaMode)
             {
                 ForGena.Visible = true;
             }
         }
 
-        //public List<cncPoint> PagePoints { get; set; }
-
         public void actionBefore()
         {
+            MAIN.PageName.Text = @"Ручная корректировка векторов (6)";
+            MAIN.PageName.Tag = Tag;
+
             pageVectorNOW = VectorProcessing.ListGroupPointClone(pageVectorIN);
             pageImageNOW = null;
 
-            RefreshTree();
+            UserActions();
         }
 
         public void actionAfter()
         {
+
         }
 
+        private void UserActions()
+        {
+            RefreshTree();
 
+            MAIN.PreviewDada(pageImageNOW, pageVectorNOW);
+        }
+
+        private void page06_VectorEdit_Load(object sender, EventArgs e)
+        {
+
+        }
 
         private void RefreshTree()
         {
@@ -90,10 +81,6 @@ namespace ToolsGenGkode.pages
             labelTraectoryInfo.Text = @"Траектория состоит из:" + Environment.NewLine + countLine.ToString() + @" отрезков," + Environment.NewLine + countpoints.ToString() + @" точек.";
 
             pageImageNOW = null;
-
-            CreateEvent("");
-            //CreateEvent("RefreshImage_06");
-
         }
 
         private void btLoadVectors_Click(object sender, EventArgs e)
@@ -101,8 +88,7 @@ namespace ToolsGenGkode.pages
             pageVectorNOW = VectorProcessing.ListGroupPointClone(pageVectorIN);
             pageImageNOW = null;
 
-
-            RefreshTree();
+            UserActions();
         }
 
         private void treeViewVectors_AfterSelect(object sender, TreeViewEventArgs e)
@@ -143,7 +129,7 @@ namespace ToolsGenGkode.pages
                 }
             }
 
-            CreateEvent("");
+            MAIN.PreviewDada(pageImageNOW, pageVectorNOW);
         }
 
         private void btDelVector_Click(object sender, EventArgs e)
@@ -162,14 +148,11 @@ namespace ToolsGenGkode.pages
             if (level == 0) pageVectorNOW.RemoveAt(pos);
             if (level == 1) pageVectorNOW[posParent].Points.RemoveRange(pos, 1);
 
-            RefreshTree();
+            UserActions();
         }
 
 
-        public Bitmap pageImageIN { get; set; }
-        public Bitmap pageImageNOW { get; set; }
-        public List<GroupPoint> pageVectorIN { get; set; }
-        public List<GroupPoint> pageVectorNOW { get; set; }
+
 
 
         private void btOptimize1_Click(object sender, EventArgs e)
@@ -276,7 +259,7 @@ namespace ToolsGenGkode.pages
             pageVectorNOW = new List<GroupPoint>(destCVectors);
             destCVectors.Clear();
 
-            RefreshTree();
+            UserActions();
 
         }
 
@@ -336,7 +319,7 @@ namespace ToolsGenGkode.pages
             pageVectorNOW = new List<GroupPoint>(destCVectors);
             destCVectors.Clear();
 
-            RefreshTree();
+            UserActions();
         }
 
 
@@ -370,7 +353,7 @@ namespace ToolsGenGkode.pages
             }
             pageVectorNOW = tmp;
 
-            RefreshTree();
+            UserActions();
 
         }
 

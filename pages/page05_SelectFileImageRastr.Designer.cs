@@ -1,4 +1,7 @@
-﻿namespace ToolsGenGkode.pages
+﻿using System.Collections.Generic;
+using System.Drawing;
+
+namespace ToolsGenGkode.pages
 {
     partial class page05_SelectFileImageRastr
     {
@@ -36,7 +39,7 @@
             // 
             // buttonSelectFile
             // 
-            this.buttonSelectFile.Location = new System.Drawing.Point(404, 47);
+            this.buttonSelectFile.Location = new System.Drawing.Point(426, 72);
             this.buttonSelectFile.Name = "buttonSelectFile";
             this.buttonSelectFile.Size = new System.Drawing.Size(39, 21);
             this.buttonSelectFile.TabIndex = 10;
@@ -47,7 +50,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(102, 32);
+            this.label6.Location = new System.Drawing.Point(124, 57);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 13);
             this.label6.TabIndex = 11;
@@ -56,7 +59,7 @@
             // 
             // btShowOriginalImage
             // 
-            this.btShowOriginalImage.Location = new System.Drawing.Point(96, 74);
+            this.btShowOriginalImage.Location = new System.Drawing.Point(118, 99);
             this.btShowOriginalImage.Name = "btShowOriginalImage";
             this.btShowOriginalImage.Size = new System.Drawing.Size(252, 37);
             this.btShowOriginalImage.TabIndex = 9;
@@ -67,7 +70,7 @@
             // 
             // textBoxFileName
             // 
-            this.textBoxFileName.Location = new System.Drawing.Point(96, 48);
+            this.textBoxFileName.Location = new System.Drawing.Point(118, 73);
             this.textBoxFileName.Name = "textBoxFileName";
             this.textBoxFileName.Size = new System.Drawing.Size(302, 20);
             this.textBoxFileName.TabIndex = 8;
@@ -95,5 +98,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btShowOriginalImage;
         public System.Windows.Forms.TextBox textBoxFileName;
+
+        public int NextPage { get; set; }
+        public Bitmap pageImageIN { get; set; }
+        public Bitmap pageImageNOW { get; set; }
+        public List<GroupPoint> pageVectorIN { get; set; }
+        public List<GroupPoint> pageVectorNOW { get; set; }
     }
 }

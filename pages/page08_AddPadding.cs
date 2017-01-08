@@ -16,36 +16,11 @@ namespace ToolsGenGkode.pages
 
     public partial class page08_AddPadding : UserControl, PageInterface
     {
-        /// <summary>
-        /// Событие при изменении параметров на данной форме
-        /// </summary>
-        public event EventHandler IsChange;
+
 
         void CreateEvent(string message = "")
         {
-            MyEventArgs e = null;
 
-            if (message.Length > 0 && message.Substring(0, 1) == "!")
-            {
-                e = new MyEventArgs { ActionRun = message };
-
-            }
-
-            if (message == "")
-            {
-                e = new MyEventArgs { ActionRun = "RefreshVector_12" };
-            }
-
-            // Прозъба в текущую страницу переписать данные с предыдущего шага
-            if (message == "ReloadData_12")
-            {
-                e = new MyEventArgs { ActionRun = "ReloadData_12" };
-            }
-
-            //вызовем событие
-            EventHandler handler = IsChange;
-            if (handler != null)
-                IsChange?.Invoke(this, e);
         }
 
         private MainForm MAIN;

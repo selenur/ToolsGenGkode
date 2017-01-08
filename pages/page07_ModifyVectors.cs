@@ -9,70 +9,48 @@ namespace ToolsGenGkode.pages
 {
     public partial class page07_ModifyVectors : UserControl, PageInterface
     {
-        /// <summary>
-        /// Событие при изменении параметров на данной форме
-        /// </summary>
-        public event EventHandler IsChange;
-
-        void CreateEvent(string action)
-        {
-            //MyEventArgs e = new MyEventArgs();
-            //e.ActionRun = action;
-            ////вызовем событие
-            //EventHandler handler = IsChange;
-            //if (handler != null) IsChange?.Invoke(this, e);
-
-            MAIN.PreviewImage(pageImageNOW);
-            MAIN.PreviewVectors(pageVectorNOW);
-        }
-
         private MainForm MAIN;
 
         public page07_ModifyVectors(MainForm mf)
         {
             InitializeComponent();
 
-            PageName = @"Модификация векторов (7)";
-            LastPage = 0;
-            CurrPage = 7;
-            NextPage = 10;
-
             MAIN = mf;
 
+            pageImageIN = null;
             pageImageNOW = null;
+            pageVectorIN = new List<GroupPoint>();
             pageVectorNOW = new List<GroupPoint>();
+
+            NextPage = 10;
+        }
+
+        public void actionBefore()
+        {
+            MAIN.PageName.Text = @"Ручная корректировка векторов (7)";
+            MAIN.PageName.Tag = Tag;
+
+            pageVectorNOW = VectorProcessing.ListGroupPointClone(pageVectorIN);
+            pageImageNOW = null;
+
+            UserActions();
+        }
+
+        public void actionAfter()
+        {
+
+        }
+
+        void UserActions()
+        {
+            getInfoSize();
+            MAIN.PreviewDada(pageImageNOW,pageVectorNOW);
         }
 
         private void page08_ModifyVectors_Load(object sender, EventArgs e)
         {
 
         }
-
-        public Bitmap pageImageIN { get; set; }
-        public Bitmap pageImageNOW { get; set; }
-        public List<GroupPoint> pageVectorIN { get; set; }
-        public List<GroupPoint> pageVectorNOW { get; set; }
-        //public List<cncPoint> PagePoints { get; set; }
-
-        public void actionBefore()
-        {
-            pageVectorNOW = VectorProcessing.ListGroupPointClone(pageVectorIN);
-            pageImageNOW = null;
-
-            getInfoSize();
-
-            //todo: перезаполнить разные поля на форме
-
-            CreateEvent("");
-
-        }
-
-        public void actionAfter()
-        {
-            // throw new NotImplementedException();
-            //GlobalFunctions.IsLaserPoint = false;
-        }
-
 
         private void MirrorX()
         {
@@ -110,12 +88,9 @@ namespace ToolsGenGkode.pages
                 points = new List<cncPoint>();
             }
 
-            pageVectorNOW = tmp;
+            pageVectorNOW = VectorProcessing.ListGroupPointClone(tmp);
 
-            vectors = new List<GroupPoint>();
-            points = new List<cncPoint>();
-
-
+            UserActions();
         }
 
 
@@ -156,12 +131,10 @@ namespace ToolsGenGkode.pages
                 points = new List<cncPoint>();
             }
 
-            pageVectorNOW = tmp;
-
-            vectors = new List<GroupPoint>();
-            points = new List<cncPoint>();
+            pageVectorNOW = VectorProcessing.ListGroupPointClone(tmp);
 
 
+            UserActions();
         }
 
 
@@ -174,7 +147,6 @@ namespace ToolsGenGkode.pages
             float dy = (float)(point.Y - pivot.Y);
             float x = cos * dx - sin * dy + (float)pivot.X;
             float y = sin * dx + cos * dy + (float)pivot.X;
-
 
             //float xt=500+(x1-500.00)*cos(0.05)+(500.00-y1)*sin(0.05);
             //float yt = 500 + (x1 - 500.00) * sin(0.05) + (y1 - 500.00) * cos(0.05);
@@ -190,9 +162,6 @@ namespace ToolsGenGkode.pages
 
         private void Rotate()
         {
-            CreateEvent("");
-
-
             // Для определения центра изображения
             // получим границы изображения
             float minX = 99999;
@@ -218,14 +187,7 @@ namespace ToolsGenGkode.pages
             float X0 = ((maxX - minX)/2) + minX;
             float Y0 = ((maxY - minY)/2) + minY;
 
-
-
-
-
-
-
             List<GroupPoint> tmp = new List<GroupPoint>();
-
 
             List<GroupPoint> vectors = new List<GroupPoint>();
             List<cncPoint> points = new List<cncPoint>();
@@ -258,10 +220,8 @@ namespace ToolsGenGkode.pages
                 points = new List<cncPoint>();
             }
 
-            pageVectorNOW = tmp;
+            pageVectorNOW = VectorProcessing.ListGroupPointClone(tmp);
 
-            vectors = new List<GroupPoint>();
-            points = new List<cncPoint>();
 
 
 
@@ -311,7 +271,7 @@ namespace ToolsGenGkode.pages
 
             //pageVector = tmp;
 
-
+            UserActions();
             
         }
 
@@ -362,7 +322,7 @@ namespace ToolsGenGkode.pages
 
         private void numRotate_ValueChanged(object sender, EventArgs e)
         {
-            //Calculate();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -370,30 +330,24 @@ namespace ToolsGenGkode.pages
             pageVectorNOW = VectorProcessing.ListGroupPointClone(pageVectorIN);
             pageImageNOW = null;
 
-            getInfoSize();
-            CreateEvent("");
+            UserActions();
         }
 
         private void btMirrorX_Click(object sender, EventArgs e)
         {
             MirrorX();
-            CreateEvent("");
-            getInfoSize();
+            UserActions();
 
         }
 
         private void btMirrorY_Click(object sender, EventArgs e)
         {
             MirrorY();
-            CreateEvent("");
-            getInfoSize();
         }
 
         private void btRotate_Click(object sender, EventArgs e)
         {
             Rotate();
-            CreateEvent("");
-            getInfoSize();
         }
 
         private void btMoveToZero_Click(object sender, EventArgs e)
@@ -427,9 +381,7 @@ namespace ToolsGenGkode.pages
                 }
             }
 
-
-            CreateEvent("RefreshVector_07");
-            getInfoSize();
+            UserActions();
         }
 
 
@@ -481,8 +433,8 @@ namespace ToolsGenGkode.pages
                 }
             }
 
-            CreateEvent("");
-            getInfoSize();
+            UserActions();
+
 
         }
 

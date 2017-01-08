@@ -37,14 +37,15 @@ namespace ToolsGenGkode.pages
             this.radioButtonTypeSourceText = new System.Windows.Forms.RadioButton();
             this.radioButtonTypeSourcePicture1 = new System.Windows.Forms.RadioButton();
             this.radioButtonTypeSourcePLT = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
             this.OrientationVar2 = new System.Windows.Forms.RadioButton();
             this.OrientationVar1 = new System.Windows.Forms.RadioButton();
             this.OrientationVar3 = new System.Windows.Forms.RadioButton();
             this.OrientationVar4 = new System.Windows.Forms.RadioButton();
             this.pictureBoxAxes = new System.Windows.Forms.PictureBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAxes)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -130,22 +131,11 @@ namespace ToolsGenGkode.pages
             this.radioButtonTypeSourcePLT.UseVisualStyleBackColor = true;
             this.radioButtonTypeSourcePLT.CheckedChanged += new System.EventHandler(this.radioButtonTypeSourcePLT_CheckedChanged);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(3, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(332, 17);
-            this.label1.TabIndex = 23;
-            this.label1.Tag = "_selectvariant_";
-            this.label1.Text = "Сделай выбор ориентации осей на твоем станке";
-            // 
             // OrientationVar2
             // 
             this.OrientationVar2.AutoSize = true;
             this.OrientationVar2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.OrientationVar2.Location = new System.Drawing.Point(11, 85);
+            this.OrientationVar2.Location = new System.Drawing.Point(9, 81);
             this.OrientationVar2.Name = "OrientationVar2";
             this.OrientationVar2.Size = new System.Drawing.Size(76, 17);
             this.OrientationVar2.TabIndex = 21;
@@ -159,7 +149,7 @@ namespace ToolsGenGkode.pages
             this.OrientationVar1.AutoSize = true;
             this.OrientationVar1.Checked = true;
             this.OrientationVar1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.OrientationVar1.Location = new System.Drawing.Point(11, 44);
+            this.OrientationVar1.Location = new System.Drawing.Point(9, 40);
             this.OrientationVar1.Name = "OrientationVar1";
             this.OrientationVar1.Size = new System.Drawing.Size(76, 17);
             this.OrientationVar1.TabIndex = 20;
@@ -172,7 +162,7 @@ namespace ToolsGenGkode.pages
             // OrientationVar3
             // 
             this.OrientationVar3.AutoSize = true;
-            this.OrientationVar3.Location = new System.Drawing.Point(11, 126);
+            this.OrientationVar3.Location = new System.Drawing.Point(9, 122);
             this.OrientationVar3.Name = "OrientationVar3";
             this.OrientationVar3.Size = new System.Drawing.Size(76, 17);
             this.OrientationVar3.TabIndex = 24;
@@ -185,7 +175,7 @@ namespace ToolsGenGkode.pages
             // OrientationVar4
             // 
             this.OrientationVar4.AutoSize = true;
-            this.OrientationVar4.Location = new System.Drawing.Point(11, 167);
+            this.OrientationVar4.Location = new System.Drawing.Point(9, 163);
             this.OrientationVar4.Name = "OrientationVar4";
             this.OrientationVar4.Size = new System.Drawing.Size(76, 17);
             this.OrientationVar4.TabIndex = 25;
@@ -199,23 +189,33 @@ namespace ToolsGenGkode.pages
             // 
             this.pictureBoxAxes.BackColor = System.Drawing.Color.White;
             this.pictureBoxAxes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxAxes.Location = new System.Drawing.Point(115, 34);
+            this.pictureBoxAxes.Location = new System.Drawing.Point(109, 26);
             this.pictureBoxAxes.Name = "pictureBoxAxes";
             this.pictureBoxAxes.Size = new System.Drawing.Size(234, 189);
             this.pictureBoxAxes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxAxes.TabIndex = 26;
             this.pictureBoxAxes.TabStop = false;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.OrientationVar1);
+            this.groupBox2.Controls.Add(this.pictureBoxAxes);
+            this.groupBox2.Controls.Add(this.OrientationVar2);
+            this.groupBox2.Controls.Add(this.OrientationVar4);
+            this.groupBox2.Controls.Add(this.OrientationVar3);
+            this.groupBox2.Location = new System.Drawing.Point(11, 4);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(355, 230);
+            this.groupBox2.TabIndex = 27;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Tag = "_selectvariant_";
+            this.groupBox2.Text = "Выбор расположения начала координат:";
+            // 
             // page01_start
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pictureBoxAxes);
-            this.Controls.Add(this.OrientationVar4);
-            this.Controls.Add(this.OrientationVar3);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.OrientationVar2);
-            this.Controls.Add(this.OrientationVar1);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "page01_start";
             this.Size = new System.Drawing.Size(645, 240);
@@ -223,8 +223,9 @@ namespace ToolsGenGkode.pages
             this.Load += new System.EventHandler(this.page01_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAxes)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -237,15 +238,7 @@ namespace ToolsGenGkode.pages
         public Bitmap pageImageNOW { get; set; }
         public List<GroupPoint> pageVectorIN { get; set; }
         public List<GroupPoint> pageVectorNOW { get; set; }
-        public void actionBefore()
-        {
-            //throw new System.NotImplementedException();
-        }
 
-        public void actionAfter()
-        {
-            //throw new System.NotImplementedException();
-        }
 
         public List<cncPoint> PagePoints { get; set; }
 
@@ -257,10 +250,10 @@ namespace ToolsGenGkode.pages
         private System.Windows.Forms.RadioButton OrientationVar1;
         private System.Windows.Forms.RadioButton OrientationVar2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton radioButtonTypeSourcePicture2;
         private System.Windows.Forms.RadioButton OrientationVar3;
         private System.Windows.Forms.RadioButton OrientationVar4;
         private System.Windows.Forms.RadioButton radioButtonTypeSourceDXF;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

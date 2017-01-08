@@ -11,23 +11,6 @@ namespace ToolsGenGkode.pages
 {
     public partial class page02_EnterText : UserControl, PageInterface
     {
-        /// <summary>
-        /// Событие при изменении параметров на данной форме
-        /// </summary>
-        public event EventHandler IsChange;
-
-        /// <summary>
-        /// Посылка события главной форме
-        /// </summary>
-        /// <param name="message"></param>
-        void CreateEvent(string message)
-        {
-            MyEventArgs e = new MyEventArgs();
-            e.ActionRun = message;
-
-            EventHandler handler = IsChange;
-            if (handler != null) IsChange?.Invoke(this, e);
-        }
 
         private MainForm MAIN;
 
@@ -37,32 +20,13 @@ namespace ToolsGenGkode.pages
 
             MAIN = mf;
 
+            pageImageIN = null;
+            pageImageNOW = null;
+            pageVectorIN = new List<GroupPoint>();
+            pageVectorNOW = new List<GroupPoint>();
 
-            PageName = @"Ввод текста (2)";
-            LastPage = 1;
-            CurrPage = 2;
             NextPage = 6;
 
-            if (pageImageIN != null) pageImageNOW = (Bitmap)pageImageIN.Clone();
-            pageVectorNOW = VectorProcessing.ListGroupPointClone(pageVectorIN);
-
-            toolTips myToolTip1 = new toolTips();
-
-            myToolTip1.Size = new Size(300, 200);
-            myToolTip1.BackColor = Color.FromArgb(255, 255, 192);
-            myToolTip1.ForeColor = Color.Navy;
-            myToolTip1.BorderColor = Color.FromArgb(128, 128, 255);
-
-            myToolTip1.SetToolTip(rbUseSystemFont, "Используется шрифт установленный в данной операционной системе.");
-            myToolTip1.SetToolTip(rbFontFromFile, "Используется шрифт из файла, выбранного пользователем.");
-            myToolTip1.SetToolTip(rbFontToVector, "Выбор данной опции позволит получить данные в виде набора векторов.");
-            myToolTip1.SetToolTip(rbFontToImage, "Выбор данной опции позволит получить данные в виде рисунка.");
-            myToolTip1.SetToolTip(textSize, "Указание размера в этом поле,\n влияет на размер получаемого рисунка, если выбран вариант 'В виде рисунка',\n или на качество траектории, если выбрано 'В виде отрезков'.");
-            
-        }
-
-        private void SelectFont_Load(object sender, EventArgs e)
-        {
             // Заполним списком шрифтов установленных в систему
             InstalledFontCollection installedFontCollection = new InstalledFontCollection();
 
@@ -77,6 +41,27 @@ namespace ToolsGenGkode.pages
 
             rbUseSystemFont.Checked = true;
             rbFontToVector.Checked = true;
+
+        }
+
+        public void actionBefore()
+        {
+            MAIN.PageName.Text = @"Ввод текста (2)";
+            MAIN.PageName.Tag = Tag;
+
+            UserActions();
+
+        }
+
+        public void actionAfter()
+        {
+
+        }
+
+
+        private void SelectFont_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void UserActions()
@@ -129,13 +114,11 @@ namespace ToolsGenGkode.pages
 
             if (rbFontToVector.Checked)
             {
-                MAIN.PreviewImage(null);
-                MAIN.PreviewVectors(pageVectorNOW);
+                MAIN.PreviewDada(null, VectorProcessing.ListGroupPointClone(pageVectorNOW));
             }
             else
             {
-                MAIN.PreviewImage(pageImageNOW);
-                MAIN.PreviewVectors(new List<GroupPoint>());
+                MAIN.PreviewDada(pageImageNOW,new List<GroupPoint>());
             }
         }
 
@@ -197,17 +180,20 @@ namespace ToolsGenGkode.pages
         public Bitmap pageImageNOW { get; set; }
         public List<GroupPoint> pageVectorIN { get; set; }
         public List<GroupPoint> pageVectorNOW { get; set; }
-        public List<cncPoint> PagePoints { get; set; }
 
-
-        public void actionBefore()
-        {
-            //throw new System.NotImplementedException();
-        }
-
-        public void actionAfter()
-        {
-            //throw new System.NotImplementedException();
-        }
     }
 }
+
+
+//toolTips myToolTip1 = new toolTips();
+
+//myToolTip1.Size = new Size(300, 200);
+//myToolTip1.BackColor = Color.FromArgb(255, 255, 192);
+//myToolTip1.ForeColor = Color.Navy;
+//myToolTip1.BorderColor = Color.FromArgb(128, 128, 255);
+
+//myToolTip1.SetToolTip(rbUseSystemFont, "Используется шрифт установленный в данной операционной системе.");
+//myToolTip1.SetToolTip(rbFontFromFile, "Используется шрифт из файла, выбранного пользователем.");
+//myToolTip1.SetToolTip(rbFontToVector, "Выбор данной опции позволит получить данные в виде набора векторов.");
+//myToolTip1.SetToolTip(rbFontToImage, "Выбор данной опции позволит получить данные в виде рисунка.");
+//myToolTip1.SetToolTip(textSize, "Указание размера в этом поле,\n влияет на размер получаемого рисунка, если выбран вариант 'В виде рисунка',\n или на качество траектории, если выбрано 'В виде отрезков'.");

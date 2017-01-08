@@ -362,7 +362,6 @@
         private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btFORWARD;
-        private System.Windows.Forms.Label PageName;
         private System.Windows.Forms.Button btBACK;
         private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.GroupBox groupBoxGages;
@@ -380,6 +379,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        public System.Windows.Forms.Label PageName;
     }
 }
 

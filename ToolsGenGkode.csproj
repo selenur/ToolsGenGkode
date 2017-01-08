@@ -145,10 +145,10 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="pages\EnterText.cs">
+    <Compile Include="EnterText.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="pages\EnterText.Designer.cs">
+    <Compile Include="EnterText.Designer.cs">
       <DependentUpon>EnterText.cs</DependentUpon>
     </Compile>
     <Compile Include="pages\page01_start.cs">
@@ -220,7 +220,7 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="pages\EnterText.resx">
+    <EmbeddedResource Include="EnterText.resx">
       <DependentUpon>EnterText.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="pages\page01_start.resx">

@@ -191,10 +191,13 @@ namespace ToolsGenGkode.pages
         private System.Windows.Forms.Label labelCountRow;
         private System.Windows.Forms.Button buttonAddNewProfile;
 
-        public string PageName { get; set; }
-        public int LastPage { get; set; }
-        public int CurrPage { get; set; }
+
         public int NextPage { get; set; }
+
+        public Bitmap pageImageIN { get; set; }
+        public Bitmap pageImageNOW { get; set; }
+        public List<GroupPoint> pageVectorIN { get; set; }
+        public List<GroupPoint> pageVectorNOW { get; set; }
 
 
     }

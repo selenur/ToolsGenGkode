@@ -6,52 +6,36 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using BinarizationThinning;
+using ToolsGenGkode.Properties;
 
 namespace ToolsGenGkode.pages
 {
     public partial class page04_ImageToVector : UserControl, PageInterface
     {
-        /// <summary>
-        /// Событие при изменении параметров на данной форме
-        /// </summary>
-        public event EventHandler IsChange;
-
         private MainForm MAIN;
 
-        /// <summary>
-        /// Посылка события главной форме
-        /// </summary>
-        /// <param name="message"></param>
-        void CreateEvent(string message)
-        {
-            //MyEventArgs e = new MyEventArgs();
-            //e.ActionRun = message;
+        private int ShowStep = -1; //для возможности просмотра разных стадий
+        /* step 1 = показ исходного изображения
+         * step 2 = инверсия цветов + преобразование по коэффициенту
+         * step 3 = итоговый результат
+         */
 
-            //EventHandler handler = IsChange;
-            //if (handler != null) IsChange?.Invoke(this, e);
-
-            MAIN.PreviewImage(pageImageNOW);
-            MAIN.PreviewVectors(pageVectorNOW);
+        private bool LastPage2 = false;
 
 
-
-        }
 
         public page04_ImageToVector(MainForm mf)
         {
             InitializeComponent();
 
-            PageName = @"Получение контуров (4)";
-            LastPage = 0;
-            CurrPage = 4;
-            NextPage = 6;
-
             MAIN = mf;
 
+            pageImageIN = null;
             pageImageNOW = null;
+            pageVectorIN = new List<GroupPoint>();
             pageVectorNOW = new List<GroupPoint>();
 
+            NextPage = 6;
         }
 
         private void page03_ImageModification_Load(object sender, EventArgs e)
@@ -59,121 +43,144 @@ namespace ToolsGenGkode.pages
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Cursor.Current = Cursors.WaitCursor;
-                pageImageNOW = (Bitmap)pageImageIN.Clone();
-                pageImageNOW = ImageProcessing.GetBlackWhileImage(pageImageNOW, (int)numericUpDownKoefPalitra.Value, cbNegative.Checked);
-
-                pageVectorNOW = new List<GroupPoint>();
-                CreateEvent("");
-            Cursor.Current = Cursors.Default;
-        }
-
-        private void checkBoxUseFilter1_CheckedChanged(object sender, EventArgs e)
-        {
-            Cursor.Current = Cursors.WaitCursor;
-                pageImageNOW = (Bitmap)pageImageIN.Clone();
-                pageImageNOW = ImageProcessing.GetBlackWhileImage(pageImageNOW, (int)numericUpDownKoefPalitra.Value, cbNegative.Checked);
-
-                pageVectorNOW = new List<GroupPoint>();
-                CreateEvent("");
-            Cursor.Current = Cursors.Default;
-        }
-
-        private void numericUpDownKoefPalitra_ValueChanged(object sender, EventArgs e)
-        {
-            Cursor.Current = Cursors.WaitCursor;
-                pageImageNOW = (Bitmap)pageImageIN.Clone();
-                pageImageNOW = ImageProcessing.GetBlackWhileImage(pageImageNOW, (int)numericUpDownKoefPalitra.Value, cbNegative.Checked);
-
-                pageVectorNOW = new List<GroupPoint>();
-                CreateEvent("");
-            Cursor.Current = Cursors.Default;
-        }
-
-
-
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Cursor.Current = Cursors.WaitCursor;
-
-                pageImageNOW = (Bitmap)pageImageIN.Clone();
-                pageImageNOW = ImageProcessing.GetBlackWhileImage(pageImageNOW, (int)numericUpDownKoefPalitra.Value, cbNegative.Checked);
-
-
-                if (SkeletonizationFilter.Checked)
-                {
-
-                    int Threshold = 0;
-
-                    Byte[,] m_SourceImage = Thining.ToBinaryArray(pageImageNOW, out Threshold);
-
-                    Byte[,] m_DesImage = Thining.ThinPicture(m_SourceImage);
-
-                    Bitmap bmpThin = Thining.BinaryArrayToBinaryBitmap(m_DesImage);
-
-                    pageImageNOW = bmpThin;
-
-                }
-
-                pageImageNOW = ImageProcessing.BitmapDeleteContent(pageImageNOW);
-                pageVectorNOW = VectorProcessing.GetVectorFromImage(pageImageNOW);
-
-                CreateEvent("");
-
-            Cursor.Current = Cursors.Default;
-
-        }
-
-        public Bitmap pageImageIN { get; set; }
-        public Bitmap pageImageNOW { get; set; }
-        public List<GroupPoint> pageVectorIN { get; set; }
-        public List<GroupPoint> pageVectorNOW { get; set; }
-        public List<cncPoint> PagePoints { get; set; }
-
         public void actionBefore()
         {
-            //throw new NotImplementedException();
-            if (LastPage == 2)
+            MAIN.PageName.Text = @"Получение контуров (4)";
+            MAIN.PageName.Tag = Tag;
+
+            LastPage2 = (((Control) MAIN.CurrentPage.Previous.Value).Tag.ToString() == @"_page02_");
+
+            //если предыдущая страница ввод текста, то выбор имени файла не нужно
+            if (LastPage2)
             {
-                label6.Visible = false;
-                textBoxFileName.Visible = false;
-                buttonSelectFile.Visible = false;
-
-
+                label6.Enabled = false;
+                textBoxFileName.Enabled = false;
+                buttonSelectFile.Enabled = false;
             }
             else
             {
-                label6.Visible = true;
-                textBoxFileName.Visible = true;
-                buttonSelectFile.Visible = true;
+                label6.Enabled = true;
+                textBoxFileName.Enabled = true;
+                buttonSelectFile.Enabled = true;
             }
+
+            ShowStep = 1;
+            UserActions();
         }
 
         public void actionAfter()
         {
-            if (pageImageIN == null) return;
+            ShowStep = 3;
+            UserActions();
+        }
+
+        private void UserActions()
+        {
+            //if (pageImageIN == null) return;
 
             Cursor.Current = Cursors.WaitCursor;
 
-                pageImageNOW = (Bitmap)pageImageIN.Clone();
-                pageImageNOW = ImageProcessing.GetBlackWhileImage(pageImageNOW, (int)numericUpDownKoefPalitra.Value, cbNegative.Checked);
+            pageVectorNOW = new List<GroupPoint>();
 
+            if (ShowStep > 0)
+            {
+                if (LastPage2)
+                {
+                    pageImageNOW = (Bitmap)pageImageIN.Clone();
+                }
+                else
+                {
+                    if (File.Exists(textBoxFileName.Text))
+                    {
+                        Bitmap tmp = new Bitmap(textBoxFileName.Text);
+
+                        //TODO: Вот тут обратить внимание!!!!! на ориентацию оей
+
+                        // параметры расположения координатной оси
+                        if (Settings.Default.page01AxisVariant == 2) tmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
+
+                        pageImageIN = tmp;
+                        pageImageNOW = (Bitmap)pageImageIN.Clone();
+                        pageVectorNOW = new List<GroupPoint>();                       
+                    }
+                    else
+                    {
+                        pageImageNOW = null;
+                    }
+                }
+            }
+
+            if (ShowStep > 1)
+            {
+                pageImageNOW = ImageProcessing.GetBlackWhileImage(pageImageNOW, (int)numericUpDownKoefPalitra.Value, cbNegative.Checked);
+            }
+
+            if (ShowStep > 2)
+            {
                 if (SkeletonizationFilter.Checked)
                 {
                     pageImageNOW = ImageProcessing.Skeletonization(pageImageNOW);
                 }
-
                 pageImageNOW = ImageProcessing.BitmapDeleteContent(pageImageNOW);
                 pageVectorNOW = VectorProcessing.GetVectorFromImage(pageImageNOW);
+            }
+
             Cursor.Current = Cursors.Default;
+
+            MAIN.PreviewDada(pageImageNOW,pageVectorNOW);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ShowStep = 2;
+            UserActions();
+        }
+
+        private void checkBoxUseFilter1_CheckedChanged(object sender, EventArgs e)
+        {
+            ShowStep = 2;
+            UserActions();
+        }
+
+        private void numericUpDownKoefPalitra_ValueChanged(object sender, EventArgs e)
+        {
+            ShowStep = 2;
+            UserActions();
+        }
+
+        private void GetResult_Click(object sender, EventArgs e)
+        {
+            ShowStep = 3;
+            UserActions();
+
+            //Cursor.Current = Cursors.WaitCursor;
+
+            //pageImageNOW = (Bitmap)pageImageIN.Clone();
+            //pageImageNOW = ImageProcessing.GetBlackWhileImage(pageImageNOW, (int)numericUpDownKoefPalitra.Value, cbNegative.Checked);
+
+            //if (SkeletonizationFilter.Checked)
+            //{
+
+            //    int Threshold = 0;
+
+            //    Byte[,] m_SourceImage = Thining.ToBinaryArray(pageImageNOW, out Threshold);
+
+            //    Byte[,] m_DesImage = Thining.ThinPicture(m_SourceImage);
+
+            //    Bitmap bmpThin = Thining.BinaryArrayToBinaryBitmap(m_DesImage);
+
+            //    pageImageNOW = bmpThin;
+
+            //}
+
+            //pageImageNOW = ImageProcessing.BitmapDeleteContent(pageImageNOW);
+            //pageVectorNOW = VectorProcessing.GetVectorFromImage(pageImageNOW);
+
+            //Cursor.Current = Cursors.Default;
         }
 
         private void buttonSelectFile_Click(object sender, EventArgs e)
         {
-            Cursor.Current = Cursors.WaitCursor;
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.CheckFileExists = true;
             openFileDialog1.Multiselect = false;
@@ -187,40 +194,19 @@ namespace ToolsGenGkode.pages
                 textBoxFileName.Text = openFileDialog1.FileName;
             }
 
-
-            if (!File.Exists(textBoxFileName.Text)) return;
-
-            Bitmap tmp = new Bitmap(textBoxFileName.Text);
-
-            //TODO: Вот тут обратить внимание!!!!! на ориентацию оей
-
-
-            // параметры расположения координатной оси
-            if (Properties.Settings.Default.page01AxisVariant == 2) tmp.RotateFlip(RotateFlipType.RotateNoneFlipY);
-
-            pageImageIN = tmp;
-            pageImageNOW = (Bitmap)pageImageIN.Clone();
-            pageVectorNOW = new List<GroupPoint>();
-
-
-            CreateEvent("");
-            Cursor.Current = Cursors.Default;
+            ShowStep = 1;
+            UserActions();
         }
 
         private void btShowOriginalImage_Click(object sender, EventArgs e)
         {
-            Cursor.Current = Cursors.WaitCursor;
-
-            pageImageNOW = (Bitmap)pageImageIN.Clone();
-            pageVectorNOW = new List<GroupPoint>();
-            CreateEvent("");
-
-            Cursor.Current = Cursors.Default;
+            ShowStep = 1;
+            UserActions();
         }
 
         private void SkeletonizationFilter_CheckedChanged(object sender, EventArgs e)
         {
-
+            ShowStep = 3;
         }
     }
 

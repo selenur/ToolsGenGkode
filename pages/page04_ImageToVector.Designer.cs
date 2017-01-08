@@ -47,17 +47,16 @@ namespace ToolsGenGkode.pages
             // label3
             // 
             this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label3.Location = new System.Drawing.Point(269, 7);
+            this.label3.Location = new System.Drawing.Point(259, 71);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(363, 27);
+            this.label3.Size = new System.Drawing.Size(346, 19);
             this.label3.TabIndex = 9;
             this.label3.Tag = "_koefficientToBlackWhile_";
-            this.label3.Text = "Коэффициент устанавливает границу, по которой определяется, что будет  черным а ч" +
-    "то белым";
+            this.label3.Text = "Коэффициент разделения на черный и белый цвет";
             // 
             // numericUpDownKoefPalitra
             // 
-            this.numericUpDownKoefPalitra.Location = new System.Drawing.Point(213, 11);
+            this.numericUpDownKoefPalitra.Location = new System.Drawing.Point(203, 69);
             this.numericUpDownKoefPalitra.Maximum = new decimal(new int[] {
             255,
             0,
@@ -75,9 +74,9 @@ namespace ToolsGenGkode.pages
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(310, 97);
+            this.button1.Location = new System.Drawing.Point(16, 105);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(322, 38);
+            this.button1.Size = new System.Drawing.Size(616, 38);
             this.button1.TabIndex = 19;
             this.button1.Tag = "_showImageStep1_";
             this.button1.Text = "Показать изображение с примененным преобразованием по коеффициенту";
@@ -87,7 +86,7 @@ namespace ToolsGenGkode.pages
             // cbNegative
             // 
             this.cbNegative.AutoSize = true;
-            this.cbNegative.Location = new System.Drawing.Point(14, 14);
+            this.cbNegative.Location = new System.Drawing.Point(203, 46);
             this.cbNegative.Name = "cbNegative";
             this.cbNegative.Size = new System.Drawing.Size(172, 17);
             this.cbNegative.TabIndex = 0;
@@ -105,11 +104,11 @@ namespace ToolsGenGkode.pages
             this.button2.Tag = "_showResultGetContur_";
             this.button2.Text = "Показать результат полученного контура из изображения";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.GetResult_Click);
             // 
             // buttonSelectFile
             // 
-            this.buttonSelectFile.Location = new System.Drawing.Point(593, 49);
+            this.buttonSelectFile.Location = new System.Drawing.Point(595, 13);
             this.buttonSelectFile.Name = "buttonSelectFile";
             this.buttonSelectFile.Size = new System.Drawing.Size(39, 21);
             this.buttonSelectFile.TabIndex = 28;
@@ -120,7 +119,7 @@ namespace ToolsGenGkode.pages
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 52);
+            this.label6.Location = new System.Drawing.Point(13, 16);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 13);
             this.label6.TabIndex = 29;
@@ -129,26 +128,29 @@ namespace ToolsGenGkode.pages
             // 
             // textBoxFileName
             // 
-            this.textBoxFileName.Location = new System.Drawing.Point(95, 49);
+            this.textBoxFileName.Location = new System.Drawing.Point(97, 13);
             this.textBoxFileName.Name = "textBoxFileName";
             this.textBoxFileName.Size = new System.Drawing.Size(492, 20);
             this.textBoxFileName.TabIndex = 27;
             // 
             // btShowOriginalImage
             // 
-            this.btShowOriginalImage.Location = new System.Drawing.Point(14, 97);
+            this.btShowOriginalImage.Image = global::ToolsGenGkode.Properties.Resources.arrow_refresh;
+            this.btShowOriginalImage.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btShowOriginalImage.Location = new System.Drawing.Point(14, 46);
             this.btShowOriginalImage.Name = "btShowOriginalImage";
-            this.btShowOriginalImage.Size = new System.Drawing.Size(280, 38);
+            this.btShowOriginalImage.Size = new System.Drawing.Size(171, 49);
             this.btShowOriginalImage.TabIndex = 30;
             this.btShowOriginalImage.Tag = "_showOriginalImage_";
             this.btShowOriginalImage.Text = "Показать оригинальное изображение";
+            this.btShowOriginalImage.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btShowOriginalImage.UseVisualStyleBackColor = true;
             this.btShowOriginalImage.Click += new System.EventHandler(this.btShowOriginalImage_Click);
             // 
             // SkeletonizationFilter
             // 
             this.SkeletonizationFilter.AutoSize = true;
-            this.SkeletonizationFilter.Location = new System.Drawing.Point(202, 148);
+            this.SkeletonizationFilter.Location = new System.Drawing.Point(168, 152);
             this.SkeletonizationFilter.Name = "SkeletonizationFilter";
             this.SkeletonizationFilter.Size = new System.Drawing.Size(280, 17);
             this.SkeletonizationFilter.TabIndex = 31;
@@ -193,10 +195,11 @@ namespace ToolsGenGkode.pages
         private System.Windows.Forms.Button btShowOriginalImage;
         private System.Windows.Forms.CheckBox SkeletonizationFilter;
 
-        public string PageName { get; set; }
-        public int LastPage { get; set; }
-        public int CurrPage { get; set; }
         public int NextPage { get; set; }
+        public Bitmap pageImageIN { get; set; }
+        public Bitmap pageImageNOW { get; set; }
+        public List<GroupPoint> pageVectorIN { get; set; }
+        public List<GroupPoint> pageVectorNOW { get; set; }
 
 
 

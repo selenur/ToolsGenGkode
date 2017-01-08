@@ -11,47 +11,48 @@ namespace ToolsGenGkode.pages
 {
     public partial class page03_SelectPLT : UserControl, PageInterface
     {
-        /// <summary>
-        /// Событие при изменении параметров на данной форме
-        /// </summary>
-        public event EventHandler IsChange;
-
         private MainForm MAIN;
-
-        void CreateEvent(string message)
-        {
-            //MyEventArgs e = new MyEventArgs();
-            //e.ActionRun = message;
-
-            //EventHandler handler = IsChange;
-            //if (handler != null) IsChange?.Invoke(this, e);
-
-
-            MAIN.PreviewImage(null);
-            MAIN.PreviewVectors(pageVectorNOW);
-
-
-
-        }
 
         public page03_SelectPLT(MainForm mf)
         {
             
             InitializeComponent();
 
-            PageName = @"Выбор PLT файла (3)";
-            LastPage = 1;
-            CurrPage = 3;
-            NextPage = 6;
-
             MAIN = mf;
 
+            pageImageIN = null;
             pageImageNOW = null;
+            pageVectorIN = new List<GroupPoint>();
             pageVectorNOW = new List<GroupPoint>();
+
+            NextPage = 6;
+        }
+
+        public void actionBefore()
+        {
+            MAIN.PageName.Text = @"Выбор PLT файла (3)";
+            MAIN.PageName.Tag = Tag;
+
+            UserActions();
+        }
+
+        public void actionAfter()
+        {
+            UserActions();
         }
 
         private void SelectPLT_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void UserActions()
+        {
+            if (!File.Exists(textBoxFileName.Text)) return;
+
+            pageVectorNOW = VectorProcessing.GetVectorFromPLT(textBoxFileName.Text);
+
+            MAIN.PreviewDada(null, pageVectorNOW);
 
         }
 
@@ -71,22 +72,16 @@ namespace ToolsGenGkode.pages
             }
 
 
-            if (!File.Exists(textBoxFileName.Text)) return;
+            UserActions();
 
-            pageVectorNOW = VectorProcessing.GetVectorFromPLT(textBoxFileName.Text);
-
-            CreateEvent("");
         }
 
         private void btShowOriginalImage_Click(object sender, EventArgs e)
         {
-            CreateEvent("");
+            UserActions();
         }
 
-        public Bitmap pageImageIN { get; set; }
-        public Bitmap pageImageNOW { get; set; }
-        public List<GroupPoint> pageVectorIN { get; set; }
-        public List<GroupPoint> pageVectorNOW { get; set; }
+
 
  
     }
