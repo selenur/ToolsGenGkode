@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace ToolsGenGkode.pages
@@ -23,6 +24,9 @@ namespace ToolsGenGkode.pages
             pageVectorNOW = new List<GroupPoint>();
 
             NextPage = 10;
+
+
+            comboBox1.Text = comboBox1.Items[0].ToString();
         }
 
         public void actionBefore()
@@ -308,8 +312,8 @@ namespace ToolsGenGkode.pages
             numXbefore.Value = (decimal)X0;
             numYbefore.Value = (decimal)Y0;
 
-            numDeltaX.Value = (decimal)minX;
-            numDeltaY.Value = (decimal)minY;
+            //numDeltaX.Value = (decimal)minX;
+            //numDeltaY.Value = (decimal)minY;
 
 
         }
@@ -343,15 +347,100 @@ namespace ToolsGenGkode.pages
         private void btMirrorY_Click(object sender, EventArgs e)
         {
             MirrorY();
+            UserActions();
         }
 
         private void btRotate_Click(object sender, EventArgs e)
         {
-            Rotate();
+
+            double minX = 99999;
+            double maxX = -99999;
+            double minY = 99999;
+            double maxY = -99999;
+
+            foreach (GroupPoint vector in pageVectorNOW)
+            {
+                foreach (cncPoint point in vector.Points)
+                {
+                    if (minX > point.X) minX = point.X;
+
+                    if (maxX < point.X) maxX = point.X;
+
+                    if (minY > point.Y) minY = point.Y;
+
+                    if (maxY < point.Y) maxY = point.Y;
+                }
+            }
+
+
+            PointF centerRotate = new PointF(0,0);
+
+            //new 
+            /*
+             *  1 - Центр
+                2 - Лев.нижний
+                3 - Лев.врхний
+                4 - Прав.верхний
+                5 - Прав. нижний
+                6 - Начало координат
+                */
+
+            string sp = comboBox1.Text;
+
+            if (sp.StartsWith("1")) centerRotate = new PointF((float)(maxX - minX), (float)(maxY - minY));
+
+            if (sp.StartsWith("2")) centerRotate = new PointF((float)(minX), (float)(minY));
+
+            if (sp.StartsWith("3")) centerRotate = new PointF((float)(minX), (float)(maxY));
+
+            if (sp.StartsWith("4")) centerRotate = new PointF((float)(maxX), (float)(maxY));
+
+            if (sp.StartsWith("5")) centerRotate = new PointF((float)(maxX), (float)(minY));
+
+            if (sp.StartsWith("6")) centerRotate = new PointF(0, 0);
+
+
+
+            Matrix myMatrix = new Matrix();
+            myMatrix.RotateAt((float)numRotate.Value, centerRotate);
+            
+
+
+            foreach (GroupPoint vector in pageVectorNOW)
+            {
+
+                PointF[] myArray = vector.GetArray();
+                myMatrix.TransformPoints(myArray);
+
+                int indx = 0;
+
+                foreach (cncPoint point in vector.Points)
+                {
+                    point.X = myArray[indx].X;
+                    point.Y = myArray[indx].Y;
+
+                    indx++;
+                }
+            }
+
+            //MoveTozeroOffset();
+
+            UserActions();
+
+
+            //Rotate();
         }
 
         private void btMoveToZero_Click(object sender, EventArgs e)
         {
+            MoveTozeroOffset();
+
+            UserActions();
+        }
+
+        private void MoveTozeroOffset()
+        {
+
             double minX = 99999;
             double maxX = -99999;
             double minY = 99999;
@@ -378,6 +467,20 @@ namespace ToolsGenGkode.pages
                 {
                     point.X -= minX;
                     point.Y -= minY;
+                }
+            }
+
+        }
+
+        private void btoffset1_Click(object sender, EventArgs e)
+        {
+
+            foreach (GroupPoint vector in pageVectorNOW)
+            {
+                foreach (cncPoint point in vector.Points)
+                {
+                    point.X += (double)numDeltaX.Value;
+                    point.Y -= (double)numDeltaY.Value;
                 }
             }
 
@@ -443,5 +546,7 @@ namespace ToolsGenGkode.pages
             if (cbAddPadding.Checked) NextPage = 8;
             else NextPage = 10;
         }
+
+
     }
 }

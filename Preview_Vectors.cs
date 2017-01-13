@@ -1,16 +1,13 @@
 ﻿// This is an independent project of an individual developer. Dear PVS-Studio, please check it.
 // PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
+
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using SharpGL;
 using SharpGL.Enumerations;
 using ToolsGenGkode.pages;
+using ToolsGenGkode.Properties;
 
 namespace ToolsGenGkode
 {
@@ -45,30 +42,30 @@ namespace ToolsGenGkode
             InitializeComponent();
         }
 
-        private void openGLControl1_OpenGLDraw(object sender, SharpGL.RenderEventArgs args)
+        private void openGLControl1_OpenGLDraw(object sender, RenderEventArgs args)
         {
-            if (Properties.Settings.Default.page01AxisVariant == 1)
+            if (Settings.Default.page01AxisVariant == 1)
             {
                 Setting.PosAngleX = 0;
                 Setting.PosAngleY = 0;
                 Setting.PosAngleZ = 0;
             }
 
-            if (Properties.Settings.Default.page01AxisVariant == 2)
+            if (Settings.Default.page01AxisVariant == 2)
             {
                 Setting.PosAngleX = 180;
                 Setting.PosAngleY = 0;
                 Setting.PosAngleZ = 0;
             }
 
-            if (Properties.Settings.Default.page01AxisVariant == 3)
+            if (Settings.Default.page01AxisVariant == 3)
             {
                 Setting.PosAngleX = -180;
                 Setting.PosAngleY = -180;
                 Setting.PosAngleZ = 0;
             }
 
-            if (Properties.Settings.Default.page01AxisVariant == 4)
+            if (Settings.Default.page01AxisVariant == 4)
             {
                 Setting.PosAngleX = 0;
                 Setting.PosAngleY = -180;
@@ -527,28 +524,28 @@ namespace ToolsGenGkode
             Setting.PosAngleY = 0;
             Setting.PosAngleZ = 0;
 
-            if (Properties.Settings.Default.page01AxisVariant == 1)
+            if (Settings.Default.page01AxisVariant == 1)
             {
                 Setting.PosAngleX = 0;
                 Setting.PosAngleY = 0;
                 Setting.PosAngleZ = 0;
             }
 
-            if (Properties.Settings.Default.page01AxisVariant == 2)
+            if (Settings.Default.page01AxisVariant == 2)
             {
                 Setting.PosAngleX = 180;
                 Setting.PosAngleY = 0;
                 Setting.PosAngleZ = 0;
             }
 
-            if (Properties.Settings.Default.page01AxisVariant == 3)
+            if (Settings.Default.page01AxisVariant == 3)
             {
                 Setting.PosAngleX = -180;
                 Setting.PosAngleY = -180;
                 Setting.PosAngleZ = 0;
             }
 
-            if (Properties.Settings.Default.page01AxisVariant == 4)
+            if (Settings.Default.page01AxisVariant == 4)
             {
                 Setting.PosAngleX = 0;
                 Setting.PosAngleY = -180;

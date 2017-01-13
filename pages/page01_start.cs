@@ -269,19 +269,19 @@ namespace ToolsGenGkode.pages
             IndividualPoints = _individ;
         }
 
-        //public PointF[] GetArray()
-        //{
-        //    PointF[] arr = new PointF[Points.Count];
+        public PointF[] GetArray()
+        {
+            PointF[] arr = new PointF[Points.Count];
 
-        //    int ind = 0;
+            int ind = 0;
 
-        //    foreach (cncPoint VARIABLE in Points)
-        //    {
-        //        arr[ind++] = new PointF((float)VARIABLE.X,(float)VARIABLE.Y);
-        //    }
+            foreach (cncPoint VARIABLE in Points)
+            {
+                arr[ind++] = new PointF((float)VARIABLE.X, (float)VARIABLE.Y);
+            }
 
-        //    return arr;
-        //}
+            return arr;
+        }
 
         //public GroupPoint(GroupPoint _source)
         //{

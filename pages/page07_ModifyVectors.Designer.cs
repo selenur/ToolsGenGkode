@@ -39,10 +39,8 @@ namespace ToolsGenGkode.pages
             this.cbKeepAspectRatio = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btCalcZoom = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.numYAfter = new System.Windows.Forms.NumericUpDown();
             this.numXAfter = new System.Windows.Forms.NumericUpDown();
-            this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.numYbefore = new System.Windows.Forms.NumericUpDown();
             this.numXbefore = new System.Windows.Forms.NumericUpDown();
@@ -58,6 +56,10 @@ namespace ToolsGenGkode.pages
             this.numDeltaX = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.cbAddPadding = new System.Windows.Forms.CheckBox();
+            this.btoffset1 = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numRotate)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numYAfter)).BeginInit();
@@ -67,11 +69,12 @@ namespace ToolsGenGkode.pages
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDeltaY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDeltaX)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // numRotate
             // 
-            this.numRotate.Location = new System.Drawing.Point(89, 139);
+            this.numRotate.Location = new System.Drawing.Point(82, 19);
             this.numRotate.Maximum = new decimal(new int[] {
             360,
             0,
@@ -85,7 +88,7 @@ namespace ToolsGenGkode.pages
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(142, 141);
+            this.label2.Location = new System.Drawing.Point(135, 24);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 1;
@@ -95,7 +98,7 @@ namespace ToolsGenGkode.pages
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 141);
+            this.label3.Location = new System.Drawing.Point(6, 24);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 13);
             this.label3.TabIndex = 6;
@@ -104,29 +107,28 @@ namespace ToolsGenGkode.pages
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 72);
+            this.label5.Location = new System.Drawing.Point(6, 55);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(85, 13);
+            this.label5.Size = new System.Drawing.Size(102, 16);
             this.label5.TabIndex = 3;
             this.label5.Tag = "_newSize_";
             this.label5.Text = "Новый размер:";
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(10, 18);
+            this.label4.Location = new System.Drawing.Point(6, 34);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(224, 23);
+            this.label4.Size = new System.Drawing.Size(102, 16);
             this.label4.TabIndex = 2;
             this.label4.Tag = "_currentSize_";
-            this.label4.Text = "Текущий размер:";
+            this.label4.Text = "Исходный размер:";
             // 
             // cbKeepAspectRatio
             // 
             this.cbKeepAspectRatio.AutoSize = true;
             this.cbKeepAspectRatio.Checked = true;
             this.cbKeepAspectRatio.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbKeepAspectRatio.Location = new System.Drawing.Point(103, 71);
+            this.cbKeepAspectRatio.Location = new System.Drawing.Point(136, 76);
             this.cbKeepAspectRatio.Name = "cbKeepAspectRatio";
             this.cbKeepAspectRatio.Size = new System.Drawing.Size(136, 17);
             this.cbKeepAspectRatio.TabIndex = 1;
@@ -137,51 +139,39 @@ namespace ToolsGenGkode.pages
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btCalcZoom);
-            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.numYAfter);
             this.groupBox2.Controls.Add(this.numXAfter);
-            this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.numYbefore);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.numXbefore);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.cbKeepAspectRatio);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Location = new System.Drawing.Point(241, 3);
+            this.groupBox2.Controls.Add(this.cbKeepAspectRatio);
+            this.groupBox2.Location = new System.Drawing.Point(245, 5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(249, 170);
+            this.groupBox2.Size = new System.Drawing.Size(278, 141);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Tag = "_changeSize_";
-            this.groupBox2.Text = "Конвертирование размеров в милиметры";
+            this.groupBox2.Text = "Масштабирование в мм.";
             // 
             // btCalcZoom
             // 
-            this.btCalcZoom.Location = new System.Drawing.Point(19, 125);
+            this.btCalcZoom.Location = new System.Drawing.Point(60, 97);
             this.btCalcZoom.Name = "btCalcZoom";
-            this.btCalcZoom.Size = new System.Drawing.Size(212, 31);
+            this.btCalcZoom.Size = new System.Drawing.Size(212, 38);
             this.btCalcZoom.TabIndex = 16;
             this.btCalcZoom.Tag = "_RunChangeSize_";
             this.btCalcZoom.Text = "Выполнить масштабирование";
             this.btCalcZoom.UseVisualStyleBackColor = true;
             this.btCalcZoom.Click += new System.EventHandler(this.btCalcZoom_Click);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.Green;
-            this.label6.Location = new System.Drawing.Point(131, 101);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(17, 13);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Y:";
-            // 
             // numYAfter
             // 
             this.numYAfter.DecimalPlaces = 3;
             this.numYAfter.ForeColor = System.Drawing.Color.Green;
-            this.numYAfter.Location = new System.Drawing.Point(154, 99);
+            this.numYAfter.Location = new System.Drawing.Point(195, 53);
             this.numYAfter.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -206,7 +196,7 @@ namespace ToolsGenGkode.pages
             // 
             this.numXAfter.DecimalPlaces = 3;
             this.numXAfter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.numXAfter.Location = new System.Drawing.Point(40, 99);
+            this.numXAfter.Location = new System.Drawing.Point(112, 53);
             this.numXAfter.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -227,21 +217,11 @@ namespace ToolsGenGkode.pages
             196608});
             this.numXAfter.ValueChanged += new System.EventHandler(this.numXAfter_ValueChanged);
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label9.Location = new System.Drawing.Point(17, 101);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(17, 13);
-            this.label9.TabIndex = 12;
-            this.label9.Text = "X:";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.Green;
-            this.label7.Location = new System.Drawing.Point(131, 41);
+            this.label7.Location = new System.Drawing.Point(214, 14);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(17, 13);
             this.label7.TabIndex = 11;
@@ -251,7 +231,7 @@ namespace ToolsGenGkode.pages
             // 
             this.numYbefore.DecimalPlaces = 3;
             this.numYbefore.ForeColor = System.Drawing.Color.Green;
-            this.numYbefore.Location = new System.Drawing.Point(154, 39);
+            this.numYbefore.Location = new System.Drawing.Point(195, 30);
             this.numYbefore.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -271,7 +251,7 @@ namespace ToolsGenGkode.pages
             // 
             this.numXbefore.DecimalPlaces = 3;
             this.numXbefore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.numXbefore.Location = new System.Drawing.Point(40, 39);
+            this.numXbefore.Location = new System.Drawing.Point(112, 30);
             this.numXbefore.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -291,7 +271,7 @@ namespace ToolsGenGkode.pages
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label8.Location = new System.Drawing.Point(17, 41);
+            this.label8.Location = new System.Drawing.Point(151, 14);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(17, 13);
             this.label8.TabIndex = 8;
@@ -299,20 +279,23 @@ namespace ToolsGenGkode.pages
             // 
             // button1
             // 
+            this.button1.Image = global::ToolsGenGkode.Properties.Resources.arrow_refresh;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(9, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(212, 45);
+            this.button1.Size = new System.Drawing.Size(230, 50);
             this.button1.TabIndex = 9;
             this.button1.Tag = "_resetAllActions_";
-            this.button1.Text = "Сбросить все изменения внесенные на данной странице";
+            this.button1.Text = "            Сбросить все изменения внесенные на данной странице";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btMirrorX
             // 
-            this.btMirrorX.Location = new System.Drawing.Point(9, 54);
+            this.btMirrorX.Location = new System.Drawing.Point(246, 152);
             this.btMirrorX.Name = "btMirrorX";
-            this.btMirrorX.Size = new System.Drawing.Size(212, 31);
+            this.btMirrorX.Size = new System.Drawing.Size(188, 31);
             this.btMirrorX.TabIndex = 10;
             this.btMirrorX.Tag = "_mirrorX_";
             this.btMirrorX.Text = "Отразить зеркально по оси X";
@@ -321,9 +304,9 @@ namespace ToolsGenGkode.pages
             // 
             // btMirrorY
             // 
-            this.btMirrorY.Location = new System.Drawing.Point(9, 91);
+            this.btMirrorY.Location = new System.Drawing.Point(440, 152);
             this.btMirrorY.Name = "btMirrorY";
-            this.btMirrorY.Size = new System.Drawing.Size(212, 31);
+            this.btMirrorY.Size = new System.Drawing.Size(188, 31);
             this.btMirrorY.TabIndex = 11;
             this.btMirrorY.Tag = "_mirrorY_";
             this.btMirrorY.Text = "Отразить зеркально по оси Y";
@@ -332,9 +315,9 @@ namespace ToolsGenGkode.pages
             // 
             // btRotate
             // 
-            this.btRotate.Location = new System.Drawing.Point(9, 169);
+            this.btRotate.Location = new System.Drawing.Point(6, 94);
             this.btRotate.Name = "btRotate";
-            this.btRotate.Size = new System.Drawing.Size(212, 31);
+            this.btRotate.Size = new System.Drawing.Size(218, 31);
             this.btRotate.TabIndex = 12;
             this.btRotate.Tag = "_RunRotate_";
             this.btRotate.Text = "Выполнить вращение";
@@ -343,26 +326,27 @@ namespace ToolsGenGkode.pages
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btoffset1);
             this.groupBox1.Controls.Add(this.btMoveToZero);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.numDeltaY);
             this.groupBox1.Controls.Add(this.numDeltaX);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(500, 9);
+            this.groupBox1.Location = new System.Drawing.Point(529, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(128, 163);
+            this.groupBox1.Size = new System.Drawing.Size(112, 141);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Tag = "_ofsetZero_";
-            this.groupBox1.Text = "Отступы от начала координат";
+            this.groupBox1.Tag = "";
+            this.groupBox1.Text = "Смещение";
             // 
             // btMoveToZero
             // 
-            this.btMoveToZero.Location = new System.Drawing.Point(10, 98);
+            this.btMoveToZero.Location = new System.Drawing.Point(6, 97);
             this.btMoveToZero.Name = "btMoveToZero";
-            this.btMoveToZero.Size = new System.Drawing.Size(105, 47);
+            this.btMoveToZero.Size = new System.Drawing.Size(98, 38);
             this.btMoveToZero.TabIndex = 14;
-            this.btMoveToZero.Tag = "_runOffset_";
+            this.btMoveToZero.Tag = "";
             this.btMoveToZero.Text = "Сместить к началу";
             this.btMoveToZero.UseVisualStyleBackColor = true;
             this.btMoveToZero.Click += new System.EventHandler(this.btMoveToZero_Click);
@@ -371,7 +355,7 @@ namespace ToolsGenGkode.pages
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.Color.Green;
-            this.label10.Location = new System.Drawing.Point(3, 63);
+            this.label10.Location = new System.Drawing.Point(7, 39);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(17, 13);
             this.label10.TabIndex = 13;
@@ -381,7 +365,7 @@ namespace ToolsGenGkode.pages
             // 
             this.numDeltaY.DecimalPlaces = 3;
             this.numDeltaY.ForeColor = System.Drawing.Color.Green;
-            this.numDeltaY.Location = new System.Drawing.Point(26, 61);
+            this.numDeltaY.Location = new System.Drawing.Point(27, 37);
             this.numDeltaY.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -393,7 +377,6 @@ namespace ToolsGenGkode.pages
             0,
             -2147483648});
             this.numDeltaY.Name = "numDeltaY";
-            this.numDeltaY.ReadOnly = true;
             this.numDeltaY.Size = new System.Drawing.Size(77, 20);
             this.numDeltaY.TabIndex = 12;
             // 
@@ -401,7 +384,7 @@ namespace ToolsGenGkode.pages
             // 
             this.numDeltaX.DecimalPlaces = 3;
             this.numDeltaX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.numDeltaX.Location = new System.Drawing.Point(26, 35);
+            this.numDeltaX.Location = new System.Drawing.Point(27, 14);
             this.numDeltaX.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -413,7 +396,6 @@ namespace ToolsGenGkode.pages
             0,
             -2147483648});
             this.numDeltaX.Name = "numDeltaX";
-            this.numDeltaX.ReadOnly = true;
             this.numDeltaX.Size = new System.Drawing.Size(77, 20);
             this.numDeltaX.TabIndex = 11;
             // 
@@ -421,7 +403,7 @@ namespace ToolsGenGkode.pages
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label1.Location = new System.Drawing.Point(3, 37);
+            this.label1.Location = new System.Drawing.Point(7, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(17, 13);
             this.label1.TabIndex = 10;
@@ -431,7 +413,7 @@ namespace ToolsGenGkode.pages
             // 
             this.cbAddPadding.AutoSize = true;
             this.cbAddPadding.Enabled = false;
-            this.cbAddPadding.Location = new System.Drawing.Point(290, 195);
+            this.cbAddPadding.Location = new System.Drawing.Point(3, 220);
             this.cbAddPadding.Name = "cbAddPadding";
             this.cbAddPadding.Size = new System.Drawing.Size(301, 17);
             this.cbAddPadding.TabIndex = 14;
@@ -439,20 +421,67 @@ namespace ToolsGenGkode.pages
             this.cbAddPadding.UseVisualStyleBackColor = true;
             this.cbAddPadding.CheckedChanged += new System.EventHandler(this.cbAddPadding_CheckedChanged);
             // 
+            // btoffset1
+            // 
+            this.btoffset1.Location = new System.Drawing.Point(6, 60);
+            this.btoffset1.Name = "btoffset1";
+            this.btoffset1.Size = new System.Drawing.Size(98, 33);
+            this.btoffset1.TabIndex = 15;
+            this.btoffset1.Text = "Сместить";
+            this.btoffset1.UseVisualStyleBackColor = true;
+            this.btoffset1.Click += new System.EventHandler(this.btoffset1_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.comboBox1);
+            this.groupBox3.Controls.Add(this.btRotate);
+            this.groupBox3.Controls.Add(this.numRotate);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Location = new System.Drawing.Point(10, 58);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(230, 133);
+            this.groupBox3.TabIndex = 15;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Вращение";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "1 - Центр",
+            "2 - Лев.нижний",
+            "3 - Лев.врхний",
+            "4 - Прав.верхний",
+            "5 - Прав. нижний",
+            "6 - Начало координат"});
+            this.comboBox1.Location = new System.Drawing.Point(6, 67);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(218, 21);
+            this.comboBox1.TabIndex = 13;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(11, 48);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(166, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Вращение относительно точки:";
+            // 
             // page07_ModifyVectors
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.cbAddPadding);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.btRotate);
             this.Controls.Add(this.btMirrorY);
             this.Controls.Add(this.btMirrorX);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.numRotate);
-            this.Controls.Add(this.label2);
             this.Name = "page07_ModifyVectors";
             this.Size = new System.Drawing.Size(645, 240);
             this.Tag = "_page07_";
@@ -468,6 +497,8 @@ namespace ToolsGenGkode.pages
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDeltaY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDeltaX)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -487,10 +518,8 @@ namespace ToolsGenGkode.pages
         private System.Windows.Forms.Button btMirrorY;
         private System.Windows.Forms.Button btRotate;
         private System.Windows.Forms.Button btCalcZoom;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown numYAfter;
         private System.Windows.Forms.NumericUpDown numXAfter;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.NumericUpDown numYbefore;
         private System.Windows.Forms.NumericUpDown numXbefore;
@@ -502,6 +531,10 @@ namespace ToolsGenGkode.pages
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btMoveToZero;
         private System.Windows.Forms.CheckBox cbAddPadding;
+        private System.Windows.Forms.Button btoffset1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comboBox1;
 
         public int NextPage { get; set; }
         public Bitmap pageImageIN { get; set; }
