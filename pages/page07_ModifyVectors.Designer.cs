@@ -50,16 +50,16 @@ namespace ToolsGenGkode.pages
             this.btMirrorY = new System.Windows.Forms.Button();
             this.btRotate = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btoffset1 = new System.Windows.Forms.Button();
             this.btMoveToZero = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.numDeltaY = new System.Windows.Forms.NumericUpDown();
             this.numDeltaX = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.cbAddPadding = new System.Windows.Forms.CheckBox();
-            this.btoffset1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.numRotate)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numYAfter)).BeginInit();
@@ -80,6 +80,11 @@ namespace ToolsGenGkode.pages
             0,
             0,
             0});
+            this.numRotate.Minimum = new decimal(new int[] {
+            360,
+            0,
+            0,
+            -2147483648});
             this.numRotate.Name = "numRotate";
             this.numRotate.Size = new System.Drawing.Size(47, 20);
             this.numRotate.TabIndex = 0;
@@ -340,6 +345,16 @@ namespace ToolsGenGkode.pages
             this.groupBox1.Tag = "";
             this.groupBox1.Text = "Смещение";
             // 
+            // btoffset1
+            // 
+            this.btoffset1.Location = new System.Drawing.Point(6, 60);
+            this.btoffset1.Name = "btoffset1";
+            this.btoffset1.Size = new System.Drawing.Size(98, 33);
+            this.btoffset1.TabIndex = 15;
+            this.btoffset1.Text = "Сместить";
+            this.btoffset1.UseVisualStyleBackColor = true;
+            this.btoffset1.Click += new System.EventHandler(this.btoffset1_Click);
+            // 
             // btMoveToZero
             // 
             this.btMoveToZero.Location = new System.Drawing.Point(6, 97);
@@ -421,16 +436,6 @@ namespace ToolsGenGkode.pages
             this.cbAddPadding.UseVisualStyleBackColor = true;
             this.cbAddPadding.CheckedChanged += new System.EventHandler(this.cbAddPadding_CheckedChanged);
             // 
-            // btoffset1
-            // 
-            this.btoffset1.Location = new System.Drawing.Point(6, 60);
-            this.btoffset1.Name = "btoffset1";
-            this.btoffset1.Size = new System.Drawing.Size(98, 33);
-            this.btoffset1.TabIndex = 15;
-            this.btoffset1.Text = "Сместить";
-            this.btoffset1.UseVisualStyleBackColor = true;
-            this.btoffset1.Click += new System.EventHandler(this.btoffset1_Click);
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label6);
@@ -445,6 +450,15 @@ namespace ToolsGenGkode.pages
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Вращение";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(11, 48);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(166, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Вращение относительно точки:";
             // 
             // comboBox1
             // 
@@ -461,15 +475,6 @@ namespace ToolsGenGkode.pages
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(218, 21);
             this.comboBox1.TabIndex = 13;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 48);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(166, 13);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Вращение относительно точки:";
             // 
             // page07_ModifyVectors
             // 

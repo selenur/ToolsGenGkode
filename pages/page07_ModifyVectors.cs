@@ -423,7 +423,9 @@ namespace ToolsGenGkode.pages
                 }
             }
 
-            //MoveTozeroOffset();
+
+            //при вращении через цент
+            if (sp.StartsWith("1")) MoveTozeroOffset();
 
             UserActions();
 
