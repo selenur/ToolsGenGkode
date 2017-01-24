@@ -363,11 +363,6 @@ namespace ToolsGenGkode.pages
             0,
             0,
             0});
-            this.numYAfter.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            196608});
             this.numYAfter.Name = "numYAfter";
             this.numYAfter.Size = new System.Drawing.Size(77, 20);
             this.numYAfter.TabIndex = 14;
@@ -389,11 +384,6 @@ namespace ToolsGenGkode.pages
             0,
             0,
             0});
-            this.numXAfter.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            196608});
             this.numXAfter.Name = "numXAfter";
             this.numXAfter.Size = new System.Drawing.Size(77, 20);
             this.numXAfter.TabIndex = 13;

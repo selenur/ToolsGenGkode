@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using SharpGL;
 using SharpGL.Enumerations;
@@ -14,6 +15,10 @@ namespace ToolsGenGkode
     public partial class Preview_Vectors : UserControl
     {
         public bool containsData;
+
+        public FColor Color_3DBack;
+        public FColor Color_3DContur;
+        public FColor Color_Grid;
 
         List<GroupPoint> DrawVectors = new List<GroupPoint>();
 
@@ -40,6 +45,25 @@ namespace ToolsGenGkode
         public Preview_Vectors()
         {
             InitializeComponent();
+
+            try
+            {
+                Color_3DBack = new FColor(Properties.Settings.Default.ColorBack);
+                Color_3DContur = new FColor(Properties.Settings.Default.ColorTraectory);
+                Color_Grid = new FColor(Properties.Settings.Default.ColorGrid);
+            }
+            catch (Exception)
+            {
+
+                Color_3DBack = new FColor(120, 120, 120);
+                Color_3DContur = new FColor(0, 255, 0);
+                Color_Grid = new FColor(100, 0, 204);
+            }
+            //
+            //
+            //
+
+
         }
 
         private void openGLControl1_OpenGLDraw(object sender, RenderEventArgs args)
@@ -74,8 +98,14 @@ namespace ToolsGenGkode
 
             OpenGL gl = openGLControl1.OpenGL;
 
+
+
+
             gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT); // очистка буфера цвета и буфера глубины 
-            gl.ClearColor(0.5f, 0.5f, 0.5f, 1);
+
+
+            //gl.ClearColor(0.5f, 0.5f, 0.5f, 1);
+            gl.ClearColor(Color_3DBack.R, Color_3DBack.G, Color_3DBack.B, 1);
             //gl.ClearColor(0.7f, 0.7f, 0.7f, 1);
 
             gl.LoadIdentity();                                         // очищение текущей матрицы
@@ -190,7 +220,11 @@ namespace ToolsGenGkode
             if (DrawVectors.Count > 0)
             {
                 gl.LineWidth(0.1f);
-                gl.Color(CalcColor(100), 0F, CalcColor(204)); //(1.0f/255)*color
+
+                
+
+                gl.Color(Color_Grid.R, Color_Grid.G, Color_Grid.B); //(1.0f/255)*color
+                //gl.Color(CalcColor(100), 0F, CalcColor(204)); //(1.0f/255)*color
                 gl.Begin(OpenGL.GL_LINES);
 
                 int gridStep = (int)numericUpDown2.Value;
@@ -247,7 +281,9 @@ namespace ToolsGenGkode
                     gl.LineWidth(sizeVec);
 
                     gl.Begin(OpenGL.GL_LINE_STRIP);
-                    gl.Color(0f, 1.0f, 0);
+
+                    gl.Color(Color_3DContur.R, Color_3DContur.G, Color_3DContur.B);
+                    //gl.Color(0f, 1.0f, 0);
 
                     foreach (cncPoint point in Vector.Points)
                     {
@@ -374,6 +410,9 @@ namespace ToolsGenGkode
 
 
 
+
+
+
             //// инициализация OpenGL
             //// инициализация бибилиотеки glut 
             //Glut.glutInit();
@@ -445,7 +484,7 @@ namespace ToolsGenGkode
 
         private void openGLControl1_KeyUp(object sender, KeyEventArgs e)
         {
-            Setting.keyShift = e.Shift;
+            Setting.keyShift = false;
 
             openGLControl1.Refresh();
 
@@ -608,5 +647,74 @@ namespace ToolsGenGkode
         {
             openGLControl1.Refresh();
         }
+
+        private void btSetting_Click(object sender, EventArgs e)
+        {
+            SelectColor3D colorFRM = new SelectColor3D(this);
+            DialogResult dlres = colorFRM.ShowDialog();
+
+            if (dlres == DialogResult.OK)
+            {
+                Properties.Settings.Default.ColorBack = Color.FromArgb(Color_3DBack.iR, Color_3DBack.iG, Color_3DBack.iB);
+                Properties.Settings.Default.ColorTraectory = Color.FromArgb(Color_3DContur.iR, Color_3DContur.iG, Color_3DContur.iB);
+                Properties.Settings.Default.ColorGrid = Color.FromArgb(Color_Grid.iR, Color_Grid.iG, Color_Grid.iB);
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Color_3DBack = new FColor(Properties.Settings.Default.ColorBack);
+                Color_3DContur = new FColor(Properties.Settings.Default.ColorTraectory);
+                Color_Grid = new FColor(Properties.Settings.Default.ColorGrid);
+            }
+            openGLControl1.Refresh();
+            openGLControl1.Refresh();
+        }
     }
+
+    public class FColor
+    {
+        public float R, G, B;
+
+        public int iR, iG, iB;
+
+
+        public FColor()
+        {
+            R = 1.0F;
+            G = 1.0F;
+            B = 1.0F;
+
+            iR = 255;
+            iG = 255;
+            iB = 255;
+
+        }
+
+        public FColor(int _R, int _G, int _B)
+        {
+            iR = _R;
+            iG = _G;
+            iB = _B;
+
+
+            R = (1.0f / 255) * _R;
+            G = (1.0f / 255) * _G;
+            B = (1.0f / 255) * _B;
+        }
+
+        public FColor(Color _clr)
+        {
+            iR = _clr.R;
+            iG = _clr.G;
+            iB = _clr.B;
+
+
+            R = (1.0f / 255) * _clr.R;
+            G = (1.0f / 255) * _clr.G;
+            B = (1.0f / 255) * _clr.B;
+        }
+
+
+    }
+
 }

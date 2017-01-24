@@ -86,13 +86,13 @@ namespace ToolsGenGkode.pages
             {
                 if (LastPage2)
                 {
-                    pageImageNOW = (Bitmap)pageImageIN.Clone();
+                    pageImageNOW = ImageProcessing.CheckAndConvertImageto24bitPerPixel((Bitmap)pageImageIN.Clone());
                 }
                 else
                 {
                     if (File.Exists(textBoxFileName.Text))
                     {
-                        Bitmap tmp = new Bitmap(textBoxFileName.Text);
+                        Bitmap tmp = ImageProcessing.CheckAndConvertImageto24bitPerPixel(new Bitmap(textBoxFileName.Text));
 
                         //TODO: Вот тут обратить внимание!!!!! на ориентацию оей
 

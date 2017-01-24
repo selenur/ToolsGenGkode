@@ -209,8 +209,9 @@ namespace ToolsGenGkode.pages
 
                     foreach (DXFVertex pl_e in lp.Children)
                     {
-                        ListPoint.Add(new cncPoint((double)pl_e.Location.X, (double)pl_e.Location.Y));
-
+                        if (pl_e.GetType() == typeof(DXFVertex))
+                            if (pl_e.Location.X != null && pl_e.Location.Y != null)
+                                    ListPoint.Add(new cncPoint((double)pl_e.Location.X, (double)pl_e.Location.Y));
                     }
                     ListLines.Add(new GroupPoint( ListPoint));
                     ListPoint = new List<cncPoint>();

@@ -30,20 +30,34 @@ namespace ToolsGenGkode.pages
             NextPage = 10;
 
             useFilter.Items.Clear();
-            useFilter.Items.Add("01 - метод Флойда-Стеинберга (<распыление >)"); //FloydSteinberg Dithering
+            useFilter.Items.Add("01 - метод Флойда-Стеинберга (<распыление>)"); //FloydSteinberg Dithering
             useFilter.Items.Add("02 - метод Байера (<матрица>)");              //Bayer Dithering
             useFilter.Items.Add("03 - Получение оттенков серого (bright)");
 
+            try
+            {
+                cbKeepAspectRatio.Checked = Settings.Default.page09UserUseRation;
+                numSizePoint.Value = Settings.Default.page09SizePoint;
+                LaserTimeOut.Value = Settings.Default.page09LaserTimeOut;
+                numericUpDownPercent.Value = Settings.Default.page09PercentValue;
 
-            cbKeepAspectRatio.Checked = Settings.Default.page09UserUseRation;
-            numSizePoint.Value = Settings.Default.page09SizePoint;
-            LaserTimeOut.Value = Settings.Default.page09LaserTimeOut;
-            numericUpDownPercent.Value = Settings.Default.page09PercentValue;
+                _changeIsUser = false;
+                numXAfter.Value = Settings.Default.page09sizeDestX;
+                numYAfter.Value = Settings.Default.page09sizeDestY;
+                _changeIsUser = true;
+            }
+            catch (Exception ex)
+            {
+                cbKeepAspectRatio.Checked = true;
+                numSizePoint.Value = 1;
+                LaserTimeOut.Value = 1000;
+                numericUpDownPercent.Value = 100;
 
-            _changeIsUser = false;
-            numXAfter.Value = Settings.Default.page09sizeDestX;
-            numYAfter.Value = Settings.Default.page09sizeDestY;
-            _changeIsUser = true;
+                _changeIsUser = false;
+                numXAfter.Value = 100;
+                numYAfter.Value = 100;
+                _changeIsUser = true;
+            }
 
             switch (Settings.Default.page09VariantSize)
             {
@@ -62,9 +76,10 @@ namespace ToolsGenGkode.pages
                 case 4:
                     radioButtonUserSize.Checked = true;
                     break;
+                default:
+                    radioButtonSizePoint.Checked = true;
+                    break;
             }
-
-            //RecalculateSize();
         }
 
         private void page09_SelectImage_Load(object sender, EventArgs e)
@@ -88,7 +103,7 @@ namespace ToolsGenGkode.pages
             pageImageNOW = (Bitmap)pageImageIN.Clone(); 
 
             GetInfoSize();
-
+            
             UserActions();
 
             RecalculateSize();
@@ -96,9 +111,8 @@ namespace ToolsGenGkode.pages
 
         public void actionAfter()
         {
-           // throw new NotImplementedException();
-        }
 
+        }
 
         private void GetInfoSize()
         {
@@ -107,19 +121,6 @@ namespace ToolsGenGkode.pages
             numXbefore.Value = pageImageNOW.Width;
             numYbefore.Value = pageImageNOW.Height;
         }
-
-        public static Bitmap ConvertToGrayScale(Bitmap me)
-        {
-            if (me == null)
-                return null;
-
-            // first convert to a grey scale image
-            var filterGreyScale = new Grayscale(0.2125, 0.7154, 0.0721);
-
-            me = filterGreyScale.Apply(me);
-            return me;
-        }
-
 
         private void preparationImage()
         {
@@ -135,28 +136,28 @@ namespace ToolsGenGkode.pages
 
             pageImageNOW = (Bitmap)pageImageIN.Clone();
             pageVectorNOW = new List<GroupPoint>();
-            Bitmap newBitmap = ConvertToGrayScale(pageImageNOW);
+            Bitmap newBitmap = ImageProcessing.ConvertToGrayScale(pageImageNOW);
 
             int Xsize = (int)(numXAfter.Value / numSizePoint.Value);
             int Ysize = (int)(numYAfter.Value / numSizePoint.Value);
 
-            ResizeBicubic filterResize = new ResizeBicubic(Xsize, Ysize);
-            newBitmap = filterResize.Apply(newBitmap);
-
-
+            newBitmap = ImageProcessing.ResizeImage(newBitmap,Xsize,  Ysize);
 
             if (useFilter.Text.StartsWith("01")) //FloydSteinbergDithering"
             {
+                newBitmap = ImageProcessing.ConvertTo8Bit(newBitmap);
+
                 FloydSteinbergDithering filter = new FloydSteinbergDithering();
                 filter.ApplyInPlace(newBitmap);
             }
 
             if (useFilter.Text.StartsWith("02")) //@"BayerDithering"
             {
+                newBitmap = ImageProcessing.ConvertTo8Bit(newBitmap);
+
                 BayerDithering filter = new BayerDithering();
                 filter.ApplyInPlace(newBitmap);
             }
-
 
             if (useFilter.Text.StartsWith("03")) //@"получение оттенков серого"
             {
@@ -232,88 +233,182 @@ namespace ToolsGenGkode.pages
 
         }
 
+
+        // тут зигзагом будем идти по файлу, и получать цвет
         private void GenVar3()
         {
+            // работа заточена только под 24-х битный пиксель
+            if (pageImageNOW.PixelFormat != PixelFormat.Format24bppRgb)
+            {
+                //throw new UnsupportedImageFormatException("Оппа! Не поддерживаемый формат изображения!!!");
+                MessageBox.Show(
+                    "Для генерации данных, требуется изображение имеющее 24 бита на пиксель, а получилось иначе, очень подозрительно....!!");
+                return;
+            }
+
+            BitmapData bitmapData1 = pageImageNOW.LockBits(new Rectangle(0, 0, pageImageNOW.Width, pageImageNOW.Height), ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb);
+
+            //значение текущего цвета
+            int lastColor = -1; // прошлый цвет
+            int currColor = -1; // текущий цвет
+
+            pageVectorNOW = new List<GroupPoint>();
+
+            
+
             double sizeOnePoint = (double)numSizePoint.Value;
 
-            Bitmap bb = pageImageNOW;
-            BitmapData data = bb.LockBits(new Rectangle(0, 0, bb.Width, bb.Height), ImageLockMode.ReadOnly, bb.PixelFormat);  // make sure you check the pixel format as you will be looking directly at memory
-
-            //направление движения
-            DirrectionGroupPoint dir = DirrectionGroupPoint.Right;
+            bool isFirst = true;
+            bool isLast = false;
 
             unsafe
             {
-                byte* ptrSrc = (byte*)data.Scan0;
-
-                int diff = data.Stride - data.Width;
-                
-                pageVectorNOW = new List<GroupPoint>();
-
-                for (int y = 0; y < data.Height; ++y) //проход по линии
+                byte* imagePointer1 = (byte*)bitmapData1.Scan0;
+                for (int i = 0; i < bitmapData1.Height; i++)
                 {
-                    List<cncPoint> tmp = new List<cncPoint>();
+                    //TODO: Доделать............
+                    isFirst = true;
+                    isLast = false;
 
-                    byte lastValueColor = 0;
-                    bool firstPoint = true;
-                    bool lastPoint = false;
+                    GroupPoint tmpGroup = new GroupPoint();
 
-
-                    for (int x = 0; x < data.Width; ++x)//проход по точкам
+                    for (int j = 0; j < bitmapData1.Width; j++)
                     {
-                        lastPoint = (x == data.Width - 1); //будем знать последняя ли это точка линии по которой идем
-                        
-                        // windows stores images in BGR pixel order
-                        byte r = ptrSrc[0]; //тут получили нужный цвет
+                        // дошли до последней строки в текущей линии
+                        if (j == (bitmapData1.Width - 1)) isLast = true;
 
-                        if (firstPoint || lastPoint) //первую и последнюю точку добавим в любом случае
+                        // получим текущий цвет
+                        currColor = (imagePointer1[0] + imagePointer1[1] + imagePointer1[2]) / 3;
+
+                        if (isFirst || isLast)
                         {
-                            firstPoint = false;
+                           lastColor = currColor;
+                           tmpGroup.Points.Add(new cncPoint((j * sizeOnePoint) + (double)deltaX.Value, (i * sizeOnePoint) + (double)deltaY.Value, 0, 0, 0, false, currColor));
 
-                            cncPoint lk = new cncPoint((x * sizeOnePoint) + (double)deltaX.Value, (y * sizeOnePoint) + (double)deltaY.Value,0,0,0,false,(int)r);
+                            if (isLast) pageVectorNOW.Add(tmpGroup.Clone());
 
-                            tmp.Add(lk);
-                            
-                            lastValueColor = r;
+                            isFirst = false;
                         }
                         else
                         {
-                            if (lastValueColor != r)
+                            if (lastColor != currColor)
                             {
-                                cncPoint lk = new cncPoint((x * sizeOnePoint) + (double)deltaX.Value, (y * sizeOnePoint) + (double)deltaY.Value, 0, 0, 0, false, (int)r);
+                                tmpGroup.Points.Add(new cncPoint((j * sizeOnePoint) + (double)deltaX.Value, (i * sizeOnePoint) + (double)deltaY.Value, 0, 0, 0, false, lastColor));
+                                lastColor = currColor;
+                                tmpGroup.Points.Add(new cncPoint((j * sizeOnePoint) + (double)deltaX.Value, (i * sizeOnePoint) + (double)deltaY.Value, 0,0,0,false,currColor));
 
-                                tmp.Add(lk);
 
-                                lastValueColor = r;
                             }
                         }
-                        ptrSrc += 1;
-                    }
 
+                        imagePointer1 += 3;
+                    }//end for j
+                    imagePointer1 += bitmapData1.Stride - (bitmapData1.Width * 3);
 
-                    // а теперь временный массив скопируем в основной, но с определенным направлением
-                    if (dir == DirrectionGroupPoint.Right)
-                    {
-                        dir = DirrectionGroupPoint.Left;
-                    }
-                    else
-                    {
-                        tmp.Reverse();
-                        dir = DirrectionGroupPoint.Right;
-                    }
+                }//end for i
+            }//end unsafe
+            pageImageNOW.UnlockBits(bitmapData1);
 
-                    pageVectorNOW.Add(new GroupPoint(tmp, false, dir, true));
+            //теперь у нечентных линий нужно сменить направление
+            bool needRevers = false;
 
-                    // ReSharper disable once RedundantAssignment
-                    tmp = new List<cncPoint>();
+            foreach (GroupPoint gpGroupPoint in pageVectorNOW)
+            {
+                if (needRevers) gpGroupPoint.Points.Reverse();
 
-                    ptrSrc += diff;
-                }
+                needRevers = !needRevers;
             }
 
-            bb.UnlockBits(data);
+            pageVectorNOW.Reverse();
 
-            // тут нужно сделать преворот согластно текущй ориентации осей
+
+            ////******************************
+
+            ////направление движения
+            ////DirrectionGroupPoint dir = DirrectionGroupPoint.Right;
+
+            //        //if (dir == DirrectionGroupPoint.Left) dir = DirrectionGroupPoint.Right;
+            //        //else dir = DirrectionGroupPoint.Left;
+
+
+            //Bitmap bb = pageImageNOW;
+            //BitmapData data = bb.LockBits(new Rectangle(0, 0, bb.Width, bb.Height), ImageLockMode.ReadOnly, bb.PixelFormat);  // make sure you check the pixel format as you will be looking directly at memory
+
+            ////направление движения
+            ////DirrectionGroupPoint dir = DirrectionGroupPoint.Right;
+
+            //unsafe
+            //{
+            //    byte* ptrSrc = (byte*)data.Scan0;
+
+            //    int diff = data.Stride - data.Width;
+
+            //    pageVectorNOW = new List<GroupPoint>();
+
+            //    for (int y = 0; y < data.Height; ++y) //проход по линии
+            //    {
+            //        List<cncPoint> tmp = new List<cncPoint>();
+
+            //        byte lastValueColor = 0;
+            //        bool firstPoint = true;
+            //        bool lastPoint = false;
+
+
+            //        for (int x = 0; x < data.Width; ++x)//проход по точкам
+            //        {
+            //            lastPoint = (x == data.Width - 1); //будем знать последняя ли это точка линии по которой идем
+
+            //            // windows stores images in BGR pixel order
+            //            byte r = ptrSrc[0]; //тут получили нужный цвет
+
+            //            if (firstPoint || lastPoint) //первую и последнюю точку добавим в любом случае
+            //            {
+            //                firstPoint = false;
+
+            //                cncPoint lk = new cncPoint((x * sizeOnePoint) + (double)deltaX.Value, (y * sizeOnePoint) + (double)deltaY.Value,0,0,0,false,(int)r);
+
+            //                tmp.Add(lk);
+
+            //                lastValueColor = r;
+            //            }
+            //            else
+            //            {
+            //                if (lastValueColor != r)
+            //                {
+            //                    cncPoint lk = new cncPoint((x * sizeOnePoint) + (double)deltaX.Value, (y * sizeOnePoint) + (double)deltaY.Value, 0, 0, 0, false, (int)r);
+
+            //                    tmp.Add(lk);
+
+            //                    lastValueColor = r;
+            //                }
+            //            }
+            //            ptrSrc += 1;
+            //        }
+
+
+            //        // а теперь временный массив скопируем в основной, но с определенным направлением
+            //        if (dir == DirrectionGroupPoint.Right)
+            //        {
+            //            dir = DirrectionGroupPoint.Left;
+            //        }
+            //        else
+            //        {
+            //            tmp.Reverse();
+            //            dir = DirrectionGroupPoint.Right;
+            //        }
+
+            //        pageVectorNOW.Add(new GroupPoint(tmp, false, dir, true));
+
+            //        // ReSharper disable once RedundantAssignment
+            //        tmp = new List<cncPoint>();
+
+            //        ptrSrc += diff;
+            //    }
+            //}
+
+            //bb.UnlockBits(data);
+
+            //// тут нужно сделать преворот согластно текущй ориентации осей
             pageVectorNOW = VectorProcessing.Rotate(pageVectorNOW);
         }
 
@@ -355,12 +450,14 @@ namespace ToolsGenGkode.pages
             Cursor.Current = Cursors.WaitCursor;
 
             preparationImage();
-
             GenerateData();
+
+            UserActions();
+
 
             Cursor.Current = Cursors.Default;
 
-            UserActions();
+            //UserActions();
             //CreateEvent("RefreshImage_09");
         }
 

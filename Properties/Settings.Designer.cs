@@ -178,5 +178,41 @@ namespace ToolsGenGkode.Properties {
                 this["Setting"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Silver")]
+        public global::System.Drawing.Color ColorBack {
+            get {
+                return ((global::System.Drawing.Color)(this["ColorBack"]));
+            }
+            set {
+                this["ColorBack"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Blue")]
+        public global::System.Drawing.Color ColorTraectory {
+            get {
+                return ((global::System.Drawing.Color)(this["ColorTraectory"]));
+            }
+            set {
+                this["ColorTraectory"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Purple")]
+        public global::System.Drawing.Color ColorGrid {
+            get {
+                return ((global::System.Drawing.Color)(this["ColorGrid"]));
+            }
+            set {
+                this["ColorGrid"] = value;
+            }
+        }
     }
 }

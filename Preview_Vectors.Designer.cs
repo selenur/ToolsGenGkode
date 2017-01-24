@@ -34,6 +34,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.btSetting = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -43,7 +44,7 @@
             // 
             this.button3DDefault.Location = new System.Drawing.Point(350, 2);
             this.button3DDefault.Name = "button3DDefault";
-            this.button3DDefault.Size = new System.Drawing.Size(107, 24);
+            this.button3DDefault.Size = new System.Drawing.Size(107, 25);
             this.button3DDefault.TabIndex = 35;
             this.button3DDefault.Tag = "_resetPos_";
             this.button3DDefault.Text = "Сброс положения";
@@ -56,12 +57,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.openGLControl1.DrawFPS = true;
-            this.openGLControl1.Location = new System.Drawing.Point(6, 29);
+            this.openGLControl1.Location = new System.Drawing.Point(6, 32);
             this.openGLControl1.Name = "openGLControl1";
             this.openGLControl1.OpenGLVersion = SharpGL.Version.OpenGLVersion.OpenGL2_1;
             this.openGLControl1.RenderContextType = SharpGL.RenderContextType.DIBSection;
             this.openGLControl1.RenderTrigger = SharpGL.RenderTrigger.Manual;
-            this.openGLControl1.Size = new System.Drawing.Size(449, 171);
+            this.openGLControl1.Size = new System.Drawing.Size(497, 168);
             this.openGLControl1.TabIndex = 30;
             this.openGLControl1.OpenGLInitialized += new System.EventHandler(this.openGLControl1_OpenGLInitialized);
             this.openGLControl1.OpenGLDraw += new SharpGL.RenderEventHandler(this.openGLControl1_OpenGLDraw);
@@ -139,11 +140,22 @@
             0});
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
+            // btSetting
+            // 
+            this.btSetting.Image = global::ToolsGenGkode.Properties.Resources.color_swatch;
+            this.btSetting.Location = new System.Drawing.Point(461, 3);
+            this.btSetting.Name = "btSetting";
+            this.btSetting.Size = new System.Drawing.Size(41, 24);
+            this.btSetting.TabIndex = 36;
+            this.btSetting.UseVisualStyleBackColor = true;
+            this.btSetting.Click += new System.EventHandler(this.btSetting_Click);
+            // 
             // Preview_Vectors
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.btSetting);
             this.Controls.Add(this.button3DDefault);
             this.Controls.Add(this.openGLControl1);
             this.Controls.Add(this.numericUpDown2);
@@ -151,7 +163,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.numericUpDown1);
             this.Name = "Preview_Vectors";
-            this.Size = new System.Drawing.Size(461, 206);
+            this.Size = new System.Drawing.Size(509, 206);
             this.Load += new System.EventHandler(this.Preview_Vectors_Load);
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
@@ -164,10 +176,11 @@
         #endregion
 
         private System.Windows.Forms.Button button3DDefault;
-        private SharpGL.OpenGLControl openGLControl1;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Button btSetting;
+        public SharpGL.OpenGLControl openGLControl1;
     }
 }

@@ -89,7 +89,7 @@ namespace ToolsGenGkode.pages
 
             if (!File.Exists(textBoxFileName.Text)) return;
 
-            Bitmap tmp = new Bitmap(textBoxFileName.Text);
+            Bitmap tmp = ImageProcessing.CheckAndConvertImageto24bitPerPixel(new Bitmap(textBoxFileName.Text));
 
             //TODO: обратить внимание на ориентацию осей
 

@@ -10,9 +10,10 @@ using System.Drawing.Text;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using System.Xml.Serialization;
+using AForge.Imaging;
 using BinarizationThinning;
 using ToolsGenGkode.pages;
+using ToolsGenGkode.Properties;
 
 namespace ToolsGenGkode
 {
@@ -23,7 +24,7 @@ namespace ToolsGenGkode
     {
 
         /// <summary>
-        /// Создание рисунка из текста
+        /// Создание 8-битного рисунка из текста
         /// </summary>
         /// <param name="text"> Текст</param>
         /// <param name="fontName">Имя шрифта</param>
@@ -34,6 +35,8 @@ namespace ToolsGenGkode
         {
             if (text.Trim().Length == 0) text = " ";
 
+            // по умолчанию рисунок 1х1 пиксель, и 24 бита на пиксель, т.к. сразу 8 бит использовать не получится, 
+            // т.к. стандартные функции не работают...
             Bitmap bitmap = new Bitmap(1, 1, PixelFormat.Format24bppRgb);
 
             int width = 0;
@@ -84,8 +87,8 @@ namespace ToolsGenGkode
             graphics.Flush();
 
             font.Dispose();
-
-            return (bitmap);
+            
+            return CheckAndConvertImageto24bitPerPixel(bitmap);
         }
 
         /// <summary>
@@ -99,9 +102,9 @@ namespace ToolsGenGkode
         {
 
 
-            Bitmap tempImage = sourceImage;
+            Bitmap tempImage = CheckAndConvertImageto24bitPerPixel(sourceImage);
 
-            BitmapData bmd = tempImage.LockBits(new Rectangle(0, 0, sourceImage.Width, sourceImage.Height), ImageLockMode.ReadWrite, sourceImage.PixelFormat);
+            BitmapData bmd = tempImage.LockBits(new Rectangle(0, 0, tempImage.Width, tempImage.Height), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
 
             // Получаем адрес первой линии.
             IntPtr ptr = bmd.Scan0;
@@ -210,9 +213,6 @@ namespace ToolsGenGkode
             return tempImage;
         }
 
-
-
-
         private static Color GetPosColor(ref Bitmap bmp, int x, int y)
         {
             Color cReturn = Color.FromArgb(255, 255, 255, 255);
@@ -228,13 +228,11 @@ namespace ToolsGenGkode
             return bmp.GetPixel(x, y);
         }
 
-
-
         // удаление закрашенных областей
         public static Bitmap BitmapDeleteContent(Bitmap tmpBmp)
         {
 
-            Bitmap bbb = tmpBmp.Clone(new Rectangle(0, 0, tmpBmp.Width, tmpBmp.Height), PixelFormat.Format24bppRgb); ;
+            Bitmap bbb = tmpBmp.Clone(new Rectangle(0, 0, tmpBmp.Width, tmpBmp.Height), PixelFormat.Format24bppRgb);
 
 
 
@@ -269,8 +267,6 @@ namespace ToolsGenGkode
             return bbb;
         }
 
-
-
         public static Bitmap Skeletonization(Bitmap bmpSource)
         {
 
@@ -280,13 +276,227 @@ namespace ToolsGenGkode
 
             Byte[,] m_DesImage = Thining.ThinPicture(m_SourceImage);
 
-            return Thining.BinaryArrayToBinaryBitmap(m_DesImage);
+            return CheckAndConvertImageto24bitPerPixel(Thining.BinaryArrayToBinaryBitmap(m_DesImage));
+        }
+
+        /// <summary>
+        /// Resizes an image to a certain height
+        /// </summary>
+        /// <param name="Image">Image to resize</param>
+        /// <param name="Width">New width for the final image</param>
+        /// <param name="Height">New height for the final image</param>
+        /// <param name="Quality">Quality of the resizing</param>
+        /// <returns>A bitmap object of the resized image</returns>
+        public static Bitmap ResizeImage(Bitmap Image, int Width, int Height, bool Quality = false)
+        {
+            Bitmap NewBitmap = new Bitmap(Width, Height,PixelFormat.Format24bppRgb);
+            using (Graphics NewGraphics = Graphics.FromImage(NewBitmap))
+            {
+                if (Quality)
+                {
+                    NewGraphics.CompositingQuality = CompositingQuality.HighQuality;
+                    NewGraphics.SmoothingMode = SmoothingMode.HighQuality;
+                    NewGraphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                }
+                else
+                {
+                    NewGraphics.CompositingQuality = CompositingQuality.HighSpeed;
+                    NewGraphics.SmoothingMode = SmoothingMode.HighSpeed;
+                    NewGraphics.InterpolationMode = InterpolationMode.NearestNeighbor;
+                }
+                NewGraphics.DrawImage(Image, new System.Drawing.Rectangle(0, 0, Width, Height));
+            }
+            return CheckAndConvertImageto24bitPerPixel(NewBitmap);
+        }
+
+        public static Bitmap ConvertToGrayScale(Bitmap Image)
+        {
+            if (Image.PixelFormat != PixelFormat.Format24bppRgb)
+            {
+                throw new UnsupportedImageFormatException("Оппа! Не поддерживаемый формат изображения!!! (001)");
+            }
+
+
+            Bitmap returnMap = new Bitmap(Image.Width, Image.Height, PixelFormat.Format24bppRgb);
+            BitmapData bitmapData1 = Image.LockBits(new Rectangle(0, 0, Image.Width, Image.Height), ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb);
+            BitmapData bitmapData2 = returnMap.LockBits(new Rectangle(0, 0, returnMap.Width, returnMap.Height), ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb);
+            int a = 0;
+            unsafe
+            {
+                byte* imagePointer1 = (byte*)bitmapData1.Scan0;
+                byte* imagePointer2 = (byte*)bitmapData2.Scan0;
+                for (int i = 0; i < bitmapData1.Height; i++)
+                {
+                    for (int j = 0; j < bitmapData1.Width; j++)
+                    {
+                        // write the logic implementation here
+                        a = (imagePointer1[0] + imagePointer1[1] + imagePointer1[2]) / 3;
+                        imagePointer2[0] = (byte)a;
+                        imagePointer2[1] = (byte)a;
+                        imagePointer2[2] = (byte)a;
+
+                        imagePointer1 += 3;
+                        imagePointer2 += 3;
+                    }//end for j
+                    imagePointer1 += bitmapData1.Stride - (bitmapData1.Width * 3);
+                    imagePointer2 += bitmapData1.Stride - (bitmapData1.Width * 3);
+                }//end for i
+            }//end unsafe
+            returnMap.UnlockBits(bitmapData2);
+            Image.UnlockBits(bitmapData1);
+            return returnMap;
         }
 
 
 
 
 
+        public static Bitmap CheckAndConvertImageto24bitPerPixel(Bitmap sourceBMP)
+        {
+            // Работать будем с 24-битным изображением
+            if (sourceBMP.PixelFormat == PixelFormat.Format24bppRgb) return sourceBMP;
+
+            // Необходимо сконвертировать в необходимый формат
+            Bitmap returnMap = new Bitmap(sourceBMP.Width, sourceBMP.Height, PixelFormat.Format24bppRgb);
+
+            int bytePerPixel = 0;
+
+            if (sourceBMP.PixelFormat == PixelFormat.Format32bppArgb) bytePerPixel = 4;
+
+            if (sourceBMP.PixelFormat == PixelFormat.Format8bppIndexed) bytePerPixel = 1;
+
+            //todo: add exceptions
+            if (bytePerPixel == 0)
+            {
+                throw new UnsupportedImageFormatException("Не поддерживаемый формат изображения!!!.");
+                return null;
+            }
+
+            // исходное изображение
+            BitmapData bitmapData1 = sourceBMP.LockBits(new Rectangle(0, 0, sourceBMP.Width, sourceBMP.Height), ImageLockMode.ReadOnly, sourceBMP.PixelFormat);
+            // итоговое изображение
+            BitmapData bitmapData2 = returnMap.LockBits(new Rectangle(0, 0, returnMap.Width, returnMap.Height), ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb);
+
+            //int a = 0;
+
+            unsafe
+            {
+                // ссылка на область памяти
+                byte* imagePointer1 = (byte*)bitmapData1.Scan0;
+                // ссылка на область памяти
+                byte* imagePointer2 = (byte*)bitmapData2.Scan0;
+
+                for (int i = 0; i < bitmapData1.Height; i++)
+                {
+                    for (int j = 0; j < bitmapData1.Width; j++)
+                    {
+                        if (bytePerPixel == 1)
+                        {
+                            imagePointer2[0] = imagePointer1[0];
+                            imagePointer2[1] = imagePointer1[0];
+                            imagePointer2[2] = imagePointer1[0];
+                            //imagePointer2[3] = imagePointer1[3]; //для 32-х битного
+                            imagePointer1 += 1;
+                            imagePointer2 += 3;
+                        }
+
+                        if (bytePerPixel == 4)
+                        {
+                            imagePointer2[0] = imagePointer1[0];
+                            imagePointer2[1] = imagePointer1[1];
+                            imagePointer2[2] = imagePointer1[2];
+                            //imagePointer2[3] = imagePointer1[3]; //для 32-х битного
+                            imagePointer1 += 4;
+                            imagePointer2 += 3;
+
+                        }
+                    }//end for j
+
+                    if (bytePerPixel == 1)
+                    {
+                        imagePointer1 += bitmapData1.Stride - (bitmapData1.Width * 1);
+                        imagePointer2 += bitmapData2.Stride - (bitmapData1.Width * 3);
+                    }
+
+                    if (bytePerPixel == 4)
+                    {
+                        imagePointer1 += bitmapData1.Stride - (bitmapData1.Width * 4);
+                        imagePointer2 += bitmapData2.Stride - (bitmapData1.Width * 3);
+                    }
+                }//end for i
+            }//end unsafe
+            returnMap.UnlockBits(bitmapData2);
+            sourceBMP.UnlockBits(bitmapData1);
+            return returnMap;
+        }
+
+
+        public static Bitmap ConvertTo8Bit(Bitmap sourceBMP)
+        {
+            // нет смысла конвертировать
+            if (sourceBMP.PixelFormat == PixelFormat.Format8bppIndexed) return sourceBMP;
+
+            // Необходимо сконвертировать в необходимый формат
+            Bitmap returnMap = new Bitmap(sourceBMP.Width, sourceBMP.Height, PixelFormat.Format8bppIndexed);
+
+            //todo: add exceptions
+            if (!(sourceBMP.PixelFormat == PixelFormat.Format24bppRgb || sourceBMP.PixelFormat == PixelFormat.Format32bppRgb || sourceBMP.PixelFormat == PixelFormat.Format32bppArgb))
+            {
+                throw new UnsupportedImageFormatException("На текущий момент изображение имеющее pixelFormat: " + sourceBMP.PixelFormat.ToString() + @" не поддерживатется!");
+                return null;
+            }
+
+            // исходное изображение
+            BitmapData bitmapData1 = sourceBMP.LockBits(new Rectangle(0, 0, sourceBMP.Width, sourceBMP.Height), ImageLockMode.ReadOnly, sourceBMP.PixelFormat);
+            // итоговое изображение
+            BitmapData bitmapData2 = returnMap.LockBits(new Rectangle(0, 0, returnMap.Width, returnMap.Height), ImageLockMode.ReadOnly, PixelFormat.Format8bppIndexed);
+
+            unsafe
+            {
+                // ссылка на область памяти
+                byte* imagePointer1 = (byte*)bitmapData1.Scan0;
+                // ссылка на область памяти
+                byte* imagePointer2 = (byte*)bitmapData2.Scan0;
+
+                for (int i = 0; i < bitmapData1.Height; i++)
+                {
+                    for (int j = 0; j < bitmapData1.Width; j++)
+                    {
+
+                        if (sourceBMP.PixelFormat == PixelFormat.Format24bppRgb)
+                        {
+                            imagePointer2[0] = (byte)((imagePointer1[0] + imagePointer1[1] + imagePointer1[2]) / 3);
+                            imagePointer1 += 3;
+                        }
+
+                        if (sourceBMP.PixelFormat == PixelFormat.Format32bppRgb)
+                        {
+                            imagePointer2[0] = (byte)((imagePointer1[0] + imagePointer1[1] + imagePointer1[2]) / 3);
+                            imagePointer1 += 4;
+                        }
+
+                        if (sourceBMP.PixelFormat == PixelFormat.Format32bppArgb)
+                        {
+                            imagePointer2[0] = (byte)((imagePointer1[0] + imagePointer1[1] + imagePointer1[2]) / 3);
+                            imagePointer1 += 4;
+                        }
+
+                        imagePointer2 += 1;
+
+                    }//end for j
+
+                    if (sourceBMP.PixelFormat == PixelFormat.Format24bppRgb) imagePointer1 += bitmapData1.Stride - (bitmapData1.Width * 3);
+                    if (sourceBMP.PixelFormat == PixelFormat.Format32bppRgb) imagePointer1 += bitmapData1.Stride - (bitmapData1.Width * 4);
+                    if (sourceBMP.PixelFormat == PixelFormat.Format32bppArgb) imagePointer1 += bitmapData1.Stride - (bitmapData1.Width * 4);
+
+                    imagePointer2 += bitmapData2.Stride - (bitmapData1.Width * 1);
+                    
+                }//end for i
+            }//end unsafe
+            returnMap.UnlockBits(bitmapData2);
+            sourceBMP.UnlockBits(bitmapData1);
+            return returnMap;
+        }
 
     }
 
@@ -355,7 +565,8 @@ namespace ToolsGenGkode
                         ss += "\n" + (StringFormat.GenericDefault).ToString();
 
                         MessageBox.Show(ss);
-                        throw;
+                        //throw;
+                        return new List<GroupPoint>();
                     }
 
                 }
@@ -414,7 +625,7 @@ namespace ToolsGenGkode
             }
 
 
-            Lines = VectorProcessing.Rotate(Lines);
+            Lines = Rotate(Lines);
 
             //// получим границы изображения
             //decimal minX = 99999;
@@ -652,7 +863,7 @@ namespace ToolsGenGkode
 
 
 
-            if (Properties.Settings.Default.page01AxisVariant == 1)
+            if (Settings.Default.page01AxisVariant == 1)
             {
                 //реверс по оси Y
 
@@ -685,7 +896,7 @@ namespace ToolsGenGkode
             }
 
 
-            if (Properties.Settings.Default.page01AxisVariant == 2)
+            if (Settings.Default.page01AxisVariant == 2)
             {
                 //ничего не делаем
                 foreach (GroupPoint VARIABLE in dataCVectors)
@@ -695,7 +906,7 @@ namespace ToolsGenGkode
             }
 
 
-            if (Properties.Settings.Default.page01AxisVariant == 3)
+            if (Settings.Default.page01AxisVariant == 3)
             {
                 //реверс по оси X
 
@@ -727,7 +938,7 @@ namespace ToolsGenGkode
             }
 
 
-            if (Properties.Settings.Default.page01AxisVariant == 4)
+            if (Settings.Default.page01AxisVariant == 4)
             {
                 //реверс по обоим осям
 
@@ -785,7 +996,7 @@ namespace ToolsGenGkode
 
 
 
-            if (Properties.Settings.Default.page01AxisVariant == 1)
+            if (Settings.Default.page01AxisVariant == 1)
             {
                 //реверс по оси Y
                 //вычислим дельту, для смещения векторов
@@ -803,12 +1014,12 @@ namespace ToolsGenGkode
             }
 
 
-            if (Properties.Settings.Default.page01AxisVariant == 2)
+            if (Settings.Default.page01AxisVariant == 2)
             {
                 //ничего не делаем
             }
 
-            if (Properties.Settings.Default.page01AxisVariant == 3)
+            if (Settings.Default.page01AxisVariant == 3)
             {
                 //реверс по оси X
 
@@ -829,7 +1040,7 @@ namespace ToolsGenGkode
             }
 
 
-            if (Properties.Settings.Default.page01AxisVariant == 4)
+            if (Settings.Default.page01AxisVariant == 4)
             {
                 //реверс по обоим осям
                 //вычислим дельту, для смещения векторов
@@ -1153,7 +1364,7 @@ namespace ToolsGenGkode
 
 
 
-            Vectors = VectorProcessing.Rotate(Vectors);
+            Vectors = Rotate(Vectors);
 
 
 

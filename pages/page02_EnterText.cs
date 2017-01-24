@@ -37,7 +37,7 @@ namespace ToolsGenGkode.pages
 
             installedFontCollection.Dispose();
 
-            comboBoxFont.Text = comboBoxFont.Items[0].ToString();
+            if (comboBoxFont.Items.Count > 0) comboBoxFont.Text = comboBoxFont.Items[0].ToString();
 
             rbUseSystemFont.Checked = true;
             rbFontToVector.Checked = true;

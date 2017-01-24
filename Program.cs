@@ -4,7 +4,7 @@ using System;
 using System.Windows.Forms;
 using ToolsGenGkode;
 
-namespace WindowsFormsApplication1
+namespace ToolsGeneratorGCode
 {
     static class Program
     {

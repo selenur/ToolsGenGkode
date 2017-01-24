@@ -130,6 +130,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SelectColor3D.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectColor3D.Designer.cs">
+      <DependentUpon>SelectColor3D.cs</DependentUpon>
+    </Compile>
     <Compile Include="TestLaser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -273,6 +279,9 @@
     <EmbeddedResource Include="pages\page03_SelectPLT.resx">
       <DependentUpon>page03_SelectPLT.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SelectColor3D.resx">
+      <DependentUpon>SelectColor3D.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TestLaser.resx">
       <DependentUpon>TestLaser.cs</DependentUpon>
     </EmbeddedResource>
@@ -324,6 +333,7 @@
     <None Include="Resources\computer_go.png" />
     <None Include="Resources\diskette.png" />
     <None Include="Resources\layout_edit.png" />
+    <None Include="Resources\color_swatch.png" />
     <Content Include="TextFile2.txt" />
     <None Include="Resources\font.png" />
     <None Include="Resources\file_extension_jpg.png" />

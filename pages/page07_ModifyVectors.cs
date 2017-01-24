@@ -429,6 +429,7 @@ namespace ToolsGenGkode.pages
 
             UserActions();
 
+            myMatrix.Dispose();
 
             //Rotate();
         }

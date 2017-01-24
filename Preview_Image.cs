@@ -271,7 +271,8 @@ namespace ToolsGenGkode
                 return;
             }
 
-            pictureBoxPreview.Image = DrawAxes(bmp);
+            //pictureBoxPreview.Image = DrawAxes(bmp);
+            pictureBoxPreview.Image = bmp;
             containsData = true;
         }
     }

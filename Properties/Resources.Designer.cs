@@ -233,6 +233,16 @@ namespace ToolsGenGkode.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap color_swatch {
+            get {
+                object obj = ResourceManager.GetObject("color_swatch", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap computer_go {
             get {
                 object obj = ResourceManager.GetObject("computer_go", resourceCulture);
