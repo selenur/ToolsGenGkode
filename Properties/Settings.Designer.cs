@@ -214,5 +214,30 @@ namespace ToolsGenGkode.Properties {
                 this["ColorGrid"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int filter3_minValue {
+            get {
+                return ((int)(this["filter3_minValue"]));
+            }
+            set {
+                this["filter3_minValue"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
+            "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" />")]
+        public global::System.Collections.Specialized.StringCollection filter3_map {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["filter3_map"]));
+            }
+            set {
+                this["filter3_map"] = value;
+            }
+        }
     }
 }

@@ -58,7 +58,7 @@ namespace ToolsGenGkode.pages
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btSettingFilter = new System.Windows.Forms.Button();
             this.buttonHelpInfo = new System.Windows.Forms.Button();
             this.PreviewButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -490,7 +490,7 @@ namespace ToolsGenGkode.pages
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button2);
+            this.groupBox3.Controls.Add(this.btSettingFilter);
             this.groupBox3.Controls.Add(this.buttonHelpInfo);
             this.groupBox3.Controls.Add(this.useFilter);
             this.groupBox3.Controls.Add(this.PreviewButton);
@@ -502,15 +502,16 @@ namespace ToolsGenGkode.pages
             this.groupBox3.Tag = "_useFilter_";
             this.groupBox3.Text = "Для генерации данных, будем использовать фильтр:";
             // 
-            // button2
+            // btSettingFilter
             // 
-            this.button2.Enabled = false;
-            this.button2.Image = global::ToolsGenGkode.Properties.Resources.layout_edit;
-            this.button2.Location = new System.Drawing.Point(422, 19);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(29, 24);
-            this.button2.TabIndex = 12;
-            this.button2.UseVisualStyleBackColor = true;
+            this.btSettingFilter.Enabled = false;
+            this.btSettingFilter.Image = global::ToolsGenGkode.Properties.Resources.layout_edit;
+            this.btSettingFilter.Location = new System.Drawing.Point(422, 19);
+            this.btSettingFilter.Name = "btSettingFilter";
+            this.btSettingFilter.Size = new System.Drawing.Size(29, 24);
+            this.btSettingFilter.TabIndex = 12;
+            this.btSettingFilter.UseVisualStyleBackColor = true;
+            this.btSettingFilter.Click += new System.EventHandler(this.btSettingFilter_Click);
             // 
             // buttonHelpInfo
             // 
@@ -596,7 +597,7 @@ namespace ToolsGenGkode.pages
         private System.Windows.Forms.NumericUpDown numericUpDownPercent;
         private System.Windows.Forms.RadioButton radioButtonPerent;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btSettingFilter;
         private System.Windows.Forms.Button buttonHelpInfo;
 
 

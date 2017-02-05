@@ -85,5 +85,10 @@ namespace ToolsGenGkode
 
             textBox1.Text = sb.ToString();
         }
+
+        private void TestLaser_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

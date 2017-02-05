@@ -1,4 +1,6 @@
-﻿namespace ToolsGenGkode
+﻿// This is an independent project of an individual developer. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
+namespace ToolsGenGkode
 {
     partial class helpText
     {
@@ -50,6 +52,7 @@
             this.Controls.Add(this.webBrowser1);
             this.Name = "helpText";
             this.Text = "Справочная информация";
+            this.Load += new System.EventHandler(this.helpText_Load);
             this.ResumeLayout(false);
 
         }

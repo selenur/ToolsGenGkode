@@ -604,3 +604,305 @@
 //    return bitmap;
 
 //}
+
+
+
+
+
+
+
+
+
+
+        // тут зигзагом будем идти по файлу, и получать цвет
+        private void GenVar4()
+        {
+            // работа заточена только под 24-х битный пиксель
+            if (pageImageNOW.PixelFormat != PixelFormat.Format24bppRgb)
+            {
+                //throw new UnsupportedImageFormatException("Оппа! Не поддерживаемый формат изображения!!!");
+                MessageBox.Show(
+                    "Для генерации данных, требуется изображение имеющее 24 бита на пиксель, а получилось иначе, очень подозрительно....!!");
+                return;
+            }
+
+            BitmapData bitmapData1 = pageImageNOW.LockBits(new Rectangle(0, 0, pageImageNOW.Width, pageImageNOW.Height), ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb);
+
+            
+
+
+
+            // ПЕРЕМЕННЫЕ
+            int currColor = -1; // текущий цвет
+            List<GroupPoint>  tmpVectors = new List<GroupPoint>();
+            int minBright = Settings.Default.filter3_minValue;
+            double sizeOnePoint = (double)numSizePoint.Value;
+            bool isLast = false; //для понимания того что это последняя точка в данном отрезке
+            //bool isSkipPoint = false;
+
+            bool needRevers = false;   //необходимость реверсинга отрезков
+
+            cncPoint startCncPoint = null; //начальная точка отрезка
+            cncPoint currCncPoint = null; //текущая точка по циклу
+            cncPoint lastCncPoint = null; //точка из предыдущей итерации цикла
+
+            //List<GroupPoint> tmpGroupPoints = null;
+            unsafe
+            {
+                byte* imagePointer1 = (byte*)bitmapData1.Scan0;
+                for (int i = 0; i < bitmapData1.Height; i++) //цикл по линиям
+                {
+                    isLast = false;
+
+                    List<GroupPoint> tmpGroupPoints = new List<GroupPoint>();
+
+                    
+
+
+                    for (int j = 0; j < bitmapData1.Width; j++)//цикл по точкам
+                    {
+                        // дошли до последней строки в текущей линии
+                        if (j == (bitmapData1.Width - 1)) isLast = true;
+
+                        // получим текущий цвет
+                        currColor = 255 - ((imagePointer1[0] + imagePointer1[1] + imagePointer1[2]) / 3);
+
+                        currCncPoint = new cncPoint((j*sizeOnePoint) + (double) deltaX.Value,(i*sizeOnePoint) + (double) deltaY.Value, 0, 0, 0, false, currColor);
+                        
+
+                        if (currColor < minBright)
+                        {//нужно пропустить такую траекторию
+                            if (startCncPoint != null)
+                            {
+                                //    //    //нужно завершить траекторию
+
+                                List<cncPoint> tmpLstPnt = new List<cncPoint>();
+                                //сменился цвет, добавим конечную точку
+                                tmpLstPnt.Add(startCncPoint.Clone());
+
+                                //вторую точку добавим только  при условии что различаются координаты
+                               // if (!(startCncPoint.X == lastCncPoint.X && startCncPoint.Y == lastCncPoint.Y))
+                               // {
+                                   // if (needRevers) tmpLstPnt.Insert(0,lastCncPoint.Clone());
+                                   // else
+                                  //  {
+                                        tmpLstPnt.Add(lastCncPoint.Clone());
+                                  //  }
+                              //  }
+
+
+                                tmpGroupPoints.Add(new GroupPoint(VectorProcessing.ListCncPointClone(tmpLstPnt)));
+
+                                tmpLstPnt = new List<cncPoint>();
+
+                                startCncPoint = null;
+
+                            }
+                            //иначе просто проскакиваем данный участок
+
+
+                            //if (isFirst || isLast)
+                            //{
+                            //   lastColor = currColor;
+                            //   tmpGroup.Points.Add(new cncPoint((j * sizeOnePoint) + (double)deltaX.Value, (i * sizeOnePoint) + (double)deltaY.Value, 0, 0, 0, false, currColor));
+
+                            //    if (isLast) pageVectorNOW.Add(tmpGroup.Clone());
+
+                            //    isFirst = false;
+                            //}
+                            //else
+                            //{
+                            //    if (lastColor != currColor)
+                            //    {
+                            //        tmpGroup.Points.Add(new cncPoint((j * sizeOnePoint) + (double)deltaX.Value, (i * sizeOnePoint) + (double)deltaY.Value, 0, 0, 0, false, lastColor));
+                            //        lastColor = currColor;
+                            //        tmpGroup.Points.Add(new cncPoint((j * sizeOnePoint) + (double)deltaX.Value, (i * sizeOnePoint) + (double)deltaY.Value, 0,0,0,false,currColor));
+
+
+                            //    }
+                            //}                            
+                        } //(isSkipPoint)
+                        else
+                        {
+                            //попалась точка для фиксации
+
+                            if (startCncPoint == null)
+                            {
+                                startCncPoint = currCncPoint.Clone();
+                            }
+                            else
+                            {
+
+                                if (lastCncPoint.Bright != currCncPoint.Bright)
+                                {
+                                    List<cncPoint> tmpLstPnt = new List<cncPoint>();
+                                    //сменился цвет, добавим конечную точку
+                                    tmpLstPnt.Add(startCncPoint.Clone());
+                                    tmpLstPnt.Add(lastCncPoint.Clone());
+
+                                    tmpGroupPoints.Add(new GroupPoint(VectorProcessing.ListCncPointClone(tmpLstPnt)));
+
+                                    tmpLstPnt = new List<cncPoint>();
+
+                                    startCncPoint = null;
+
+                                    //if (currColor < minBright)
+                                }
+                            }
+                            
+
+                            
+
+                            //if (!currLineIsStart)
+                            //{
+                            //    // нужно начинать учитывать траекторию
+                            //    tmpGroup.Points.Add(new cncPoint((j * sizeOnePoint) + (double)deltaX.Value, (i * sizeOnePoint) + (double)deltaY.Value, 0, 0, 0, false, currColor));
+
+                            //    currLineIsStart = true;
+                            //    currLineBright = currColor;
+                            //}
+                            //else
+                            //{
+                            //    if (currColor != currLineBright)
+                            //    {
+                                    
+                            //    }
+                            //}                            
+                        }
+
+                        lastCncPoint = currCncPoint.Clone();
+
+                        imagePointer1 += 3;
+                    }//end for j
+                    imagePointer1 += bitmapData1.Stride - (bitmapData1.Width * 3);
+
+
+                    if (needRevers) tmpGroupPoints.Reverse();
+
+                    foreach (GroupPoint tmpGroupPoint in tmpGroupPoints)
+                    {
+                        GroupPoint gp = tmpGroupPoint.Clone();
+
+                        if (needRevers) gp.Points.Reverse();
+
+                        tmpVectors.Add(gp.Clone());
+                    }
+
+                    needRevers = !needRevers;
+
+                }//end for i
+            }//end unsafe
+            pageImageNOW.UnlockBits(bitmapData1);
+
+            ////теперь у нечентных линий нужно сменить направление
+            //bool needRevers = false;
+
+            //foreach (GroupPoint gpGroupPoint in pageVectorNOW)
+            //{
+            //    if (needRevers) gpGroupPoint.Points.Reverse();
+
+            //    needRevers = !needRevers;
+            //}
+
+            //pageVectorNOW.Reverse();
+
+
+            ////******************************
+
+            ////направление движения
+            ////DirrectionGroupPoint dir = DirrectionGroupPoint.Right;
+
+            //        //if (dir == DirrectionGroupPoint.Left) dir = DirrectionGroupPoint.Right;
+            //        //else dir = DirrectionGroupPoint.Left;
+
+
+            //Bitmap bb = pageImageNOW;
+            //BitmapData data = bb.LockBits(new Rectangle(0, 0, bb.Width, bb.Height), ImageLockMode.ReadOnly, bb.PixelFormat);  // make sure you check the pixel format as you will be looking directly at memory
+
+            ////направление движения
+            ////DirrectionGroupPoint dir = DirrectionGroupPoint.Right;
+
+            //unsafe
+            //{
+            //    byte* ptrSrc = (byte*)data.Scan0;
+
+            //    int diff = data.Stride - data.Width;
+
+            //    pageVectorNOW = new List<GroupPoint>();
+
+            //    for (int y = 0; y < data.Height; ++y) //проход по линии
+            //    {
+            //        List<cncPoint> tmp = new List<cncPoint>();
+
+            //        byte lastValueColor = 0;
+            //        bool firstPoint = true;
+            //        bool lastPoint = false;
+
+
+            //        for (int x = 0; x < data.Width; ++x)//проход по точкам
+            //        {
+            //            lastPoint = (x == data.Width - 1); //будем знать последняя ли это точка линии по которой идем
+
+            //            // windows stores images in BGR pixel order
+            //            byte r = ptrSrc[0]; //тут получили нужный цвет
+
+            //            if (firstPoint || lastPoint) //первую и последнюю точку добавим в любом случае
+            //            {
+            //                firstPoint = false;
+
+            //                cncPoint lk = new cncPoint((x * sizeOnePoint) + (double)deltaX.Value, (y * sizeOnePoint) + (double)deltaY.Value,0,0,0,false,(int)r);
+
+            //                tmp.Add(lk);
+
+            //                lastValueColor = r;
+            //            }
+            //            else
+            //            {
+            //                if (lastValueColor != r)
+            //                {
+            //                    cncPoint lk = new cncPoint((x * sizeOnePoint) + (double)deltaX.Value, (y * sizeOnePoint) + (double)deltaY.Value, 0, 0, 0, false, (int)r);
+
+            //                    tmp.Add(lk);
+
+            //                    lastValueColor = r;
+            //                }
+            //            }
+            //            ptrSrc += 1;
+            //        }
+
+
+            //        // а теперь временный массив скопируем в основной, но с определенным направлением
+            //        if (dir == DirrectionGroupPoint.Right)
+            //        {
+            //            dir = DirrectionGroupPoint.Left;
+            //        }
+            //        else
+            //        {
+            //            tmp.Reverse();
+            //            dir = DirrectionGroupPoint.Right;
+            //        }
+
+            //        pageVectorNOW.Add(new GroupPoint(tmp, false, dir, true));
+
+            //        // ReSharper disable once RedundantAssignment
+            //        tmp = new List<cncPoint>();
+
+            //        ptrSrc += diff;
+            //    }
+            //}
+
+            //bb.UnlockBits(data);
+
+            //// тут нужно сделать преворот согластно текущй ориентации осей
+
+
+            
+            pageVectorNOW = new List<GroupPoint>();
+
+            //TODO:  reversing tmpVectors to pageVectorNOW
+
+            pageVectorNOW = VectorProcessing.Rotate(tmpVectors);
+        }
+
+
+

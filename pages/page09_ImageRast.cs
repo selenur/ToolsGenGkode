@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
 using AForge.Imaging.Filters;
+using ToolsGenGkode.filters;
 using ToolsGenGkode.Properties;
 
 namespace ToolsGenGkode.pages
@@ -165,6 +166,8 @@ namespace ToolsGenGkode.pages
                 //тут с изображением уже ничего не делаем
             }
 
+
+
             pageImageNOW = newBitmap;
 
         }
@@ -254,7 +257,7 @@ namespace ToolsGenGkode.pages
 
             pageVectorNOW = new List<GroupPoint>();
 
-            
+
 
             double sizeOnePoint = (double)numSizePoint.Value;
 
@@ -278,12 +281,12 @@ namespace ToolsGenGkode.pages
                         if (j == (bitmapData1.Width - 1)) isLast = true;
 
                         // получим текущий цвет
-                        currColor = (imagePointer1[0] + imagePointer1[1] + imagePointer1[2]) / 3;
+                        currColor = 255 - ((imagePointer1[0] + imagePointer1[1] + imagePointer1[2]) / 3) ;
 
                         if (isFirst || isLast)
                         {
-                           lastColor = currColor;
-                           tmpGroup.Points.Add(new cncPoint((j * sizeOnePoint) + (double)deltaX.Value, (i * sizeOnePoint) + (double)deltaY.Value, 0, 0, 0, false, currColor));
+                            lastColor = currColor;
+                            tmpGroup.Points.Add(new cncPoint((j * sizeOnePoint) + (double)deltaX.Value, (i * sizeOnePoint) + (double)deltaY.Value, 0, 0, 0, false, currColor));
 
                             if (isLast) pageVectorNOW.Add(tmpGroup.Clone());
 
@@ -295,7 +298,7 @@ namespace ToolsGenGkode.pages
                             {
                                 tmpGroup.Points.Add(new cncPoint((j * sizeOnePoint) + (double)deltaX.Value, (i * sizeOnePoint) + (double)deltaY.Value, 0, 0, 0, false, lastColor));
                                 lastColor = currColor;
-                                tmpGroup.Points.Add(new cncPoint((j * sizeOnePoint) + (double)deltaX.Value, (i * sizeOnePoint) + (double)deltaY.Value, 0,0,0,false,currColor));
+                                tmpGroup.Points.Add(new cncPoint((j * sizeOnePoint) + (double)deltaX.Value, (i * sizeOnePoint) + (double)deltaY.Value, 0, 0, 0, false, currColor));
 
 
                             }
@@ -410,8 +413,378 @@ namespace ToolsGenGkode.pages
 
             //// тут нужно сделать преворот согластно текущй ориентации осей
             pageVectorNOW = VectorProcessing.Rotate(pageVectorNOW);
+
+            //а тут применим график
+            List<myPoint> Points = new List<myPoint>();
+
+
+            foreach (string VARIABLE in Settings.Default.filter3_map)
+            {
+                string[] newSS = VARIABLE.Split(';');
+                if (newSS.Length != 2) continue;
+
+                int p1 = 0;
+                int p2 = 0;
+
+                int.TryParse(newSS[0].Trim(), out p1);
+                int.TryParse(newSS[1].Trim(), out p2);
+
+                Points.Add(new myPoint(p1, p2));
+            }
+
+            if (Points.Count == 0) return;
+
+            //если есть данные вычислим S
+            foreach (GroupPoint gg in pageVectorNOW)
+            {
+                foreach (cncPoint pp in gg.Points)
+                {
+                    //исходное значение
+                    int sourceBright = pp.Bright;
+
+                    //если значение меньше начальной точки
+                    if (sourceBright < Points[0].X)
+                    {
+                        pp.Svalue = Points[0].Y;
+                        continue;
+                    }
+
+                    if (sourceBright > Points[Points.Count - 1].X)
+                    {
+                        pp.Svalue = Points[Points.Count - 1].Y;
+                        continue;
+                    }
+
+                    // а тут пройдемся по диапазону точек
+                    int indx = 0;
+
+                    foreach (myPoint Vmp in Points)
+                    {
+                        if (sourceBright == Vmp.X)
+                        {
+                            pp.Svalue = Vmp.Y;
+                            break;
+                        }
+
+                        if (sourceBright < Vmp.X)
+                        {
+                            //тут нужно рассчитать пропорцию
+
+                            double Bmin = Points[indx-1].X;
+                            double Bmax = Points[indx].X;
+
+                            double Smin = Points[indx-1].Y;
+                            double Smax = Points[indx].Y;
+
+                            double result = 0;
+
+                            if (sourceBright == 0) pp.Svalue = 0;
+                            else
+                            {
+
+                                result = ((Smax - Smin)/((Bmax - Bmin)/sourceBright)) + Smin;
+                                pp.Svalue = (int) result;
+                            }
+
+
+                            break;
+
+
+                        }
+
+                        indx++;
+
+
+                    }
+
+
+
+                    //подберем подходящее значение
+                    //myPoint pStart = null;
+                    //myPoint pStop = null;
+
+                    ////int ind = -1;
+
+                    ////foreach (myPoint VARIABLE in Points)
+                    ////{
+
+                    ////    if (sourceValue >= VARIABLE.X)
+                    ////    {
+                            
+                    ////    }
+                    ////    else
+                    ////    {
+                    ////        break;
+                    ////    }
+                    ////    ind++;
+                    ////}
+
+                    ////if (ind == -1) pp.Svalue = 0;
+
+                    ////if (ind > 0)
+                    ////{
+                    ////    myPoint pstart = Points[ind-1];
+                    ////    myPoint pend = Points[ind];
+
+                    ////    pp.Svalue = 100;
+                    ////}
+
+
+                }
+                
+            }
+
+
         }
 
+        // 
+        private void GenNewVar3()
+        {
+
+            // работа заточена только под 24-х битный пиксель
+            if (pageImageNOW.PixelFormat != PixelFormat.Format24bppRgb)
+            {
+                //throw new UnsupportedImageFormatException("Оппа! Не поддерживаемый формат изображения!!!");
+                MessageBox.Show(@"Для генерации данных, требуется изображение имеющее 24 бита на пиксель, а получилось иначе, очень подозрительно....!!");
+                return;
+            }
+
+            #region Переменные для алгоритма
+
+            BitmapData bitmapData1 = pageImageNOW.LockBits(new Rectangle(0, 0, pageImageNOW.Width, pageImageNOW.Height), ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb);
+
+            // для понимания того в какой точке изображения находимся
+            int posX = 0;
+            int posY = bitmapData1.Height - 1;   
+
+            //узнаем объем анализируемого изображения
+            int CountPoint = bitmapData1.Height*bitmapData1.Width;
+
+            double sizeOnePoint = (double)numSizePoint.Value;
+
+            #endregion
+
+            // для хранения цвета текущей полученной точки
+            int currColor = -1; // текущий цвет
+            int lastColor = -1; // предыдущий цвет отрезка
+
+            //bool StartCaptureLine = false;
+            bool isFirstPoint = true;
+
+            // очистим текущий набор
+            pageVectorNOW = new List<GroupPoint>();
+            unsafe
+            {
+                #region Начальное позиционирование в изображении
+                // позиционируемся в начальной точке
+                byte* imagePointer1 = (byte*)bitmapData1.Scan0;
+                // и перемещаемся в левый нижний угол изображения
+                imagePointer1 += bitmapData1.Stride*posY; 
+                //задаем направление сканирования изображения
+                int dirrection = 1; //1 - to right, 2 - to left    
+
+                int deltaX = 0;            
+                            
+                #endregion
+
+                //запуск цикла по изображению
+                while (CountPoint > 0)
+                {
+                    if (dirrection == 1)
+                    {
+                        deltaX = 0;
+                    }
+                    else
+                    {
+                        deltaX = 1;
+                    }
+
+                    // получим текущий цвет
+                    currColor = 255 - ((imagePointer1[0] + imagePointer1[1] + imagePointer1[2]) / 3);
+
+                    if (isFirstPoint)
+                    {
+                        GroupPoint tmp = new GroupPoint();
+                        tmp.Points.Add(new cncPoint((posX + deltaX)* sizeOnePoint, posY* sizeOnePoint, 0, 0, 0, false, currColor));
+                        pageVectorNOW.Add(tmp.Clone());
+                        isFirstPoint = false;
+                        lastColor = currColor;
+                    }
+
+                    //тут алгорим работы с данными
+                    if (currColor != lastColor)
+                    {
+                        if (!isFirstPoint)
+                        {
+                            // в существующий отрезок добавим точку
+                            pageVectorNOW[pageVectorNOW.Count-1].Points.Add(new cncPoint((posX + deltaX)* sizeOnePoint, posY* sizeOnePoint, 0, 0, 0, false, lastColor));
+
+                            // и добавим новый отрезок
+                            GroupPoint tmp = new GroupPoint();
+                            tmp.Points.Add(new cncPoint((posX + deltaX)* sizeOnePoint, posY* sizeOnePoint, 0, 0, 0, false, currColor));
+                            pageVectorNOW.Add(tmp.Clone());
+                            lastColor = currColor;
+                        }
+                        
+                    }
+
+
+                    #region Алгорим вычисления следующей точки в наборе байт изображения
+                    //вычисление перехода на следующий блок данных
+                    if (dirrection == 1 && posX == bitmapData1.Width - 1)
+                    {
+
+                        // в существующий отрезок добавим завершающую точку
+                        pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint(posX* sizeOnePoint, posY* sizeOnePoint, 0, 0, 0, false, lastColor));
+                        pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint((posX +1)* sizeOnePoint, posY* sizeOnePoint, 0, 0, 0, false, lastColor));                        //
+                        isFirstPoint = true;
+
+                        dirrection = 2;
+                        posY--;
+
+
+
+
+                        imagePointer1 -= bitmapData1.Stride;
+
+                        //imagePointer1 -= (bitmapData1.Stride * posY) + (posX * 3);
+                    }
+                    else if (dirrection == 2 && posX == 0)
+                    {
+                        // в существующий отрезок добавим точку
+                        pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint(posX* sizeOnePoint, posY* sizeOnePoint, 0, 0, 0, false, lastColor));
+                        isFirstPoint = true;
+
+
+                        dirrection = 1;
+                        posY--;
+
+                        //pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint(posX , posY, 0, 0, 0, false, lastColor));
+
+
+                        imagePointer1 -= bitmapData1.Stride;
+
+                        //imagePointer1 -= (bitmapData1.Stride * posY);
+                    }
+                    else if (dirrection == 1)
+                    {
+                        imagePointer1+=3;
+                        posX++;
+                    }
+                    else if (dirrection == 2)
+                    {
+                        imagePointer1-=3;
+                        posX--;
+                    }
+
+                    CountPoint--;
+                    #endregion
+
+                    //если это последняя точка то завершим и отрезок
+                    if (CountPoint == 0)
+                    {
+                        // в существующий отрезок добавим точку
+                        pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint((posX + deltaX)* sizeOnePoint, posY* sizeOnePoint, 0, 0, 0, false, lastColor));
+                    }
+                } // while (CountPoint > 0)
+            } //unsafe
+            pageImageNOW.UnlockBits(bitmapData1);
+
+            // тут нужно сделать преворот согластно текущй ориентации осей
+            pageVectorNOW = VectorProcessing.Rotate(pageVectorNOW);
+
+
+
+
+            //а тут применим график
+            List<myPoint> Points = new List<myPoint>();
+
+
+            foreach (string VARIABLE in Settings.Default.filter3_map)
+            {
+                string[] newSS = VARIABLE.Split(';');
+                if (newSS.Length != 2) continue;
+
+                int p1 = 0;
+                int p2 = 0;
+
+                int.TryParse(newSS[0].Trim(), out p1);
+                int.TryParse(newSS[1].Trim(), out p2);
+
+                Points.Add(new myPoint(p1, p2));
+            }
+
+            if (Points.Count == 0) return;
+
+            //если есть данные вычислим S
+            foreach (GroupPoint gg in pageVectorNOW)
+            {
+                foreach (cncPoint pp in gg.Points)
+                {
+                    //исходное значение
+                    int sourceBright = pp.Bright;
+
+                    //если значение меньше начальной точки
+                    if (sourceBright < Points[0].X)
+                    {
+                        pp.Svalue = Points[0].Y;
+                        continue;
+                    }
+
+                    if (sourceBright > Points[Points.Count - 1].X)
+                    {
+                        pp.Svalue = Points[Points.Count - 1].Y;
+                        continue;
+                    }
+
+                    // а тут пройдемся по диапазону точек
+                    int indx = 0;
+
+                    foreach (myPoint Vmp in Points)
+                    {
+                        if (sourceBright == Vmp.X)
+                        {
+                            pp.Svalue = Vmp.Y;
+                            break;
+                        }
+
+                        if (sourceBright < Vmp.X)
+                        {
+                            //тут нужно рассчитать пропорцию
+
+                            double Bmin = Points[indx - 1].X;
+                            double Bmax = Points[indx].X;
+
+                            double Smin = Points[indx - 1].Y;
+                            double Smax = Points[indx].Y;
+
+                            double result = 0;
+
+                            if (sourceBright == 0) pp.Svalue = 0;
+                            else
+                            {
+
+                                result = ((Smax - Smin) / ((Bmax - Bmin) / sourceBright)) + Smin;
+                                pp.Svalue = (int)result;
+                            }
+
+
+                            break;
+
+
+                        }
+
+                        indx++;
+                        
+                    }
+                }
+
+            }
+
+
+
+
+        }
 
         private void GenerateData()
         {
@@ -422,8 +795,11 @@ namespace ToolsGenGkode.pages
 
             if (useFilter.Text.StartsWith("03"))
             {
-                GenVar3();
+                //GenVar3();
+                GenNewVar3();
             }
+
+
         }
 
 
@@ -513,7 +889,18 @@ namespace ToolsGenGkode.pages
 
         private void useFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //тут появится доступность некоторых из элементов формы
+            if (useFilter.Text.Trim().Length == 0) return;
+
+            if (useFilter.Text.StartsWith("03")) //@"получение оттенков серого"
+            {
+                btSettingFilter.Enabled = true;
+            }
+            else
+            {
+                btSettingFilter.Enabled = false;
+            }
+
+
         }
 
         private void RecalculateSize()
@@ -637,6 +1024,7 @@ namespace ToolsGenGkode.pages
             }
 
 
+
             hlp.webBrowser1.DocumentText = textInfo;
 
             hlp.ShowDialog();
@@ -645,6 +1033,21 @@ namespace ToolsGenGkode.pages
         private void groupBox2_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void btSettingFilter_Click(object sender, EventArgs e)
+        {
+            if (useFilter.Text.Trim().Length == 0) return;
+
+            if (useFilter.Text.StartsWith("03")) //@"получение оттенков серого"
+            {
+                FrmFilter3 frm = new FrmFilter3();
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    //сохраним параметры и применим их
+
+                }
+            }
         }
     }
 }

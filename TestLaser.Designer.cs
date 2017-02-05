@@ -1,4 +1,6 @@
-﻿namespace ToolsGenGkode
+﻿// This is an independent project of an individual developer. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
+namespace ToolsGenGkode
 {
     partial class TestLaser
     {
@@ -308,6 +310,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "TestLaser";
             this.Text = "Генератор тестовых данных";
+            this.Load += new System.EventHandler(this.TestLaser_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

@@ -1,4 +1,6 @@
-﻿namespace ToolsGenGkode
+﻿// This is an independent project of an individual developer. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
+namespace ToolsGenGkode
 {
     partial class FormTaskProgress
     {
@@ -69,6 +71,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FormTaskProgress";
             this.Text = "FormTaskProgress";
+            this.Load += new System.EventHandler(this.FormTaskProgress_Load);
             this.ResumeLayout(false);
 
         }

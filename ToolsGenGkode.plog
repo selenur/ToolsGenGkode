@@ -52,7 +52,7 @@
     <SolutionPath>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\ToolsGenGkode.sln</SolutionPath>
     <SolutionVersion>14.0</SolutionVersion>
     <PlogVersion>4</PlogVersion>
-    <ModificationDate>2017-01-08T19:09:21.1675713Z</ModificationDate>
+    <ModificationDate>2017-02-03T19:34:49.7609367Z</ModificationDate>
   </Solution_Path>
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
@@ -61,30 +61,10 @@
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>ToolsGenGkode</Project>
-    <ShortFile>helpText.cs</ShortFile>
+    <ShortFile>FrmFilter3.cs</ShortFile>
     <Line>1</Line>
     <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\helpText.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>193925</CodeCurrent>
-    <CodeNext>1513122742</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>2</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>ToolsGenGkode</Project>
-    <ShortFile>FormTaskProgress.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\FormTaskProgress.cs</File>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\filters\FrmFilter3.cs</File>
     <CodePrev>0</CodePrev>
     <CodeCurrent>193925</CodeCurrent>
     <CodeNext>1513122742</CodeNext>
@@ -97,7 +77,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>3</Level>
-    <DefaultOrder>3</DefaultOrder>
+    <DefaultOrder>2</DefaultOrder>
     <ErrorCode>V3087</ErrorCode>
     <Message>Type of 'DXFLib.DXFVertex' variable enumerated in 'foreach' is not guaranteed to be castable to the type of 'DXFLib.DXFEntity' collection's elements.</Message>
     <Project>ToolsGenGkode</Project>
@@ -116,48 +96,8 @@
   </PVS-Studio_Analysis_Log>
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>4</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>ToolsGenGkode</Project>
-    <ShortFile>ProfileUserSetting.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\ProfileUserSetting.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>193925</CodeCurrent>
-    <CodeNext>1513122742</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>2</Level>
-    <DefaultOrder>5</DefaultOrder>
-    <ErrorCode>V3013</ErrorCode>
-    <Message>It is odd that the body of 'openGLControl1_KeyDown' function is fully equivalent to the body of 'openGLControl1_KeyUp' function (441, line 449).</Message>
-    <Project>ToolsGenGkode</Project>
-    <ShortFile>Preview_Vectors.cs</ShortFile>
-    <Line>441</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\Preview_Vectors.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>600981780</CodeCurrent>
-    <CodeNext>123</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>4</Analyzer>
-    <LineExtension>441,449</LineExtension>
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
     <Level>3</Level>
-    <DefaultOrder>6</DefaultOrder>
+    <DefaultOrder>3</DefaultOrder>
     <ErrorCode>V3013</ErrorCode>
     <Message>It is odd that the body of 'actionAfter' function is fully equivalent to the body of 'GetResult_Click' function (71, line 151).</Message>
     <Project>ToolsGenGkode</Project>
@@ -177,12 +117,32 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>3</Level>
-    <DefaultOrder>7</DefaultOrder>
+    <DefaultOrder>4</DefaultOrder>
+    <ErrorCode>V3008</ErrorCode>
+    <Message>The 'Points' variable is assigned values twice successively. Perhaps this is a mistake. Check lines: 420, 418.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>page09_ImageRast.cs</ShortFile>
+    <Line>420</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\pages\page09_ImageRast.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3915952249</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension>420,418</LineExtension>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>5</DefaultOrder>
     <ErrorCode>V3056</ErrorCode>
     <Message>Consider reviewing the correctness of 'X' item's usage.</Message>
     <Project>ToolsGenGkode</Project>
     <ShortFile>page07_ModifyVectors.cs</ShortFile>
-    <Line>149</Line>
+    <Line>153</Line>
     <FalseAlarm>false</FalseAlarm>
     <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\pages\page07_ModifyVectors.cs</File>
     <CodePrev>684627707</CodePrev>
@@ -190,54 +150,14 @@
     <CodeNext>0</CodeNext>
     <TrialMessage>false</TrialMessage>
     <Analyzer>4</Analyzer>
-    <LineExtension>149,148</LineExtension>
+    <LineExtension>153,152</LineExtension>
     <Retired>false</Retired>
     <AnalyzedSourceFiles />
   </PVS-Studio_Analysis_Log>
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>3</Level>
-    <DefaultOrder>8</DefaultOrder>
-    <ErrorCode>V3008</ErrorCode>
-    <Message>The 'pDestin' variable is assigned values twice successively. Perhaps this is a mistake. Check lines: 217, 213.</Message>
-    <Project>ToolsGenGkode</Project>
-    <ShortFile>page08_AddPadding.cs</ShortFile>
-    <Line>217</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\pages\page08_AddPadding.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>3200222199</CodeCurrent>
-    <CodeNext>0</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>4</Analyzer>
-    <LineExtension>217,213</LineExtension>
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>3</Level>
-    <DefaultOrder>9</DefaultOrder>
-    <ErrorCode>V3024</ErrorCode>
-    <Message>An odd precise comparison: offset != 0. Consider using a comparison with defined precision: Math.Abs(A - B) &gt; Epsilon.</Message>
-    <Project>ToolsGenGkode</Project>
-    <ShortFile>page08_AddPadding.cs</ShortFile>
-    <Line>260</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\pages\page08_AddPadding.cs</File>
-    <CodePrev>123</CodePrev>
-    <CodeCurrent>368021</CodeCurrent>
-    <CodeNext>123</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>4</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>3</Level>
-    <DefaultOrder>10</DefaultOrder>
+    <DefaultOrder>6</DefaultOrder>
     <ErrorCode>V3024</ErrorCode>
     <Message>An odd precise comparison: currPoint.X == lastCncPoint.X. Consider using a comparison with defined precision: Math.Abs(A - B) &lt; Epsilon.</Message>
     <Project>ToolsGenGkode</Project>
@@ -257,7 +177,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>3</Level>
-    <DefaultOrder>11</DefaultOrder>
+    <DefaultOrder>7</DefaultOrder>
     <ErrorCode>V3024</ErrorCode>
     <Message>An odd precise comparison: currPoint.Y == lastCncPoint.Y. Consider using a comparison with defined precision: Math.Abs(A - B) &lt; Epsilon.</Message>
     <Project>ToolsGenGkode</Project>
@@ -277,7 +197,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>3</Level>
-    <DefaultOrder>12</DefaultOrder>
+    <DefaultOrder>8</DefaultOrder>
     <ErrorCode>V3024</ErrorCode>
     <Message>An odd precise comparison: startPoint.X == endPoint.X. Consider using a comparison with defined precision: Math.Abs(A - B) &lt; Epsilon.</Message>
     <Project>ToolsGenGkode</Project>
@@ -297,7 +217,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>3</Level>
-    <DefaultOrder>13</DefaultOrder>
+    <DefaultOrder>9</DefaultOrder>
     <ErrorCode>V3024</ErrorCode>
     <Message>An odd precise comparison: startPoint.Y == endPoint.Y. Consider using a comparison with defined precision: Math.Abs(A - B) &lt; Epsilon.</Message>
     <Project>ToolsGenGkode</Project>
@@ -317,7 +237,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>3</Level>
-    <DefaultOrder>14</DefaultOrder>
+    <DefaultOrder>10</DefaultOrder>
     <ErrorCode>V3024</ErrorCode>
     <Message>An odd precise comparison: p1.X == p2.X. Consider using a comparison with defined precision: Math.Abs(A - B) &lt; Epsilon.</Message>
     <Project>ToolsGenGkode</Project>
@@ -337,7 +257,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>3</Level>
-    <DefaultOrder>15</DefaultOrder>
+    <DefaultOrder>11</DefaultOrder>
     <ErrorCode>V3024</ErrorCode>
     <Message>An odd precise comparison: p1.Y == p2.Y. Consider using a comparison with defined precision: Math.Abs(A - B) &lt; Epsilon.</Message>
     <Project>ToolsGenGkode</Project>
@@ -356,8 +276,48 @@
   </PVS-Studio_Analysis_Log>
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>12</DefaultOrder>
+    <ErrorCode>V3008</ErrorCode>
+    <Message>The 'pDestin' variable is assigned values twice successively. Perhaps this is a mistake. Check lines: 217, 213.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>page08_AddPadding.cs</ShortFile>
+    <Line>217</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\pages\page08_AddPadding.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3200222199</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension>217,213</LineExtension>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>13</DefaultOrder>
+    <ErrorCode>V3024</ErrorCode>
+    <Message>An odd precise comparison: offset != 0. Consider using a comparison with defined precision: Math.Abs(A - B) &gt; Epsilon.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>page08_AddPadding.cs</ShortFile>
+    <Line>260</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\pages\page08_AddPadding.cs</File>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>368021</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>16</DefaultOrder>
+    <DefaultOrder>14</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -377,7 +337,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>17</DefaultOrder>
+    <DefaultOrder>15</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -397,7 +357,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>18</DefaultOrder>
+    <DefaultOrder>16</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -417,7 +377,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>19</DefaultOrder>
+    <DefaultOrder>17</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -437,7 +397,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>20</DefaultOrder>
+    <DefaultOrder>18</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -457,7 +417,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>21</DefaultOrder>
+    <DefaultOrder>19</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -477,7 +437,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>22</DefaultOrder>
+    <DefaultOrder>20</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -497,7 +457,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>23</DefaultOrder>
+    <DefaultOrder>21</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -517,7 +477,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>24</DefaultOrder>
+    <DefaultOrder>22</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -537,7 +497,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>25</DefaultOrder>
+    <DefaultOrder>23</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -557,7 +517,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>26</DefaultOrder>
+    <DefaultOrder>24</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -577,7 +537,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>27</DefaultOrder>
+    <DefaultOrder>25</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -597,7 +557,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>28</DefaultOrder>
+    <DefaultOrder>26</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -617,7 +577,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>29</DefaultOrder>
+    <DefaultOrder>27</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -637,7 +597,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>30</DefaultOrder>
+    <DefaultOrder>28</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -657,7 +617,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>31</DefaultOrder>
+    <DefaultOrder>29</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -677,7 +637,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>32</DefaultOrder>
+    <DefaultOrder>30</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -697,7 +657,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>33</DefaultOrder>
+    <DefaultOrder>31</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -717,7 +677,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>34</DefaultOrder>
+    <DefaultOrder>32</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -737,7 +697,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>35</DefaultOrder>
+    <DefaultOrder>33</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -757,7 +717,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>36</DefaultOrder>
+    <DefaultOrder>34</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -777,7 +737,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>37</DefaultOrder>
+    <DefaultOrder>35</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -797,7 +757,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>38</DefaultOrder>
+    <DefaultOrder>36</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -817,7 +777,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>39</DefaultOrder>
+    <DefaultOrder>37</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -837,7 +797,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>40</DefaultOrder>
+    <DefaultOrder>38</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -857,7 +817,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>41</DefaultOrder>
+    <DefaultOrder>39</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -877,7 +837,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>42</DefaultOrder>
+    <DefaultOrder>40</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -897,7 +857,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>43</DefaultOrder>
+    <DefaultOrder>41</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -917,27 +877,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>44</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>DXFLib</Project>
-    <ShortFile>DXFTables.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\DXFLib\DXFTables.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>193925</CodeCurrent>
-    <CodeNext>1513122742</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>45</DefaultOrder>
+    <DefaultOrder>42</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -957,7 +897,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>46</DefaultOrder>
+    <DefaultOrder>43</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>DXFLib</Project>
+    <ShortFile>DXFTables.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\DXFLib\DXFTables.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>193925</CodeCurrent>
+    <CodeNext>1513122742</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>44</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -977,7 +937,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>47</DefaultOrder>
+    <DefaultOrder>45</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -997,7 +957,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>48</DefaultOrder>
+    <DefaultOrder>46</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -1017,7 +977,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>49</DefaultOrder>
+    <DefaultOrder>47</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -1037,7 +997,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>50</DefaultOrder>
+    <DefaultOrder>48</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -1057,7 +1017,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>51</DefaultOrder>
+    <DefaultOrder>49</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -1077,27 +1037,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>52</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>DXFLib</Project>
-    <ShortFile>EntityParser.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\DXFLib\EntityParser.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>193925</CodeCurrent>
-    <CodeNext>1513122742</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>53</DefaultOrder>
+    <DefaultOrder>50</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -1117,14 +1057,14 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>54</DefaultOrder>
+    <DefaultOrder>51</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
-    <ShortFile>ISectionParser.cs</ShortFile>
+    <ShortFile>EntityParser.cs</ShortFile>
     <Line>1</Line>
     <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\DXFLib\ISectionParser.cs</File>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\DXFLib\EntityParser.cs</File>
     <CodePrev>0</CodePrev>
     <CodeCurrent>193925</CodeCurrent>
     <CodeNext>1513122742</CodeNext>
@@ -1137,7 +1077,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>55</DefaultOrder>
+    <DefaultOrder>52</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -1157,7 +1097,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>56</DefaultOrder>
+    <DefaultOrder>53</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>DXFLib</Project>
+    <ShortFile>ISectionParser.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\DXFLib\ISectionParser.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>193925</CodeCurrent>
+    <CodeNext>1513122742</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>54</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -1177,7 +1137,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>57</DefaultOrder>
+    <DefaultOrder>55</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -1197,7 +1157,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>58</DefaultOrder>
+    <DefaultOrder>56</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -1217,7 +1177,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>59</DefaultOrder>
+    <DefaultOrder>57</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>DXFLib</Project>
@@ -1237,7 +1197,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>60</DefaultOrder>
+    <DefaultOrder>58</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>MultiLanguage</Project>
@@ -1257,7 +1217,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>61</DefaultOrder>
+    <DefaultOrder>59</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>MultiLanguage</Project>
@@ -1277,7 +1237,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>62</DefaultOrder>
+    <DefaultOrder>60</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>MultiLanguage</Project>
@@ -1297,7 +1257,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>63</DefaultOrder>
+    <DefaultOrder>61</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>ELW.Library.Math</Project>
@@ -1317,7 +1277,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>64</DefaultOrder>
+    <DefaultOrder>62</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>ELW.Library.Math</Project>
@@ -1337,7 +1297,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>65</DefaultOrder>
+    <DefaultOrder>63</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>ELW.Library.Math</Project>
@@ -1357,7 +1317,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>66</DefaultOrder>
+    <DefaultOrder>64</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>ELW.Library.Math</Project>
@@ -1377,7 +1337,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>67</DefaultOrder>
+    <DefaultOrder>65</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>ELW.Library.Math</Project>
@@ -1397,7 +1357,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>68</DefaultOrder>
+    <DefaultOrder>66</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>ELW.Library.Math</Project>
@@ -1417,7 +1377,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>69</DefaultOrder>
+    <DefaultOrder>67</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>ELW.Library.Math</Project>
@@ -1437,7 +1397,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>70</DefaultOrder>
+    <DefaultOrder>68</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>ELW.Library.Math</Project>
@@ -1457,7 +1417,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>71</DefaultOrder>
+    <DefaultOrder>69</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>ELW.Library.Math</Project>
@@ -1477,7 +1437,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>72</DefaultOrder>
+    <DefaultOrder>70</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>ELW.Library.Math</Project>
@@ -1497,7 +1457,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>73</DefaultOrder>
+    <DefaultOrder>71</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>ELW.Library.Math</Project>
@@ -1517,7 +1477,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>74</DefaultOrder>
+    <DefaultOrder>72</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>ELW.Library.Math</Project>
@@ -1537,27 +1497,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>75</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>ELW.Library.Math</Project>
-    <ShortFile>Decompiler.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\MathLib\ELW.Library.Math\Tools\Decompiler.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>193925</CodeCurrent>
-    <CodeNext>1513122742</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>76</DefaultOrder>
+    <DefaultOrder>73</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>ELW.Library.Math</Project>
@@ -1577,14 +1517,14 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>77</DefaultOrder>
+    <DefaultOrder>74</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>ELW.Library.Math</Project>
-    <ShortFile>Compiler.cs</ShortFile>
+    <ShortFile>Decompiler.cs</ShortFile>
     <Line>1</Line>
     <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\MathLib\ELW.Library.Math\Tools\Compiler.cs</File>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\MathLib\ELW.Library.Math\Tools\Decompiler.cs</File>
     <CodePrev>0</CodePrev>
     <CodeCurrent>193925</CodeCurrent>
     <CodeNext>1513122742</CodeNext>
@@ -1597,7 +1537,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>78</DefaultOrder>
+    <DefaultOrder>75</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>ELW.Library.Math</Project>
@@ -1617,7 +1557,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>79</DefaultOrder>
+    <DefaultOrder>76</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>ELW.Library.Math</Project>
+    <ShortFile>Compiler.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\MathLib\ELW.Library.Math\Tools\Compiler.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>193925</CodeCurrent>
+    <CodeNext>1513122742</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>77</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>ELW.Library.Math</Project>
@@ -1637,7 +1597,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>80</DefaultOrder>
+    <DefaultOrder>78</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>ELW.Library.Math</Project>
@@ -1657,7 +1617,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>81</DefaultOrder>
+    <DefaultOrder>79</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>ELW.Library.Math</Project>
@@ -1677,27 +1637,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>82</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>ELW.Library.Math</Project>
-    <ShortFile>OperationsRegistry.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\MathLib\ELW.Library.Math\OperationsRegistry.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>193925</CodeCurrent>
-    <CodeNext>1513122742</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>83</DefaultOrder>
+    <DefaultOrder>80</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>ELW.Library.Math</Project>
@@ -1717,7 +1657,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>84</DefaultOrder>
+    <DefaultOrder>81</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>ELW.Library.Math</Project>
+    <ShortFile>OperationsRegistry.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\MathLib\ELW.Library.Math\OperationsRegistry.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>193925</CodeCurrent>
+    <CodeNext>1513122742</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>82</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>ELW.Library.Math</Project>
@@ -1737,7 +1697,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>85</DefaultOrder>
+    <DefaultOrder>83</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>ELW.Library.Math</Project>
@@ -1757,7 +1717,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>86</DefaultOrder>
+    <DefaultOrder>84</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>ELW.Library.Math</Project>
@@ -1777,7 +1737,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>87</DefaultOrder>
+    <DefaultOrder>85</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -1797,7 +1757,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>88</DefaultOrder>
+    <DefaultOrder>86</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -1817,7 +1777,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>89</DefaultOrder>
+    <DefaultOrder>87</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -1837,7 +1797,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>90</DefaultOrder>
+    <DefaultOrder>88</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -1857,7 +1817,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>91</DefaultOrder>
+    <DefaultOrder>89</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -1877,7 +1837,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>92</DefaultOrder>
+    <DefaultOrder>90</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -1897,7 +1857,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>93</DefaultOrder>
+    <DefaultOrder>91</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -1917,7 +1877,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>94</DefaultOrder>
+    <DefaultOrder>92</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -1937,7 +1897,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>95</DefaultOrder>
+    <DefaultOrder>93</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -1957,7 +1917,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>96</DefaultOrder>
+    <DefaultOrder>94</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -1977,7 +1937,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>97</DefaultOrder>
+    <DefaultOrder>95</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -1997,7 +1957,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>98</DefaultOrder>
+    <DefaultOrder>96</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2017,7 +1977,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>99</DefaultOrder>
+    <DefaultOrder>97</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2037,7 +1997,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>100</DefaultOrder>
+    <DefaultOrder>98</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2057,7 +2017,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>101</DefaultOrder>
+    <DefaultOrder>99</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2077,7 +2037,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>102</DefaultOrder>
+    <DefaultOrder>100</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2097,7 +2057,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>103</DefaultOrder>
+    <DefaultOrder>101</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2117,7 +2077,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>104</DefaultOrder>
+    <DefaultOrder>102</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2137,7 +2097,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>105</DefaultOrder>
+    <DefaultOrder>103</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2157,7 +2117,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>106</DefaultOrder>
+    <DefaultOrder>104</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2177,7 +2137,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>107</DefaultOrder>
+    <DefaultOrder>105</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2197,7 +2157,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>108</DefaultOrder>
+    <DefaultOrder>106</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2217,7 +2177,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>109</DefaultOrder>
+    <DefaultOrder>107</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2237,7 +2197,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>110</DefaultOrder>
+    <DefaultOrder>108</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2257,7 +2217,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>111</DefaultOrder>
+    <DefaultOrder>109</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2277,7 +2237,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>112</DefaultOrder>
+    <DefaultOrder>110</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2297,27 +2257,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>113</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Imaging</Project>
-    <ShortFile>Intersect.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\2 Source filters\Intersect.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>2333356301</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>114</DefaultOrder>
+    <DefaultOrder>111</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2337,7 +2277,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>115</DefaultOrder>
+    <DefaultOrder>112</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Imaging</Project>
+    <ShortFile>Intersect.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\2 Source filters\Intersect.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2333356301</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>113</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2357,7 +2317,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>116</DefaultOrder>
+    <DefaultOrder>114</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2377,7 +2337,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>117</DefaultOrder>
+    <DefaultOrder>115</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2397,7 +2357,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>118</DefaultOrder>
+    <DefaultOrder>116</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2417,7 +2377,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>119</DefaultOrder>
+    <DefaultOrder>117</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2437,27 +2397,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>120</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Imaging</Project>
-    <ShortFile>ThresholdedDifference.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\2 Source filters\ThresholdedDifference.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>2333356301</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>121</DefaultOrder>
+    <DefaultOrder>118</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2477,7 +2417,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>122</DefaultOrder>
+    <DefaultOrder>119</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Imaging</Project>
+    <ShortFile>ThresholdedDifference.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\2 Source filters\ThresholdedDifference.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2333356301</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>120</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2497,7 +2457,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>123</DefaultOrder>
+    <DefaultOrder>121</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2517,27 +2477,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>124</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Imaging</Project>
-    <ShortFile>OtsuThreshold.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Adaptive Binarization\OtsuThreshold.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>2333356301</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>125</DefaultOrder>
+    <DefaultOrder>122</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2557,14 +2497,14 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>126</DefaultOrder>
+    <DefaultOrder>123</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
-    <ShortFile>BaseFilter.cs</ShortFile>
+    <ShortFile>OtsuThreshold.cs</ShortFile>
     <Line>1</Line>
     <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Base classes\BaseFilter.cs</File>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Adaptive Binarization\OtsuThreshold.cs</File>
     <CodePrev>0</CodePrev>
     <CodeCurrent>2333356301</CodeCurrent>
     <CodeNext>37880379</CodeNext>
@@ -2577,7 +2517,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>127</DefaultOrder>
+    <DefaultOrder>124</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2597,7 +2537,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>128</DefaultOrder>
+    <DefaultOrder>125</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Imaging</Project>
+    <ShortFile>BaseFilter.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Base classes\BaseFilter.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2333356301</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>126</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2617,7 +2577,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>129</DefaultOrder>
+    <DefaultOrder>127</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2637,27 +2597,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>130</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Imaging</Project>
-    <ShortFile>BaseResizeFilter.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Base classes\BaseResizeFilter.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>2333356301</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>131</DefaultOrder>
+    <DefaultOrder>128</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2677,7 +2617,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>132</DefaultOrder>
+    <DefaultOrder>129</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Imaging</Project>
+    <ShortFile>BaseResizeFilter.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Base classes\BaseResizeFilter.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2333356301</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>130</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2697,7 +2657,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>133</DefaultOrder>
+    <DefaultOrder>131</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2717,7 +2677,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>134</DefaultOrder>
+    <DefaultOrder>132</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2737,7 +2697,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>135</DefaultOrder>
+    <DefaultOrder>133</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2757,7 +2717,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>136</DefaultOrder>
+    <DefaultOrder>134</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2777,7 +2737,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>137</DefaultOrder>
+    <DefaultOrder>135</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2797,7 +2757,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>138</DefaultOrder>
+    <DefaultOrder>136</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2817,7 +2777,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>139</DefaultOrder>
+    <DefaultOrder>137</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2837,7 +2797,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>140</DefaultOrder>
+    <DefaultOrder>138</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2857,7 +2817,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>141</DefaultOrder>
+    <DefaultOrder>139</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2877,7 +2837,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>142</DefaultOrder>
+    <DefaultOrder>140</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2897,27 +2857,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>143</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Imaging</Project>
-    <ShortFile>StuckiDithering.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Binarization\StuckiDithering.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>2333356301</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>144</DefaultOrder>
+    <DefaultOrder>141</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2937,7 +2877,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>145</DefaultOrder>
+    <DefaultOrder>142</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Imaging</Project>
+    <ShortFile>StuckiDithering.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Binarization\StuckiDithering.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2333356301</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>143</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2957,7 +2917,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>146</DefaultOrder>
+    <DefaultOrder>144</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2977,7 +2937,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>147</DefaultOrder>
+    <DefaultOrder>145</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -2997,7 +2957,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>148</DefaultOrder>
+    <DefaultOrder>146</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3017,7 +2977,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>149</DefaultOrder>
+    <DefaultOrder>147</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3037,7 +2997,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>150</DefaultOrder>
+    <DefaultOrder>148</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3057,7 +3017,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>151</DefaultOrder>
+    <DefaultOrder>149</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3077,7 +3037,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>152</DefaultOrder>
+    <DefaultOrder>150</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3097,27 +3057,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>153</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Imaging</Project>
-    <ShortFile>EuclideanColorFiltering.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Color Filters\EuclideanColorFiltering.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>2333356301</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>154</DefaultOrder>
+    <DefaultOrder>151</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3137,7 +3077,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>155</DefaultOrder>
+    <DefaultOrder>152</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Imaging</Project>
+    <ShortFile>EuclideanColorFiltering.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Color Filters\EuclideanColorFiltering.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2333356301</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>153</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3157,7 +3117,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>156</DefaultOrder>
+    <DefaultOrder>154</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3177,7 +3137,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>157</DefaultOrder>
+    <DefaultOrder>155</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3197,7 +3157,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>158</DefaultOrder>
+    <DefaultOrder>156</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3217,7 +3177,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>159</DefaultOrder>
+    <DefaultOrder>157</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3237,7 +3197,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>160</DefaultOrder>
+    <DefaultOrder>158</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3257,7 +3217,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>161</DefaultOrder>
+    <DefaultOrder>159</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3277,7 +3237,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>162</DefaultOrder>
+    <DefaultOrder>160</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3297,7 +3257,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>163</DefaultOrder>
+    <DefaultOrder>161</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3317,7 +3277,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>164</DefaultOrder>
+    <DefaultOrder>162</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3337,7 +3297,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>165</DefaultOrder>
+    <DefaultOrder>163</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3357,7 +3317,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>166</DefaultOrder>
+    <DefaultOrder>164</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3377,7 +3337,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>167</DefaultOrder>
+    <DefaultOrder>165</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3397,7 +3357,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>168</DefaultOrder>
+    <DefaultOrder>166</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3417,7 +3377,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>169</DefaultOrder>
+    <DefaultOrder>167</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3437,7 +3397,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>170</DefaultOrder>
+    <DefaultOrder>168</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3457,7 +3417,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>171</DefaultOrder>
+    <DefaultOrder>169</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3477,7 +3437,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>172</DefaultOrder>
+    <DefaultOrder>170</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3497,7 +3457,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>173</DefaultOrder>
+    <DefaultOrder>171</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3517,7 +3477,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>174</DefaultOrder>
+    <DefaultOrder>172</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3537,7 +3497,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>175</DefaultOrder>
+    <DefaultOrder>173</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3557,7 +3517,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>176</DefaultOrder>
+    <DefaultOrder>174</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3577,7 +3537,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>177</DefaultOrder>
+    <DefaultOrder>175</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3597,7 +3557,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>178</DefaultOrder>
+    <DefaultOrder>176</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3617,7 +3577,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>179</DefaultOrder>
+    <DefaultOrder>177</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3637,7 +3597,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>180</DefaultOrder>
+    <DefaultOrder>178</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3657,27 +3617,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>181</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Imaging</Project>
-    <ShortFile>FilterIterator.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\FilterIterator.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>2333356301</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>182</DefaultOrder>
+    <DefaultOrder>179</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3697,7 +3637,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>183</DefaultOrder>
+    <DefaultOrder>180</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Imaging</Project>
+    <ShortFile>FilterIterator.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\FilterIterator.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2333356301</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>181</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3717,7 +3677,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>184</DefaultOrder>
+    <DefaultOrder>182</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3737,7 +3697,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>185</DefaultOrder>
+    <DefaultOrder>183</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3757,7 +3717,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>186</DefaultOrder>
+    <DefaultOrder>184</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3777,7 +3737,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>187</DefaultOrder>
+    <DefaultOrder>185</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3797,7 +3757,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>188</DefaultOrder>
+    <DefaultOrder>186</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3817,7 +3777,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>189</DefaultOrder>
+    <DefaultOrder>187</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3837,7 +3797,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>190</DefaultOrder>
+    <DefaultOrder>188</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3857,7 +3817,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>191</DefaultOrder>
+    <DefaultOrder>189</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3877,7 +3837,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>192</DefaultOrder>
+    <DefaultOrder>190</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3897,7 +3857,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>193</DefaultOrder>
+    <DefaultOrder>191</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3917,7 +3877,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>194</DefaultOrder>
+    <DefaultOrder>192</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3937,27 +3897,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>195</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Imaging</Project>
-    <ShortFile>Dilatation.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Morphology\Dilatation.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>2333356301</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>196</DefaultOrder>
+    <DefaultOrder>193</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3977,7 +3917,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>197</DefaultOrder>
+    <DefaultOrder>194</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Imaging</Project>
+    <ShortFile>Dilatation.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Morphology\Dilatation.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2333356301</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>195</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -3985,6 +3945,46 @@
     <Line>1</Line>
     <FalseAlarm>false</FalseAlarm>
     <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Morphology\HitAndMiss.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2333356301</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>196</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Imaging</Project>
+    <ShortFile>Opening.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Morphology\Opening.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2333356301</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>197</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Imaging</Project>
+    <ShortFile>BinaryErosion3x3.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Morphology\Specific Optimizations\BinaryErosion3x3.cs</File>
     <CodePrev>0</CodePrev>
     <CodeCurrent>2333356301</CodeCurrent>
     <CodeNext>37880379</CodeNext>
@@ -4021,46 +4021,6 @@
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
-    <ShortFile>Opening.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Morphology\Opening.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>2333356301</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>200</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Imaging</Project>
-    <ShortFile>BinaryErosion3x3.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Morphology\Specific Optimizations\BinaryErosion3x3.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>2333356301</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>201</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Imaging</Project>
     <ShortFile>Dilatation3x3.cs</ShortFile>
     <Line>1</Line>
     <FalseAlarm>false</FalseAlarm>
@@ -4077,7 +4037,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>202</DefaultOrder>
+    <DefaultOrder>200</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4097,27 +4057,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>203</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Imaging</Project>
-    <ShortFile>TopHat.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Morphology\TopHat.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>2333356301</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>204</DefaultOrder>
+    <DefaultOrder>201</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4137,14 +4077,14 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>205</DefaultOrder>
+    <DefaultOrder>202</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
-    <ShortFile>SaltAndPepperNoise.cs</ShortFile>
+    <ShortFile>TopHat.cs</ShortFile>
     <Line>1</Line>
     <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Noise generation\SaltAndPepperNoise.cs</File>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Morphology\TopHat.cs</File>
     <CodePrev>0</CodePrev>
     <CodeCurrent>2333356301</CodeCurrent>
     <CodeNext>37880379</CodeNext>
@@ -4157,7 +4097,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>206</DefaultOrder>
+    <DefaultOrder>203</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4177,7 +4117,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>207</DefaultOrder>
+    <DefaultOrder>204</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Imaging</Project>
+    <ShortFile>SaltAndPepperNoise.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Noise generation\SaltAndPepperNoise.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2333356301</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>205</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4197,7 +4157,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>208</DefaultOrder>
+    <DefaultOrder>206</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4217,7 +4177,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>209</DefaultOrder>
+    <DefaultOrder>207</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4237,7 +4197,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>210</DefaultOrder>
+    <DefaultOrder>208</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4257,7 +4217,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>211</DefaultOrder>
+    <DefaultOrder>209</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4277,7 +4237,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>212</DefaultOrder>
+    <DefaultOrder>210</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4297,7 +4257,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>213</DefaultOrder>
+    <DefaultOrder>211</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4317,7 +4277,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>214</DefaultOrder>
+    <DefaultOrder>212</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4337,7 +4297,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>215</DefaultOrder>
+    <DefaultOrder>213</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4357,27 +4317,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>216</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Imaging</Project>
-    <ShortFile>HorizontalRunLengthSmoothing.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Other\HorizontalRunLengthSmoothing.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>2333356301</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>217</DefaultOrder>
+    <DefaultOrder>214</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4397,7 +4337,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>218</DefaultOrder>
+    <DefaultOrder>215</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Imaging</Project>
+    <ShortFile>HorizontalRunLengthSmoothing.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Other\HorizontalRunLengthSmoothing.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2333356301</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>216</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4417,7 +4377,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>219</DefaultOrder>
+    <DefaultOrder>217</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4437,27 +4397,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>220</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Imaging</Project>
-    <ShortFile>OilPainting.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Other\OilPainting.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>2333356301</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>221</DefaultOrder>
+    <DefaultOrder>218</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4477,7 +4417,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>222</DefaultOrder>
+    <DefaultOrder>219</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Imaging</Project>
+    <ShortFile>OilPainting.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Other\OilPainting.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2333356301</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>220</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4497,7 +4457,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>223</DefaultOrder>
+    <DefaultOrder>221</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4517,7 +4477,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>224</DefaultOrder>
+    <DefaultOrder>222</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4537,7 +4497,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>225</DefaultOrder>
+    <DefaultOrder>223</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4557,7 +4517,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>226</DefaultOrder>
+    <DefaultOrder>224</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4577,27 +4537,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>227</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Imaging</Project>
-    <ShortFile>Texturer.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Other\Texturer.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>2333356301</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>228</DefaultOrder>
+    <DefaultOrder>225</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4617,7 +4557,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>229</DefaultOrder>
+    <DefaultOrder>226</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Imaging</Project>
+    <ShortFile>Texturer.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Other\Texturer.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2333356301</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>227</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4637,7 +4597,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>230</DefaultOrder>
+    <DefaultOrder>228</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4657,7 +4617,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>231</DefaultOrder>
+    <DefaultOrder>229</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4677,7 +4637,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>232</DefaultOrder>
+    <DefaultOrder>230</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4697,7 +4657,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>233</DefaultOrder>
+    <DefaultOrder>231</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4717,27 +4677,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>234</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Imaging</Project>
-    <ShortFile>Crop.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Transform\Crop.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>2333356301</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>235</DefaultOrder>
+    <DefaultOrder>232</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4757,7 +4697,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>236</DefaultOrder>
+    <DefaultOrder>233</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Imaging</Project>
+    <ShortFile>Crop.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Transform\Crop.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2333356301</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>234</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4777,27 +4737,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>237</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Imaging</Project>
-    <ShortFile>QuadrilateralTransformation.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Transform\QuadrilateralTransformation.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>2333356301</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>238</DefaultOrder>
+    <DefaultOrder>235</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4817,14 +4757,14 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>239</DefaultOrder>
+    <DefaultOrder>236</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
-    <ShortFile>QuadrilateralTransformationNearestNeighbor.cs</ShortFile>
+    <ShortFile>QuadrilateralTransformation.cs</ShortFile>
     <Line>1</Line>
     <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Transform\QuadrilateralTransformationNearestNeighbor.cs</File>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Transform\QuadrilateralTransformation.cs</File>
     <CodePrev>0</CodePrev>
     <CodeCurrent>2333356301</CodeCurrent>
     <CodeNext>37880379</CodeNext>
@@ -4837,7 +4777,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>240</DefaultOrder>
+    <DefaultOrder>237</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4857,7 +4797,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>241</DefaultOrder>
+    <DefaultOrder>238</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Imaging</Project>
+    <ShortFile>QuadrilateralTransformationNearestNeighbor.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Transform\QuadrilateralTransformationNearestNeighbor.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2333356301</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>239</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4877,7 +4837,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>242</DefaultOrder>
+    <DefaultOrder>240</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4897,7 +4857,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>243</DefaultOrder>
+    <DefaultOrder>241</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4917,27 +4877,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>244</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Imaging</Project>
-    <ShortFile>RotateNearestNeighbor.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Transform\RotateNearestNeighbor.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>2333356301</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>245</DefaultOrder>
+    <DefaultOrder>242</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4957,7 +4897,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>246</DefaultOrder>
+    <DefaultOrder>243</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Imaging</Project>
+    <ShortFile>RotateNearestNeighbor.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\Transform\RotateNearestNeighbor.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2333356301</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>244</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4977,7 +4937,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>247</DefaultOrder>
+    <DefaultOrder>245</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -4997,7 +4957,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>248</DefaultOrder>
+    <DefaultOrder>246</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -5017,27 +4977,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>249</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Imaging</Project>
-    <ShortFile>YCbCrExtractChannel.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\YCbCr Filters\YCbCrExtractChannel.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>2333356301</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>250</DefaultOrder>
+    <DefaultOrder>247</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -5057,7 +4997,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>251</DefaultOrder>
+    <DefaultOrder>248</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Imaging</Project>
+    <ShortFile>YCbCrExtractChannel.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\YCbCr Filters\YCbCrExtractChannel.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2333356301</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>249</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -5077,27 +5037,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>252</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Imaging</Project>
-    <ShortFile>YCbCrReplaceChannel.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\YCbCr Filters\YCbCrReplaceChannel.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>2333356301</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>253</DefaultOrder>
+    <DefaultOrder>250</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -5117,7 +5057,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>254</DefaultOrder>
+    <DefaultOrder>251</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Imaging</Project>
+    <ShortFile>YCbCrReplaceChannel.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Filters\YCbCr Filters\YCbCrReplaceChannel.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2333356301</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>252</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -5137,7 +5097,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>255</DefaultOrder>
+    <DefaultOrder>253</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -5157,7 +5117,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>256</DefaultOrder>
+    <DefaultOrder>254</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -5177,7 +5137,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>257</DefaultOrder>
+    <DefaultOrder>255</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -5197,27 +5157,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>258</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Imaging</Project>
-    <ShortFile>ICornersDetector.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\ICornersDetector.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>2333356301</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>259</DefaultOrder>
+    <DefaultOrder>256</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -5237,7 +5177,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>260</DefaultOrder>
+    <DefaultOrder>257</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Imaging</Project>
+    <ShortFile>ICornersDetector.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\ICornersDetector.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2333356301</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>258</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -5257,27 +5217,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>261</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Imaging</Project>
-    <ShortFile>ImageStatisticsHSL.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\ImageStatisticsHSL.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>2333356301</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>262</DefaultOrder>
+    <DefaultOrder>259</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -5297,7 +5237,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>263</DefaultOrder>
+    <DefaultOrder>260</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Imaging</Project>
+    <ShortFile>ImageStatisticsHSL.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\ImageStatisticsHSL.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2333356301</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>261</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -5317,27 +5277,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>264</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Imaging</Project>
-    <ShortFile>IntegralImage.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\IntegralImage.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>2333356301</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>265</DefaultOrder>
+    <DefaultOrder>262</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -5357,14 +5297,14 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>266</DefaultOrder>
+    <DefaultOrder>263</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
-    <ShortFile>ITemplateMatching.cs</ShortFile>
+    <ShortFile>IntegralImage.cs</ShortFile>
     <Line>1</Line>
     <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\ITemplateMatching.cs</File>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\IntegralImage.cs</File>
     <CodePrev>0</CodePrev>
     <CodeCurrent>2333356301</CodeCurrent>
     <CodeNext>37880379</CodeNext>
@@ -5377,27 +5317,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>267</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Imaging</Project>
-    <ShortFile>MoravecCornersDetector.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\MoravecCornersDetector.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>2333356301</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>268</DefaultOrder>
+    <DefaultOrder>264</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -5417,7 +5337,47 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>269</DefaultOrder>
+    <DefaultOrder>265</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Imaging</Project>
+    <ShortFile>ITemplateMatching.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\ITemplateMatching.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2333356301</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>266</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Imaging</Project>
+    <ShortFile>MoravecCornersDetector.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\MoravecCornersDetector.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2333356301</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>267</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -5437,27 +5397,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>270</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Imaging</Project>
-    <ShortFile>QuadrilateralFinder.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\QuadrilateralFinder.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>2333356301</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>271</DefaultOrder>
+    <DefaultOrder>268</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -5477,7 +5417,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>272</DefaultOrder>
+    <DefaultOrder>269</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Imaging</Project>
+    <ShortFile>QuadrilateralFinder.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\QuadrilateralFinder.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2333356301</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>270</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -5497,7 +5457,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>273</DefaultOrder>
+    <DefaultOrder>271</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -5517,7 +5477,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>274</DefaultOrder>
+    <DefaultOrder>272</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -5537,27 +5497,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>275</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Imaging</Project>
-    <ShortFile>LabyrinthTexture.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Textures\LabyrinthTexture.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>2333356301</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>276</DefaultOrder>
+    <DefaultOrder>273</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -5577,7 +5517,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>277</DefaultOrder>
+    <DefaultOrder>274</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Imaging</Project>
+    <ShortFile>LabyrinthTexture.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\Textures\LabyrinthTexture.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2333356301</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>275</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -5597,7 +5557,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>278</DefaultOrder>
+    <DefaultOrder>276</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -5617,7 +5577,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>279</DefaultOrder>
+    <DefaultOrder>277</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -5637,7 +5597,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>280</DefaultOrder>
+    <DefaultOrder>278</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -5657,27 +5617,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>281</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Imaging</Project>
-    <ShortFile>UnmanagedImage.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\UnmanagedImage.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>2333356301</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>282</DefaultOrder>
+    <DefaultOrder>279</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Imaging</Project>
@@ -5697,7 +5637,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>283</DefaultOrder>
+    <DefaultOrder>280</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Imaging</Project>
+    <ShortFile>UnmanagedImage.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Imaging\UnmanagedImage.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>2333356301</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>281</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Core</Project>
@@ -5717,7 +5677,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>284</DefaultOrder>
+    <DefaultOrder>282</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Core</Project>
@@ -5737,27 +5697,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>285</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Core</Project>
-    <ShortFile>DoubleRange.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Core\DoubleRange.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>9523209</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>286</DefaultOrder>
+    <DefaultOrder>283</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Core</Project>
@@ -5777,7 +5717,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>287</DefaultOrder>
+    <DefaultOrder>284</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Core</Project>
+    <ShortFile>DoubleRange.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Core\DoubleRange.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>9523209</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>285</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Core</Project>
@@ -5797,7 +5757,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>288</DefaultOrder>
+    <DefaultOrder>286</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Core</Project>
@@ -5817,7 +5777,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>289</DefaultOrder>
+    <DefaultOrder>287</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Core</Project>
@@ -5837,7 +5797,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>290</DefaultOrder>
+    <DefaultOrder>288</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Core</Project>
@@ -5857,27 +5817,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>291</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Core</Project>
-    <ShortFile>Point.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Core\Point.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>9523209</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>292</DefaultOrder>
+    <DefaultOrder>289</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Core</Project>
@@ -5897,7 +5837,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>293</DefaultOrder>
+    <DefaultOrder>290</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Core</Project>
+    <ShortFile>Point.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Core\Point.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>9523209</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>291</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Core</Project>
@@ -5917,7 +5877,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>294</DefaultOrder>
+    <DefaultOrder>292</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Core</Project>
@@ -5937,7 +5897,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>295</DefaultOrder>
+    <DefaultOrder>293</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Core</Project>
@@ -5957,7 +5917,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>296</DefaultOrder>
+    <DefaultOrder>294</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Core</Project>
@@ -5977,27 +5937,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>297</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Math</Project>
-    <ShortFile>Complex.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Math\Complex.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>9532553</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>298</DefaultOrder>
+    <DefaultOrder>295</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6017,7 +5957,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>299</DefaultOrder>
+    <DefaultOrder>296</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Math</Project>
+    <ShortFile>Complex.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Math\Complex.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>9532553</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>297</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6037,7 +5997,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>300</DefaultOrder>
+    <DefaultOrder>298</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6057,7 +6017,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>301</DefaultOrder>
+    <DefaultOrder>299</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6077,7 +6037,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>302</DefaultOrder>
+    <DefaultOrder>300</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6097,7 +6057,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>303</DefaultOrder>
+    <DefaultOrder>301</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6117,7 +6077,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>304</DefaultOrder>
+    <DefaultOrder>302</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6137,7 +6097,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>305</DefaultOrder>
+    <DefaultOrder>303</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6157,7 +6117,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>306</DefaultOrder>
+    <DefaultOrder>304</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6177,7 +6137,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>307</DefaultOrder>
+    <DefaultOrder>305</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6197,27 +6157,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>308</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Math</Project>
-    <ShortFile>Line.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Math\Geometry\Line.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>9532553</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>309</DefaultOrder>
+    <DefaultOrder>306</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6237,7 +6177,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>310</DefaultOrder>
+    <DefaultOrder>307</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Math</Project>
+    <ShortFile>Line.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Math\Geometry\Line.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>9532553</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>308</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6257,7 +6217,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>311</DefaultOrder>
+    <DefaultOrder>309</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6277,7 +6237,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>312</DefaultOrder>
+    <DefaultOrder>310</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6297,7 +6257,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>313</DefaultOrder>
+    <DefaultOrder>311</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6317,7 +6277,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>314</DefaultOrder>
+    <DefaultOrder>312</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6337,7 +6297,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>315</DefaultOrder>
+    <DefaultOrder>313</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6357,7 +6317,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>316</DefaultOrder>
+    <DefaultOrder>314</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6377,7 +6337,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>317</DefaultOrder>
+    <DefaultOrder>315</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6397,7 +6357,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>318</DefaultOrder>
+    <DefaultOrder>316</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6417,7 +6377,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>319</DefaultOrder>
+    <DefaultOrder>317</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6437,27 +6397,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>320</DefaultOrder>
-    <ErrorCode>V009</ErrorCode>
-    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
-    <Project>Math</Project>
-    <ShortFile>EuclideanSimilarity.cs</ShortFile>
-    <Line>1</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Math\Metrics\EuclideanSimilarity.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>9532553</CodeCurrent>
-    <CodeNext>37880379</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>0</Analyzer>
-    <LineExtension />
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>0</Level>
-    <DefaultOrder>321</DefaultOrder>
+    <DefaultOrder>318</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6477,7 +6417,27 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>322</DefaultOrder>
+    <DefaultOrder>319</DefaultOrder>
+    <ErrorCode>V009</ErrorCode>
+    <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
+    <Project>Math</Project>
+    <ShortFile>EuclideanSimilarity.cs</ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\AForgeNetLib\Math\Metrics\EuclideanSimilarity.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>9532553</CodeCurrent>
+    <CodeNext>37880379</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>0</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>0</Level>
+    <DefaultOrder>320</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6497,7 +6457,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>323</DefaultOrder>
+    <DefaultOrder>321</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6517,7 +6477,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>324</DefaultOrder>
+    <DefaultOrder>322</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6537,7 +6497,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>325</DefaultOrder>
+    <DefaultOrder>323</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6557,7 +6517,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>326</DefaultOrder>
+    <DefaultOrder>324</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6577,7 +6537,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>327</DefaultOrder>
+    <DefaultOrder>325</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6597,7 +6557,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>328</DefaultOrder>
+    <DefaultOrder>326</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6617,7 +6577,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>329</DefaultOrder>
+    <DefaultOrder>327</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6637,7 +6597,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>330</DefaultOrder>
+    <DefaultOrder>328</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6657,7 +6617,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>331</DefaultOrder>
+    <DefaultOrder>329</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6677,7 +6637,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>332</DefaultOrder>
+    <DefaultOrder>330</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6697,7 +6657,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>333</DefaultOrder>
+    <DefaultOrder>331</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6717,7 +6677,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>334</DefaultOrder>
+    <DefaultOrder>332</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6737,7 +6697,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>335</DefaultOrder>
+    <DefaultOrder>333</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6757,7 +6717,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>336</DefaultOrder>
+    <DefaultOrder>334</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6777,7 +6737,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>337</DefaultOrder>
+    <DefaultOrder>335</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6797,7 +6757,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>338</DefaultOrder>
+    <DefaultOrder>336</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6817,7 +6777,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>339</DefaultOrder>
+    <DefaultOrder>337</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6837,7 +6797,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>340</DefaultOrder>
+    <DefaultOrder>338</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>Math</Project>
@@ -6857,7 +6817,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>341</DefaultOrder>
+    <DefaultOrder>339</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>CalibrateLaserTools</Project>
@@ -6877,7 +6837,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>342</DefaultOrder>
+    <DefaultOrder>340</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>CalibrateLaserTools</Project>
@@ -6897,7 +6857,7 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>0</Level>
-    <DefaultOrder>343</DefaultOrder>
+    <DefaultOrder>341</DefaultOrder>
     <ErrorCode>V009</ErrorCode>
     <Message>To use free version of PVS-Studio, source code files are required to start with a special comment.</Message>
     <Project>CalibrateLaserTools</Project>
@@ -6917,12 +6877,52 @@
   <PVS-Studio_Analysis_Log>
     <FavIcon>false</FavIcon>
     <Level>3</Level>
+    <DefaultOrder>342</DefaultOrder>
+    <ErrorCode>V3008</ErrorCode>
+    <Message>The 'vectors' variable is assigned values twice successively. Perhaps this is a mistake. Check lines: 893, 876.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>DataProcessing.cs</ShortFile>
+    <Line>893</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\DataProcessing.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3410098803</CodeCurrent>
+    <CodeNext>1389432952</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension>893,876</LineExtension>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>343</DefaultOrder>
+    <ErrorCode>V3008</ErrorCode>
+    <Message>The 'vectors' variable is assigned values twice successively. Perhaps this is a mistake. Check lines: 936, 919.</Message>
+    <Project>ToolsGenGkode</Project>
+    <ShortFile>DataProcessing.cs</ShortFile>
+    <Line>936</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\DataProcessing.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>3410098803</CodeCurrent>
+    <CodeNext>1389432952</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension>936,919</LineExtension>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
     <DefaultOrder>344</DefaultOrder>
     <ErrorCode>V3008</ErrorCode>
-    <Message>The 'vectors' variable is assigned values twice successively. Perhaps this is a mistake. Check lines: 667, 650.</Message>
+    <Message>The 'vectors' variable is assigned values twice successively. Perhaps this is a mistake. Check lines: 968, 951.</Message>
     <Project>ToolsGenGkode</Project>
     <ShortFile>DataProcessing.cs</ShortFile>
-    <Line>667</Line>
+    <Line>968</Line>
     <FalseAlarm>false</FalseAlarm>
     <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\DataProcessing.cs</File>
     <CodePrev>0</CodePrev>
@@ -6930,47 +6930,7 @@
     <CodeNext>1389432952</CodeNext>
     <TrialMessage>false</TrialMessage>
     <Analyzer>4</Analyzer>
-    <LineExtension>667,650</LineExtension>
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>3</Level>
-    <DefaultOrder>345</DefaultOrder>
-    <ErrorCode>V3008</ErrorCode>
-    <Message>The 'vectors' variable is assigned values twice successively. Perhaps this is a mistake. Check lines: 710, 693.</Message>
-    <Project>ToolsGenGkode</Project>
-    <ShortFile>DataProcessing.cs</ShortFile>
-    <Line>710</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\DataProcessing.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>3410098803</CodeCurrent>
-    <CodeNext>1389432952</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>4</Analyzer>
-    <LineExtension>710,693</LineExtension>
-    <Retired>false</Retired>
-    <AnalyzedSourceFiles />
-  </PVS-Studio_Analysis_Log>
-  <PVS-Studio_Analysis_Log>
-    <FavIcon>false</FavIcon>
-    <Level>3</Level>
-    <DefaultOrder>346</DefaultOrder>
-    <ErrorCode>V3008</ErrorCode>
-    <Message>The 'vectors' variable is assigned values twice successively. Perhaps this is a mistake. Check lines: 742, 725.</Message>
-    <Project>ToolsGenGkode</Project>
-    <ShortFile>DataProcessing.cs</ShortFile>
-    <Line>742</Line>
-    <FalseAlarm>false</FalseAlarm>
-    <File>Z:\PROJECTS\0060_program for CNC\001_ToolsGenGkode\ToolsGenGkode\DataProcessing.cs</File>
-    <CodePrev>0</CodePrev>
-    <CodeCurrent>3410098803</CodeCurrent>
-    <CodeNext>1389432952</CodeNext>
-    <TrialMessage>false</TrialMessage>
-    <Analyzer>4</Analyzer>
-    <LineExtension>742,725</LineExtension>
+    <LineExtension>968,951</LineExtension>
     <Retired>false</Retired>
     <AnalyzedSourceFiles />
   </PVS-Studio_Analysis_Log>
