@@ -40,6 +40,10 @@ namespace ToolsGenGkode.filters
 
             chart1.ChartAreas[0].AxisX.Maximum = 255;
             chart1.ChartAreas[0].AxisX.Minimum = 0;
+            chart1.ChartAreas[0].AxisX.Title = @"Bright";
+            chart1.ChartAreas[0].AxisY.Title = @"S - power";
+            chart1.Legends[0].Enabled = false;
+
 
             chart1.Series[0].ChartType = SeriesChartType.Line;
             chart1.Series[0].BorderWidth = 2;
@@ -59,7 +63,7 @@ namespace ToolsGenGkode.filters
             chart1.ChartAreas[0].CursorY.IsUserSelectionEnabled = false;
             //chart1.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
             //chart1.ChartAreas[0].AxisX.ScrollBar.IsPositionedInside = true;
-
+            //chart1.Series[0].Label = @"Bright->S";
 
             chartRefresh();
 

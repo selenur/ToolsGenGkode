@@ -605,7 +605,7 @@ namespace ToolsGenGkode.pages
                     if (isFirstPoint)
                     {
                         GroupPoint tmp = new GroupPoint();
-                        tmp.Points.Add(new cncPoint((posX + deltaX)* sizeOnePoint, posY* sizeOnePoint, 0, 0, 0, false, currColor));
+                        tmp.Points.Add(new cncPoint((posX)* sizeOnePoint, posY* sizeOnePoint, 0, 0, 0, false, currColor));
                         pageVectorNOW.Add(tmp.Clone());
                         isFirstPoint = false;
                         lastColor = currColor;
@@ -636,7 +636,7 @@ namespace ToolsGenGkode.pages
 
                         // в существующий отрезок добавим завершающую точку
                         pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint(posX* sizeOnePoint, posY* sizeOnePoint, 0, 0, 0, false, lastColor));
-                        pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint((posX +1)* sizeOnePoint, posY* sizeOnePoint, 0, 0, 0, false, lastColor));                        //
+                        if (posY != 0) pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint(posX * sizeOnePoint, (posY-1)* sizeOnePoint, 0, 0, 0, false, lastColor));                        //
                         isFirstPoint = true;
 
                         dirrection = 2;
@@ -653,6 +653,8 @@ namespace ToolsGenGkode.pages
                     {
                         // в существующий отрезок добавим точку
                         pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint(posX* sizeOnePoint, posY* sizeOnePoint, 0, 0, 0, false, lastColor));
+                        if (posY != 0) pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint(posX * sizeOnePoint, (posY - 1) * sizeOnePoint, 0, 0, 0, false, lastColor));                        //
+
                         isFirstPoint = true;
 
 
@@ -683,6 +685,8 @@ namespace ToolsGenGkode.pages
                     //если это последняя точка то завершим и отрезок
                     if (CountPoint == 0)
                     {
+                        if (posY < 0) posY = 0;
+
                         // в существующий отрезок добавим точку
                         pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint((posX + deltaX)* sizeOnePoint, posY* sizeOnePoint, 0, 0, 0, false, lastColor));
                     }
@@ -930,9 +934,13 @@ namespace ToolsGenGkode.pages
             {
                 if (cbKeepAspectRatio.Checked)
                 {
-                    decimal delta = (numYbefore.Value / numXbefore.Value) * numXAfter.Value;
+                    if (numXbefore.Value != 0)
+                    {
+                        decimal delta = (numYbefore.Value / numXbefore.Value) * numXAfter.Value;
 
-                    numYAfter.Value = delta;
+                        numYAfter.Value = delta;                        
+                    }
+
 
                 }
                 else
