@@ -555,7 +555,8 @@ namespace ToolsGenGkode.pages
 
             // для понимания того в какой точке изображения находимся
             int posX = 0;
-            int posY = bitmapData1.Height - 1;   
+            int posY = bitmapData1.Height - 1;
+            int posYreal = 0;   
 
             //узнаем объем анализируемого изображения
             int CountPoint = bitmapData1.Height*bitmapData1.Width;
@@ -636,11 +637,13 @@ namespace ToolsGenGkode.pages
 
                         // в существующий отрезок добавим завершающую точку
                         pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint(posX* sizeOnePoint, posY* sizeOnePoint, 0, 0, 0, false, lastColor));
-                        if (posY != 0) pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint(posX * sizeOnePoint, (posY-1)* sizeOnePoint, 0, 0, 0, false, lastColor));                        //
+                        if (posY != 0) pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint(posX * sizeOnePoint, (posY-1)* sizeOnePoint, 0, 0, 0, false, 0,0));                        //
                         isFirstPoint = true;
 
                         dirrection = 2;
                         posY--;
+
+                        posYreal++;
 
 
 
@@ -653,13 +656,15 @@ namespace ToolsGenGkode.pages
                     {
                         // в существующий отрезок добавим точку
                         pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint(posX* sizeOnePoint, posY* sizeOnePoint, 0, 0, 0, false, lastColor));
-                        if (posY != 0) pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint(posX * sizeOnePoint, (posY - 1) * sizeOnePoint, 0, 0, 0, false, lastColor));                        //
+                        if (posY != 0) pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint(posX * sizeOnePoint, (posY - 1) * sizeOnePoint, 0, 0, 0, false, 0,0));                        //
 
                         isFirstPoint = true;
 
 
                         dirrection = 1;
                         posY--;
+
+                        posYreal++;
 
                         //pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint(posX , posY, 0, 0, 0, false, lastColor));
 
@@ -687,12 +692,33 @@ namespace ToolsGenGkode.pages
                     {
                         if (posY < 0) posY = 0;
 
+
                         // в существующий отрезок добавим точку
                         pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint((posX + deltaX)* sizeOnePoint, posY* sizeOnePoint, 0, 0, 0, false, lastColor));
+
                     }
                 } // while (CountPoint > 0)
             } //unsafe
             pageImageNOW.UnlockBits(bitmapData1);
+
+
+            //TODO: временный костыль
+            //нужно удалить одинаковые точки
+            GroupPoint gp = pageVectorNOW[pageVectorNOW.Count - 1];
+
+            List<cncPoint> lpnt = gp.Points;
+
+            if (lpnt.Count > 2)
+            {
+                cncPoint p1 = lpnt[lpnt.Count - 1];
+                cncPoint p2 = lpnt[lpnt.Count - 2];
+
+                if ((p1.X == p2.X && p1.Y == p2.Y && p1.Bright == p2.Bright))
+                {
+                    lpnt.RemoveAt(lpnt.Count-1);
+                }
+
+            }
 
             // тут нужно сделать преворот согластно текущй ориентации осей
             pageVectorNOW = VectorProcessing.Rotate(pageVectorNOW);

@@ -882,7 +882,7 @@ namespace ToolsGenGkode
 
                     foreach (cncPoint point in vector.Points)
                     {
-                        points.Add(new cncPoint(point.X, (-point.Y) + delta, point.Svalue, point.Fvalue, point.Pvalue, point.Selected,point.Bright));
+                        points.Add(new cncPoint(point.X, (-point.Y) + delta, point.Svalue, point.Fvalue, point.Pvalue, point.Selected,point.Bright,point.Gvalue));
                     }
                     tmp.Add(new GroupPoint(points, vector.Selected,vector.Dirrect,vector.IndividualPoints));
                     points = new List<cncPoint>();

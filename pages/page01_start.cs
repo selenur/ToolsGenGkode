@@ -305,6 +305,7 @@ namespace ToolsGenGkode.pages
     {
         public double X { get; set; }
         public double Y { get; set; }
+        public int Gvalue { get; set; }    // режим перемещения
         public int Svalue { get; set; }    // мощность
         public int Fvalue { get; set; }    // скорость
         public int Pvalue { get; set; }    // задержка
@@ -317,6 +318,7 @@ namespace ToolsGenGkode.pages
 
             locReturn.X = X;
             locReturn.Y = Y;
+            locReturn.Gvalue = Gvalue;
             locReturn.Svalue = Svalue;
             locReturn.Fvalue = Fvalue;
             locReturn.Pvalue = Pvalue;
@@ -329,10 +331,11 @@ namespace ToolsGenGkode.pages
         /// <summary>
         /// Конструктор класса
         /// </summary>
-        public cncPoint(double _x = 0, double _y = 0, int _s = 0, int _f = 0, int _p = 0, bool _select = false, int _Bright = 255)
+        public cncPoint(double _x = 0, double _y = 0, int _s = 0, int _f = 0, int _p = 0, bool _select = false, int _Bright = 255, int _g = 1)
         {
             X         = _x;
             Y         = _y;
+            Gvalue    = _g;
             Svalue    = _s;
             Fvalue    = _f;
             Pvalue    = _p;
@@ -348,6 +351,7 @@ namespace ToolsGenGkode.pages
         {
             X         = _source.X;
             Y         = _source.Y;
+            Gvalue = _source.Gvalue;
             Svalue    = _source.Svalue;
             Fvalue    = _source.Fvalue;
             Pvalue    = _source.Pvalue;

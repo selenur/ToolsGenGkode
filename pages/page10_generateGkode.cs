@@ -122,6 +122,7 @@ namespace ToolsGenGkode.pages
                     //TODO:
 
 
+                    ChangeValueVariable(ref variableDataValues, "G", point.Gvalue);
                     ChangeValueVariable(ref variableDataValues, "P", point.Pvalue);
                     ChangeValueVariable(ref variableDataValues, "S", point.Svalue);
                     ChangeValueVariable(ref variableDataValues, "F", point.Fvalue);
