@@ -46,6 +46,8 @@ namespace ToolsGenGkode.pages
             this.numericGena = new System.Windows.Forms.NumericUpDown();
             this.checkBoxGena = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.buttonSelectedUp = new System.Windows.Forms.Button();
+            this.buttonSelectedDown = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.ForGena.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -54,9 +56,9 @@ namespace ToolsGenGkode.pages
             // 
             // treeViewVectors
             // 
-            this.treeViewVectors.Location = new System.Drawing.Point(3, 3);
+            this.treeViewVectors.Location = new System.Drawing.Point(25, 3);
             this.treeViewVectors.Name = "treeViewVectors";
-            this.treeViewVectors.Size = new System.Drawing.Size(246, 234);
+            this.treeViewVectors.Size = new System.Drawing.Size(224, 234);
             this.treeViewVectors.TabIndex = 0;
             this.treeViewVectors.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewVectors_AfterSelect);
             // 
@@ -252,10 +254,32 @@ namespace ToolsGenGkode.pages
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // buttonSelectedUp
+            // 
+            this.buttonSelectedUp.Location = new System.Drawing.Point(3, 45);
+            this.buttonSelectedUp.Name = "buttonSelectedUp";
+            this.buttonSelectedUp.Size = new System.Drawing.Size(22, 49);
+            this.buttonSelectedUp.TabIndex = 17;
+            this.buttonSelectedUp.Text = "˄";
+            this.buttonSelectedUp.UseVisualStyleBackColor = true;
+            this.buttonSelectedUp.Click += new System.EventHandler(this.buttonSelectedUp_Click);
+            // 
+            // buttonSelectedDown
+            // 
+            this.buttonSelectedDown.Location = new System.Drawing.Point(3, 114);
+            this.buttonSelectedDown.Name = "buttonSelectedDown";
+            this.buttonSelectedDown.Size = new System.Drawing.Size(22, 49);
+            this.buttonSelectedDown.TabIndex = 18;
+            this.buttonSelectedDown.Text = "˅";
+            this.buttonSelectedDown.UseVisualStyleBackColor = true;
+            this.buttonSelectedDown.Click += new System.EventHandler(this.buttonSelectedDown_Click);
+            // 
             // page06_VectorEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonSelectedDown);
+            this.Controls.Add(this.buttonSelectedUp);
             this.Controls.Add(this.ForGena);
             this.Controls.Add(this.btCloseTraectory);
             this.Controls.Add(this.numericUpDown1);
@@ -296,7 +320,8 @@ namespace ToolsGenGkode.pages
         private System.Windows.Forms.CheckBox checkBoxGena;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
-
+        private System.Windows.Forms.Button buttonSelectedUp;
+        private System.Windows.Forms.Button buttonSelectedDown;
 
         public int NextPage { get; set; }
 

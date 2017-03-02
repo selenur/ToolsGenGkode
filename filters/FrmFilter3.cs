@@ -21,19 +21,35 @@ namespace ToolsGenGkode.filters
         {
             numericUpDown1.Value = Settings.Default.filter3_minValue;
 
-            if (Settings.Default.filter3_map == null)
+            if (Settings.Default.filter3_mapS == null)
             {
                 textBox1.Text = "";
             }
             else
             {
                 string newStr = "";
-                foreach (string VARIABLE in Settings.Default.filter3_map)
+                foreach (string VARIABLE in Settings.Default.filter3_mapS)
                 {
                     newStr += VARIABLE + (char)13;
                 }
                 textBox1.Text = newStr;
             }
+
+            if (Settings.Default.filter3_mapF == null)
+            {
+                textBox2.Text = "";
+            }
+            else
+            {
+                string newStr = "";
+                foreach (string VARIABLE in Settings.Default.filter3_mapF)
+                {
+                    newStr += VARIABLE + (char)13;
+                }
+                textBox2.Text = newStr;
+            }
+
+
             ParseDataString();
 
             //chart1.ChartAreas[0].AxisX.ScaleView.Zoom(0,255);
@@ -44,11 +60,22 @@ namespace ToolsGenGkode.filters
             chart1.ChartAreas[0].AxisY.Title = @"S - power";
             chart1.Legends[0].Enabled = false;
 
+            chart1.Series.Clear();
 
-            chart1.Series[0].ChartType = SeriesChartType.Line;
-            chart1.Series[0].BorderWidth = 2;
-            chart1.Series[0].MarkerStyle = MarkerStyle.Circle;
+            chart1.Series.Add(new Series("Sseries"));
+            chart1.Series.Add(new Series("Fseries"));
 
+
+
+            chart1.Series["Sseries"].ChartType = SeriesChartType.Line;
+            chart1.Series["Sseries"].BorderWidth = 2;
+            chart1.Series["Sseries"].MarkerStyle = MarkerStyle.Circle;
+            chart1.Series["Sseries"].BorderColor = Color.Blue;
+
+            chart1.Series["Fseries"].ChartType = SeriesChartType.Line;
+            chart1.Series["Fseries"].BorderWidth = 2;
+            chart1.Series["Fseries"].MarkerStyle = MarkerStyle.Circle;
+            chart1.Series["Fseries"].BorderColor = Color.Crimson;
 
             chart1.ChartAreas[0].AxisX.ArrowStyle = AxisArrowStyle.Lines;
             chart1.ChartAreas[0].AxisY.ArrowStyle = AxisArrowStyle.Lines;
@@ -77,22 +104,35 @@ namespace ToolsGenGkode.filters
 
             string[] ss = textBox1.Text.Split((char)13);
 
-            Settings.Default.filter3_map = new StringCollection();
+            Settings.Default.filter3_mapS = new StringCollection();
 
             foreach (string VARIABLE in ss)
             {
-                Settings.Default.filter3_map.Add(VARIABLE);
+                Settings.Default.filter3_mapS.Add(VARIABLE);
             }
+
+
+            string[] ss2 = textBox2.Text.Split((char)13);
+
+            Settings.Default.filter3_mapF = new StringCollection();
+
+            foreach (string VARIABLE in ss2)
+            {
+                Settings.Default.filter3_mapF.Add(VARIABLE);
+            }
+
+
 
             Settings.Default.Save();
         }
 
-        List<myPoint> Points = new List<myPoint>();
+        List<myPoint> PointsS = new List<myPoint>();
+        List<myPoint> PointsF = new List<myPoint>();
 
         //парсинг строки
         public void ParseDataString()
         {
-            Points = new List<myPoint>();
+            PointsS = new List<myPoint>();
 
             string[] ss = textBox1.Text.Split((char)13);
 
@@ -108,8 +148,31 @@ namespace ToolsGenGkode.filters
                 int.TryParse(newSS[0], out p1);
                 int.TryParse(newSS[1], out p2);
 
-                Points.Add(new myPoint(p1,p2));
+                PointsS.Add(new myPoint(p1, p2));
             }
+
+
+            PointsF = new List<myPoint>();
+
+            string[] ss2 = textBox2.Text.Split((char)13);
+
+
+            foreach (string VARIABLE in ss2)
+            {
+                string[] newSS = VARIABLE.Split(';');
+                if (newSS.Length != 2) continue;
+
+                int p1 = 0;
+                int p2 = 0;
+
+                int.TryParse(newSS[0], out p1);
+                int.TryParse(newSS[1], out p2);
+
+                PointsF.Add(new myPoint(p1, p2));
+            }
+
+
+
 
 
 
@@ -118,21 +181,38 @@ namespace ToolsGenGkode.filters
 
         public void chartRefresh()
         {
-            chart1.Series[0].Points.Clear();
+            chart1.Series["Sseries"].Points.Clear();
+            chart1.Series["Fseries"].Points.Clear();
 
 
-            foreach (myPoint VARIABLE in Points)
+            foreach (myPoint VARIABLE in PointsS)
             {
-            //    if (VARIABLE.Cells[0].Value == null || VARIABLE.Cells[1].Value == null) continue;
+                //    if (VARIABLE.Cells[0].Value == null || VARIABLE.Cells[1].Value == null) continue;
 
-            //    int x = 0;
-            //    int y = 0;
+                //    int x = 0;
+                //    int y = 0;
 
-            //    int.TryParse(VARIABLE.Cells[0].Value.ToString(), out x);
-            //    int.TryParse(VARIABLE.Cells[1].Value.ToString(), out y);
+                //    int.TryParse(VARIABLE.Cells[0].Value.ToString(), out x);
+                //    int.TryParse(VARIABLE.Cells[1].Value.ToString(), out y);
 
-                int pos = chart1.Series[0].Points.AddXY(VARIABLE.X, VARIABLE.Y);
-                chart1.Series[0].Points[pos].Color = Color.Blue;
+                int pos = chart1.Series["Sseries"].Points.AddXY(VARIABLE.X, VARIABLE.Y);
+                chart1.Series["Sseries"].Points[pos].Color = Color.Blue;
+
+            }
+
+
+            foreach (myPoint VARIABLE in PointsF)
+            {
+                //    if (VARIABLE.Cells[0].Value == null || VARIABLE.Cells[1].Value == null) continue;
+
+                //    int x = 0;
+                //    int y = 0;
+
+                //    int.TryParse(VARIABLE.Cells[0].Value.ToString(), out x);
+                //    int.TryParse(VARIABLE.Cells[1].Value.ToString(), out y);
+
+                int pos = chart1.Series["Fseries"].Points.AddXY(VARIABLE.X, VARIABLE.Y);
+                chart1.Series["Fseries"].Points[pos].Color = Color.Crimson;
 
             }
 

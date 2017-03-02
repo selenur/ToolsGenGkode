@@ -31,8 +31,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Math", "AForgeNetLib\Math\M
 		{631AC093-430F-45F4-BA0C-AF0F0405918A} = {631AC093-430F-45F4-BA0C-AF0F0405918A}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalibrateLaserTools", "..\CalibrateLaserTools\CalibrateLaserTools.csproj", "{B42115E1-85DB-4149-BB25-EA0B1EF92AA2}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,10 +65,6 @@ Global
 		{C0FAF524-72E4-46F7-8C1B-A6B74DEC5EBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0FAF524-72E4-46F7-8C1B-A6B74DEC5EBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0FAF524-72E4-46F7-8C1B-A6B74DEC5EBE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B42115E1-85DB-4149-BB25-EA0B1EF92AA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B42115E1-85DB-4149-BB25-EA0B1EF92AA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B42115E1-85DB-4149-BB25-EA0B1EF92AA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B42115E1-85DB-4149-BB25-EA0B1EF92AA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

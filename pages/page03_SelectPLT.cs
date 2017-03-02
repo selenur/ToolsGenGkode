@@ -41,6 +41,11 @@ namespace ToolsGenGkode.pages
             UserActions();
         }
 
+        public bool IsReady()
+        {
+            return true;
+        }
+
         private void SelectPLT_Load(object sender, EventArgs e)
         {
 

@@ -46,6 +46,11 @@ namespace ToolsGenGkode.pages
 
         }
 
+        public bool IsReady()
+        {
+            return true;
+        }
+
         private void UserActions()
         {
             RefreshTree();
@@ -507,6 +512,67 @@ namespace ToolsGenGkode.pages
             pageVectorNOW = destCVectors;
 
             RefreshTree();
+        }
+
+        private void buttonSelectedUp_Click(object sender, EventArgs e)
+        {
+
+
+            int level = -1; //расположение 0-выбран узел линии, 1-точка линии
+            int pos = -1;   // если это линия то её индекс, если точка то её индекс
+            int posParent = -1; //если выбрана точка, то тут индекс линии
+
+            if (treeViewVectors.SelectedNode == null) return;
+
+            level = treeViewVectors.SelectedNode.Level;
+            pos = treeViewVectors.SelectedNode.Index;
+
+
+            if (level != 0) return;
+
+            if (pos == 0) return;
+
+            GroupPoint ggp = pageVectorNOW[pos].Clone();
+            pageVectorNOW.RemoveAt(pos);
+            pageVectorNOW.Insert(pos-1,ggp.Clone());
+
+ 
+            UserActions();
+
+            treeViewVectors.SelectedNode = treeViewVectors.Nodes[pos - 1];
+            treeViewVectors.SelectedNode.ForeColor = Color.Blue;
+            //treeViewVectors.SelectedNode.NodeFont = new Font(this.Font, FontStyle.Bold);
+        }
+
+        private void buttonSelectedDown_Click(object sender, EventArgs e)
+        {
+            int level = -1; //расположение 0-выбран узел линии, 1-точка линии
+            int pos = -1;   // если это линия то её индекс, если точка то её индекс
+            int posParent = -1; //если выбрана точка, то тут индекс линии
+
+            if (treeViewVectors.SelectedNode == null) return;
+
+            level = treeViewVectors.SelectedNode.Level;
+            pos = treeViewVectors.SelectedNode.Index;
+
+
+            if (level != 0) return;
+
+            if (pos == pageVectorNOW.Count-1) return;
+
+            GroupPoint ggp = pageVectorNOW[pos].Clone();
+            pageVectorNOW.RemoveAt(pos);
+            pageVectorNOW.Insert(pos + 1, ggp.Clone());
+
+
+            UserActions();
+
+
+            treeViewVectors.SelectedNode = treeViewVectors.Nodes[pos + 1];
+            treeViewVectors.SelectedNode.ForeColor = Color.Blue;
+            //treeViewVectors.SelectedNode.NodeFont = new Font(this.Font, FontStyle.Bold);
+
+
         }
     }
 }

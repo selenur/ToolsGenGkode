@@ -240,6 +240,7 @@ namespace ToolsGenGkode.pages
         public List<GroupPoint> pageVectorNOW { get; set; }
 
 
+
         public List<cncPoint> PagePoints { get; set; }
 
 

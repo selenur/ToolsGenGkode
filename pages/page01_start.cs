@@ -91,6 +91,11 @@ namespace ToolsGenGkode.pages
 
         }
 
+        public bool IsReady()
+        {
+            return true;
+        }
+
         private void page01_Load(object sender, EventArgs e)
         {
 
@@ -201,6 +206,8 @@ namespace ToolsGenGkode.pages
         /// Вызов полного пересчета данных, на текущей странице, перед переключением на слеющую
         /// </summary>
         void actionAfter(); // метод
+
+        bool IsReady(); //запрос корректности заполнения данных на странице
     }
 
     /// <summary>

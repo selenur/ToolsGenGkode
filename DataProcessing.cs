@@ -267,17 +267,571 @@ namespace ToolsGenGkode
             return bbb;
         }
 
+
+
+
+
+        static int MixColorToGreyScale(int R, int G, int B)
+        {
+            return (int)((R * 0.3) + (G * 0.59) + (B * 0.11));
+        }
+
+        public static Byte[,] ToByteArray(ref Bitmap sourceBMP)
+        {
+            // высота Y
+            Int32 PixelHeight = sourceBMP.Height;
+            // ширина X
+            Int32 PixelWidth = sourceBMP.Width;
+            // массив в котором будут хранится данные
+            Byte[,] GrayArray = new Byte[PixelHeight, PixelWidth];
+
+            BitmapData bmpData = sourceBMP.LockBits(new Rectangle(0, 0, PixelWidth, PixelHeight), ImageLockMode.ReadOnly, sourceBMP.PixelFormat);
+
+            int bitPerPixel = 0;
+
+            switch (sourceBMP.PixelFormat)
+            {
+                case PixelFormat.Format1bppIndexed:
+                    bitPerPixel = 1;
+                    break;
+                case PixelFormat.Format4bppIndexed:
+                    bitPerPixel = 4;
+                    break;
+                case PixelFormat.Format8bppIndexed:
+                    bitPerPixel = 8;
+                    break;
+                case PixelFormat.Format24bppRgb:
+                    bitPerPixel = 24;
+                    break;
+                case PixelFormat.Format32bppArgb:
+                    bitPerPixel = 32;
+                    break;
+            }
+
+            unsafe
+            {
+                // ссылка на область памяти
+                byte* imagePointer1 = (byte*)bmpData.Scan0;
+
+                for (int i = 0; i < bmpData.Height; i++)
+                {
+                    // для простых изображений
+                    if (bitPerPixel == 24 || bitPerPixel == 32)
+                    {
+                        for (int j = 0; j < bmpData.Width; j++)
+                        {
+                            if (bitPerPixel == 24 || bitPerPixel == 32)
+                            {
+                                int grayScale = MixColorToGreyScale(imagePointer1[0], imagePointer1[1], imagePointer1[2]);
+
+                                GrayArray[i, j] = (byte)(grayScale);
+                            }
+                            imagePointer1 += (bitPerPixel / 8);
+                        }//end for j
+                        imagePointer1 += bmpData.Stride - (bmpData.Width * (bitPerPixel / 8));
+                    }
+
+                    //для индексируемых
+                    if (bitPerPixel == 1 || bitPerPixel == 4 || bitPerPixel == 8)
+                    {
+                        //получим палитру:
+                        ColorPalette colPal = sourceBMP.Palette;
+
+                        int leftByte = bmpData.Stride; // с каждым вычислением точек, будем уменьшать количество оставшихся байт
+                        int leftPoint = PixelWidth;    // определение количества оставшихся точек
+                        int leftBits = 8;              // определение количества оставщихся бит
+                        int currJ = 0;
+
+
+
+                        //******************************
+                        // varian 1
+                        //*******************************
+
+                        int[] colorPoInts = new[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+
+                        while (leftPoint > 0)
+                        {
+                            int tmp = 0;
+
+                            while (tmp < (8 / bitPerPixel))
+                            {
+                                int colorNumber = imagePointer1[0];
+
+                                if (bitPerPixel == 1) colorNumber = (colorNumber & 128 / ((int)Math.Pow(2, tmp))) >> (7 - tmp);
+
+                                if (bitPerPixel == 4 && tmp == 0) colorNumber = (colorNumber & 240) >> 4;
+                                //    colorNumber1 = (colorNumber1 & 240)>>4; // применяем маску 1111 0000
+
+                                if (bitPerPixel == 4 && tmp == 1) colorNumber = colorNumber & 15;
+                                //    colorNumber1 = (colorNumber1 & 240)>>4; // применяем маску 1111 0000
+
+                                if (bitPerPixel == 8) colorNumber = imagePointer1[0];
+
+
+                                colorPoInts[tmp] = MixColorToGreyScale(colPal.Entries[colorNumber].R, colPal.Entries[colorNumber].G, colPal.Entries[colorNumber].B);
+
+                                if (currJ < PixelWidth)
+                                {
+                                    GrayArray[i, currJ] = (byte)colorPoInts[tmp];
+                                    currJ++;
+                                    leftPoint--;
+                                }
+
+
+                                tmp++;
+                            }
+
+                            imagePointer1++;
+                            leftByte--;
+
+
+
+
+
+                            //************************************
+                            //varian 2
+                            //************************************
+
+
+                            //if (bitPerPixel == 8)
+                            //{
+                            //    int colorNumber = imagePointer1[0];
+
+                            //    int grayScale = MixColorToGreyScale(colPal.Entries[colorNumber].R, colPal.Entries[colorNumber].G, colPal.Entries[colorNumber].B);
+
+                            //    GrayArray[i, currJ] = (byte)grayScale;
+
+                            //    currJ++;
+                            //    imagePointer1++;
+                            //    leftPoint--;
+                            //    leftByte--;
+                            //}
+
+
+                            //if (bitPerPixel == 4)
+                            //{
+                            //    int colorNumber1 = imagePointer1[0];
+                            //    int colorNumber2 = imagePointer1[0];
+
+                            //    colorNumber1 = (colorNumber1 & 240)>>4; // применяем маску 1111 0000
+                            //    colorNumber2 = colorNumber2 & 15;  // применяем маску 0000 1111 
+
+
+                            //    int Color1R = colPal.Entries[colorNumber1].R;
+                            //    int Color1G = colPal.Entries[colorNumber1].G;
+                            //    int Color1B = colPal.Entries[colorNumber1].B;
+
+                            //    int Color2R = colPal.Entries[colorNumber2].R;
+                            //    int Color2G = colPal.Entries[colorNumber2].G;
+                            //    int Color2B = colPal.Entries[colorNumber2].B;
+
+
+                            //    int grayScale1 =
+                            //        (int)((Color1R * 0.3) + (Color1G * 0.59) + (Color1B * 0.11));
+
+                            //    int grayScale2 =
+                            //        (int)((Color2R * 0.3) + (Color2G * 0.59) + (Color2B * 0.11));
+
+                            //    GrayArray[i, currJ] = (byte)grayScale1;
+                            //    currJ ++;
+
+                            //    if (currJ < PixelWidth) GrayArray[i, currJ] = (byte)grayScale2;
+
+                            //    currJ++;
+                            //    imagePointer1++;
+
+                            //    leftPoint-=2;
+                            //    leftByte--;
+                            //}
+
+                            //if (bitPerPixel == 1)
+                            //{
+
+
+
+                            //    int colorNumber1 = imagePointer1[0];
+                            //    int colorNumber2 = imagePointer1[0];
+                            //    int colorNumber3 = imagePointer1[0];
+                            //    int colorNumber4 = imagePointer1[0];
+                            //    int colorNumber5 = imagePointer1[0];
+                            //    int colorNumber6 = imagePointer1[0];
+                            //    int colorNumber7 = imagePointer1[0];
+                            //    int colorNumber8 = imagePointer1[0];
+
+                            //    colorNumber1 = (colorNumber1 & 128) >> 7; // применяем маску 1000 0000
+                            //    colorNumber2 = (colorNumber2 &  64) >> 6; // применяем маску 0100 0000
+                            //    colorNumber3 = (colorNumber3 &  32) >> 5; // применяем маску 0010 0000
+                            //    colorNumber4 = (colorNumber4 &  16) >> 4; // применяем маску 0001 0000
+                            //    colorNumber5 = (colorNumber5 &   8) >> 3; // применяем маску 0000 1000
+                            //    colorNumber6 = (colorNumber6 &   4) >> 2; // применяем маску 0000 0100
+                            //    colorNumber7 = (colorNumber7 &   2) >> 1; // применяем маску 0000 0010
+                            //    colorNumber8 = (colorNumber8 &   1)     ; // применяем маску 0000 0001
+
+
+                            //    int Color1R = colPal.Entries[colorNumber1].R;
+                            //    int Color1G = colPal.Entries[colorNumber1].G;
+                            //    int Color1B = colPal.Entries[colorNumber1].B;
+
+                            //    int Color2R = colPal.Entries[colorNumber2].R;
+                            //    int Color2G = colPal.Entries[colorNumber2].G;
+                            //    int Color2B = colPal.Entries[colorNumber2].B;
+
+                            //    int Color3R = colPal.Entries[colorNumber3].R;
+                            //    int Color3G = colPal.Entries[colorNumber3].G;
+                            //    int Color3B = colPal.Entries[colorNumber3].B;
+
+                            //    int Color4R = colPal.Entries[colorNumber4].R;
+                            //    int Color4G = colPal.Entries[colorNumber4].G;
+                            //    int Color4B = colPal.Entries[colorNumber4].B;
+
+                            //    int Color5R = colPal.Entries[colorNumber5].R;
+                            //    int Color5G = colPal.Entries[colorNumber5].G;
+                            //    int Color5B = colPal.Entries[colorNumber5].B;
+
+                            //    int Color6R = colPal.Entries[colorNumber6].R;
+                            //    int Color6G = colPal.Entries[colorNumber6].G;
+                            //    int Color6B = colPal.Entries[colorNumber6].B;
+
+                            //    int Color7R = colPal.Entries[colorNumber7].R;
+                            //    int Color7G = colPal.Entries[colorNumber7].G;
+                            //    int Color7B = colPal.Entries[colorNumber7].B;
+
+                            //    int Color8R = colPal.Entries[colorNumber8].R;
+                            //    int Color8G = colPal.Entries[colorNumber8].G;
+                            //    int Color8B = colPal.Entries[colorNumber8].B;
+
+
+                            //    int grayScale1 = (int)((Color1R * 0.3) + (Color1G * 0.59) + (Color1B * 0.11));
+                            //    int grayScale2 = (int)((Color2R * 0.3) + (Color2G * 0.59) + (Color2B * 0.11));
+                            //    int grayScale3 = (int)((Color3R * 0.3) + (Color3G * 0.59) + (Color3B * 0.11));
+                            //    int grayScale4 = (int)((Color4R * 0.3) + (Color4G * 0.59) + (Color4B * 0.11));
+                            //    int grayScale5 = (int)((Color5R * 0.3) + (Color5G * 0.59) + (Color5B * 0.11));
+                            //    int grayScale6 = (int)((Color6R * 0.3) + (Color6G * 0.59) + (Color6B * 0.11));
+                            //    int grayScale7 = (int)((Color7R * 0.3) + (Color7G * 0.59) + (Color7B * 0.11));
+                            //    int grayScale8 = (int)((Color8R * 0.3) + (Color8G * 0.59) + (Color8B * 0.11));
+
+                            //    if (currJ < PixelWidth)
+                            //    {
+                            //        GrayArray[i, currJ] = (byte)grayScale1;
+                            //        currJ++;
+                            //        leftPoint--;
+                            //    }
+
+                            //    if (currJ < PixelWidth)
+                            //    {
+                            //        GrayArray[i, currJ] = (byte)grayScale2;
+                            //        currJ++;
+                            //        leftPoint--;
+                            //    }
+
+                            //    if (currJ < PixelWidth)
+                            //    {
+                            //        GrayArray[i, currJ] = (byte)grayScale3;
+                            //        currJ++;
+                            //        leftPoint--;
+                            //    }
+
+                            //    if (currJ < PixelWidth)
+                            //    {
+                            //        GrayArray[i, currJ] = (byte)grayScale4;
+                            //        currJ++;
+                            //        leftPoint--;
+                            //    }
+
+                            //    if (currJ < PixelWidth)
+                            //    {
+                            //        GrayArray[i, currJ] = (byte)grayScale5;
+                            //        currJ++;
+                            //        leftPoint--;
+                            //    }
+
+                            //    if (currJ < PixelWidth)
+                            //    {
+                            //        GrayArray[i, currJ] = (byte)grayScale6;
+                            //        currJ++;
+                            //        leftPoint--;
+                            //    }
+
+                            //    if (currJ < PixelWidth)
+                            //    {
+                            //        GrayArray[i, currJ] = (byte)grayScale7;
+                            //        currJ++;
+                            //        leftPoint--;
+                            //    }
+
+                            //    if (currJ < PixelWidth)
+                            //    {
+                            //        GrayArray[i, currJ] = (byte)grayScale8;
+                            //        currJ++;
+                            //        leftPoint--;
+                            //    }
+
+                            //    imagePointer1++;
+                            //    leftByte--;
+                            //}
+
+
+
+
+
+                        }
+                        imagePointer1 += leftByte;
+                    }
+
+
+
+                }//end for i
+            }//end unsafe
+            sourceBMP.UnlockBits(bmpData);
+
+
+            return GrayArray;
+        }
+
+        public static Bitmap BinaryArrayToBinaryBitmap(Byte[,] binaryArray)
+        {
+
+            Int32 PixelHeight = binaryArray.GetLength(0);
+            Int32 PixelWidth = binaryArray.GetLength(1);
+
+            Bitmap returnMap = new Bitmap(PixelWidth, PixelHeight, PixelFormat.Format24bppRgb);
+            BitmapData bitmapData2 = returnMap.LockBits(new Rectangle(0, 0, returnMap.Width, returnMap.Height), ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb);
+
+            unsafe
+            {
+                byte* imagePointer2 = (byte*)bitmapData2.Scan0;
+                for (int i = 0; i < PixelHeight; i++)
+                {
+                    for (int j = 0; j < PixelWidth; j++)
+                    {
+
+                        imagePointer2[0] = binaryArray[i, j];
+                        imagePointer2[1] = binaryArray[i, j];
+                        imagePointer2[2] = binaryArray[i, j];
+
+                        imagePointer2 += 3;
+                    }//end for j
+                    imagePointer2 += bitmapData2.Stride - (bitmapData2.Width * 3);
+                }//end for i
+            }//end unsafe
+            returnMap.UnlockBits(bitmapData2);
+
+            return returnMap;
+        }
+
+
+
+
+
+
+
         public static Bitmap Skeletonization(Bitmap bmpSource)
         {
 
             int Threshold = 0;
 
-            Byte[,] m_SourceImage = Thining.ToBinaryArray(bmpSource, out Threshold);
+            Byte[,] m_SourceImage = ToByteArray(ref bmpSource);
 
             Byte[,] m_DesImage = Thining.ThinPicture(m_SourceImage);
 
-            return CheckAndConvertImageto24bitPerPixel(Thining.BinaryArrayToBinaryBitmap(m_DesImage));
+            Bitmap ppp = BinaryArrayToBinaryBitmap(m_DesImage);
+
+            //Bitmap ppp = Thining.BinaryArrayToBinaryBitmap(m_DesImage);
+
+
+            //Bitmap bit8 = CopyToBpp(ppp, 8); //в начале сконвертируем в 8 битное
+
+            //Bitmap returnMap = new Bitmap(ppp.Width, ppp.Height, PixelFormat.Format24bppRgb);
+
+            //Convert(ppp, returnMap);
+
+            //return returnMap;
+
+            return ppp;
         }
+
+
+        /// <summary>
+        /// http://www.wischik.com/lu/programmer/1bpp.html
+        /// Copies a bitmap into a 1bpp/8bpp bitmap of the same dimensions, fast
+        /// </summary>
+        /// <param name="b">original bitmap</param>
+        /// <param name="bpp">1 or 8, target bpp</param>
+        /// <returns>a 1bpp copy of the bitmap</returns>
+        static System.Drawing.Bitmap CopyToBpp(System.Drawing.Bitmap b, int bpp)
+        {
+            if (bpp != 1 && bpp != 8) throw new System.ArgumentException("1 or 8", "bpp");
+
+            // Plan: built into Windows GDI is the ability to convert
+            // bitmaps from one format to another. Most of the time, this
+            // job is actually done by the graphics hardware accelerator card
+            // and so is extremely fast. The rest of the time, the job is done by
+            // very fast native code.
+            // We will call into this GDI functionality from C#. Our plan:
+            // (1) Convert our Bitmap into a GDI hbitmap (ie. copy unmanaged->managed)
+            // (2) Create a GDI monochrome hbitmap
+            // (3) Use GDI "BitBlt" function to copy from hbitmap into monochrome (as above)
+            // (4) Convert the monochrone hbitmap into a Bitmap (ie. copy unmanaged->managed)
+
+            int w = b.Width, h = b.Height;
+            IntPtr hbm = b.GetHbitmap(); // this is step (1)
+                                         //
+                                         // Step (2): create the monochrome bitmap.
+                                         // "BITMAPINFO" is an interop-struct which we define below.
+                                         // In GDI terms, it's a BITMAPHEADERINFO followed by an array of two RGBQUADs
+            BITMAPINFO bmi = new BITMAPINFO();
+            bmi.biSize = 40;  // the size of the BITMAPHEADERINFO struct
+            bmi.biWidth = w;
+            bmi.biHeight = h;
+            bmi.biPlanes = 1; // "planes" are confusing. We always use just 1. Read MSDN for more info.
+            bmi.biBitCount = (short)bpp; // ie. 1bpp or 8bpp
+            bmi.biCompression = BI_RGB; // ie. the pixels in our RGBQUAD table are stored as RGBs, not palette indexes
+            bmi.biSizeImage = (uint)(((w + 7) & 0xFFFFFFF8) * h / 8);
+            bmi.biXPelsPerMeter = 1000000; // not really important
+            bmi.biYPelsPerMeter = 1000000; // not really important
+                                           // Now for the colour table.
+            uint ncols = (uint)1 << bpp; // 2 colours for 1bpp; 256 colours for 8bpp
+            bmi.biClrUsed = ncols;
+            bmi.biClrImportant = ncols;
+            bmi.cols = new uint[256]; // The structure always has fixed size 256, even if we end up using fewer colours
+            if (bpp == 1) { bmi.cols[0] = MAKERGB(0, 0, 0); bmi.cols[1] = MAKERGB(255, 255, 255); }
+            else { for (int i = 0; i < ncols; i++) bmi.cols[i] = MAKERGB(i, i, i); }
+            // For 8bpp we've created an palette with just greyscale colours.
+            // You can set up any palette you want here. Here are some possibilities:
+            // greyscale: for (int i=0; i<256; i++) bmi.cols[i]=MAKERGB(i,i,i);
+            // rainbow: bmi.biClrUsed=216; bmi.biClrImportant=216; int[] colv=new int[6]{0,51,102,153,204,255};
+            //          for (int i=0; i<216; i++) bmi.cols[i]=MAKERGB(colv[i/36],colv[(i/6)%6],colv[i%6]);
+            // optimal: a difficult topic: http://en.wikipedia.org/wiki/Color_quantization
+            // 
+            // Now create the indexed bitmap "hbm0"
+            IntPtr bits0; // not used for our purposes. It returns a pointer to the raw bits that make up the bitmap.
+            IntPtr hbm0 = CreateDIBSection(IntPtr.Zero, ref bmi, DIB_RGB_COLORS, out bits0, IntPtr.Zero, 0);
+            //
+            // Step (3): use GDI's BitBlt function to copy from original hbitmap into monocrhome bitmap
+            // GDI programming is kind of confusing... nb. The GDI equivalent of "Graphics" is called a "DC".
+            IntPtr sdc = GetDC(IntPtr.Zero);       // First we obtain the DC for the screen
+                                                   // Next, create a DC for the original hbitmap
+            IntPtr hdc = CreateCompatibleDC(sdc); SelectObject(hdc, hbm);
+            // and create a DC for the monochrome hbitmap
+            IntPtr hdc0 = CreateCompatibleDC(sdc); SelectObject(hdc0, hbm0);
+            // Now we can do the BitBlt:
+            BitBlt(hdc0, 0, 0, w, h, hdc, 0, 0, SRCCOPY);
+            // Step (4): convert this monochrome hbitmap back into a Bitmap:
+            System.Drawing.Bitmap b0 = System.Drawing.Bitmap.FromHbitmap(hbm0);
+            //
+            // Finally some cleanup.
+            DeleteDC(hdc);
+            DeleteDC(hdc0);
+            ReleaseDC(IntPtr.Zero, sdc);
+            DeleteObject(hbm);
+            DeleteObject(hbm0);
+            //
+            return b0;
+        }
+
+        [System.Runtime.InteropServices.DllImport("gdi32.dll")]
+        public static extern bool DeleteObject(IntPtr hObject);
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern int InvalidateRect(IntPtr hwnd, IntPtr rect, int bErase);
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern IntPtr GetDC(IntPtr hwnd);
+
+        [System.Runtime.InteropServices.DllImport("gdi32.dll")]
+        public static extern IntPtr CreateCompatibleDC(IntPtr hdc);
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern int ReleaseDC(IntPtr hwnd, IntPtr hdc);
+
+        [System.Runtime.InteropServices.DllImport("gdi32.dll")]
+        public static extern int DeleteDC(IntPtr hdc);
+
+        [System.Runtime.InteropServices.DllImport("gdi32.dll")]
+        public static extern IntPtr SelectObject(IntPtr hdc, IntPtr hgdiobj);
+
+        [System.Runtime.InteropServices.DllImport("gdi32.dll")]
+        public static extern int BitBlt(IntPtr hdcDst, int xDst, int yDst, int w, int h, IntPtr hdcSrc, int xSrc, int ySrc, int rop);
+        static int SRCCOPY = 0x00CC0020;
+
+        [System.Runtime.InteropServices.DllImport("gdi32.dll")]
+        static extern IntPtr CreateDIBSection(IntPtr hdc, ref BITMAPINFO bmi, uint Usage, out IntPtr bits, IntPtr hSection, uint dwOffset);
+        static uint BI_RGB = 0;
+        static uint DIB_RGB_COLORS = 0;
+        [System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential)]
+        public struct BITMAPINFO
+        {
+            public uint biSize;
+            public int biWidth, biHeight;
+            public short biPlanes, biBitCount;
+            public uint biCompression, biSizeImage;
+            public int biXPelsPerMeter, biYPelsPerMeter;
+            public uint biClrUsed, biClrImportant;
+            [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValArray, SizeConst = 256)]
+            public uint[] cols;
+        }
+
+        static uint MAKERGB(int r, int g, int b)
+        {
+            return ((uint)(b & 255)) | ((uint)((r & 255) << 8)) | ((uint)((g & 255) << 16));
+        }
+
+
+
+        private static unsafe void Convert(Bitmap src, Bitmap conv)
+        {
+            // Lock source and destination in memory for unsafe access
+            var bmbo = src.LockBits(new Rectangle(0, 0, src.Width, src.Height), ImageLockMode.ReadOnly,
+                                     src.PixelFormat);
+            var bmdn = conv.LockBits(new Rectangle(0, 0, conv.Width, conv.Height), ImageLockMode.ReadWrite,
+                                     conv.PixelFormat);
+
+            var srcScan0 = bmbo.Scan0;
+            var convScan0 = bmdn.Scan0;
+
+            var srcStride = bmbo.Stride;
+            var convStride = bmdn.Stride;
+
+            byte* sourcePixels = (byte*)(void*)srcScan0;
+            byte* destPixels = (byte*)(void*)convScan0;
+
+            var srcLineIdx = 0;
+            var convLineIdx = 0;
+            var hmax = src.Height - 1;
+            var wmax = src.Width - 1;
+            for (int y = 0; y < hmax; y++)
+            {
+                // find indexes for source/destination lines
+
+                // use addition, not multiplication?
+                srcLineIdx += srcStride;
+                convLineIdx += convStride;
+
+                var srcIdx = srcLineIdx;
+                for (int x = 0; x < wmax; x++)
+                {
+                    // index for source pixel (32bbp, rgba format)
+                    srcIdx += 4;
+                    //var r = pixel[2];
+                    //var g = pixel[1];
+                    //var b = pixel[0];
+
+                    // could just check directly?
+                    //if (Color.FromArgb(r,g,b).GetBrightness() > 0.01f)
+                    if (!(sourcePixels[srcIdx] == 0 && sourcePixels[srcIdx + 1] == 0 && sourcePixels[srcIdx + 2] == 0))
+                    {
+                        // destination byte for pixel (1bpp, ie 8pixels per byte)
+                        var idx = convLineIdx + (x >> 3);
+                        // mask out pixel bit in destination byte
+                        destPixels[idx] |= (byte)(0x80 >> (x & 0x7));
+                    }
+                }
+            }
+            src.UnlockBits(bmbo);
+            conv.UnlockBits(bmdn);
+        }
+
 
         /// <summary>
         /// Resizes an image to a certain height
@@ -368,7 +922,21 @@ namespace ToolsGenGkode
             //todo: add exceptions
             if (bytePerPixel == 0)
             {
+                using (Bitmap bmp1 = sourceBMP)
+                {
+                    BitmapData data = bmp1.LockBits(new Rectangle(0, 0, bmp1.Width, bmp1.Height),
+                        System.Drawing.Imaging.ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+                    returnMap = new Bitmap(bmp1.Width, bmp1.Height, data.Stride, data.PixelFormat, data.Scan0);
+
+                    bmp1.UnlockBits(data);
+                    return returnMap;
+                }
+
+
                 throw new UnsupportedImageFormatException("Не поддерживаемый формат изображения!!!.");
+
+
+
                 return null;
             }
 

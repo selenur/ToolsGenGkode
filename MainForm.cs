@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
-using CalibrateLaserTools;
 using MultiLanguage;
 using ToolsGenGkode.pages;
 using ToolsGenGkode.Properties;
@@ -180,11 +179,7 @@ namespace ToolsGenGkode
 
         private void testLaserToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //TestLaser tsl = new TestLaser();
-            //tsl.Show();
 
-            Form1 frrm = new Form1();
-            frrm.Show();
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -295,6 +290,10 @@ namespace ToolsGenGkode
 
             if (dir == DirectionPage.Forward)
             {
+                //добавим запрос у текущей страницы, о том возможно-ли переходить на следующий шаг
+                //if (CurrentPage)
+
+
                 if (CurrentPage.Value.NextPage != 0)
                 {
                     PageInterface nextPageI = GetNextPage(CurrentPage.Value.NextPage);

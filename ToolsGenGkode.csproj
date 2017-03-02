@@ -358,10 +358,6 @@
       <Project>{a2e425be-d7a9-4cff-b7bf-d97ad47b9ebe}</Project>
       <Name>MultiLanguage</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CalibrateLaserTools\CalibrateLaserTools.csproj">
-      <Project>{b42115e1-85db-4149-bb25-ea0b1ef92aa2}</Project>
-      <Name>CalibrateLaserTools</Name>
-    </ProjectReference>
     <ProjectReference Include="AForgeNetLib\Core\Core.csproj">
       <Project>{631ac093-430f-45f4-ba0c-af0f0405918a}</Project>
       <Name>Core</Name>
@@ -380,6 +376,10 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

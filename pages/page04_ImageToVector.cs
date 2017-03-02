@@ -74,6 +74,11 @@ namespace ToolsGenGkode.pages
             UserActions();
         }
 
+        public bool IsReady()
+        {
+            return true;
+        }
+
         private void UserActions()
         {
             //if (pageImageIN == null) return;

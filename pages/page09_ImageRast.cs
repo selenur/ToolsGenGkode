@@ -115,6 +115,11 @@ namespace ToolsGenGkode.pages
 
         }
 
+        public bool IsReady()
+        {
+            return true;
+        }
+
         private void GetInfoSize()
         {
             if (pageImageNOW == null) return;
@@ -418,7 +423,7 @@ namespace ToolsGenGkode.pages
             List<myPoint> Points = new List<myPoint>();
 
 
-            foreach (string VARIABLE in Settings.Default.filter3_map)
+            foreach (string VARIABLE in Settings.Default.filter3_mapS)
             {
                 string[] newSS = VARIABLE.Split(';');
                 if (newSS.Length != 2) continue;
@@ -636,8 +641,15 @@ namespace ToolsGenGkode.pages
                     {
 
                         // в существующий отрезок добавим завершающую точку
-                        pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint(posX* sizeOnePoint, posY* sizeOnePoint, 0, 0, 0, false, lastColor));
-                        if (posY != 0) pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint(posX * sizeOnePoint, (posY-1)* sizeOnePoint, 0, 0, 0, false, 0,0));                        //
+                        pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint((posX+1)* sizeOnePoint, posY* sizeOnePoint, 0, 0, 0, false, lastColor));
+                        if (posY != 0)
+                        {
+                            //TODO: придумать алгоритм
+                            //pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint((posX+1) * sizeOnePoint, (posY) * sizeOnePoint, 0, 0, 0, false, 0, 0));
+                            //pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint((posX + 1) * sizeOnePoint, (posY - 1) * sizeOnePoint, 0, 0, 0, false, 0, 0));
+                            pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint((posX + 1) * sizeOnePoint, (posY - 1) * sizeOnePoint, 0, 0, 0, false, 0, 0));
+                        }
+
                         isFirstPoint = true;
 
                         dirrection = 2;
@@ -694,7 +706,7 @@ namespace ToolsGenGkode.pages
 
 
                         // в существующий отрезок добавим точку
-                        pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint((posX + deltaX)* sizeOnePoint, posY* sizeOnePoint, 0, 0, 0, false, lastColor));
+                        //pageVectorNOW[pageVectorNOW.Count - 1].Points.Add(new cncPoint((posX + deltaX)* sizeOnePoint, posY* sizeOnePoint, 0, 0, 0, false, lastColor));
 
                     }
                 } // while (CountPoint > 0)
@@ -723,98 +735,123 @@ namespace ToolsGenGkode.pages
             // тут нужно сделать преворот согластно текущй ориентации осей
             pageVectorNOW = VectorProcessing.Rotate(pageVectorNOW);
 
+            //а тут применим график, если есть конечно данные
+            List<myPoint> PointsS = new List<myPoint>(); // вычисление значения S
+            List<myPoint> PointsF = new List<myPoint>(); // вычисление значения F
+            
+            // попытка заполнения
 
-
-
-            //а тут применим график
-            List<myPoint> Points = new List<myPoint>();
-
-
-            foreach (string VARIABLE in Settings.Default.filter3_map)
+            if (Settings.Default.filter3_mapS != null)
             {
-                string[] newSS = VARIABLE.Split(';');
-                if (newSS.Length != 2) continue;
+                foreach (string VARIABLE in Settings.Default.filter3_mapS)
+                {
+                    string[] newSS = VARIABLE.Split(';');
+                    if (newSS.Length != 2) continue;
 
-                int p1 = 0;
-                int p2 = 0;
+                    int p1 = 0;
+                    int p2 = 0;
 
-                int.TryParse(newSS[0].Trim(), out p1);
-                int.TryParse(newSS[1].Trim(), out p2);
+                    int.TryParse(newSS[0].Trim(), out p1);
+                    int.TryParse(newSS[1].Trim(), out p2);
 
-                Points.Add(new myPoint(p1, p2));
+                    PointsS.Add(new myPoint(p1, p2));
+                }                
             }
 
-            if (Points.Count == 0) return;
-
-            //если есть данные вычислим S
-            foreach (GroupPoint gg in pageVectorNOW)
+            if (Settings.Default.filter3_mapF != null)
             {
-                foreach (cncPoint pp in gg.Points)
+                foreach (string VARIABLE in Settings.Default.filter3_mapF)
                 {
-                    //исходное значение
-                    int sourceBright = pp.Bright;
+                    string[] newSS = VARIABLE.Split(';');
+                    if (newSS.Length != 2) continue;
 
-                    //если значение меньше начальной точки
-                    if (sourceBright < Points[0].X)
+                    int p1 = 0;
+                    int p2 = 0;
+
+                    int.TryParse(newSS[0].Trim(), out p1);
+                    int.TryParse(newSS[1].Trim(), out p2);
+
+                    PointsF.Add(new myPoint(p1, p2));
+                }                
+            }
+
+            if (PointsS.Count > 0)  //если есть данные вычислим S
+            {
+                foreach (GroupPoint gg in pageVectorNOW)
+                {
+                    foreach (cncPoint pp in gg.Points)
                     {
-                        pp.Svalue = Points[0].Y;
-                        continue;
-                    }
-
-                    if (sourceBright > Points[Points.Count - 1].X)
-                    {
-                        pp.Svalue = Points[Points.Count - 1].Y;
-                        continue;
-                    }
-
-                    // а тут пройдемся по диапазону точек
-                    int indx = 0;
-
-                    foreach (myPoint Vmp in Points)
-                    {
-                        if (sourceBright == Vmp.X)
-                        {
-                            pp.Svalue = Vmp.Y;
-                            break;
-                        }
-
-                        if (sourceBright < Vmp.X)
-                        {
-                            //тут нужно рассчитать пропорцию
-
-                            double Bmin = Points[indx - 1].X;
-                            double Bmax = Points[indx].X;
-
-                            double Smin = Points[indx - 1].Y;
-                            double Smax = Points[indx].Y;
-
-                            double result = 0;
-
-                            if (sourceBright == 0) pp.Svalue = 0;
-                            else
-                            {
-
-                                result = ((Smax - Smin) / ((Bmax - Bmin) / sourceBright)) + Smin;
-                                pp.Svalue = (int)result;
-                            }
-
-
-                            break;
-
-
-                        }
-
-                        indx++;
-                        
+                        pp.Svalue = (int)GetApromixValue(ref PointsS, pp.Bright);
                     }
                 }
-
             }
 
-
-
+            if (PointsF.Count > 0)  //если есть данные вычислим F
+            {
+                foreach (GroupPoint gg in pageVectorNOW)
+                {
+                    foreach (cncPoint pp in gg.Points)
+                    {
+                        pp.Fvalue = (int)GetApromixValue(ref PointsF, pp.Bright);
+                    }
+                }
+            }
 
         }
+
+
+
+        private double GetApromixValue(ref List<myPoint> _Points, double _bright)
+        {
+            //исходное значение
+            int iBright = (int)_bright;
+
+            //если значение меньше начальной точки
+            if (iBright < _Points[0].X)
+            {
+                return _Points[0].Y;
+            }
+
+            // если больше
+            if (iBright > _Points[_Points.Count - 1].X)
+            {
+                return _Points[_Points.Count - 1].Y;
+            }
+
+            // а тут пройдемся по диапазону точек
+            int indx = 0;
+
+            foreach (myPoint Vmp in _Points)
+            {
+                if (iBright == Vmp.X)
+                {
+                    return Vmp.Y;
+                }
+
+                if (iBright < Vmp.X)
+                {
+                    //тут нужно рассчитать пропорцию
+
+                    double Bmin = _Points[indx - 1].X;
+                    double Bmax = _Points[indx].X;
+
+                    double Smin = _Points[indx - 1].Y;
+                    double Smax = _Points[indx].Y;
+
+                    if (iBright == 0)
+                    {
+                        return 0;
+                    }
+
+                    double result = (Smax - Smin) / (Bmax - Bmin) * (iBright - Bmin) + Smin;
+
+                    return result;
+                }
+                indx++;
+            }
+            return 0;
+        }
+
 
         private void GenerateData()
         {

@@ -58,6 +58,11 @@ namespace ToolsGenGkode.pages
 
         }
 
+        public bool IsReady()
+        {
+            return true;
+        }
+
 
         private void SelectFont_Load(object sender, EventArgs e)
         {

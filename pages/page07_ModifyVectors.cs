@@ -45,6 +45,11 @@ namespace ToolsGenGkode.pages
 
         }
 
+        public bool IsReady()
+        {
+            return true;
+        }
+
         void UserActions()
         {
             getInfoSize();

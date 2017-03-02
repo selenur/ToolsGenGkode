@@ -48,6 +48,11 @@ namespace ToolsGenGkode.pages
             UserActions();
         }
 
+        public bool IsReady()
+        {
+            return true;
+        }
+
         private void buttonSelectFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();

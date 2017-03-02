@@ -61,6 +61,12 @@ namespace ToolsGenGkode.pages
 
         }
 
+        public bool IsReady()
+        {
+            return true;
+        }
+
+
         private void btGenerateCode_Click(object sender, EventArgs e)
         {
             if (CurrProfile._commands.Count > 0)

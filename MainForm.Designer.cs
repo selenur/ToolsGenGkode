@@ -36,7 +36,6 @@ namespace ToolsGenGkode
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dopFunctionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.testLaserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.languageCurrent = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -94,25 +93,17 @@ namespace ToolsGenGkode
             // 
             this.exitToolStripMenuItem.Image = global::ToolsGenGkode.Properties.Resources.door;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Tag = "_exit_";
             this.exitToolStripMenuItem.Text = "Выход";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // dopFunctionsToolStripMenuItem
             // 
-            this.dopFunctionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.testLaserToolStripMenuItem});
+            this.dopFunctionsToolStripMenuItem.Enabled = false;
             this.dopFunctionsToolStripMenuItem.Name = "dopFunctionsToolStripMenuItem";
             this.dopFunctionsToolStripMenuItem.Size = new System.Drawing.Size(107, 20);
             this.dopFunctionsToolStripMenuItem.Text = "Дополнительно";
-            // 
-            // testLaserToolStripMenuItem
-            // 
-            this.testLaserToolStripMenuItem.Name = "testLaserToolStripMenuItem";
-            this.testLaserToolStripMenuItem.Size = new System.Drawing.Size(336, 22);
-            this.testLaserToolStripMenuItem.Text = "Калибровка параметров, для лазер. выжигания";
-            this.testLaserToolStripMenuItem.Click += new System.EventHandler(this.testLaserToolStripMenuItem_Click);
             // 
             // languageCurrent
             // 
@@ -372,7 +363,6 @@ namespace ToolsGenGkode
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem dopFunctionsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem testLaserToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panelPreview;
         private System.Windows.Forms.RadioButton radioButton2;

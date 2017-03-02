@@ -231,12 +231,23 @@ namespace ToolsGenGkode.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
             "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" />")]
-        public global::System.Collections.Specialized.StringCollection filter3_map {
+        public global::System.Collections.Specialized.StringCollection filter3_mapS {
             get {
-                return ((global::System.Collections.Specialized.StringCollection)(this["filter3_map"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["filter3_mapS"]));
             }
             set {
-                this["filter3_map"] = value;
+                this["filter3_mapS"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection filter3_mapF {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["filter3_mapF"]));
+            }
+            set {
+                this["filter3_mapF"] = value;
             }
         }
     }

@@ -45,6 +45,11 @@ namespace ToolsGenGkode.pages
 
         }
 
+        public bool IsReady()
+        {
+            return true;
+        }
+
         public string PageName { get; set; }
         public int LastPage { get; set; }
         public int CurrPage { get; set; }
